@@ -1,0 +1,183 @@
+//
+//  Header.pch
+//  LAMB Wallet
+//
+//  Created by fei on 2020/10/26.
+//  Copyright © 2020 fei. All rights reserved.
+//
+
+#ifndef Header_pch
+#define Header_pch
+#import "UIDeviceEx.h"
+#define DeviceModelName [UIDevice deviceModelName]
+
+/// 屏幕高
+#define kScreenH kll_MAINHEIGHT
+/// 屏幕宽
+#define kScreenW kll_MAINWIDTH
+/// 屏幕高
+#define kll_MAINHEIGHT ([[UIScreen mainScreen] bounds].size.height)
+/// 屏幕宽
+#define kll_MAINWIDTH  ([[UIScreen mainScreen] bounds].size.width)
+
+/// 从右侧划出view类型动画 左侧露出的距离(左侧列表被掩盖时，露出的宽度)
+
+/// 判断是否为retina屏幕
+
+/// 是否iPad
+#define kll_isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
+/// 判断系统版本
+#define kll_moreThanOS9  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0)
+
+//NSNull判断
+/// 判断NSString, NSArrsy, NSDictionary, NSSet, NSNumber
+#define kll_IsString(__string) ([(__string) isKindOfClass:[NSString class]])
+#define kll_IsStringWithAnyText(__string) (kll_IsString(__string) && ([((NSString *)__string) length] > 0))
+
+//数组判断
+#define kll_IsArray(__array) ([(__array) isKindOfClass:[NSArray class]])
+#define kll_IsArrayWithAnyItem(__array) (kll_IsArray(__array) && ([((NSArray *)__array) count] > 0))
+
+//字典判断
+#define kll_IsDictionary(__dict) ([(__dict) isKindOfClass:[NSDictionary class]])
+#define kll_IsDictionaryWithAnyKeyValue(__dict) (kll_IsDictionary(__dict) && ([[((NSDictionary *)__dict) allKeys] count] > 0))
+
+// NSNumber判断
+
+#if TARGET_IPHONE_SIMULATOR
+
+// 是否为iPhoneX
+#define kll_isiPhonex ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125.0f, 2436.0f), [[UIScreen mainScreen] currentMode].size) : NO)
+//判断iPHoneXr
+#define kll_isiPhoneXR ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) && !kll_isiPad : NO)
+//判断iPhoneXs
+#define kll_isiPhoneXS ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !kll_isiPad : NO)
+//判断iPhoneXs Max
+#define kll_isiPhoneXSMax ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) && !kll_isiPad : NO)
+//判断iPhone 11
+#define kll_isiPhone11 kll_isiPhoneXR
+//判断iPhone 11 Pro
+#define kll_isiPhone11Pro kll_isiPhoneXS
+//判断iPhone 11 Pro Max
+#define kll_isiPhone11ProMax kll_isiPhoneXSMax
+
+#else
+
+// 是否为iPhoneX
+#define kll_isiPhonex [DeviceModelName isEqualToString:@"iPhone X"]
+//判断iPHoneXr
+#define kll_isiPhoneXR [DeviceModelName isEqualToString:@"iPhone XR"]
+//判断iPhoneXs
+#define kll_isiPhoneXS [DeviceModelName isEqualToString:@"iPhone XS"]
+//判断iPhoneXs Max
+#define kll_isiPhoneXSMax [DeviceModelName isEqualToString:@"iPhone XS Max"]
+//判断iPhone 11
+#define kll_isiPhone11 [DeviceModelName isEqualToString:@"iPhone 11"]
+//判断iPhone 11 Pro
+#define kll_isiPhone11Pro [DeviceModelName isEqualToString:@"iPhone 11 Pro"]
+//判断iPhone 11 Pro Max
+#define kll_isiPhone11ProMax [DeviceModelName isEqualToString:@"iPhone 11 Pro Max"]
+
+#endif
+
+//是否是刘海屏
+#define kll_isBangScreen (kll_isiPhonex || kll_isiPhoneXR || kll_isiPhoneXS || kll_isiPhoneXSMax || kll_isiPhone11 || kll_isiPhone11Pro || kll_isiPhone11ProMax)
+// 是否为iPhoneX
+
+/// 状态栏高度
+#define kll_StatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+
+/// 状态栏高度
+#define kll_StatusBarNotHiddenHeight (kll_isBangScreen ? 44.0 : 20.0)
+
+/// segment默认高度
+
+/// 导航条高度
+#define kll_NavBarHeight 44.0f
+
+/// TabBar高度
+
+/// 状态栏+导航条高度
+#define kll_Status_NavBarHeight (kll_StatusBarHeight + kll_NavBarHeight)
+
+/// iPhoneX底部安全区域高度
+#define kll_SafeBottomMargin  (kll_isBangScreen ? 34.0f : 0.0f)
+
+/// iPhoneX底部安全区域高度
+#define kll_Tabbar_SafeBottomHeight  (kll_SafeBottomMargin + 49)
+
+//一像素高度
+#define kll_OnePixel (1.0 / [UIScreen mainScreen].scale)
+
+
+
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "ASLocalizedManager.h"
+#import "UIViewController+Ex.h"
+#import "ASHUD.h"
+#import <ReactiveObjC/UIControl+RACSignalSupport.h>
+#import <ReactiveObjC/RACSignal.h>
+#import "ASConst.h"
+#import <Masonry.h>
+
+/// long 1585361571000 转换为 2020-03-28 10:12:51
+/// @param timeLong 1585361571000
+/// @param dateFormat 如 yyyy-MM-dd HH:mm:ss
+static inline NSString *timeStrFromLongWithDateFormatStr(long timeLong, NSString *dateFormat) {
+    
+    long timeSec= timeLong;
+    if ([NSString stringWithFormat: @"%ld", timeLong].length == 13) {
+        /*
+         如果服务器返回的是13位字符串，需要除以1000
+         否则显示不正确(13位其实代表的是毫秒，需要除以1000)
+         */
+        timeSec= timeLong / 1000;
+    }
+    NSDate *date = [[NSDate alloc]initWithTimeIntervalSince1970:timeSec];
+    static NSDateFormatter *timeFormatter = nil;
+    if (!timeFormatter) {
+        timeFormatter = [[NSDateFormatter alloc]init];
+    }
+    if (dateFormat.length > 0) {
+        [timeFormatter setDateFormat: dateFormat];
+    } else {
+        [timeFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+    }
+    
+    return [timeFormatter stringFromDate: date];
+}
+/// 是否是x系列
+static inline BOOL isIPhoneXSeries() {
+    BOOL iPhoneXSeries = NO;
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {
+        return iPhoneXSeries;
+    }
+    
+    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+    if (mainWindow.safeAreaInsets.bottom > 0.0) {
+        iPhoneXSeries = YES;
+    }
+    
+    return iPhoneXSeries;
+}
+
+
+#import "NSString+HexColor.h" 
+
+#import <YYCategories/UIView+YYAdd.h>
+#import <ReactiveObjC/RACEXTScope.h>
+
+//打印设置
+#ifdef DEBUG  //如果是调试模式，自定义如下： “...代表多个参数”
+#define NSLog(FORMAT, ...) printf("%s\n 第%d行 \n %s\n\n", __FUNCTION__, __LINE__,[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+
+#else //如果是发布模式，自定义如下
+#define NSLog(...)
+#endif
+
+#endif
+#endif /* Header_pch */
