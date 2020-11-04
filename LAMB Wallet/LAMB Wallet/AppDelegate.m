@@ -18,6 +18,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [self iOS14CellBgColorFix];
+    
     [self addDebugRefresh];
     [self addNotification];
 
@@ -51,6 +54,20 @@
 {
 }
 
+
+/// ios
+- (void)iOS14CellBgColorFix {
+    if (@available(iOS 14, *)) {
+        UIBackgroundConfiguration* backgroundConfig = [UIBackgroundConfiguration listPlainCellConfiguration];
+        backgroundConfig.backgroundColor = UIColor.clearColor;
+        [UITableViewCell appearance].backgroundConfiguration = backgroundConfig;
+        
+        UIBackgroundConfiguration* backgroundConfig2 = [UIBackgroundConfiguration listPlainHeaderFooterConfiguration];
+        backgroundConfig2.backgroundColor = UIColor.clearColor;
+        [UITableViewHeaderFooterView appearance].backgroundConfiguration = backgroundConfig2;
+        [UITableViewHeaderFooterView appearance].backgroundConfiguration = backgroundConfig2;
+    }
+}
 
 
 @end
