@@ -1,3 +1,12 @@
+//
+//  keypair.c
+//  LAMB Wallet
+//
+//  Created by Sunny on 2020/11/4.
+//  Copyright © 2020 fei. All rights reserved.
+//
+
+#include "keypair.h"
 #include "ed25519.h"
 #include "sha512.h"
 #include "ge.h"

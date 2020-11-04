@@ -6,56 +6,47 @@
 //  Copyright © 2020 fei. All rights reserved.
 //
 
-#import "Ed25519Keypair.h" 
-
-
+#import "Ed25519Keypair.h"
+#include "seed.h"
+#include "keypair.h"
+#include "sign.h"
+#include "verify.h"
 @implementation Ed25519Keypair
 
- 
 
 +(Ed25519Keypair*)generateEd25519KeyPair
 
 {
-
-   unsignedcharseed[32],publickey[32],privatekey[64];
-   ed25519_create_seed(seed);
-   ed25519_create_keypair(publickey, privatekey, seed);
+    unsigned char seed[32],publickey[32],privatekey[64];
+    ed25519_create_seed(seed);
+    ed25519_create_keypair(publickey, privatekey, seed);
     Ed25519Keypair *keypair = [[Ed25519Keypair alloc] init];
 
-    keypair.publickey= [NSDatadataWithBytes:publickeylength:32];
+    keypair.publickey= [NSData dataWithBytes:publickey length:32];
 
-    keypair.privatekey= [NSDatadataWithBytes:privatekeylength:64];
+    keypair.privatekey= [NSData dataWithBytes:privatekey length:64];
 
-
-
-    returnkeypair;
-
+    return keypair;
 }
 
 +(NSData*)BLinkEd25519_Signature:(Ed25519Keypair*)ed25519keypair Content:(NSString*)content
 
 {
 
-    unsignedcharsignature[64];
-
-
+    unsigned char signature[64];
 
     NSData *contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
 
-    ed25519_sign(signature, [contentDatabytes], contentData.length, [ed25519keypair.publickeybytes], [ed25519keypair.privatekeybytes]);
+    ed25519_sign(signature, [contentData bytes], contentData.length, [ed25519keypair.publickey bytes], [ed25519keypair.privatekey bytes]);
 
-
-
-    return[NSDatadataWithBytes:signaturelength:64];
+    return[NSData dataWithBytes:signature length:64];
 
 }
 
 +(BOOL)BlinkEd25519_Verify:(NSData*)signatureData content:(NSData*)contentData Ed25519Keypair:(Ed25519Keypair*)ed25519keypair
 
 {
-
-    returned25519_verify([signatureDatabytes], [contentDatabytes], contentData.length, [ed25519keypair.privatekeybytes]);
-
+    return ed25519_verify([signatureData bytes], [contentData bytes], contentData.length, [ed25519keypair.privatekey bytes]);
 }
  
 @end

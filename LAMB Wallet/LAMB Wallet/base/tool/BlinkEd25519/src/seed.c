@@ -1,3 +1,12 @@
+//
+//  seeds.c
+//  LAMB Wallet
+//
+//  Created by Sunny on 2020/11/4.
+//  Copyright © 2020 fei. All rights reserved.
+//
+
+#include "seed.h"
 #include "ed25519.h"
 
 #ifndef ED25519_NO_SEED

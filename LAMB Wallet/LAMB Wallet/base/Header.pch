@@ -8,7 +8,13 @@
 
 #ifndef Header_pch
 #define Header_pch
-#import "UIDeviceEx.h"
+
+#ifdef __OBJC__
+
+   #import "UIDeviceEx.h"
+
+#endif
+
 #define DeviceModelName [UIDevice deviceModelName]
 
 /// 屏幕高

@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - CMPageTitleView (0.7.2)
+  - CMPageTitleView (0.7.3)
   - DoraemonKit/Core (3.0.4):
     - FMDB
     - GCDWebServer
@@ -78,7 +78,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  CMPageTitleView: e731543c2cf727f4906870c69d0c94ba1dbc9ede
+  CMPageTitleView: 180bf436e298a1cc9f42e510bd9c5672d74f6dce
   DoraemonKit: b507a1500667024070f248d648632a3f7bbb6044
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
@@ -93,6 +93,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: b1f95b3d99dcf03e7acafb7f84ab2446c6047ce9
+PODFILE CHECKSUM: 330c1edc1aca7291e54a48bbf541355d9f97055e
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
