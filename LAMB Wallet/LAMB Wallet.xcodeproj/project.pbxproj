@@ -63,6 +63,12 @@
 		985033FA25471B600067896B /* ASCustomNodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 985033F825471B600067896B /* ASCustomNodeVC.m */; };
 		985033FB25471B600067896B /* ASCustomNodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985033F925471B600067896B /* ASCustomNodeVC.xib */; };
 		98503401254720D20067896B /* ASTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98503400254720D20067896B /* ASTextField.m */; };
+		A3629ADC2553ABD4002155E3 /* ASFundVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629ADB2553ABD4002155E3 /* ASFundVC.m */; };
+		A3629AE42553D4CD002155E3 /* ASScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629ADF2553D4CC002155E3 /* ASScanViewController.m */; };
+		A3629AE52553D4CD002155E3 /* ASScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AE02553D4CC002155E3 /* ASScanView.m */; };
+		A3629AE62553D4CD002155E3 /* resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3629AE32553D4CC002155E3 /* resource.bundle */; };
+		A3629AED2553ECE5002155E3 /* ASFundHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AEC2553ECE5002155E3 /* ASFundHeadView.m */; };
+		A3629AF2255406E6002155E3 /* ASFundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AF1255406E6002155E3 /* ASFundCell.m */; };
 		A3D463572552AF5E00EED6CD /* seed.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463562552AF5E00EED6CD /* seed.c */; };
 		A3D4635A2552B07900EED6CD /* keypair.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463592552B07900EED6CD /* keypair.c */; };
 		A3D4635D2552B0E500EED6CD /* sign.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D4635C2552B0E500EED6CD /* sign.c */; };
@@ -208,6 +214,17 @@
 		985033FF254720D20067896B /* ASTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASTextField.h; sourceTree = "<group>"; };
 		98503400254720D20067896B /* ASTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASTextField.m; sourceTree = "<group>"; };
 		A34DAFE525529E8900352586 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A3629ADA2553ABD4002155E3 /* ASFundVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundVC.h; sourceTree = "<group>"; };
+		A3629ADB2553ABD4002155E3 /* ASFundVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundVC.m; sourceTree = "<group>"; };
+		A3629ADF2553D4CC002155E3 /* ASScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASScanViewController.m; sourceTree = "<group>"; };
+		A3629AE02553D4CC002155E3 /* ASScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASScanView.m; sourceTree = "<group>"; };
+		A3629AE12553D4CC002155E3 /* ASScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASScanView.h; sourceTree = "<group>"; };
+		A3629AE22553D4CC002155E3 /* ASScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASScanViewController.h; sourceTree = "<group>"; };
+		A3629AE32553D4CC002155E3 /* resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resource.bundle; sourceTree = "<group>"; };
+		A3629AEB2553ECE5002155E3 /* ASFundHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundHeadView.h; sourceTree = "<group>"; };
+		A3629AEC2553ECE5002155E3 /* ASFundHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundHeadView.m; sourceTree = "<group>"; };
+		A3629AF0255406E6002155E3 /* ASFundCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundCell.h; sourceTree = "<group>"; };
+		A3629AF1255406E6002155E3 /* ASFundCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundCell.m; sourceTree = "<group>"; };
 		A3D463552552AF5E00EED6CD /* seed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = seed.h; sourceTree = "<group>"; };
 		A3D463562552AF5E00EED6CD /* seed.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = seed.c; sourceTree = "<group>"; };
 		A3D463582552B07900EED6CD /* keypair.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypair.h; sourceTree = "<group>"; };
@@ -342,6 +359,7 @@
 		980A38212547AF3300C62DE0 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				A3629ADE2553D4CC002155E3 /* ASScanner */,
 				A5D7766B254AB0AD00783C67 /* BlinkEd25519 */,
 				980A38EA254819FF00C62DE0 /* ASHUD.h */,
 				980A38E9254819FF00C62DE0 /* ASHUD.m */,
@@ -465,6 +483,45 @@
 				980A38172547293000C62DE0 /* MineHeaderView.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		A3629AD72553AB76002155E3 /* mode */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = mode;
+			sourceTree = "<group>";
+		};
+		A3629AD82553AB76002155E3 /* vc */ = {
+			isa = PBXGroup;
+			children = (
+				A3629ADA2553ABD4002155E3 /* ASFundVC.h */,
+				A3629ADB2553ABD4002155E3 /* ASFundVC.m */,
+			);
+			path = vc;
+			sourceTree = "<group>";
+		};
+		A3629AD92553AB76002155E3 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				A3629AEB2553ECE5002155E3 /* ASFundHeadView.h */,
+				A3629AEC2553ECE5002155E3 /* ASFundHeadView.m */,
+				A3629AF0255406E6002155E3 /* ASFundCell.h */,
+				A3629AF1255406E6002155E3 /* ASFundCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		A3629ADE2553D4CC002155E3 /* ASScanner */ = {
+			isa = PBXGroup;
+			children = (
+				A3629AE12553D4CC002155E3 /* ASScanView.h */,
+				A3629AE02553D4CC002155E3 /* ASScanView.m */,
+				A3629AE22553D4CC002155E3 /* ASScanViewController.h */,
+				A3629ADF2553D4CC002155E3 /* ASScanViewController.m */,
+				A3629AE32553D4CC002155E3 /* resource.bundle */,
+			);
+			path = ASScanner;
 			sourceTree = "<group>";
 		};
 		A547C462254822C300591068 /* cpocket */ = {
@@ -623,6 +680,9 @@
 		A5D9C51E2546C0520031192C /* fund */ = {
 			isa = PBXGroup;
 			children = (
+				A3629AD72553AB76002155E3 /* mode */,
+				A3629AD82553AB76002155E3 /* vc */,
+				A3629AD92553AB76002155E3 /* view */,
 			);
 			path = fund;
 			sourceTree = "<group>";
@@ -782,6 +842,7 @@
 				985033D42546E2A30067896B /* Localizable.strings in Resources */,
 				A5D77662254A782600783C67 /* KBFileImportVC.xib in Resources */,
 				A56C91A425480C8A00154D50 /* LoginVCViewController.xib in Resources */,
+				A3629AE62553D4CD002155E3 /* resource.bundle in Resources */,
 				985033EF254717AB0067896B /* ASCheckCell.xib in Resources */,
 				A5B9BC6D253EBF5A00A80AE3 /* Assets.xcassets in Resources */,
 			);
@@ -844,12 +905,14 @@
 				980A382B2547AF6300C62DE0 /* ASTableViewCell.m in Sources */,
 				A5D77667254A785A00783C67 /* KBMnemonicImportVC.m in Sources */,
 				985033E225470BBF0067896B /* ASLanguageVC.m in Sources */,
+				A3629AF2255406E6002155E3 /* ASFundCell.m in Sources */,
 				A5D9C5312546CF610031192C /* ASNavVC.m in Sources */,
 				A5D77600254A657800783C67 /* KBCommTxtFiled.m in Sources */,
 				980A397A254922E500C62DE0 /* KBStoragePledgeSubVC.m in Sources */,
 				980A39AB2549740700C62DE0 /* KBWithdrawRewardSubVC.m in Sources */,
 				A3D4635D2552B0E500EED6CD /* sign.c in Sources */,
 				980A39B02549A4A500C62DE0 /* ASConst.m in Sources */,
+				A3629AE42553D4CD002155E3 /* ASScanViewController.m in Sources */,
 				985033EE254717AB0067896B /* ASCheckCell.m in Sources */,
 				A5D9C5292546C2AC0031192C /* TabBarController.m in Sources */,
 				980A393D25486D5A00C62DE0 /* UIView+Ex.m in Sources */,
@@ -907,10 +970,13 @@
 				980A38292547AF6300C62DE0 /* ASCollectionViewCell.m in Sources */,
 				A5B9BC73253EBF5A00A80AE3 /* main.m in Sources */,
 				980A384D2547AFD200C62DE0 /* ZJTitleView.m in Sources */,
+				A3629ADC2553ABD4002155E3 /* ASFundVC.m in Sources */,
 				980A39572548E7A700C62DE0 /* YNTextField.m in Sources */,
 				980A38182547293000C62DE0 /* MineHeaderView.m in Sources */,
+				A3629AED2553ECE5002155E3 /* ASFundHeadView.m in Sources */,
 				A5ECE7C125412791000ADC7C /* BaseVC.m in Sources */,
 				980A38592547B29C00C62DE0 /* UITextView+SXPodCategory_Limited.m in Sources */,
+				A3629AE52553D4CD002155E3 /* ASScanView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,7 +28,7 @@ static NSString *const kSelImgKey = @"selectedImageName";
     
     NSArray *childItemsArray = @[
         
-        @{kClassKey  : @"MiningVC",
+        @{kClassKey  : @"ASFundVC",
           kTitleKey  : ASLocalizedString(@"资产"),
           kImgKey    : @"icon_tabbar_sy",
           kSelImgKey : @"icon_tabbar_sy_selected"},

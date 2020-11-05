@@ -20,6 +20,9 @@
 
 +(instancetype)cellFromTable:(UITableView *)table {
     ASTableViewCell *aCell = [table dequeueReusableCellWithIdentifier:NSStringFromClass(self)];
+    if (!aCell) {
+        aCell = [(ASTableViewCell *)[NSClassFromString(NSStringFromClass(self)) alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass(self)];
+    }
     return aCell;
 }
 +(instancetype)cellFromTable:(UITableView *)table  forIndexPath:(NSIndexPath *)indexPath {

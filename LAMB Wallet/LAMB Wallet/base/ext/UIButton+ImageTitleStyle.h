@@ -9,6 +9,14 @@
   
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, ButtonEdgeInsetsStyle) {
+    ButtonEdgeInsetsStyleTop, //image在上，label在下
+    ButtonEdgeInsetsStyleLeft, //image在左，label在右
+    ButtonEdgeInsetsStyleBottom, //image在下，label在上
+    ButtonEdgeInsetsStyleRight, //image在右，label在左
+    ButtonEdgeInsetsStyleMind//image在中间, label 在中间
+};
+
 /** 针对同时设置了Image和Title的场景时UIButton中的图片和文字的关系 */
 typedef NS_ENUM(NSInteger, ButtonImageTitleStyle ) {
     /// 图片在左，文字在右，整体居中。
@@ -45,4 +53,14 @@ typedef NS_ENUM(NSInteger, ButtonImageTitleStyle ) {
  */
 -(void)setButtonImageTitleStyle:(ButtonImageTitleStyle)style padding:(CGFloat)padding;
   
+
+/**
+ *  设置button的titleLabel和imageView的布局样式，及间距
+ *
+ *  @param style titleLabel和imageView的布局样式
+ *  @param space titleLabel和imageView的间距
+ */
+- (void)layoutButtonWithEdgeInsetsStyle:(ButtonEdgeInsetsStyle)style
+                        imageTitleSpace:(CGFloat)space;
+
 @end  
