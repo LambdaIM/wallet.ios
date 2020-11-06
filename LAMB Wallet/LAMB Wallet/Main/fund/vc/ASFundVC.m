@@ -17,6 +17,7 @@
 #import "UIView+Ex.h"
 #import "ASFundTransferVC.h"
 #import "ASFundCollectioinVC.h"
+#import "ASFundExchangeVC.h"
 
 @interface ASFundVC ()<UITableViewDelegate,UITableViewDataSource,ASFundHeadViewDelegate>
 
@@ -143,7 +144,7 @@
 }
 // 兑换
 - (void)exchange {
-    
+    pushToDestinationController(self, ASFundExchangeVC)
 }
 
 

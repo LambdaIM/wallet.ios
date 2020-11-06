@@ -74,6 +74,8 @@
 		A3D4635D2552B0E500EED6CD /* sign.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D4635C2552B0E500EED6CD /* sign.c */; };
 		A3D463602552B14C00EED6CD /* verify.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D4635F2552B14C00EED6CD /* verify.c */; };
 		A3DCD584255547B500E1652E /* ASFundCollectioinVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD583255547B500E1652E /* ASFundCollectioinVC.m */; };
+		A3DCD5882555742700E1652E /* ASFundExchangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD5872555742700E1652E /* ASFundExchangeVC.m */; };
+		A3DCD58C2555764600E1652E /* ASFundExchangeChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */; };
 		A3EF40B62554F6F5007A4463 /* ASFundTransferVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */; };
 		A547C4662548233100591068 /* KBCreatePocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A547C4652548233100591068 /* KBCreatePocketVC.m */; };
 		A547C46B2548235900591068 /* KBImportPocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A547C46A2548235900591068 /* KBImportPocketVC.m */; };
@@ -237,6 +239,10 @@
 		A3D4635F2552B14C00EED6CD /* verify.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = verify.c; sourceTree = "<group>"; };
 		A3DCD582255547B500E1652E /* ASFundCollectioinVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundCollectioinVC.h; sourceTree = "<group>"; };
 		A3DCD583255547B500E1652E /* ASFundCollectioinVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundCollectioinVC.m; sourceTree = "<group>"; };
+		A3DCD5862555742700E1652E /* ASFundExchangeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundExchangeVC.h; sourceTree = "<group>"; };
+		A3DCD5872555742700E1652E /* ASFundExchangeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundExchangeVC.m; sourceTree = "<group>"; };
+		A3DCD58A2555764600E1652E /* ASFundExchangeChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundExchangeChildVC.h; sourceTree = "<group>"; };
+		A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundExchangeChildVC.m; sourceTree = "<group>"; };
 		A3EF40B42554F6F5007A4463 /* ASFundTransferVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTransferVC.h; sourceTree = "<group>"; };
 		A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundTransferVC.m; sourceTree = "<group>"; };
 		A547C4642548233100591068 /* KBCreatePocketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBCreatePocketVC.h; sourceTree = "<group>"; };
@@ -507,6 +513,10 @@
 				A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */,
 				A3DCD582255547B500E1652E /* ASFundCollectioinVC.h */,
 				A3DCD583255547B500E1652E /* ASFundCollectioinVC.m */,
+				A3DCD5862555742700E1652E /* ASFundExchangeVC.h */,
+				A3DCD5872555742700E1652E /* ASFundExchangeVC.m */,
+				A3DCD58A2555764600E1652E /* ASFundExchangeChildVC.h */,
+				A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */,
 			);
 			path = vc;
 			sourceTree = "<group>";
@@ -908,6 +918,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				980A397125491CA300C62DE0 /* KBTransferPledgeVC.m in Sources */,
+				A3DCD5882555742700E1652E /* ASFundExchangeVC.m in Sources */,
 				980A39112548292700C62DE0 /* ASBackupWalletInputPSdVC.m in Sources */,
 				A5D9C53C2546D26A0031192C /* UIViewController+Ex.m in Sources */,
 				980A39692549112000C62DE0 /* KBPledgeVC.m in Sources */,
@@ -945,6 +956,7 @@
 				A5D7766E254AB2DC00783C67 /* Ed25519Keypair.m in Sources */,
 				980A38EB254819FF00C62DE0 /* ASHUD.m in Sources */,
 				A5D9C5362546D0000031192C /* NSString+HexColor.m in Sources */,
+				A3DCD58C2555764600E1652E /* ASFundExchangeChildVC.m in Sources */,
 				A5B9BC62253EBF5800A80AE3 /* AppDelegate.m in Sources */,
 				980A384C2547AFD200C62DE0 /* UIView+ZJFrame.m in Sources */,
 				980A38382547AFBB00C62DE0 /* ASWebVC.m in Sources */,

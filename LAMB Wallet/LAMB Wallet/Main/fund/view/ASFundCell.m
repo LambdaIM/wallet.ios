@@ -51,8 +51,8 @@
     _arrowImage.frame = CGRectMake(bgView.width - kLeftRightM - _arrowImage.width, (bgView.height - _arrowImage.height) / 2, _arrowImage.width, _arrowImage.height);
     [bgView addSubview:_arrowImage];
     
-    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(_coinNameLab.left, bgView.height - 2, bgView.width - 2 * kLeftRightM, 1)];
-    lineView.backgroundColor = [UIColor colorWithRed:241 green:241 blue:241 alpha:1];
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(_coinNameLab.left, bgView.height - 2, bgView.width - 2 * kLeftRightM, 0.5)];
+    lineView.backgroundColor = @"#3b3b3b".hexColor;
     [bgView addSubview:lineView];
 }
 

@@ -9,6 +9,7 @@
 #import "ASFundCollectioinVC.h"
 #import "UIButton+ImageTitleStyle.h"
 #import "UIImage+Ex.h"
+#import "UIView+Ex.h"
 
 @interface ASFundCollectioinVC ()
 
@@ -58,6 +59,8 @@
     saveBtn.titleLabel.font = [UIFont pFSize:15];
     saveBtn.normalTitleColor = @"#3b3b3b".hexColor;
     saveBtn.frame = CGRectMake((midView.width - 180 ) / 2, qrImageView.bottom + 18, 180, 25);
+    [saveBtn addCorner:25/2.0];
+    [saveBtn addBorderWithWidth:1 borderColor:@"#3b3b3b".hexColor];
     [midView addSubview:saveBtn];
     
     UILabel *addressTipLab = [UILabel m9514Text:ASLocalizedString(@"账户地址")];
@@ -75,6 +78,8 @@
     copyBtn.titleLabel.font = [UIFont pFSize:15];
     copyBtn.normalTitleColor = @"#3b3b3b".hexColor;
     copyBtn.frame = CGRectMake((midView.width - 180 ) / 2, addressLab.bottom + 18, 180, 25);
+    [copyBtn addCorner:25/2.0];
+    [copyBtn addBorderWithWidth:1 borderColor:@"#3b3b3b".hexColor];
     [midView addSubview:copyBtn];
     
     
