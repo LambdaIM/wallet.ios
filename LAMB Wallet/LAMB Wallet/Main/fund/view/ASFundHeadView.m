@@ -86,21 +86,21 @@
     switch (btn.tag) {
         case 100:
         {
-            if (!_delegate && [_delegate respondsToSelector:@selector(transfer)]) {
+            if (_delegate && [_delegate respondsToSelector:@selector(transfer)]) {
                 [_delegate transfer];
             }
         }
             break;
         case 101:
         {
-            if (!_delegate && [_delegate respondsToSelector:@selector(collection)]) {
+            if (_delegate && [_delegate respondsToSelector:@selector(collection)]) {
                 [_delegate collection];
             }
         }
             break;
         case 102:
         {
-            if (!_delegate && [_delegate respondsToSelector:@selector(exchange)]) {
+            if (_delegate && [_delegate respondsToSelector:@selector(exchange)]) {
                 [_delegate exchange];
             }
         }

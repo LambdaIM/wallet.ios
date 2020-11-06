@@ -15,6 +15,8 @@
 #import "ASFundCell.h"
 #import "ASConst.h"
 #import "UIView+Ex.h"
+#import "ASFundTransferVC.h"
+#import "ASFundCollectioinVC.h"
 
 @interface ASFundVC ()<UITableViewDelegate,UITableViewDataSource,ASFundHeadViewDelegate>
 
@@ -133,11 +135,11 @@
 #pragma mark -  ASFundHeadViewDelegate
 // 转账
 - (void)transfer {
-    
+    pushToDestinationController(self, ASFundTransferVC);
 }
 // 收款
 - (void)collection {
-    
+    pushToDestinationController(self, ASFundCollectioinVC)
 }
 // 兑换
 - (void)exchange {

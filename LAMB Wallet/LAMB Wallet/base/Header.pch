@@ -116,6 +116,20 @@
 //一像素高度
 #define kll_OnePixel (1.0 / [UIScreen mainScreen].scale)
 
+//自适应 屏幕计算
+#define AUTOSIZEIPHONE6(i) ceil(((([UIScreen mainScreen].bounds).size.width*2) / 750) * i)
+
+#define kWeakSelf(weakSelf)  __weak __typeof(&*self) weakSelf = self;
+
+#pragma -- UIViewController  宏定义
+#pragma mark - 返回指定的ViewController
+#define popToThisContrller(obj,num)  NSArray * viewControllerArray = obj.navigationController.viewControllers;\
+UIViewController * controller = [viewControllerArray objectAtIndex:num];\
+[obj.navigationController popToViewController:controller animated:YES];
+#pragma mark - 跳转到指定的ViewController
+#define pushToDestinationController(viewController,DestinationController)\
+DestinationController * controller = [[DestinationController alloc] init];\
+[viewController.navigationController pushViewController:controller animated:YES];\
 
 
 
@@ -173,7 +187,7 @@ static inline BOOL isIPhoneXSeries() {
 
 
 #import "NSString+HexColor.h" 
-
+#import "SXCodeTool.h"
 #import <YYCategories/UIView+YYAdd.h>
 #import <ReactiveObjC/RACEXTScope.h>
 

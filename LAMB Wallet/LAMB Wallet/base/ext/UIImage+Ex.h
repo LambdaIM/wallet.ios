@@ -12,6 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (Ex)
 + (UIImage *)gradientImgWithView:(UIView *)view;
+/**
+
+ 生成二维码(中间有小图片)
+
+ QRStering：字符串
+
+ centerImage：二维码中间的image对象
+
+ */
+
++ (UIImage *)createImgQRCodeWithString:(NSString *)QRString centerImage:(UIImage *)centerImage;
 @end
 
 NS_ASSUME_NONNULL_END

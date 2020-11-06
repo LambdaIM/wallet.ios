@@ -73,6 +73,8 @@
 		A3D4635A2552B07900EED6CD /* keypair.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463592552B07900EED6CD /* keypair.c */; };
 		A3D4635D2552B0E500EED6CD /* sign.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D4635C2552B0E500EED6CD /* sign.c */; };
 		A3D463602552B14C00EED6CD /* verify.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D4635F2552B14C00EED6CD /* verify.c */; };
+		A3DCD584255547B500E1652E /* ASFundCollectioinVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD583255547B500E1652E /* ASFundCollectioinVC.m */; };
+		A3EF40B62554F6F5007A4463 /* ASFundTransferVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */; };
 		A547C4662548233100591068 /* KBCreatePocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A547C4652548233100591068 /* KBCreatePocketVC.m */; };
 		A547C46B2548235900591068 /* KBImportPocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A547C46A2548235900591068 /* KBImportPocketVC.m */; };
 		A56C91A425480C8A00154D50 /* LoginVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56C91A325480C8A00154D50 /* LoginVCViewController.xib */; };
@@ -233,6 +235,10 @@
 		A3D4635C2552B0E500EED6CD /* sign.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sign.c; sourceTree = "<group>"; };
 		A3D4635E2552B14C00EED6CD /* verify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = verify.h; sourceTree = "<group>"; };
 		A3D4635F2552B14C00EED6CD /* verify.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = verify.c; sourceTree = "<group>"; };
+		A3DCD582255547B500E1652E /* ASFundCollectioinVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundCollectioinVC.h; sourceTree = "<group>"; };
+		A3DCD583255547B500E1652E /* ASFundCollectioinVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundCollectioinVC.m; sourceTree = "<group>"; };
+		A3EF40B42554F6F5007A4463 /* ASFundTransferVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTransferVC.h; sourceTree = "<group>"; };
+		A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundTransferVC.m; sourceTree = "<group>"; };
 		A547C4642548233100591068 /* KBCreatePocketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBCreatePocketVC.h; sourceTree = "<group>"; };
 		A547C4652548233100591068 /* KBCreatePocketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBCreatePocketVC.m; sourceTree = "<group>"; };
 		A547C4692548235900591068 /* KBImportPocketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBImportPocketVC.h; sourceTree = "<group>"; };
@@ -497,6 +503,10 @@
 			children = (
 				A3629ADA2553ABD4002155E3 /* ASFundVC.h */,
 				A3629ADB2553ABD4002155E3 /* ASFundVC.m */,
+				A3EF40B42554F6F5007A4463 /* ASFundTransferVC.h */,
+				A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */,
+				A3DCD582255547B500E1652E /* ASFundCollectioinVC.h */,
+				A3DCD583255547B500E1652E /* ASFundCollectioinVC.m */,
 			);
 			path = vc;
 			sourceTree = "<group>";
@@ -931,6 +941,7 @@
 				A547C46B2548235900591068 /* KBImportPocketVC.m in Sources */,
 				A5ECE7C625412813000ADC7C /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				980A38302547AFA200C62DE0 /* UIButton+ImageTitleStyle.m in Sources */,
+				A3EF40B62554F6F5007A4463 /* ASFundTransferVC.m in Sources */,
 				A5D7766E254AB2DC00783C67 /* Ed25519Keypair.m in Sources */,
 				980A38EB254819FF00C62DE0 /* ASHUD.m in Sources */,
 				A5D9C5362546D0000031192C /* NSString+HexColor.m in Sources */,
@@ -945,6 +956,7 @@
 				985033F3254718D40067896B /* NodeManager.m in Sources */,
 				A5D9C52D2546C7080031192C /* MineVC.m in Sources */,
 				A3D4635A2552B07900EED6CD /* keypair.c in Sources */,
+				A3DCD584255547B500E1652E /* ASFundCollectioinVC.m in Sources */,
 				980A39532548E79D00C62DE0 /* NoPasteTextField.m in Sources */,
 				985033CE2546E2480067896B /* ASLocalizedManager.m in Sources */,
 				A547C4662548233100591068 /* KBCreatePocketVC.m in Sources */,
