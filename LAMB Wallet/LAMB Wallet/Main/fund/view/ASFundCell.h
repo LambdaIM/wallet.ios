@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ASFundCell : ASTableViewCell
 
+- (void) configCellWithCoinName:(NSString *) coinName balance:(NSString *) balance;
+
 @end
 
 NS_ASSUME_NONNULL_END

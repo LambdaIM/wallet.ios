@@ -24,6 +24,7 @@
 
 @property (nonatomic,copy) NSString *lambdaAddress;
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) NSMutableArray *dataArray;
 
 @end
 
@@ -107,15 +108,17 @@
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     ASFundCell *cell = [ASFundCell cellFromTable:tableView];
+    [cell configCellWithCoinName:[self.dataArray[indexPath.row] firstObject] balance:[self.dataArray[indexPath.row] lastObject]];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
 
-    ASFundCoinDetailVC *detailVC = [ASFundCoinDetailVC new];
-    [self.navigationController push:detailVC];
+    if ([[self.dataArray[indexPath.row] firstObject] isEqualToString:@"XXB"]) {
+        ASFundCoinDetailVC *detailVC = [ASFundCoinDetailVC new];
+        [self.navigationController push:detailVC];
+    }
 }
 
 /// 拷贝
@@ -154,6 +157,12 @@
     pushToDestinationController(self, ASFundExchangeVC)
 }
 
+- (NSMutableArray *)dataArray {
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray arrayWithObjects:@[@"LAMB",@"99,999.1234"],@[@"TBB",@"2"],@[@"XXB",@"0"], nil];
+    }
+    return _dataArray;
+}
 
 /*
 #pragma mark - Navigation

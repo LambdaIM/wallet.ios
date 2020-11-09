@@ -52,8 +52,19 @@
     [bgView addSubview:_arrowImage];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(_coinNameLab.left, bgView.height - 2, bgView.width - 2 * kLeftRightM, 0.5)];
-    lineView.backgroundColor = @"#3b3b3b".hexColor;
+    lineView.backgroundColor = [UIColor baseLineColor];
     [bgView addSubview:lineView];
+}
+
+- (void)configCellWithCoinName:(NSString *)coinName balance:(NSString *)balance {
+    
+    self.coinNameLab.text = coinName;
+    self.balanceLab.text = balance;
+    if ([coinName isEqualToString:@"XXB"]) {
+        self.arrowImage.hidden = NO;
+    }else{
+        self.arrowImage.hidden = YES;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

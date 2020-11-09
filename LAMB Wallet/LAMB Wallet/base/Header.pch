@@ -190,6 +190,7 @@ static inline BOOL isIPhoneXSeries() {
 #import "SXCodeTool.h"
 #import <YYCategories/UIView+YYAdd.h>
 #import <ReactiveObjC/RACEXTScope.h>
+#import "UIColor+ASThemeColor.h"
 
 //打印设置
 #ifdef DEBUG  //如果是调试模式，自定义如下： “...代表多个参数”
