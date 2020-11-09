@@ -63,6 +63,10 @@
 		985033FA25471B600067896B /* ASCustomNodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 985033F825471B600067896B /* ASCustomNodeVC.m */; };
 		985033FB25471B600067896B /* ASCustomNodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985033F925471B600067896B /* ASCustomNodeVC.xib */; };
 		98503401254720D20067896B /* ASTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98503400254720D20067896B /* ASTextField.m */; };
+		A34AD11A2558E2860001979B /* ASFundTradRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD1192558E2860001979B /* ASFundTradRecordVC.m */; };
+		A34AD11E2558E4830001979B /* ASFundTradRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD11D2558E4830001979B /* ASFundTradRecordCell.m */; };
+		A34AD1222558EC900001979B /* ASFundCoinDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD1212558EC900001979B /* ASFundCoinDetailVC.m */; };
+		A34AD1262558EE410001979B /* ASFundCoinDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD1252558EE410001979B /* ASFundCoinDetailView.m */; };
 		A3629ADC2553ABD4002155E3 /* ASFundVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629ADB2553ABD4002155E3 /* ASFundVC.m */; };
 		A3629AE42553D4CD002155E3 /* ASScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629ADF2553D4CC002155E3 /* ASScanViewController.m */; };
 		A3629AE52553D4CD002155E3 /* ASScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AE02553D4CC002155E3 /* ASScanView.m */; };
@@ -217,6 +221,14 @@
 		985033F925471B600067896B /* ASCustomNodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCustomNodeVC.xib; sourceTree = "<group>"; };
 		985033FF254720D20067896B /* ASTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASTextField.h; sourceTree = "<group>"; };
 		98503400254720D20067896B /* ASTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASTextField.m; sourceTree = "<group>"; };
+		A34AD1182558E2860001979B /* ASFundTradRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTradRecordVC.h; sourceTree = "<group>"; };
+		A34AD1192558E2860001979B /* ASFundTradRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundTradRecordVC.m; sourceTree = "<group>"; };
+		A34AD11C2558E4830001979B /* ASFundTradRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTradRecordCell.h; sourceTree = "<group>"; };
+		A34AD11D2558E4830001979B /* ASFundTradRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundTradRecordCell.m; sourceTree = "<group>"; };
+		A34AD1202558EC900001979B /* ASFundCoinDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundCoinDetailVC.h; sourceTree = "<group>"; };
+		A34AD1212558EC900001979B /* ASFundCoinDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundCoinDetailVC.m; sourceTree = "<group>"; };
+		A34AD1242558EE410001979B /* ASFundCoinDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundCoinDetailView.h; sourceTree = "<group>"; };
+		A34AD1252558EE410001979B /* ASFundCoinDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundCoinDetailView.m; sourceTree = "<group>"; };
 		A34DAFE525529E8900352586 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A3629ADA2553ABD4002155E3 /* ASFundVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundVC.h; sourceTree = "<group>"; };
 		A3629ADB2553ABD4002155E3 /* ASFundVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundVC.m; sourceTree = "<group>"; };
@@ -517,6 +529,10 @@
 				A3DCD5872555742700E1652E /* ASFundExchangeVC.m */,
 				A3DCD58A2555764600E1652E /* ASFundExchangeChildVC.h */,
 				A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */,
+				A34AD1182558E2860001979B /* ASFundTradRecordVC.h */,
+				A34AD1192558E2860001979B /* ASFundTradRecordVC.m */,
+				A34AD1202558EC900001979B /* ASFundCoinDetailVC.h */,
+				A34AD1212558EC900001979B /* ASFundCoinDetailVC.m */,
 			);
 			path = vc;
 			sourceTree = "<group>";
@@ -526,8 +542,12 @@
 			children = (
 				A3629AEB2553ECE5002155E3 /* ASFundHeadView.h */,
 				A3629AEC2553ECE5002155E3 /* ASFundHeadView.m */,
+				A34AD11C2558E4830001979B /* ASFundTradRecordCell.h */,
+				A34AD11D2558E4830001979B /* ASFundTradRecordCell.m */,
 				A3629AF0255406E6002155E3 /* ASFundCell.h */,
 				A3629AF1255406E6002155E3 /* ASFundCell.m */,
+				A34AD1242558EE410001979B /* ASFundCoinDetailView.h */,
+				A34AD1252558EE410001979B /* ASFundCoinDetailView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -818,7 +838,7 @@
 		A5B9BC55253EBF5800A80AE3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = KB;
+				CLASSPREFIX = AS;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = fei;
 				TargetAttributes = {
@@ -908,7 +928,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -917,6 +936,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A34AD11E2558E4830001979B /* ASFundTradRecordCell.m in Sources */,
 				980A397125491CA300C62DE0 /* KBTransferPledgeVC.m in Sources */,
 				A3DCD5882555742700E1652E /* ASFundExchangeVC.m in Sources */,
 				980A39112548292700C62DE0 /* ASBackupWalletInputPSdVC.m in Sources */,
@@ -929,6 +949,7 @@
 				A3629AF2255406E6002155E3 /* ASFundCell.m in Sources */,
 				A5D9C5312546CF610031192C /* ASNavVC.m in Sources */,
 				A5D77600254A657800783C67 /* KBCommTxtFiled.m in Sources */,
+				A34AD11A2558E2860001979B /* ASFundTradRecordVC.m in Sources */,
 				980A397A254922E500C62DE0 /* KBStoragePledgeSubVC.m in Sources */,
 				980A39AB2549740700C62DE0 /* KBWithdrawRewardSubVC.m in Sources */,
 				A3D4635D2552B0E500EED6CD /* sign.c in Sources */,
@@ -948,6 +969,7 @@
 				980A385E2547BCDA00C62DE0 /* UIDeviceEx.m in Sources */,
 				A5D77689254AB2FF00783C67 /* key_exchange.c in Sources */,
 				980A38E32548145B00C62DE0 /* ASBackupWalletVC.m in Sources */,
+				A34AD1262558EE410001979B /* ASFundCoinDetailView.m in Sources */,
 				980A384E2547AFD200C62DE0 /* UIViewController+ZJScrollPageController.m in Sources */,
 				A547C46B2548235900591068 /* KBImportPocketVC.m in Sources */,
 				A5ECE7C625412813000ADC7C /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
@@ -990,6 +1012,7 @@
 				985033DD2546FB4F0067896B /* ASSetVC.m in Sources */,
 				A5D77661254A782600783C67 /* KBFileImportVC.m in Sources */,
 				985033FA25471B600067896B /* ASCustomNodeVC.m in Sources */,
+				A34AD1222558EC900001979B /* ASFundCoinDetailVC.m in Sources */,
 				980A3926254829B800C62DE0 /* MiningVC.m in Sources */,
 				980A38292547AF6300C62DE0 /* ASCollectionViewCell.m in Sources */,
 				A5B9BC73253EBF5A00A80AE3 /* main.m in Sources */,
@@ -1148,7 +1171,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 42AF65LLHA;
+				DEVELOPMENT_TEAM = KG6X4XJHF5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
@@ -1181,7 +1204,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}\"/**",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lambda.wallet.LAMB-Wallet.sm";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lambda.wallet.LAMB.Wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = (
@@ -1198,7 +1221,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 42AF65LLHA;
+				DEVELOPMENT_TEAM = KG6X4XJHF5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
@@ -1230,7 +1253,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}\"/**",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lambda.wallet.LAMB-Wallet.sm";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lambda.wallet.LAMB.Wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = (

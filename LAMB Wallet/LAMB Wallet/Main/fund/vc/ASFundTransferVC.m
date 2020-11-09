@@ -11,6 +11,7 @@
 #import "UIButton+ImageTitleStyle.h"
 #import "UIImage+Ex.h"
 #import "UIView+Ex.h"
+#import "ASFundTradRecordVC.h"
 
 @interface ASFundTransferVC ()
 
@@ -33,7 +34,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     UIButton *rightBtn = [UIButton btn];
     [rightBtn setTitle:ASLocalizedString(@"交易记录") forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor colorWithRed:38.0 green:38.0 blue:38.0 alpha:1] forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     rightBtn.titleLabel.font = [UIFont pFSize:14];
     rightBtn.frame = CGRectMake(0, 0, 50, 30);
     [rightBtn addTarget:self action:@selector(transferRecords) forControlEvents:UIControlEventTouchUpInside];
@@ -103,7 +104,7 @@
 }
 /// 右上角划转记录
 - (void) transferRecords {
-    
+    pushToDestinationController(self, ASFundTradRecordVC);
 }
 
 /*

@@ -10,6 +10,7 @@
 #import "ASSetVC.h"
 #import "MineHeaderView.h"
 #import "ASManageWalletVC.h"
+#import "ASFundTradRecordVC.h"
 
 @interface MineVC ()
 @end
@@ -39,7 +40,7 @@
         [self.navigationController pushViewController:[ASManageWalletVC new] animated:YES];
 }
 - (void)pushToTransactionRecord {
-    //    [self.navigationController pushViewController:[SwitchVerificationNodeVC new] animated:YES];
+    pushToDestinationController(self, ASFundTradRecordVC);
 
 }
 - (void)pushToProposal {

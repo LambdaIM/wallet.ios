@@ -18,6 +18,7 @@
 #import "ASFundTransferVC.h"
 #import "ASFundCollectioinVC.h"
 #import "ASFundExchangeVC.h"
+#import "ASFundCoinDetailVC.h"
 
 @interface ASFundVC ()<UITableViewDelegate,UITableViewDataSource,ASFundHeadViewDelegate>
 
@@ -109,6 +110,12 @@
     
     ASFundCell *cell = [ASFundCell cellFromTable:tableView];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    ASFundCoinDetailVC *detailVC = [ASFundCoinDetailVC new];
+    [self.navigationController push:detailVC];
 }
 
 /// 拷贝
