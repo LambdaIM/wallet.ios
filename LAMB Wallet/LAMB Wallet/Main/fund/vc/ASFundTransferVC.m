@@ -12,6 +12,7 @@
 #import "UIImage+Ex.h"
 #import "UIView+Ex.h"
 #import "ASFundTradRecordVC.h"
+#import "ActionSheetPicker.h"
 
 @interface ASFundTransferVC ()
 
@@ -101,6 +102,17 @@
 /// @param btn 按钮
 - (void) changeCoinTypeClick:(UIButton *) btn {
     
+    NSArray *coinArray = @[@"LAMB",@"TBB"];
+    __block UIButton *tempBtn = btn;
+    NSInteger selectIndex = 0;
+    if (![[btn currentTitle] isEqualToString:[coinArray firstObject]]) {
+        selectIndex = 1;
+    }
+    [ActionSheetStringPicker showPickerWithTitle:@"" rows:coinArray initialSelection:selectIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        [tempBtn setTitle:selectedValue forState:UIControlStateNormal];
+    } cancelBlock:^(ActionSheetStringPicker *picker) {
+        
+    } origin:btn];
 }
 /// 右上角划转记录
 - (void) transferRecords {

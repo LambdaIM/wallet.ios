@@ -44,6 +44,7 @@
 
 - (void) setupUI {
 //    self.title = @"资产";
+    self.navigationItem.title = @"";
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     leftBtn.titleLabel.font = [UIFont pFBlodSize:16];
     [leftBtn setTitle:@"lambdaasjd...lkadlf" forState:UIControlStateNormal];

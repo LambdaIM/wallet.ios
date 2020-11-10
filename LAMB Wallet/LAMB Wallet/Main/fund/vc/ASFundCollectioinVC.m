@@ -10,8 +10,12 @@
 #import "UIButton+ImageTitleStyle.h"
 #import "UIImage+Ex.h"
 #import "UIView+Ex.h"
+#import "ActionSheetPicker.h"
+
 
 @interface ASFundCollectioinVC ()
+
+@property (nonatomic, strong) UILabel *coinLab;
 
 @end
 
@@ -32,9 +36,9 @@
     topView.backgroundColor = @"#F7F7F7".hexColor;
     [self.view addSubview:topView];
     
-    UILabel *coinLab = [UILabel m3b14Text:@"LAMB"];
-    coinLab.frame = CGRectMake(kLeftRightM, (topView.height - 20 )  / 2, 100, 20);
-    [topView addSubview:coinLab];
+    _coinLab = [UILabel m3b14Text:@"LAMB"];
+    _coinLab.frame = CGRectMake(kLeftRightM, (topView.height - 20 )  / 2, 100, 20);
+    [topView addSubview:_coinLab];
     
     UIButton *btn = [UIButton btn];
     btn.normalTitle = ASLocalizedString(@"选择币种");
@@ -44,6 +48,7 @@
     btn.frame = CGRectMake(0, 0, topView.width - kLeftRightM - 8, topView.height);
     btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [btn layoutButtonWithEdgeInsetsStyle:ButtonEdgeInsetsStyleRight imageTitleSpace:10];
+    [btn addTarget:self action:@selector(selectCoinType:) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:btn];
     
     UIView *midView = [[UIView alloc]initWithFrame:CGRectMake(kLeftRightM, topView.bottom + kLeftRightM, kScreenW - 2 * kLeftRightM, 360)];
@@ -90,6 +95,21 @@
     [self.view addSubview:tipLab];
     
     
+}
+
+- (void) selectCoinType:(UIButton *) btn {
+    
+    NSArray *coinArray = @[@"LAMB",@"TBB"];
+    NSInteger selectIndex = 0;
+    kWeakSelf(weakSelf)
+    if (![weakSelf.coinLab.text isEqualToString:[coinArray firstObject]]) {
+        selectIndex = 1;
+    }
+    [ActionSheetStringPicker showPickerWithTitle:@"" rows:coinArray initialSelection:selectIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        weakSelf.coinLab.text = selectedValue;
+    } cancelBlock:^(ActionSheetStringPicker *picker) {
+        
+    } origin:btn];
 }
 
 /*
