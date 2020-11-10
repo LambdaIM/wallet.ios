@@ -53,6 +53,9 @@
                         <constraint firstAttribute="height" constant="48" id="rgm-QG-V5T"/>
                     </constraints>
                     <state key="normal" title="确认"/>
+                    <connections>
+                        <action selector="OnClickNext:" destination="-1" eventType="touchUpInside" id="bDu-Fe-7s2"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

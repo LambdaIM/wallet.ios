@@ -82,6 +82,9 @@
 		A3DCD5882555742700E1652E /* ASFundExchangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD5872555742700E1652E /* ASFundExchangeVC.m */; };
 		A3DCD58C2555764600E1652E /* ASFundExchangeChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */; };
 		A3EF40B62554F6F5007A4463 /* ASFundTransferVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */; };
+		A511B989255A459B00327525 /* KBBipManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A511B988255A459B00327525 /* KBBipManager.m */; };
+		A511B98D255A45D900327525 /* NSData+KBChange.m in Sources */ = {isa = PBXBuildFile; fileRef = A511B98C255A45D900327525 /* NSData+KBChange.m */; };
+		A511B991255A46A400327525 /* NSString+KBChange.m in Sources */ = {isa = PBXBuildFile; fileRef = A511B990255A46A400327525 /* NSString+KBChange.m */; };
 		A547C4662548233100591068 /* KBCreatePocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A547C4652548233100591068 /* KBCreatePocketVC.m */; };
 		A547C46B2548235900591068 /* KBImportPocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A547C46A2548235900591068 /* KBImportPocketVC.m */; };
 		A56C91A425480C8A00154D50 /* LoginVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56C91A325480C8A00154D50 /* LoginVCViewController.xib */; };
@@ -260,6 +263,12 @@
 		A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundExchangeChildVC.m; sourceTree = "<group>"; };
 		A3EF40B42554F6F5007A4463 /* ASFundTransferVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTransferVC.h; sourceTree = "<group>"; };
 		A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundTransferVC.m; sourceTree = "<group>"; };
+		A511B987255A459B00327525 /* KBBipManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBBipManager.h; sourceTree = "<group>"; };
+		A511B988255A459B00327525 /* KBBipManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBBipManager.m; sourceTree = "<group>"; };
+		A511B98B255A45D900327525 /* NSData+KBChange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+KBChange.h"; sourceTree = "<group>"; };
+		A511B98C255A45D900327525 /* NSData+KBChange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+KBChange.m"; sourceTree = "<group>"; };
+		A511B98F255A46A400327525 /* NSString+KBChange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+KBChange.h"; sourceTree = "<group>"; };
+		A511B990255A46A400327525 /* NSString+KBChange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+KBChange.m"; sourceTree = "<group>"; };
 		A547C4642548233100591068 /* KBCreatePocketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBCreatePocketVC.h; sourceTree = "<group>"; };
 		A547C4652548233100591068 /* KBCreatePocketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBCreatePocketVC.m; sourceTree = "<group>"; };
 		A547C4692548235900591068 /* KBImportPocketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBImportPocketVC.h; sourceTree = "<group>"; };
@@ -567,6 +576,15 @@
 			path = ASScanner;
 			sourceTree = "<group>";
 		};
+		A511B986255A458000327525 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				A511B987255A459B00327525 /* KBBipManager.h */,
+				A511B988255A459B00327525 /* KBBipManager.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		A547C462254822C300591068 /* cpocket */ = {
 			isa = PBXGroup;
 			children = (
@@ -759,8 +777,14 @@
 				980A393C25486D5A00C62DE0 /* UIView+Ex.m */,
 				980A396B254911A600C62DE0 /* UIImage+Ex.h */,
 				980A396C254911A600C62DE0 /* UIImage+Ex.m */,
-				A374ACD1255945AA0056A0BE /* UIColor+ASThemeColor.h */,
+ 				A374ACD1255945AA0056A0BE /* UIColor+ASThemeColor.h */,
 				A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */,
+ 
+				A511B98B255A45D900327525 /* NSData+KBChange.h */,
+				A511B98C255A45D900327525 /* NSData+KBChange.m */,
+				A511B98F255A46A400327525 /* NSString+KBChange.h */,
+				A511B990255A46A400327525 /* NSString+KBChange.m */,
+ 
 			);
 			path = ext;
 			sourceTree = "<group>";
@@ -777,6 +801,7 @@
 		A5ECE7BE2541275D000ADC7C /* base */ = {
 			isa = PBXGroup;
 			children = (
+				A511B986255A458000327525 /* utils */,
 				980A38212547AF3300C62DE0 /* tool */,
 				980A38202547AF1900C62DE0 /* model */,
 				980A381F2547AF1500C62DE0 /* vc */,
@@ -962,6 +987,7 @@
 				A3629AE42553D4CD002155E3 /* ASScanViewController.m in Sources */,
 				985033EE254717AB0067896B /* ASCheckCell.m in Sources */,
 				A5D9C5292546C2AC0031192C /* TabBarController.m in Sources */,
+				A511B98D255A45D900327525 /* NSData+KBChange.m in Sources */,
 				980A393D25486D5A00C62DE0 /* UIView+Ex.m in Sources */,
 				980A38B22548063100C62DE0 /* ASSimpleTableVC.m in Sources */,
 				A5D7768C254AB2FF00783C67 /* sha512.c in Sources */,
@@ -978,6 +1004,7 @@
 				980A384E2547AFD200C62DE0 /* UIViewController+ZJScrollPageController.m in Sources */,
 				A547C46B2548235900591068 /* KBImportPocketVC.m in Sources */,
 				A5ECE7C625412813000ADC7C /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				A511B991255A46A400327525 /* NSString+KBChange.m in Sources */,
 				980A38302547AFA200C62DE0 /* UIButton+ImageTitleStyle.m in Sources */,
 				A3EF40B62554F6F5007A4463 /* ASFundTransferVC.m in Sources */,
 				A5D7766E254AB2DC00783C67 /* Ed25519Keypair.m in Sources */,
@@ -988,6 +1015,7 @@
 				980A384C2547AFD200C62DE0 /* UIView+ZJFrame.m in Sources */,
 				980A38382547AFBB00C62DE0 /* ASWebVC.m in Sources */,
 				A5D77684254AB2FF00783C67 /* fe.c in Sources */,
+				A511B989255A459B00327525 /* KBBipManager.m in Sources */,
 				A5D9C5252546C21F0031192C /* LoginVCViewController.m in Sources */,
 				980A38522547AFD200C62DE0 /* ZJScrollSegmentView.m in Sources */,
 				980A3976254921E800C62DE0 /* KBStoragePledgeVC.m in Sources */,

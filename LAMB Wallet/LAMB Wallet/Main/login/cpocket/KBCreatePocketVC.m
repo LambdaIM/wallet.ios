@@ -34,7 +34,17 @@
     
     
     
+    self.m_pass.backgroundColor = @"F0F2F8".hexColor;
+    self.m_pass.layer.cornerRadius = 24 ;
+    self.m_pass.layer.masksToBounds = YES;
+    self.m_pass.placeholder = ASLocalizedString(@"6-20个字符、字母、数字或符号密码");
     
+    self.m_conpass.backgroundColor = @"F0F2F8".hexColor;
+    self.m_conpass.layer.cornerRadius = 24 ;
+    self.m_conpass.layer.masksToBounds = YES;
+    self.m_conpass.placeholder = ASLocalizedString(@"确认密码");
+    
+     
     
     [self.m_confirmBtn.layer addSublayer:[self addSublayer]];
     self.m_confirmBtn.layer.cornerRadius = 24;
@@ -52,4 +62,12 @@
         [gradientLayer setColors:@[(id)[ @"5A95FC".hexColor CGColor],(id)[@"3757E2".hexColor CGColor]]];
     return gradientLayer;
 }
+
+#pragma mark 下一步
+- (IBAction)OnClickNext:(UIButton *)sender {
+    
+    
+    
+}
+
 @end
