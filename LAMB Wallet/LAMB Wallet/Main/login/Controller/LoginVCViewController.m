@@ -9,6 +9,7 @@
 #import "LoginVCViewController.h"
 #import "KBCreatePocketVC.h"
 #import "KBBipManager.h"
+#import "KBImportPocketVC.h"
 
 @interface LoginVCViewController ()
 // 选择钱包
@@ -62,8 +63,12 @@
 #pragma mark 导入钱包
 - (IBAction)OnImportWallet:(UIButton *)sender { 
      
-    NSString *mnemonicString =   [[KBBipManager manager] generateMnemonicString:@256 language:@"english" ];
-    NSLog(@"====%@",mnemonicString);
+//    NSString *mnemonicString =   [[KBBipManager manager] generateMnemonicString:@256 language:@"english" ];
+//    NSLog(@"====%@",mnemonicString);
+    KBImportPocketVC *create = [[KBImportPocketVC alloc] init];
+    [self.navigationController push:create];
+    
+    
 }
 
 @end

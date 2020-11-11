@@ -7,10 +7,11 @@
 //  助记词导入
 
 #import "BaseVC.h"
+#import "ZJScrollPageViewDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KBMnemonicImportVC : BaseVC
+@interface KBMnemonicImportVC : BaseVC<ZJScrollPageViewChildVcDelegate>
 
 @end
 
