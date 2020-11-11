@@ -6,8 +6,7 @@
 //  Copyright © 2020 fei. All rights reserved.
 //
 
-#import "KBImportPocketVC.h"
-#import <CMPageTitleView/CMPageTitleView.h>
+#import "KBImportPocketVC.h" 
 #import "KBMnemonicImportVC.h"
 #import "KBFileImportVC.h"
 #import "ZJScrollPageViewDelegate.h"
