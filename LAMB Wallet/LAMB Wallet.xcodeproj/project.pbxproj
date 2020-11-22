@@ -82,11 +82,13 @@
 		A3DCD5882555742700E1652E /* ASFundExchangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD5872555742700E1652E /* ASFundExchangeVC.m */; };
 		A3DCD58C2555764600E1652E /* ASFundExchangeChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */; };
 		A3EF40B62554F6F5007A4463 /* ASFundTransferVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */; };
+		A510515925660975006D1398 /* LambNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A510515825660975006D1398 /* LambNetManager.m */; };
 		A511B989255A459B00327525 /* KBBipManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A511B988255A459B00327525 /* KBBipManager.m */; };
 		A511B98D255A45D900327525 /* NSData+KBChange.m in Sources */ = {isa = PBXBuildFile; fileRef = A511B98C255A45D900327525 /* NSData+KBChange.m */; };
 		A511B991255A46A400327525 /* NSString+KBChange.m in Sources */ = {isa = PBXBuildFile; fileRef = A511B990255A46A400327525 /* NSString+KBChange.m */; };
 		A547C4662548233100591068 /* KBCreatePocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A547C4652548233100591068 /* KBCreatePocketVC.m */; };
 		A547C46B2548235900591068 /* KBImportPocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A547C46A2548235900591068 /* KBImportPocketVC.m */; };
+		A555C101256A126B003B0BA5 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A555C100256A126B003B0BA5 /* MBProgressHUD+MJ.m */; };
 		A56C91A425480C8A00154D50 /* LoginVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56C91A325480C8A00154D50 /* LoginVCViewController.xib */; };
 		A5B9BC62253EBF5800A80AE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9BC61253EBF5800A80AE3 /* AppDelegate.m */; };
 		A5B9BC6D253EBF5A00A80AE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5B9BC6C253EBF5A00A80AE3 /* Assets.xcassets */; };
@@ -263,6 +265,8 @@
 		A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundExchangeChildVC.m; sourceTree = "<group>"; };
 		A3EF40B42554F6F5007A4463 /* ASFundTransferVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTransferVC.h; sourceTree = "<group>"; };
 		A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundTransferVC.m; sourceTree = "<group>"; };
+		A510515725660975006D1398 /* LambNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LambNetManager.h; sourceTree = "<group>"; };
+		A510515825660975006D1398 /* LambNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LambNetManager.m; sourceTree = "<group>"; };
 		A511B987255A459B00327525 /* KBBipManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBBipManager.h; sourceTree = "<group>"; };
 		A511B988255A459B00327525 /* KBBipManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBBipManager.m; sourceTree = "<group>"; };
 		A511B98B255A45D900327525 /* NSData+KBChange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+KBChange.h"; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 		A547C4652548233100591068 /* KBCreatePocketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBCreatePocketVC.m; sourceTree = "<group>"; };
 		A547C4692548235900591068 /* KBImportPocketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBImportPocketVC.h; sourceTree = "<group>"; };
 		A547C46A2548235900591068 /* KBImportPocketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBImportPocketVC.m; sourceTree = "<group>"; };
+		A555C0FF256A126B003B0BA5 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		A555C100256A126B003B0BA5 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		A56C91A325480C8A00154D50 /* LoginVCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVCViewController.xib; sourceTree = "<group>"; };
 		A5B9BC5D253EBF5800A80AE3 /* LAMB Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LAMB Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B9BC60253EBF5800A80AE3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -395,6 +401,7 @@
 		980A38212547AF3300C62DE0 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				A510515625660953006D1398 /* Net */,
 				A3629ADE2553D4CC002155E3 /* ASScanner */,
 				A5D7766B254AB0AD00783C67 /* BlinkEd25519 */,
 				980A38EA254819FF00C62DE0 /* ASHUD.h */,
@@ -574,6 +581,17 @@
 				A3629AE32553D4CC002155E3 /* resource.bundle */,
 			);
 			path = ASScanner;
+			sourceTree = "<group>";
+		};
+		A510515625660953006D1398 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				A510515725660975006D1398 /* LambNetManager.h */,
+				A510515825660975006D1398 /* LambNetManager.m */,
+				A555C0FF256A126B003B0BA5 /* MBProgressHUD+MJ.h */,
+				A555C100256A126B003B0BA5 /* MBProgressHUD+MJ.m */,
+			);
+			path = Net;
 			sourceTree = "<group>";
 		};
 		A511B986255A458000327525 /* utils */ = {
@@ -777,14 +795,12 @@
 				980A393C25486D5A00C62DE0 /* UIView+Ex.m */,
 				980A396B254911A600C62DE0 /* UIImage+Ex.h */,
 				980A396C254911A600C62DE0 /* UIImage+Ex.m */,
- 				A374ACD1255945AA0056A0BE /* UIColor+ASThemeColor.h */,
+				A374ACD1255945AA0056A0BE /* UIColor+ASThemeColor.h */,
 				A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */,
- 
 				A511B98B255A45D900327525 /* NSData+KBChange.h */,
 				A511B98C255A45D900327525 /* NSData+KBChange.m */,
 				A511B98F255A46A400327525 /* NSString+KBChange.h */,
 				A511B990255A46A400327525 /* NSString+KBChange.m */,
- 
 			);
 			path = ext;
 			sourceTree = "<group>";
@@ -1004,6 +1020,7 @@
 				980A384E2547AFD200C62DE0 /* UIViewController+ZJScrollPageController.m in Sources */,
 				A547C46B2548235900591068 /* KBImportPocketVC.m in Sources */,
 				A5ECE7C625412813000ADC7C /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				A555C101256A126B003B0BA5 /* MBProgressHUD+MJ.m in Sources */,
 				A511B991255A46A400327525 /* NSString+KBChange.m in Sources */,
 				980A38302547AFA200C62DE0 /* UIButton+ImageTitleStyle.m in Sources */,
 				A3EF40B62554F6F5007A4463 /* ASFundTransferVC.m in Sources */,
@@ -1033,6 +1050,7 @@
 				980A38512547AFD200C62DE0 /* ZJSegmentStyle.m in Sources */,
 				A3D463602552B14C00EED6CD /* verify.c in Sources */,
 				980A382A2547AF6300C62DE0 /* ASLabel.m in Sources */,
+				A510515925660975006D1398 /* LambNetManager.m in Sources */,
 				A3D463572552AF5E00EED6CD /* seed.c in Sources */,
 				980A38502547AFD200C62DE0 /* ZJCollectionView.m in Sources */,
 				980A39A225496EF900C62DE0 /* ASTableVC.m in Sources */,

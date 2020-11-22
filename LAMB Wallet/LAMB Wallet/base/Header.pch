@@ -192,6 +192,86 @@ static inline BOOL isIPhoneXSeries() {
 #import <ReactiveObjC/RACEXTScope.h>
 #import "UIColor+ASThemeColor.h"
 
+// 读取余额和用户信息
+#define USER_JACKPOT_CHECK         @"/member/userjackpotcheck"
+// 获取节点列表
+#define HTTP_Get_producers         @"/staking/validators?status="
+// 获取节点详情
+#define HTTP_Get_producers_details         @"/staking/validators/"
+// 获取区块信息
+#define HTTP_Get_chain_details         @"/node_info"
+// 获取全网质押token总量
+#define HTTP_Get_chain_all_zhiya_token         @"/staking/pool"
+// 获取市场名称列表接口
+#define HTTP_Get_markets         @"/market/markets"
+// 获取市场相关指标接口
+#define HTTP_Get_markets_param         @"/market/params"
+// 资产列表
+#define HTTP_Get_Asset_Fund_List         @"/asset/all"
+// 资产详情
+#define HTTP_Get_Asset_Detail         @"/asset/symbol"
+
+// 挖矿详情
+#define HTTP_Get_Mining_Detail         @"/asset/fund"
+// 资产详情
+#define HTTP_Get_Asset_Detail         @"/asset/symbol"
+// 我的预挖矿
+#define HTTP_Get_Fund_Info_Mine         @"/asset/invest"
+//获取预挖矿的gas
+#define HTTP_Get_Asset_INVEST         @"/asset/symbol"
+// 获取转账gas
+#define HTTP_Get_transfer_gas         @"/bank/accounts/"
+// 获取提取质押奖励以及节点收益gas
+#define HTTP_Get_mining_award_gas         @"/distribution/delegators/"
+ 
+
+// 获取lammmb兑换tbbgas
+#define HTTP_Get_lamb2tbb_gas         @"/asset/pledge"
+// 获取tbb兑换lamb gas
+#define HTTP_Get_tbb2lamb_gas         @"/asset/drop"
+// 获取质押 gas
+#define HTTP_Get_zhiya_gas         @"/staking/delegators/"
+// 获取购买空间 gas
+#define HTTP_Get_buy_store_gas         @"/market/create-buyorder"
+// 获取存入押金的gas
+#define HTTP_Get_cash_pledge_gas         @"/gov/proposals/"
+//转账
+#define HTTP_transfer         @"/"
+//获取奖励
+#define getHTTP_get_award         @"/distribution/delegators/"
+//获取节点奖励
+#define getHTTP_get_producer_award         @"/distribution/validators/"
+//获取质押的节点列表
+#define getHTTP_get_zhiya_producer         @"/staking/delegators/"
+//获取交易记录
+#define getHTTP_get_history         @"/txs"
+
+//获取市场优质的卖单
+#define getHTTP_get_market_sell         @"/market/sellorders/LambdaMarket/premium/1/100"
+//获取节点详情
+#define getHTTP_Get_producers_details         @"/staking/validators/"
+//获取用户在一个节点下质押的奖励
+#define getHTTP_Get_for_producers_award         @"/distribution/delegators/"
+//获取用户取消质押的列表
+#define getHTTP_Get_cancel_zhiya         @"/staking/delegators/"
+//获取用户空间买卖的订单列表接口
+#define getHTTP_Get_my_order_store         @"/market/matchorders/"
+//获取提案列表
+#define getHTTP_Get_proposal_list         @"/gov/proposals"
+//获取提案详情
+#define getHTTP_Get_proposal_details         @"/gov/proposals/"
+//获取提案公共参数
+#define getHTTP_Get_proposal_parameters         @"/gov/parameters/deposit"
+//获取提案我的押金
+#define getHTTP_Get_proposal_my_yajin         @"/gov/proposals/"
+//获取提案投票信息
+#define getHTTP_Get_proposal_toupiao         @"/gov/proposals/"
+//获取交易详情
+#define getHTTP_Get_transaction_detail         @"/txs/"
+
+ 
+
+
 //打印设置
 #ifdef DEBUG  //如果是调试模式，自定义如下： “...代表多个参数”
 #define NSLog(FORMAT, ...) printf("%s\n 第%d行 \n %s\n\n", __FUNCTION__, __LINE__,[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
