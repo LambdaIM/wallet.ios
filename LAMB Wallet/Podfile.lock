@@ -53,7 +53,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.2.0)
   - MJRefresh (~> 3.5.0)
   - ReactiveObjC (~> 3.1.1)
-  - TPKeyboardAvoiding (~> 1.3.4)
+  - TPKeyboardAvoiding (~> 1.3.5)
   - YYCache (~> 1.0.4)
   - YYCategories (~> 1.0.4)
   - YYModel (~> 1.0.4)
@@ -93,6 +93,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: e4c41b58a40174d1ec743e026d7521538b10856e
+PODFILE CHECKSUM: 621c9bc9d82644d8c170a0252f449481ea7eb637
 
 COCOAPODS: 1.10.0

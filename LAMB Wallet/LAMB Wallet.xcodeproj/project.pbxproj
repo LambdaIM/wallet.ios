@@ -67,6 +67,7 @@
 		A34AD11E2558E4830001979B /* ASFundTradRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD11D2558E4830001979B /* ASFundTradRecordCell.m */; };
 		A34AD1222558EC900001979B /* ASFundCoinDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD1212558EC900001979B /* ASFundCoinDetailVC.m */; };
 		A34AD1262558EE410001979B /* ASFundCoinDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD1252558EE410001979B /* ASFundCoinDetailView.m */; };
+		A35B80D1257917D5000BC8C7 /* ASUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B80D0257917D5000BC8C7 /* ASUserModel.m */; };
 		A3629ADC2553ABD4002155E3 /* ASFundVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629ADB2553ABD4002155E3 /* ASFundVC.m */; };
 		A3629AE42553D4CD002155E3 /* ASScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629ADF2553D4CC002155E3 /* ASScanViewController.m */; };
 		A3629AE52553D4CD002155E3 /* ASScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AE02553D4CC002155E3 /* ASScanView.m */; };
@@ -74,6 +75,7 @@
 		A3629AED2553ECE5002155E3 /* ASFundHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AEC2553ECE5002155E3 /* ASFundHeadView.m */; };
 		A3629AF2255406E6002155E3 /* ASFundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AF1255406E6002155E3 /* ASFundCell.m */; };
 		A374ACD3255945AA0056A0BE /* UIColor+ASThemeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */; };
+		A380FFF5257927E8001C21C1 /* english.txt in Resources */ = {isa = PBXBuildFile; fileRef = A380FFF4257927E8001C21C1 /* english.txt */; };
 		A3D463572552AF5E00EED6CD /* seed.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463562552AF5E00EED6CD /* seed.c */; };
 		A3D4635A2552B07900EED6CD /* keypair.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463592552B07900EED6CD /* keypair.c */; };
 		A3D4635D2552B0E500EED6CD /* sign.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D4635C2552B0E500EED6CD /* sign.c */; };
@@ -236,6 +238,8 @@
 		A34AD1242558EE410001979B /* ASFundCoinDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundCoinDetailView.h; sourceTree = "<group>"; };
 		A34AD1252558EE410001979B /* ASFundCoinDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundCoinDetailView.m; sourceTree = "<group>"; };
 		A34DAFE525529E8900352586 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A35B80CF257917D5000BC8C7 /* ASUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASUserModel.h; sourceTree = "<group>"; };
+		A35B80D0257917D5000BC8C7 /* ASUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASUserModel.m; sourceTree = "<group>"; };
 		A3629ADA2553ABD4002155E3 /* ASFundVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundVC.h; sourceTree = "<group>"; };
 		A3629ADB2553ABD4002155E3 /* ASFundVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundVC.m; sourceTree = "<group>"; };
 		A3629ADF2553D4CC002155E3 /* ASScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASScanViewController.m; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		A3629AF1255406E6002155E3 /* ASFundCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundCell.m; sourceTree = "<group>"; };
 		A374ACD1255945AA0056A0BE /* UIColor+ASThemeColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ASThemeColor.h"; sourceTree = "<group>"; };
 		A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ASThemeColor.m"; sourceTree = "<group>"; };
+		A380FFF4257927E8001C21C1 /* english.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = english.txt; sourceTree = "<group>"; };
 		A3D463552552AF5E00EED6CD /* seed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = seed.h; sourceTree = "<group>"; };
 		A3D463562552AF5E00EED6CD /* seed.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = seed.c; sourceTree = "<group>"; };
 		A3D463582552B07900EED6CD /* keypair.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypair.h; sourceTree = "<group>"; };
@@ -528,6 +533,15 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		A35B80CE257917AA000BC8C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A35B80CF257917D5000BC8C7 /* ASUserModel.h */,
+				A35B80D0257917D5000BC8C7 /* ASUserModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A3629AD72553AB76002155E3 /* mode */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +597,14 @@
 			path = ASScanner;
 			sourceTree = "<group>";
 		};
+		A380FFF3257927E8001C21C1 /* languages */ = {
+			isa = PBXGroup;
+			children = (
+				A380FFF4257927E8001C21C1 /* english.txt */,
+			);
+			path = languages;
+			sourceTree = "<group>";
+		};
 		A510515625660953006D1398 /* Net */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,6 +619,7 @@
 		A511B986255A458000327525 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				A380FFF3257927E8001C21C1 /* languages */,
 				A511B987255A459B00327525 /* KBBipManager.h */,
 				A511B988255A459B00327525 /* KBBipManager.m */,
 			);
@@ -748,6 +771,7 @@
 		A5D9C51D2546BF870031192C /* login */ = {
 			isa = PBXGroup;
 			children = (
+				A35B80CE257917AA000BC8C7 /* Model */,
 				A547C463254822DB00591068 /* ipocket */,
 				A547C462254822C300591068 /* cpocket */,
 				A56C91A225480C5F00154D50 /* Controller */,
@@ -923,6 +947,7 @@
 				A5B9BC70253EBF5A00A80AE3 /* LaunchScreen.storyboard in Resources */,
 				A5D775DA254A5BC700783C67 /* KBCreatePocketVC.xib in Resources */,
 				980A38E42548145B00C62DE0 /* ASBackupWalletVC.xib in Resources */,
+				A380FFF5257927E8001C21C1 /* english.txt in Resources */,
 				A5D77648254A75D300783C67 /* KBImportPocketVC.xib in Resources */,
 				980A392D25482A7400C62DE0 /* MiningCell.xib in Resources */,
 				985033D42546E2A30067896B /* Localizable.strings in Resources */,
@@ -1048,6 +1073,7 @@
 				980A384F2547AFD200C62DE0 /* ZJContentView.m in Sources */,
 				A5D77687254AB2FF00783C67 /* sc.c in Sources */,
 				980A38512547AFD200C62DE0 /* ZJSegmentStyle.m in Sources */,
+				A35B80D1257917D5000BC8C7 /* ASUserModel.m in Sources */,
 				A3D463602552B14C00EED6CD /* verify.c in Sources */,
 				980A382A2547AF6300C62DE0 /* ASLabel.m in Sources */,
 				A510515925660975006D1398 /* LambNetManager.m in Sources */,

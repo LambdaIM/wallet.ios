@@ -15,7 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
  
 + (KBBipManager *)manager;
 
-- (NSString *)generateMnemonicString:(NSNumber *)strlength language:(NSString *)language;
++ (NSString *)generateMnemonicString:(NSNumber *)strlength language:(NSString *)language;
+
++ (NSString *)deterministicSeedStringFromMnemonicString:(NSString *)mnemonic
+                                             passphrase:(NSString *)passphrase
+                                               language:(NSString *)language;
  
 @end
 

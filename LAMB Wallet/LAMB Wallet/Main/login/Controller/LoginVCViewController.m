@@ -18,6 +18,11 @@
 @property (weak, nonatomic) IBOutlet UIView *m_passView;
 @property (weak, nonatomic) IBOutlet UITextField *m_passTextFild;
 @property (weak, nonatomic) IBOutlet UIButton *m_loginBtn;
+@property (weak, nonatomic) IBOutlet UITextField *accountNameField;
+@property (weak, nonatomic) IBOutlet UITextField *paswordField;
+@property (weak, nonatomic) IBOutlet UIButton *creatBtn;// 创建
+@property (weak, nonatomic) IBOutlet UIButton *loadingBtn;// 导入
+@property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 
 @end
 
@@ -33,15 +38,18 @@
    初始化View
  */
 -(void)initView{
-    self.m_chooseView.layer.cornerRadius = 6 ;
+    self.m_chooseView.layer.cornerRadius = 45/2.0 ;
     self.m_chooseView.backgroundColor =@"F0F2F8".hexColor;
-    self.m_passView.layer.cornerRadius = 6 ;
+    self.m_passView.layer.cornerRadius = 45/2.0;
     self.m_passView.backgroundColor =@"F0F2F8".hexColor;
     self.m_passTextFild.backgroundColor = @"F0F2F8".hexColor;
     [self.m_loginBtn.layer addSublayer:[self addSublayer]];
     self.m_loginBtn.layer.cornerRadius = 24;
     self.m_loginBtn.layer.masksToBounds = YES;
-    [self.m_loginBtn.titleLabel sizeToFit]; 
+    [self.m_loginBtn.titleLabel sizeToFit];
+    
+    self.accountNameField.placeholder = ASLocalizedString(@"请选择钱包");
+    self.paswordField.placeholder = ASLocalizedString(@"请输入密码");
  }
  
 
@@ -63,11 +71,13 @@
 #pragma mark 导入钱包
 - (IBAction)OnImportWallet:(UIButton *)sender { 
      
-//    NSString *mnemonicString =   [[KBBipManager manager] generateMnemonicString:@256 language:@"english" ];
-//    NSLog(@"====%@",mnemonicString);
-    KBImportPocketVC *create = [[KBImportPocketVC alloc] init];
-    [self.navigationController push:create];
-    
+    NSString *mnemonicString =   [KBBipManager generateMnemonicString:@256 language:@"english" ];
+    NSLog(@"====%@",mnemonicString);
+//    KBImportPocketVC *create = [[KBImportPocketVC alloc] init];
+//    [self.navigationController push:create];
+}
+#pragma mark 选择账户
+- (IBAction)selectAccountBtn:(id)sender {
     
 }
 

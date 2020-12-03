@@ -32,7 +32,7 @@
 
 #pragma mark -
 #pragma mark - Generate Mnemonic String
-- (NSString *)generateMnemonicString:(NSNumber *)strlength language:(NSString *)language
++ (NSString *)generateMnemonicString:(NSNumber *)strlength language:(NSString *)language
 {
     //输入长度必须为128、160、192、224、256
     if([strlength integerValue] % 32 != 0)
@@ -51,7 +51,7 @@
     {
         NSString *hexString = [bytes my_hexString];
 
-        return [self mnemonicStringFromRandomHexString:hexString language:language];
+        return [KBBipManager mnemonicStringFromRandomHexString:hexString language:language];
     }
     else
     {
@@ -63,7 +63,7 @@
 #pragma mark -
 #pragma mark - Generate Mnemonic From Hex String
 
-- (NSString *)mnemonicStringFromRandomHexString:(NSString *)seed language:(NSString *)language
++ (NSString *)mnemonicStringFromRandomHexString:(NSString *)seed language:(NSString *)language
 {
     //将16进制转换为NSData
     NSData *seedData = [seed my_dataFromHexString];
@@ -97,8 +97,34 @@
     }
 
     return [words componentsJoinedByString:@" "];
-    
 }
+
+
++ (NSString *)deterministicSeedStringFromMnemonicString:(NSString *)mnemonic
+                                             passphrase:(NSString *)passphrase
+                                               language:(NSString *)language {
+
+    NSData *data = [mnemonic dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *dataString = [[NSString alloc] initWithData: data encoding: NSASCIIStringEncoding];
+    NSData *normalized = [dataString dataUsingEncoding: NSASCIIStringEncoding allowLossyConversion: NO];
+
+    NSData *saltData =
+      [[@"mnemonic" stringByAppendingString: [[NSString alloc] initWithData:[passphrase dataUsingEncoding: NSASCIIStringEncoding
+                                                       allowLossyConversion:YES]
+                                     encoding:NSASCIIStringEncoding]]
+       dataUsingEncoding: NSASCIIStringEncoding
+       allowLossyConversion: NO];
+
+    NSMutableData *hashKeyData =
+      [NSMutableData dataWithLength:CC_SHA512_DIGEST_LENGTH];
+
+    CCKeyDerivationPBKDF(kCCPBKDF2, normalized.bytes, normalized.length,
+                       saltData.bytes, saltData.length, kCCPRFHmacAlgSHA512,
+                       2048, hashKeyData.mutableBytes, hashKeyData.length);
+
+    return [[NSData dataWithData:hashKeyData] my_hexString];
+}
+
 
 
 @end
