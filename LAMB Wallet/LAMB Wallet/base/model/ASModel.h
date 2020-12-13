@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSObject+YYModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 /// 基础model

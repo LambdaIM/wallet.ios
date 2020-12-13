@@ -76,6 +76,8 @@
 		A3629AF2255406E6002155E3 /* ASFundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AF1255406E6002155E3 /* ASFundCell.m */; };
 		A374ACD3255945AA0056A0BE /* UIColor+ASThemeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */; };
 		A380FFF5257927E8001C21C1 /* english.txt in Resources */ = {isa = PBXBuildFile; fileRef = A380FFF4257927E8001C21C1 /* english.txt */; };
+		A394C8E725859472005FCAD2 /* CoreBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A394C8E625859472005FCAD2 /* CoreBitcoin.framework */; };
+		A394C8ED2585B55F005FCAD2 /* ASNodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A394C8EC2585B55F005FCAD2 /* ASNodeModel.m */; };
 		A3D463572552AF5E00EED6CD /* seed.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463562552AF5E00EED6CD /* seed.c */; };
 		A3D4635A2552B07900EED6CD /* keypair.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463592552B07900EED6CD /* keypair.c */; };
 		A3D4635D2552B0E500EED6CD /* sign.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D4635C2552B0E500EED6CD /* sign.c */; };
@@ -254,6 +256,9 @@
 		A374ACD1255945AA0056A0BE /* UIColor+ASThemeColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ASThemeColor.h"; sourceTree = "<group>"; };
 		A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ASThemeColor.m"; sourceTree = "<group>"; };
 		A380FFF4257927E8001C21C1 /* english.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = english.txt; sourceTree = "<group>"; };
+		A394C8E625859472005FCAD2 /* CoreBitcoin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreBitcoin.framework; sourceTree = "<group>"; };
+		A394C8EB2585B55F005FCAD2 /* ASNodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASNodeModel.h; sourceTree = "<group>"; };
+		A394C8EC2585B55F005FCAD2 /* ASNodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASNodeModel.m; sourceTree = "<group>"; };
 		A3D463552552AF5E00EED6CD /* seed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = seed.h; sourceTree = "<group>"; };
 		A3D463562552AF5E00EED6CD /* seed.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = seed.c; sourceTree = "<group>"; };
 		A3D463582552B07900EED6CD /* keypair.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypair.h; sourceTree = "<group>"; };
@@ -268,6 +273,7 @@
 		A3DCD5872555742700E1652E /* ASFundExchangeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundExchangeVC.m; sourceTree = "<group>"; };
 		A3DCD58A2555764600E1652E /* ASFundExchangeChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundExchangeChildVC.h; sourceTree = "<group>"; };
 		A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundExchangeChildVC.m; sourceTree = "<group>"; };
+		A3E668852584BF4D00EB06EF /* GlobalDefineHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDefineHeader.h; sourceTree = "<group>"; };
 		A3EF40B42554F6F5007A4463 /* ASFundTransferVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTransferVC.h; sourceTree = "<group>"; };
 		A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundTransferVC.m; sourceTree = "<group>"; };
 		A510515725660975006D1398 /* LambNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LambNetManager.h; sourceTree = "<group>"; };
@@ -342,6 +348,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A394C8E725859472005FCAD2 /* CoreBitcoin.framework in Frameworks */,
 				481899F15A19A4A613CAA5A5 /* Pods_LAMB_Wallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,6 +612,24 @@
 			path = languages;
 			sourceTree = "<group>";
 		};
+		A394C84325850EAC005FCAD2 /* thirdFramework */ = {
+			isa = PBXGroup;
+			children = (
+				A394C8E625859472005FCAD2 /* CoreBitcoin.framework */,
+			);
+			name = thirdFramework;
+			path = "LAMB Wallet/thirdFramework";
+			sourceTree = SOURCE_ROOT;
+		};
+		A394C8EA2585B538005FCAD2 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A394C8EB2585B55F005FCAD2 /* ASNodeModel.h */,
+				A394C8EC2585B55F005FCAD2 /* ASNodeModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		A510515625660953006D1398 /* Net */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,6 +818,7 @@
 		A5D9C5222546C08E0031192C /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				A394C8EA2585B538005FCAD2 /* model */,
 				985033F52547196D0067896B /* view */,
 				985033DA2546FB300067896B /* vc */,
 				985033F1254718D40067896B /* NodeManager.h */,
@@ -849,6 +875,7 @@
 				A5D9C5332546CFCE0031192C /* ext */,
 				A5ECE7C225412813000ADC7C /* lib */,
 				A5D9C53F2546D3030031192C /* Header.pch */,
+				A3E668852584BF4D00EB06EF /* GlobalDefineHeader.h */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -856,6 +883,7 @@
 		A5ECE7C225412813000ADC7C /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				A394C84325850EAC005FCAD2 /* thirdFramework */,
 				980A383A2547AFD200C62DE0 /* ZJScrollPageView */,
 				A5ECE7C325412813000ADC7C /* FDFullscreenPopGesture */,
 			);
@@ -1058,6 +1086,7 @@
 				980A38382547AFBB00C62DE0 /* ASWebVC.m in Sources */,
 				A5D77684254AB2FF00783C67 /* fe.c in Sources */,
 				A511B989255A459B00327525 /* KBBipManager.m in Sources */,
+				A394C8ED2585B55F005FCAD2 /* ASNodeModel.m in Sources */,
 				A5D9C5252546C21F0031192C /* LoginVCViewController.m in Sources */,
 				980A38522547AFD200C62DE0 /* ZJScrollSegmentView.m in Sources */,
 				980A3976254921E800C62DE0 /* KBStoragePledgeVC.m in Sources */,
@@ -1246,14 +1275,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D0A8C3FEA415FE6B34EE08E /* Pods-LAMB Wallet.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KG6X4XJHF5;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
+					"$(inherited)/**",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CMPageTitleView\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/DZNEmptyDataSet\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/DoraemonKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/FMDB\"",
@@ -1267,6 +1296,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCache\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCategories\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel\"",
+					"$(PROJECT_DIR)/LAMB\\ Wallet/thirdFramework/**",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "LAMB Wallet/base/Header.pch";
@@ -1296,14 +1326,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FC7CF6B3101896D708CAE326 /* Pods-LAMB Wallet.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KG6X4XJHF5;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
+					"$(inherited)/**",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CMPageTitleView\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/DZNEmptyDataSet\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/FMDB\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GCDWebServer\"",
@@ -1316,6 +1346,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCache\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCategories\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel\"",
+					"$(PROJECT_DIR)/LAMB\\ Wallet/thirdFramework/**",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "LAMB Wallet/base/Header.pch";

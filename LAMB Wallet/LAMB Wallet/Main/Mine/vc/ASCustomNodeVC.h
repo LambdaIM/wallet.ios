@@ -4,7 +4,7 @@
 NS_ASSUME_NONNULL_BEGIN
 /// 自定义节点
 @interface ASCustomNodeVC : UIViewController
-@property(nonatomic, copy) void (^refreshNodeBlock)(void);
+@property(nonatomic, copy) void (^refreshNodeBlock)(NSString *nodeAddress);
 @end
 
 NS_ASSUME_NONNULL_END

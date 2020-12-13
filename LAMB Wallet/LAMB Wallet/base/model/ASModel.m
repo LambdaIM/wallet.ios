@@ -7,7 +7,6 @@
 //
 
 #import "ASModel.h"
-#import "NSObject+YYModel.h"
 
 @implementation ASModel
 +(instancetype)modelWithJSON:(id)json {
@@ -19,8 +18,6 @@
 - (id)modelToJSONObject {
     return [self yy_modelToJSONObject];
 }
-
-
 
 - (NSString *)description {
     return [self yy_modelDescription];

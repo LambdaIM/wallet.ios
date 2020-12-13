@@ -46,7 +46,7 @@
 - (IBAction)clickSureBtn {
     [NodeManager manager].type = ASNodeTypeCustom;
     if (self.refreshNodeBlock) {
-        self.refreshNodeBlock();
+        self.refreshNodeBlock([NSString stringWithFormat:@"%@:%@",self.m_ipTF.text,self.m_portTF.text]);
     }
     [self dismissViewControllerAnimated:YES completion:NULL];
 

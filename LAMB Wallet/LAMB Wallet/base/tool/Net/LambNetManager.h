@@ -11,26 +11,30 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LambNetManager : NSObject
+
+@property (nonatomic,copy) NSString *baseUrl;
  
 /**
  GET数据请求
 
  @param urlString  URL
  @param parameters 参数
+ @param hud        加载进度
  @param success    成功回调
  @param failure    失败回调
  */
-+ (void)GET:(NSString *)urlString parameters:(id)parameters success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure;
++ (void)GET:(NSString *)urlString parameters:(id)parameters showHud:(BOOL) hud success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure;
 
 /**
  POST数据请求
 
  @param urlString  URL
  @param parameters 参数
+ @param hud        加载进度
  @param success    成功回调
  @param failure    失败回调
  */
-+ (void)POST:(NSString *)urlString parameters:(id)parameters success:(void (^)(id responseObject))success failure:(void (^) (NSError *error))failure;
++ (void)POST:(NSString *)urlString parameters:(id)parameters showHud:(BOOL) hud success:(void (^)(id responseObject))success failure:(void (^) (NSError *error))failure;
 
 /**
  单张图片或者多张图片上传
@@ -50,6 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param netStatus 当前网络状态
  */
 + (void)ReachabilityStatus:(void (^)(id string))netStatus;
+
+
++ (instancetype) shareInstance;
 
 @end
 

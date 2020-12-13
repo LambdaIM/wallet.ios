@@ -4,7 +4,7 @@
 //
 //  Created by fei on 2020/11/10.
 //  Copyright © 2020 fei. All rights reserved.
-//
+//  https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
 
 #import "KBBipManager.h"
  

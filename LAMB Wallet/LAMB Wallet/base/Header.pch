@@ -11,20 +11,17 @@
 
 #ifdef __OBJC__
 
-   #import "UIDeviceEx.h"
-
+    #import "UIDeviceEx.h"
+    #import "GlobalDefineHeader.h"
+    #import "LambNetManager.h"
 #endif
 
 #define DeviceModelName [UIDevice deviceModelName]
 
 /// 屏幕高
-#define kScreenH kll_MAINHEIGHT
+#define kScreenH ([[UIScreen mainScreen] bounds].size.height)
 /// 屏幕宽
-#define kScreenW kll_MAINWIDTH
-/// 屏幕高
-#define kll_MAINHEIGHT ([[UIScreen mainScreen] bounds].size.height)
-/// 屏幕宽
-#define kll_MAINWIDTH  ([[UIScreen mainScreen] bounds].size.width)
+#define kScreenW ([[UIScreen mainScreen] bounds].size.width)
 
 /// 从右侧划出view类型动画 左侧露出的距离(左侧列表被掩盖时，露出的宽度)
 
@@ -270,6 +267,13 @@ static inline BOOL isIPhoneXSeries() {
 #define getHTTP_Get_transaction_detail         @"/txs/"
 
  
+
+
+
+
+//本地节点
+#define kLOCALNODES         @"localNodes"
+
 
 
 //打印设置

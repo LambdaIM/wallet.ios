@@ -28,27 +28,23 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:ASLocalizedString(@"自定义") style:UIBarButtonItemStylePlain target:self action:@selector(clickCustomNodeBtn)];
 }
 - (void)loadData {
-    BOOL b1 = NO;
-    BOOL b2 = NO;
-    if ([NodeManager manager].type == ASNodeTypeMain) {
-        b1 = YES;
-        b2 = NO;
-    } else if ([NodeManager manager].type == ASNodeTypeTest) {
-        b1 = NO;
-        b2 = YES;
-    } else {
-        // 自定义
-    }
     
-    self.datas = @[@{@"title":ASLocalizedString(@"主网默认节点"), @"sel":@"SwitchToMainnetDefaultNode", @"selected":@(b1)},
-                   @{@"title":ASLocalizedString(@"测试网默认节点"), @"sel":@"SwitchToTestnetDefaultNode", @"selected":@(b2)}];
+    NSArray *nodes = [NodeManager loadNodes];
+    NSMutableArray *datas = [NSMutableArray array];
+    for (ASNodeModel *model in nodes) {
+        [datas addObject:@{@"title":model.nodeName, @"sel":@"selectAtindex", @"selected":@(model.select)}];
+    }
+    self.datas = datas;
 }
 - (void)clickCustomNodeBtn {
     ASCustomNodeVC *vc = [ASCustomNodeVC new];
     __weak __typeof(self)weakSelf = self;
-    vc.refreshNodeBlock = ^{
-        [weakSelf loadData];
-        [weakSelf.table reloadData];
+    vc.refreshNodeBlock = ^(NSString * _Nonnull nodeAddress) {
+        if (nodeAddress) {
+            ASNodeModel *nodeModel = [[ASNodeModel alloc]initWithBaseUrl:[[nodeAddress componentsSeparatedByString:@":"]firstObject] port:[[nodeAddress componentsSeparatedByString:@":"]lastObject] nodeName:nodeAddress select:YES];
+            [NodeManager addNode:nodeModel];
+            [weakSelf configModel:nodeModel];
+        }
     };
     [self presentViewController:vc animated:YES completion:NULL];
 }
@@ -60,15 +56,25 @@
     return cell;
 }
 
-- (void)SwitchToMainnetDefaultNode {
-    [NodeManager manager].type = ASNodeTypeMain;
-    [self loadData];
-    [self.table reloadData];
+- (void)customTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *nodes = [NodeManager loadNodes];
+    ASNodeModel *selectModel = [nodes objectAtIndex:indexPath.row];
+    [self configModel:selectModel];
 }
-- (void)SwitchToTestnetDefaultNode {
-    [NodeManager manager].type = ASNodeTypeTest;
+
+- (void) configModel:(ASNodeModel *) model {
+    NSArray *nodes = [NodeManager loadNodes];
+    for (int i = 0; i < nodes.count; i ++) {
+        ASNodeModel *tempModel = [nodes objectAtIndex:i];
+        if ([model.baseUrl isEqualToString:tempModel.baseUrl]) {
+            tempModel.select = YES;
+        }else{
+            tempModel.select = NO;
+        }
+    }
+    [[NodeManager manager] configNode:model];
+    [NodeManager addNodes:nodes];
     [self loadData];
     [self.table reloadData];
-
 }
 @end

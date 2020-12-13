@@ -15,7 +15,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - DoraemonKit/Core (3.0.4):
+  - DoraemonKit/Core (3.0.6):
     - FMDB
     - GCDWebServer
     - GCDWebServer/WebDAV
@@ -79,7 +79,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  DoraemonKit: b507a1500667024070f248d648632a3f7bbb6044
+  DoraemonKit: 919709427c30af94e265532a879ac41797d296d1
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
@@ -93,6 +93,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 621c9bc9d82644d8c170a0252f449481ea7eb637
+PODFILE CHECKSUM: 5f06f7c62f5268d247e8fb04fbaadbcbaf1b4e89
 
 COCOAPODS: 1.10.0

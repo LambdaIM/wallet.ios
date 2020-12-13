@@ -354,8 +354,8 @@ static CGFloat const contentSizeXOff = 20.0;
                 weakSelf.scrollLine.zj_x = currentTitleView.zj_x;
                 weakSelf.scrollLine.zj_width = currentTitleView.zj_width;
             } else {
-                if (self.segmentStyle.isAdjustCoverOrLineWidth) {
-                    CGFloat scrollLineW = [self.titleWidths[_currentIndex] floatValue] + wGap;
+                if (weakSelf.segmentStyle.isAdjustCoverOrLineWidth) {
+                    CGFloat scrollLineW = [weakSelf.titleWidths[_currentIndex] floatValue] + wGap;
                     CGFloat scrollLineX = currentTitleView.zj_x + (currentTitleView.zj_width - scrollLineW) * 0.5;
                     weakSelf.scrollLine.zj_x = scrollLineX;
                     weakSelf.scrollLine.zj_width = scrollLineW;
@@ -374,8 +374,8 @@ static CGFloat const contentSizeXOff = 20.0;
                 weakSelf.coverLayer.zj_x = currentTitleView.zj_x - xGap;
                 weakSelf.coverLayer.zj_width = currentTitleView.zj_width + wGap;
             } else {
-                if (self.segmentStyle.isAdjustCoverOrLineWidth) {
-                    CGFloat coverW = [self.titleWidths[_currentIndex] floatValue] + wGap;
+                if (weakSelf.segmentStyle.isAdjustCoverOrLineWidth) {
+                    CGFloat coverW = [weakSelf.titleWidths[_currentIndex] floatValue] + wGap;
                     CGFloat coverX = currentTitleView.zj_x + (currentTitleView.zj_width - coverW) * 0.5;
                     weakSelf.coverLayer.zj_x = coverX;
                     weakSelf.coverLayer.zj_width = coverW;

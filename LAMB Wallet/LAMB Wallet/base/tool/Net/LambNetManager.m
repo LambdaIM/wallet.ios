@@ -8,61 +8,100 @@
 
 #import "LambNetManager.h"
 #import "MBProgressHUD+MJ.h"
+typedef NS_ENUM(NSInteger, kLambRequestType){
+    kGetType,
+    kPostType,
+};
+static LambNetManager *instance = nil;
+
+@interface LambNetManager ()
+
+@property (nonatomic,strong) AFHTTPRequestSerializer *httpRequestSerializer;
+@property (nonatomic,strong) AFHTTPSessionManager *sessionManager;
+
+@end
 
 @implementation LambNetManager
 
-+ (void)GET:(NSString *)urlString parameters:(id)parameters success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure
-{
-    [MBProgressHUD showMessage:@"拼命加载中..."];
- 
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    //    上传普通的格式
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    //    收到数据的格式(data)  注意 ：不加这句会报错Request failed: unacceptable content-type: text/plain”错误，因为我们要获取text/plain类型数据
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", nil];
-    manager.requestSerializer.timeoutInterval = 10.0f;
-    urlString  = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
++ (instancetype) shareInstance {
     
-    [manager GET:urlString parameters:parameters headers:parameters  progress: nil
-         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-        [MBProgressHUD hideHUD];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failure) {
-            failure(error);
-        }
-        [MBProgressHUD hideHUD];
-    }];
+    if (!instance) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            instance = [[LambNetManager alloc]init];
+        });
+    }
+    return instance;
 }
 
- 
-+ (void)POST:(NSString *)urlString parameters:(id)parameters success:(void (^)(id responseObject))success failure:(void (^) (NSError *error))failure
+- (instancetype)init{
+    if (self = [super init]) {
+        [self initDate];
+    }
+    return self;
+}
+
+- (void) initDate {
+    _baseUrl = DEBUGBASEURL;
+}
+
++ (void)GET:(NSString *)urlString parameters:(id)parameters showHud:(BOOL) hud success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure
 {
-    [MBProgressHUD showMessage:@"拼命加载中..."];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", nil];
-    manager.requestSerializer.timeoutInterval = 10.0f;
+ 
+    [LambNetManager request:kGetType url:urlString parameters:parameters showHud:hud success:success failure:failure];
+}
+
++ (void)POST:(NSString *)urlString parameters:(id)parameters showHud:(BOOL) hud success:(void (^)(id responseObject))success failure:(void (^) (NSError *error))failure
+{
+   
+    [LambNetManager request:kPostType url:urlString parameters:parameters showHud:hud success:success failure:failure];
+}
+
++ (void)request:(kLambRequestType) requestType url:(NSString *)urlString parameters:(id)parameters showHud:(BOOL)hud success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure{
+    
+    if (hud) {
+        [MBProgressHUD showMessage:@"拼命加载中..."];
+    }
+    
     urlString  = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    [manager POST:urlString parameters:parameters headers:parameters progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        if (success ) {
-            success(dic);
+    switch (requestType) {
+        case kGetType:
+        {
+            [[[LambNetManager shareInstance]sessionManager] GET:urlString parameters:parameters headers:parameters  progress: nil
+                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [LambNetManager requestFinish:responseObject error:nil showHud:hud success:success failure:failure];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [LambNetManager requestFinish:nil error:error showHud:hud success:success failure:failure];
+            }];
         }
-        [MBProgressHUD hideHUD];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failure) {
-            failure(error);
+            break;
+        case kPostType:
+        {
+            [[[LambNetManager shareInstance]sessionManager] POST:urlString parameters:parameters headers:parameters  progress: nil
+                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [LambNetManager requestFinish:responseObject error:nil showHud:hud success:success failure:failure];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [LambNetManager requestFinish:nil error:error showHud:hud success:success failure:failure];
+            }];
         }
-        [MBProgressHUD hideHUD];
-    }] ;
-    
-   
+            break;
+    }
 }
-+ (void)uploadMorePost:(NSString *)urlString parameters:(id)parameters UploadImage:(NSArray *)imageArray ImageKey:(NSArray *)imageKeys success:(void (^)(id responseObject))successs failure:(void (^)(NSError *error))failure
+
++ (void)requestFinish:(id)responseObject error:(NSError *) error showHud:(BOOL)hud success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure{
+    if (success) {
+        success(responseObject);
+    }
+    if (failure) {
+        failure(error);
+    }
+    if (hud) {
+        [MBProgressHUD hideHUD];
+    }
+}
+ 
++ (void)uploadMorePost:(NSString *)urlString parameters:(id)parameters UploadImage:(NSArray *)imageArray ImageKey:(NSArray *)imageKeys success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure
 {
     if (imageKeys.count == 0) {
         [MBProgressHUD showError:[NSString stringWithFormat:@"%@为空",imageKeys]];
@@ -73,13 +112,10 @@
         return;
     }
     [MBProgressHUD showMessage:@"拼命加载中..."];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 10.f;
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html", nil];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
     urlString  = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
    
-    [manager POST:urlString parameters:parameters headers:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [[[LambNetManager shareInstance]sessionManager] POST:urlString parameters:parameters headers:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (int i = 0; i < imageArray.count; i++) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
         formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
@@ -89,17 +125,10 @@
         [formData appendPartWithFileData:data name:((imageKeys.count > 1) ? (imageKeys[i]) : (imageKeys.firstObject)) fileName:fileName mimeType:@"image/png"];
     }
     } progress: nil  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (successs) {
-            successs(responseObject);
-        }
-        [MBProgressHUD hideHUD];
+        [LambNetManager requestFinish:responseObject error:nil showHud:YES success:success failure:failure];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failure) {
-            failure(error);
-        }
-        [MBProgressHUD hideHUD];
+        [LambNetManager requestFinish:nil error:error showHud:YES success:success failure:failure];
     }];
-     
 }
 
 + (void)ReachabilityStatus:(void (^)(id string))netStatus
@@ -144,5 +173,26 @@
     [manager startMonitoring];
 }
 
+
+- (AFHTTPSessionManager *)sessionManager {
+    if (_sessionManager == nil) {
+        _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:self.baseUrl]];
+        _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];//请求
+        _sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        _sessionManager.requestSerializer.timeoutInterval = 20.0f;
+        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet
+                                                             setWithObjects:@"application/json",@"text/json",
+                                                             @"text/plain", @"text/html",
+                                                             nil];
+        _sessionManager.requestSerializer.allowsCellularAccess = YES;
+    }
+    return _sessionManager;
+}
+
+
+- (void)setBaseUrl:(NSString *)baseUrl {
+    _baseUrl = baseUrl;
+    _sessionManager = nil;
+}
  
 @end

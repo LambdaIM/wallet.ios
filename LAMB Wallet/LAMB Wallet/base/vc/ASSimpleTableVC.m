@@ -47,12 +47,15 @@
             cell.imageView.image = img;
         }
     }
-    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    [self callSEL:self.datas[indexPath.row][@"sel"]];
+    NSString *methord = self.datas[indexPath.row][@"sel"];
+    if ([methord isEqualToString:@"selectAtindex"]) {
+        [self customTableView:tableView didSelectRowAtIndexPath:indexPath];
+    }else{
+        [self callSEL:self.datas[indexPath.row][@"sel"]];
+    }
 }
 - (void)callSEL:(NSString *)selStr {
     if (selStr.length <= 0) {
