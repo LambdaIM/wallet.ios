@@ -21,6 +21,7 @@ target 'LAMB Wallet' do
   pod 'ReactiveObjC', '~> 3.1.1'
   pod 'DZNEmptyDataSet', '~> 1.8.1'
   pod 'TPKeyboardAvoiding', '~> 1.3.5'
+  pod 'FCAlertView'
  
   pod 'ActionSheetPicker-3.0'
   pod 'DoraemonKit/Core', '~> 3.0.4', :configurations => ['Debug']

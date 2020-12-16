@@ -63,14 +63,24 @@ static LambNetManager *instance = nil;
         [MBProgressHUD showMessage:@"拼命加载中..."];
     }
     
-    urlString  = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[LambNetManager shareInstance].baseUrl,urlString];
+    
+//    urlString = [requestUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    urlString = [requestUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "].invertedSet];
+
     
     switch (requestType) {
         case kGetType:
         {
             [[[LambNetManager shareInstance]sessionManager] GET:urlString parameters:parameters headers:parameters  progress: nil
                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [LambNetManager requestFinish:responseObject error:nil showHud:hud success:success failure:failure];
+                
+                id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:NULL];
+                
+                NSLog(@"=====> %@\n =====> %@",requestUrl,result);
+                
+                [LambNetManager requestFinish:result error:nil showHud:hud success:success failure:failure];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [LambNetManager requestFinish:nil error:error showHud:hud success:success failure:failure];
             }];
@@ -80,7 +90,9 @@ static LambNetManager *instance = nil;
         {
             [[[LambNetManager shareInstance]sessionManager] POST:urlString parameters:parameters headers:parameters  progress: nil
                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [LambNetManager requestFinish:responseObject error:nil showHud:hud success:success failure:failure];
+                id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:NULL];
+                NSLog(@"=====> %@\n =====> %@",requestUrl,result);
+                [LambNetManager requestFinish:result error:nil showHud:hud success:success failure:failure];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [LambNetManager requestFinish:nil error:error showHud:hud success:success failure:failure];
             }];
@@ -97,7 +109,9 @@ static LambNetManager *instance = nil;
         failure(error);
     }
     if (hud) {
-        [MBProgressHUD hideHUD];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUD];
+        });
     }
 }
  
@@ -113,8 +127,10 @@ static LambNetManager *instance = nil;
     }
     [MBProgressHUD showMessage:@"拼命加载中..."];
     
-    urlString  = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[LambNetManager shareInstance].baseUrl,urlString];
+    
+    urlString = [requestUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "].invertedSet];
+
     [[[LambNetManager shareInstance]sessionManager] POST:urlString parameters:parameters headers:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (int i = 0; i < imageArray.count; i++) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
@@ -176,7 +192,9 @@ static LambNetManager *instance = nil;
 
 - (AFHTTPSessionManager *)sessionManager {
     if (_sessionManager == nil) {
-        _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:self.baseUrl]];
+//        _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:self.baseUrl]];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        _sessionManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
         _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];//请求
         _sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
         _sessionManager.requestSerializer.timeoutInterval = 20.0f;
@@ -191,8 +209,13 @@ static LambNetManager *instance = nil;
 
 
 - (void)setBaseUrl:(NSString *)baseUrl {
-    _baseUrl = baseUrl;
+    if ([baseUrl containsString:@"http"]) {
+        _baseUrl = baseUrl;
+    }else{
+        _baseUrl = [NSString stringWithFormat:@"http://%@",baseUrl];
+    }
     _sessionManager = nil;
 }
+
  
 @end

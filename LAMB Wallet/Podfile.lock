@@ -21,6 +21,7 @@ PODS:
     - GCDWebServer/WebDAV
     - GCDWebServer/WebUploader
   - DZNEmptyDataSet (1.8.1)
+  - FCAlertView (1.4.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - AFNetworking (~> 4.0.1)
   - DoraemonKit/Core (~> 3.0.4)
   - DZNEmptyDataSet (~> 1.8.1)
+  - FCAlertView
   - IQKeyboardManager
   - Masonry
   - MBProgressHUD (~> 1.2.0)
@@ -64,6 +66,7 @@ SPEC REPOS:
     - AFNetworking
     - DoraemonKit
     - DZNEmptyDataSet
+    - FCAlertView
     - FMDB
     - GCDWebServer
     - IQKeyboardManager
@@ -81,6 +84,7 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   DoraemonKit: 919709427c30af94e265532a879ac41797d296d1
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FCAlertView: fdddd63381898c1d1a5a20c9f084fbd2c6d12f8b
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
@@ -93,6 +97,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 5f06f7c62f5268d247e8fb04fbaadbcbaf1b4e89
+PODFILE CHECKSUM: 3da3da9e539bf421a20575495950779a9b093a23
 
 COCOAPODS: 1.10.0

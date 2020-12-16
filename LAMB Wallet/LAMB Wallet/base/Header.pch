@@ -189,13 +189,16 @@ static inline BOOL isIPhoneXSeries() {
 #import <ReactiveObjC/RACEXTScope.h>
 #import "UIColor+ASThemeColor.h"
 
+#define JoinParam(FORMAT, param) [NSString stringWithFormat:FORMAT.copy,param]
+// 账户信息接口
+#define USER_Get_Auth         @"/auth/accounts/%@"
 // 读取余额和用户信息
 #define USER_JACKPOT_CHECK         @"/member/userjackpotcheck"
 // 获取节点列表
 #define HTTP_Get_producers         @"/staking/validators?status="
 // 获取节点详情
 #define HTTP_Get_producers_details         @"/staking/validators/"
-// 获取区块信息
+// +获取区块信息
 #define HTTP_Get_chain_details         @"/node_info"
 // 获取全网质押token总量
 #define HTTP_Get_chain_all_zhiya_token         @"/staking/pool"
@@ -253,10 +256,10 @@ static inline BOOL isIPhoneXSeries() {
 #define getHTTP_Get_cancel_zhiya         @"/staking/delegators/"
 //获取用户空间买卖的订单列表接口
 #define getHTTP_Get_my_order_store         @"/market/matchorders/"
-//获取提案列表
+// +获取提案列表
 #define getHTTP_Get_proposal_list         @"/gov/proposals"
-//获取提案详情
-#define getHTTP_Get_proposal_details         @"/gov/proposals/"
+// +获取提案详情
+#define getHTTP_Get_proposal_details         @"/gov/proposals/%@"
 //获取提案公共参数
 #define getHTTP_Get_proposal_parameters         @"/gov/parameters/deposit"
 //获取提案我的押金

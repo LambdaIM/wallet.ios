@@ -11,11 +11,12 @@
 
 
 #ifdef DEBUG
-#define DEBUGBASEURL @"bj1.testnet.lambdastorage.com:13659"
-#define RELEASEBASEURL @"39.107.247.86:13659"
+#define DEBUGBASEURL @"http://39.107.247.86:13659"
+#define RELEASEBASEURL @"http://bj1.testnet.lambdastorage.com:13659"
+//#define RELEASEBASEURL @"39.107.247.86:13659"
 #else
-#define DEBUGBASEURL @"bj1.testnet.lambdastorage.com:13659"
-#define RELEASEBASEURL @"39.107.247.86:13659"
+#define DEBUGBASEURL @"http://bj1.testnet.lambdastorage.com:13659"
+#define RELEASEBASEURL @"http://39.107.247.86:13659"
 #endif
 
 #define lambAddress @"lambda1s6lujxu6evv969t86hpkcr0t6j6fxe0pz33e5s"

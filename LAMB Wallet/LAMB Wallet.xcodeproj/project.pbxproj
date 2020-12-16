@@ -86,6 +86,7 @@
 		A3DCD5882555742700E1652E /* ASFundExchangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD5872555742700E1652E /* ASFundExchangeVC.m */; };
 		A3DCD58C2555764600E1652E /* ASFundExchangeChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DCD58B2555764600E1652E /* ASFundExchangeChildVC.m */; };
 		A3EF40B62554F6F5007A4463 /* ASFundTransferVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */; };
+		A3FF6B3925861E78009AEF7E /* ASProposalsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FF6B3825861E78009AEF7E /* ASProposalsVC.m */; };
 		A510515925660975006D1398 /* LambNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A510515825660975006D1398 /* LambNetManager.m */; };
 		A511B989255A459B00327525 /* KBBipManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A511B988255A459B00327525 /* KBBipManager.m */; };
 		A511B98D255A45D900327525 /* NSData+KBChange.m in Sources */ = {isa = PBXBuildFile; fileRef = A511B98C255A45D900327525 /* NSData+KBChange.m */; };
@@ -276,6 +277,8 @@
 		A3E668852584BF4D00EB06EF /* GlobalDefineHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalDefineHeader.h; sourceTree = "<group>"; };
 		A3EF40B42554F6F5007A4463 /* ASFundTransferVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTransferVC.h; sourceTree = "<group>"; };
 		A3EF40B52554F6F5007A4463 /* ASFundTransferVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundTransferVC.m; sourceTree = "<group>"; };
+		A3FF6B3725861E78009AEF7E /* ASProposalsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASProposalsVC.h; path = "LAMB Wallet/Main/fund/vc/ASProposalsVC.h"; sourceTree = SOURCE_ROOT; };
+		A3FF6B3825861E78009AEF7E /* ASProposalsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASProposalsVC.m; path = "LAMB Wallet/Main/fund/vc/ASProposalsVC.m"; sourceTree = SOURCE_ROOT; };
 		A510515725660975006D1398 /* LambNetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LambNetManager.h; sourceTree = "<group>"; };
 		A510515825660975006D1398 /* LambNetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LambNetManager.m; sourceTree = "<group>"; };
 		A511B987255A459B00327525 /* KBBipManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBBipManager.h; sourceTree = "<group>"; };
@@ -503,6 +506,8 @@
 				A5D9C52C2546C7080031192C /* MineVC.m */,
 				980A38AC2548036200C62DE0 /* ASManageWalletVC.h */,
 				980A38AD2548036200C62DE0 /* ASManageWalletVC.m */,
+				A3FF6B3725861E78009AEF7E /* ASProposalsVC.h */,
+				A3FF6B3825861E78009AEF7E /* ASProposalsVC.m */,
 				985033DB2546FB4F0067896B /* ASSetVC.h */,
 				985033DC2546FB4F0067896B /* ASSetVC.m */,
 				985033E025470BBF0067896B /* ASLanguageVC.h */,
@@ -1052,6 +1057,7 @@
 				980A397A254922E500C62DE0 /* KBStoragePledgeSubVC.m in Sources */,
 				980A39AB2549740700C62DE0 /* KBWithdrawRewardSubVC.m in Sources */,
 				A3D4635D2552B0E500EED6CD /* sign.c in Sources */,
+				A3FF6B3925861E78009AEF7E /* ASProposalsVC.m in Sources */,
 				980A39B02549A4A500C62DE0 /* ASConst.m in Sources */,
 				A3629AE42553D4CD002155E3 /* ASScanViewController.m in Sources */,
 				985033EE254717AB0067896B /* ASCheckCell.m in Sources */,

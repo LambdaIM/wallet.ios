@@ -10,6 +10,8 @@
 #import "ASCheckCell.h"
 #import "NodeManager.h"
 #import "ASCustomNodeVC.h"
+#import "FCAlertView.h"
+#import <NSDictionary+YYAdd.h>
 @interface SwitchVerificationNodeVC ()
 
 @end
@@ -76,5 +78,25 @@
     [NodeManager addNodes:nodes];
     [self loadData];
     [self.table reloadData];
+    
+    [self requstNodeDetail];
+}
+
+
+- (void) requstNodeDetail{
+    
+    [LambNetManager GET:HTTP_Get_chain_details parameters:@{} showHud:YES success:^(id  _Nonnull responseObject) {
+        
+        FCAlertView *alert = [[FCAlertView alloc] init];
+
+        [alert showAlertWithTitle:ASLocalizedString(@"节点信息")
+                  withSubtitle:[responseObject jsonStringEncoded]
+               withCustomImage:nil
+           withDoneButtonTitle:ASLocalizedString(@"确认")
+                    andButtons:nil];
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 @end

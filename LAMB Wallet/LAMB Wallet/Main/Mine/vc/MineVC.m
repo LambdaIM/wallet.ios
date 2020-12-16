@@ -11,6 +11,7 @@
 #import "MineHeaderView.h"
 #import "ASManageWalletVC.h"
 #import "ASFundTradRecordVC.h"
+#import "ASProposalsVC.h"
 
 @interface MineVC ()
 @end
@@ -44,7 +45,7 @@
 
 }
 - (void)pushToProposal {
-//    [self.navigationController pushViewController:[SwitchVerificationNodeVC new] animated:YES];
+    [self.navigationController pushViewController:[ASProposalsVC new] animated:YES];
 }
 - (void)pushToSetUp {
     [self.navigationController pushViewController:[ASSetVC new] animated:YES];
