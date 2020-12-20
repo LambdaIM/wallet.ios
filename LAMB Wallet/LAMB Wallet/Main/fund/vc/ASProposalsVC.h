@@ -1,5 +1,5 @@
 //
-//  ASFundTradRecordVC.h
+//  ASProposalsVC.h
 //  LAMB Wallet
 //
 //  Created by Sunny on 2020/11/9.

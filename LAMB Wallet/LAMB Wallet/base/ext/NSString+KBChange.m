@@ -32,4 +32,17 @@
     return data;
 }
  
+
+/*将UTC日期字符串转为本地时间字符串
+ eg: 2017-10-25 02:07:39  -> 2017-10-25 10:07:39
+ */
++ (NSString *)getLocalDateFormateUTCDate:(NSString *)utcStr {
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    format.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    format.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];//GMT
+    NSDate *utcDate = [format dateFromString:utcStr];
+    format.timeZone = [NSTimeZone localTimeZone];
+    NSString *dateString = [format stringFromDate:utcDate];
+    return dateString;
+}
 @end

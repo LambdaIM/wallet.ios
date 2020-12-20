@@ -34,12 +34,12 @@
     _model = model;
     self.titleLab.text = model.content.value.title;
     self.contentLab.text = model.content.value.descriptions;
-    self.stateLab.text = model.proposal_status;
+    self.stateLab.text = model.proposal_status_string;
     
-    if ([model.proposal_status isEqualToString:@"Passed"]) {
-        self.stateLab.backgroundColor = [UIColor mPassColor];
-    }else{
+    if ([model.proposal_status isEqualToString:@"Rejected"]) {
         self.stateLab.backgroundColor = [UIColor mNoPassColor];
+    }else{
+        self.stateLab.backgroundColor = [UIColor mPassColor];
     }
 }
 

@@ -63,6 +63,9 @@
 		985033FA25471B600067896B /* ASCustomNodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 985033F825471B600067896B /* ASCustomNodeVC.m */; };
 		985033FB25471B600067896B /* ASCustomNodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985033F925471B600067896B /* ASCustomNodeVC.xib */; };
 		98503401254720D20067896B /* ASTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98503400254720D20067896B /* ASTextField.m */; };
+		A33C7204258F36470079FF4C /* ASProposalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A33C7203258F36470079FF4C /* ASProposalDetailVC.m */; };
+		A33C720B258F40C20079FF4C /* ASProposalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A33C7209258F40C20079FF4C /* ASProposalDetailCell.m */; };
+		A33C720C258F40C20079FF4C /* ASProposalDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33C720A258F40C20079FF4C /* ASProposalDetailCell.xib */; };
 		A34AD11A2558E2860001979B /* ASFundTradRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD1192558E2860001979B /* ASFundTradRecordVC.m */; };
 		A34AD11E2558E4830001979B /* ASFundTradRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD11D2558E4830001979B /* ASFundTradRecordCell.m */; };
 		A34AD1222558EC900001979B /* ASFundCoinDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD1212558EC900001979B /* ASFundCoinDetailVC.m */; };
@@ -235,6 +238,11 @@
 		985033F925471B600067896B /* ASCustomNodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCustomNodeVC.xib; sourceTree = "<group>"; };
 		985033FF254720D20067896B /* ASTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASTextField.h; sourceTree = "<group>"; };
 		98503400254720D20067896B /* ASTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASTextField.m; sourceTree = "<group>"; };
+		A33C7202258F36470079FF4C /* ASProposalDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASProposalDetailVC.h; path = "LAMB Wallet/Main/fund/vc/ASProposalDetailVC.h"; sourceTree = SOURCE_ROOT; };
+		A33C7203258F36470079FF4C /* ASProposalDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASProposalDetailVC.m; path = "LAMB Wallet/Main/fund/vc/ASProposalDetailVC.m"; sourceTree = SOURCE_ROOT; };
+		A33C7208258F40C20079FF4C /* ASProposalDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASProposalDetailCell.h; sourceTree = "<group>"; };
+		A33C7209258F40C20079FF4C /* ASProposalDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASProposalDetailCell.m; sourceTree = "<group>"; };
+		A33C720A258F40C20079FF4C /* ASProposalDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASProposalDetailCell.xib; sourceTree = "<group>"; };
 		A34AD1182558E2860001979B /* ASFundTradRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTradRecordVC.h; sourceTree = "<group>"; };
 		A34AD1192558E2860001979B /* ASFundTradRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundTradRecordVC.m; sourceTree = "<group>"; };
 		A34AD11C2558E4830001979B /* ASFundTradRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundTradRecordCell.h; sourceTree = "<group>"; };
@@ -516,6 +524,8 @@
 				980A38AD2548036200C62DE0 /* ASManageWalletVC.m */,
 				A3FF6B3725861E78009AEF7E /* ASProposalsVC.h */,
 				A3FF6B3825861E78009AEF7E /* ASProposalsVC.m */,
+				A33C7202258F36470079FF4C /* ASProposalDetailVC.h */,
+				A33C7203258F36470079FF4C /* ASProposalDetailVC.m */,
 				985033DB2546FB4F0067896B /* ASSetVC.h */,
 				985033DC2546FB4F0067896B /* ASSetVC.m */,
 				985033E025470BBF0067896B /* ASLanguageVC.h */,
@@ -541,6 +551,9 @@
 				A3ED2C4D258EF19D0016D173 /* ASProposalsCell.h */,
 				A3ED2C4E258EF19D0016D173 /* ASProposalsCell.m */,
 				A3ED2C50258EF3630016D173 /* ASProposalsCell.xib */,
+				A33C7208258F40C20079FF4C /* ASProposalDetailCell.h */,
+				A33C7209258F40C20079FF4C /* ASProposalDetailCell.m */,
+				A33C720A258F40C20079FF4C /* ASProposalDetailCell.xib */,
 				985033EB254717AB0067896B /* ASCheckCell.h */,
 				985033EC254717AB0067896B /* ASCheckCell.m */,
 				985033ED254717AB0067896B /* ASCheckCell.xib */,
@@ -1001,6 +1014,7 @@
 				A5D77662254A782600783C67 /* KBFileImportVC.xib in Resources */,
 				A56C91A425480C8A00154D50 /* LoginVCViewController.xib in Resources */,
 				A3629AE62553D4CD002155E3 /* resource.bundle in Resources */,
+				A33C720C258F40C20079FF4C /* ASProposalDetailCell.xib in Resources */,
 				985033EF254717AB0067896B /* ASCheckCell.xib in Resources */,
 				A5B9BC6D253EBF5A00A80AE3 /* Assets.xcassets in Resources */,
 			);
@@ -1060,6 +1074,7 @@
 				980A39112548292700C62DE0 /* ASBackupWalletInputPSdVC.m in Sources */,
 				A5D9C53C2546D26A0031192C /* UIViewController+Ex.m in Sources */,
 				980A39692549112000C62DE0 /* KBPledgeVC.m in Sources */,
+				A33C720B258F40C20079FF4C /* ASProposalDetailCell.m in Sources */,
 				980A39A62549739900C62DE0 /* KBWithdrawRewardVC.m in Sources */,
 				980A382B2547AF6300C62DE0 /* ASTableViewCell.m in Sources */,
 				A5D77667254A785A00783C67 /* KBMnemonicImportVC.m in Sources */,
@@ -1102,6 +1117,7 @@
 				980A38EB254819FF00C62DE0 /* ASHUD.m in Sources */,
 				A5D9C5362546D0000031192C /* NSString+HexColor.m in Sources */,
 				A3DCD58C2555764600E1652E /* ASFundExchangeChildVC.m in Sources */,
+				A33C7204258F36470079FF4C /* ASProposalDetailVC.m in Sources */,
 				A5B9BC62253EBF5800A80AE3 /* AppDelegate.m in Sources */,
 				980A384C2547AFD200C62DE0 /* UIView+ZJFrame.m in Sources */,
 				980A38382547AFBB00C62DE0 /* ASWebVC.m in Sources */,

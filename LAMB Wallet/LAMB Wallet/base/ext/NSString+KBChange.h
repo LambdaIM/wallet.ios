@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 //将16进制字符串转换为NSData
 - (NSData *)my_dataFromHexString;
  
++ (NSString *)getLocalDateFormateUTCDate:(NSString *)utcStr ;
+
 @end
 
 NS_ASSUME_NONNULL_END

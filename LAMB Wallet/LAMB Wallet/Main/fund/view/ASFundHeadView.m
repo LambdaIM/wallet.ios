@@ -75,7 +75,7 @@
     [fundBgView addCorners:UIRectCornerTopLeft|UIRectCornerTopRight radius:10];
     [fundView addSubview:fundBgView];
     
-    UILabel *fundLab = [UILabel m3b14Text:@"资产"];
+    UILabel *fundLab = [UILabel m3b14Text:ASLocalizedString(@"资产")];
     fundLab.font = [UIFont pFMediumSize:16];
     fundLab.frame = CGRectMake(kLeftRightM, kLeftRightM, 100, 20);
     [fundBgView addSubview:fundLab];

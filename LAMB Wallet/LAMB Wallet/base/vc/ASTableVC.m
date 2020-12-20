@@ -41,6 +41,7 @@
         table.tableFooterView = [UIView new];
         table.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         table.separatorInset = UIEdgeInsetsZero;
+        table.showsVerticalScrollIndicator = NO;
         table.separatorColor = @"#E6E6E6".hexColor;
         table.backgroundColor = self.view.backgroundColor;
     }
