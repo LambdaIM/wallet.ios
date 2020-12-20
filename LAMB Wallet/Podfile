@@ -22,6 +22,7 @@ target 'LAMB Wallet' do
   pod 'DZNEmptyDataSet', '~> 1.8.1'
   pod 'TPKeyboardAvoiding', '~> 1.3.5'
   pod 'FCAlertView'
+  pod 'UITableViewDynamicLayoutCacheHeight'
  
   pod 'ActionSheetPicker-3.0'
   pod 'DoraemonKit/Core', '~> 3.0.4', :configurations => ['Debug']

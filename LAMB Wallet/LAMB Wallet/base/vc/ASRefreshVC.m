@@ -65,6 +65,7 @@
 - (void)loadDataAtPage:(NSInteger)page {
     
 }
+
 - (void)receivedDicts:(id)dicts atPage:(NSInteger)page resPageNum:(id)resPageNum resPageSize:(id)resPageSize  objClass:(Class)objClass {
 
     NSArray *objs = [NSArray yy_modelArrayWithClass:objClass json:dicts];

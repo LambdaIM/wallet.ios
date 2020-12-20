@@ -38,6 +38,9 @@ PODS:
   - MJRefresh (3.5.0)
   - ReactiveObjC (3.1.1)
   - TPKeyboardAvoiding (1.3.5)
+  - UITableViewDynamicLayoutCacheHeight (5.1.8):
+    - UITableViewDynamicLayoutCacheHeight/Category (= 5.1.8)
+  - UITableViewDynamicLayoutCacheHeight/Category (5.1.8)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -56,6 +59,7 @@ DEPENDENCIES:
   - MJRefresh (~> 3.5.0)
   - ReactiveObjC (~> 3.1.1)
   - TPKeyboardAvoiding (~> 1.3.5)
+  - UITableViewDynamicLayoutCacheHeight
   - YYCache (~> 1.0.4)
   - YYCategories (~> 1.0.4)
   - YYModel (~> 1.0.4)
@@ -75,6 +79,7 @@ SPEC REPOS:
     - MJRefresh
     - ReactiveObjC
     - TPKeyboardAvoiding
+    - UITableViewDynamicLayoutCacheHeight
     - YYCache
     - YYCategories
     - YYModel
@@ -93,10 +98,11 @@ SPEC CHECKSUMS:
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   TPKeyboardAvoiding: d55b3ea7b362540af8fcf36aa3ed2e87bf210cc6
+  UITableViewDynamicLayoutCacheHeight: 4fabd95e944317cc7cd7ead3c56915d9527432dd
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 3da3da9e539bf421a20575495950779a9b093a23
+PODFILE CHECKSUM: f6fe3ac4d0b33770079635604a2148a0d2477821
 
 COCOAPODS: 1.10.0

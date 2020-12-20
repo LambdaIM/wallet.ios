@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 下划线
 + (UIColor *) baseLineColor;
 
+/// 通过
++ (UIColor *) mPassColor;
+
+/// 拒绝
++ (UIColor *) mNoPassColor;
 @end
 
 NS_ASSUME_NONNULL_END

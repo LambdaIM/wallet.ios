@@ -190,6 +190,8 @@ static inline BOOL isIPhoneXSeries() {
 #import "UIColor+ASThemeColor.h"
 
 #define JoinParam(FORMAT, param) [NSString stringWithFormat:FORMAT.copy,param]
+#define JoinParams(FORMAT, param1, param2) [NSString stringWithFormat:FORMAT.copy,param1,param2]
+
 // 账户信息接口
 #define USER_Get_Auth         @"/auth/accounts/%@"
 // 读取余额和用户信息
@@ -258,14 +260,16 @@ static inline BOOL isIPhoneXSeries() {
 #define getHTTP_Get_my_order_store         @"/market/matchorders/"
 // +获取提案列表
 #define getHTTP_Get_proposal_list         @"/gov/proposals"
-// +获取提案详情
+// +获取提案详情1《需要5个接口 》
 #define getHTTP_Get_proposal_details         @"/gov/proposals/%@"
-//获取提案公共参数
+//获取提案公共参数2
 #define getHTTP_Get_proposal_parameters         @"/gov/parameters/deposit"
-//获取提案我的押金
-#define getHTTP_Get_proposal_my_yajin         @"/gov/proposals/"
-//获取提案投票信息
-#define getHTTP_Get_proposal_toupiao         @"/gov/proposals/"
+//获取提案我的押金3
+#define getHTTP_Get_proposal_my_yajin         @"/gov/proposals/%@/deposits/%@"
+//获取提案我的投票4
+#define getHTTP_Get_proposal_my_toupiao         @"/gov/proposals/%@/votes/%@"
+//获取提案投票结果5
+#define getHTTP_Get_proposal_toupiao         @"/gov/proposals/%@/tally"
 //获取交易详情
 #define getHTTP_Get_transaction_detail         @"/txs/"
 
