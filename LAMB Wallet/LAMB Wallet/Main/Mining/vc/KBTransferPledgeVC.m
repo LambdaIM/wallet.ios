@@ -20,6 +20,7 @@
 @property(nonatomic, weak) TPKeyboardAvoidingScrollView *m_scroll;
 @property (nonatomic, strong) NSArray *nodeListArray;    // 验证节点
 @property (nonatomic, assign) NSInteger selectIndex; //
+@property (nonatomic, strong) UILabel *nodeActionLab;    // <#des#>
 @end
 
 @implementation KBTransferPledgeVC
@@ -61,6 +62,8 @@
         lab.backgroundColor = grayColor;
         lab.numberOfLines = 0;
         [ms addSubview: lab];
+        lab.layer.cornerRadius = 8;
+        lab.clipsToBounds = YES;
         lab.top = tipLab1.bottom + 10;
         lab.left = 15;
         lab.width = kScreenW-2*15;
@@ -84,6 +87,8 @@
         lab.backgroundColor = grayColor;
         lab.numberOfLines = 0;
         [ms addSubview: lab];
+        lab.layer.cornerRadius = 8;
+        lab.clipsToBounds = YES;
         lab.top = tipLab2.bottom + 10;
         lab.left = 15;
         lab.width = kScreenW-2*15;
@@ -100,41 +105,43 @@
         lab.left = 15;
         lab;
     });
-    UIButton *tBtn = [UIButton btn];
-    tBtn.normalTitle = ASLocalizedString(@"请选择转质押的节点");
-    tBtn.normalTitleColor = [UIColor lightGrayColor];
-    tBtn.normalImage = [UIImage imageNamed:@"drop_down"];
-    tBtn.frame = CGRectMake(15, tipLab3.bottom + 10, kScreenW-2*15, 50);
+    
+    
+    self.nodeActionLab = ({
+        ASLabel *lab =
+        [ASLabel text:self.nodeDetailModel.operator_address font:[UIFont pFSize:15] textColor:[UIColor lightGrayColor]];
+        lab.m_edgeInsets = UIEdgeInsetsMake(8, 16, 8, 30);
+        lab.backgroundColor = grayColor;
+        lab.numberOfLines = 2;
+        [ms addSubview: lab];
+        lab.layer.cornerRadius = 8;
+        lab.clipsToBounds = YES;
+        lab.top = tipLab3.bottom + 10;
+        lab.left = 15;
+        lab.width = kScreenW-2*15;
+        [lab sizeToFit];
+        lab;
+    });
+    
+    UIImage *icon = [UIImage imageNamed:@"drop_down"] ;
+    
+    UIImageView *dropImageView = [[UIImageView alloc]initWithImage:icon];
+    dropImageView.frame = CGRectMake(self.nodeActionLab.width - icon.size.width - 15, (self.nodeActionLab.height - icon.size.height ) / 2, icon.size.width, icon.size.height);
+    [self.nodeActionLab addSubview:dropImageView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectNodeAction)];
+    self.nodeActionLab.userInteractionEnabled = YES;
+    dropImageView.userInteractionEnabled = YES;
+    [self.nodeActionLab addGestureRecognizer:tap];
+    
     @weakify(self);
-    [[tBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *btn) {
-        @strongify(self);
-                
-        NSMutableArray *nodeTitleArray = [NSMutableArray array];
-        
-        for (ASNodeListModel *model in self.nodeListArray) {
-            [nodeTitleArray addObject:[NSString stringWithFormat:@"%@...%@ %@",[model.operator_address substringToIndex:10],[model.operator_address substringFromIndex:model.operator_address.length - 6],model.descriptions.moniker]];
-        }
-        [ActionSheetStringPicker showPickerWithTitle:ASLocalizedString(@"请选择转质押的节点") rows:nodeTitleArray initialSelection:self.selectIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-            [btn setTitle:[[selectedValue componentsSeparatedByString:@" "] firstObject] forState:UIControlStateNormal];
-            [btn.titleLabel setTextColor:[UIColor blackColor]];
-            [btn.titleLabel setFont:[UIFont pFSize:15]];
-            btn.titleLabel.numberOfLines = 2;
-            [btn setButtonImageTitleStyle:ButtonImageTitleStyleRightLeft padding:15];
-        } cancelBlock:^(ActionSheetStringPicker *picker) {
-            
-        } origin:btn];
-    }];
-    [ms addSubview: tBtn];
-    tBtn.backgroundColor = grayColor;
-    tBtn.layer.cornerRadius = 8;
-    [tBtn setButtonImageTitleStyle:ButtonImageTitleStyleRightLeft padding:15];
     
     UILabel *tipLab4 = ({
         UILabel *lab =
         [UILabel text:ASLocalizedString(@"金额(TBB)") font:[UIFont pFBlodSize:20] textColor:[UIColor blackColor]];
         [ms addSubview: lab];
         [lab sizeToFit];
-        lab.top = tBtn.bottom +  10;
+        lab.top = self.nodeActionLab.bottom +  10;
         lab.left = 15;
         lab;
     });
@@ -170,6 +177,29 @@
         });
         
         btn.top = redTip.bottom + 50;
+    
+    self.nodeActionLab.text = [NSString stringWithFormat:@"%@",ASLocalizedString(@"请选择转质押的节点")] ;
+}
+
+- (void) selectNodeAction {
+    
+    // 选择地址弹窗
+    NSMutableArray *nodeTitleArray = [NSMutableArray array];
+
+    kWeakSelf(weakSelf)
+    
+    for (ASNodeListModel *model in self.nodeListArray) {
+        [nodeTitleArray addObject:[NSString stringWithFormat:@"%@...%@ %@",[model.operator_address substringToIndex:10],[model.operator_address substringFromIndex:model.operator_address.length - 6],model.descriptions.moniker]];
+    }
+    
+    [ActionSheetStringPicker showPickerWithTitle:ASLocalizedString(@"请选择转质押的节点") rows:nodeTitleArray initialSelection:self.selectIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        weakSelf.nodeActionLab.textColor = [UIColor blackColor];
+        weakSelf.selectIndex = selectedIndex;
+        ASNodeListModel *model = [weakSelf.nodeListArray objectAtIndex:selectedIndex];
+        weakSelf.nodeActionLab.text = model.operator_address;
+    } cancelBlock:^(ActionSheetStringPicker *picker) {
+
+    } origin:self.nodeActionLab];
 }
 
 - (void) getCanUserNodeDate {

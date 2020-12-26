@@ -150,7 +150,6 @@
             }
                 
                 break;
-                
             case ButtonImageTitleStyleLeftRight:
             {
                 //图片在左，文字在右，距离按钮两边边距
