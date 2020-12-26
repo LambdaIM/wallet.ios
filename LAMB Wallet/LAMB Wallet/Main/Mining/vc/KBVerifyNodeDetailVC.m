@@ -23,9 +23,15 @@
 
 @implementation KBVerifyNodeDetailVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self getUtbbData:lambAddress Complain:^(bool finish) {
+        
+    }];
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     self.title = ASLocalizedString(@"验证节点详情");
     
@@ -34,17 +40,17 @@
     self.m_scroll = ms;
     ms.contentSize = CGSizeMake(kScreenW, kScreenH);
     NSArray<NSDictionary<NSString *, NSString *> *> *dicts =
-    @[@{@"title": @"节点昵称", @"value": @"cv-moniker-10"},
-      @{@"title": @"我的质押", @"value": @"0TBB"},
-      @{@"title":@"我的奖励", @"value": @"0LAMB"},
-      @{@"title": @"质押地址", @"value": @"lambdavalojljlsjflsjal"},
+    @[@{@"title": @"节点昵称", @"value": self.nodeDetail.descriptions.moniker},
+      @{@"title": @"我的质押", @"value": @"0 TBB"},
+      @{@"title":@"我的奖励", @"value": @"0 LAMB"},
+      @{@"title": @"质押地址", @"value": self.nodeDetail.operator_address},
 
-      @{@"title": @"简   介", @"value": @" [dicts enumerateObjectsUsingBlock:^(NSDictionary<NSString *,NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)  [dicts enumerateObjectsUsingBlock:^(NSDictionary<NSString *,NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)  [dicts enumerateObjectsUsingBlock:^(NSDictionary<NSString *,NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)  [dicts enumerateObjectsUsingBlock:^(NSDictionary<NSString *,NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)  [dicts enumerateObjectsUsingBlock:^(NSDictionary<NSString *,NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)  [dicts enumerateObjectsUsingBlock:^(NSDictionary<NSString *,NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) "},
+      @{@"title": @"简   介", @"value": self.nodeDetail.descriptions.details.length == 0 ? @" ":self.nodeDetail.descriptions.details},
 
-      @{@"title": @"节点收益", @"value": @"25%"},
-      @{@"title": @"最大收益", @"value": @"25%"},
-      @{@"title": @"最大收益变化", @"value": @"1%"},
-      @{@"title": @"投票权重", @"value": @"9.43%"},
+      @{@"title": @"节点收益", @"value": [self.nodeDetail.commission.rate persentString]},
+      @{@"title": @"最大收益", @"value": [self.nodeDetail.commission.max_rate persentString]},
+      @{@"title": @"最大收益变化", @"value": [self.nodeDetail.commission.max_change_rate persentString]},
+      @{@"title": @"投票权重", @"value": self.nodeDetail.persent},
     ];
     CGFloat leftM = 15;
     UIView *topV = [[UIView alloc] initWithFrame:CGRectMake(leftM, leftM, kScreenW-2*leftM, 220)];
@@ -78,6 +84,10 @@
             [lab sizeToFit];
             lab;
         });
+        valueLab.tag = 8000 + idx;
+        if (valueLab.tag == 8001 ||valueLab.tag == 8002) {
+            valueLab.numberOfLines = 1;
+        }
         [topV addSubview: valueLab];
         lastLab = valueLab;
     }];
@@ -124,17 +134,22 @@
         @strongify(self);
         KBPledgeVC *vc = [KBPledgeVC new];
         vc.m_cancel = YES;
+        vc.nodeDetailModel = self.nodeDetail;
         [self push:vc];
     }];
     [[btn2  rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *btn) {
         @strongify(self);
         KBTransferPledgeVC *vc = [KBTransferPledgeVC new];
+        vc.nodeDetailModel = self.nodeDetail;
         [self push:vc];
     }];
     [[btn3  rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *btn) {
         @strongify(self);
-        KBPledgeVC *vc = [KBPledgeVC new];
-        [self push:vc];
+        if (self.nodeDetail.status == 2) {
+            KBPledgeVC *vc = [KBPledgeVC new];
+            vc.nodeDetailModel = self.nodeDetail;
+            [self push:vc];
+        }
     }];
     
     [btn1 centerYEqualSuper];
@@ -165,7 +180,76 @@
             [btn addCorners:UIRectCornerAllCorners radius:btn.height*0.5];
         }
     }];
+}
+
+- (void) reloadData{
+    UILabel *lockTbbLab = [self.view viewWithTag:8000 + 1];
+    UILabel *winLabmLab = [self.view viewWithTag:8000 + 2];
+    lockTbbLab.text = [NSString stringWithFormat:@"%@ TBB",self.nodeDetail.utbb.length > 0 ? [self.nodeDetail.utbb getShowNumber:@"6"]:@"0"];
+    winLabmLab.text = [NSString stringWithFormat:@"%@ LAMB",self.nodeDetail.winLamb.length > 0 ? [self.nodeDetail.winLamb getShowNumber:@"6"]:@"0"];
+    [lockTbbLab sizeToFit];
+    [winLabmLab sizeToFit];
+}
+
+// 获取节点详情
+- (void) getNodeDetailData:(NSString *) nodeAddress Complain:(void(^)(ASNodeListModel *nodeDetail)) complain{
+    kWeakSelf(weakSelf)
     
+    [LambNetManager GET:JoinParam(HTTP_Get_producers_details, nodeAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            ASNodeListModel *nodeDetail = [ASNodeListModel yy_modelWithDictionary:responseObject];
+            weakSelf.nodeDetail.tokens = nodeDetail.tokens;
+            weakSelf.nodeDetail.delegator_shares = nodeDetail.delegator_shares;
+            complain(nodeDetail);
+        }else{
+            complain(nil);
+        }
+    } failure:^(NSError * _Nonnull error) {
+        complain(nil);
+    }];
+}
+
+// 获取质押Tbb节点
+- (void) getUtbbData:(NSString *) lambAddressString Complain:(void(^)(bool finish)) complain{
+    
+    kWeakSelf(weakSelf)
+    [LambNodeManager manager].uttb = @"0";
+    [LambNetManager GET:JoinParam(getHTTP_get_zhiya_producer, lambAddressString) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            NSArray *objs = [NSArray yy_modelArrayWithClass:[ASNodeListModel class] json:responseObject];
+            for (ASNodeListModel *node in objs) {
+                
+                if ([node.validator_address isEqualToString:weakSelf.nodeDetail.operator_address]) {
+                    [weakSelf getWinLambDataComplain:^(bool finish) {
+                                            
+                    }];
+                    [weakSelf getNodeDetailData:weakSelf.nodeDetail.operator_address Complain:^(ASNodeListModel *nodeDetail) {
+                        weakSelf.nodeDetail.utbb = [NSString stringWithFormat:@"%f",[[LambNodeManager manager].uttb doubleValue] + [node.shares doubleValue] * [weakSelf.nodeDetail.tokens doubleValue] / [weakSelf.nodeDetail.delegator_shares doubleValue]];
+                        [weakSelf reloadData];
+                    }];
+                }
+            }
+        }
+        complain(YES);
+    } failure:^(NSError * _Nonnull error) {
+        complain(NO);
+    }];
+}
+
+// 获取lamb奖励
+- (void) getWinLambDataComplain:(void(^)(bool finish)) complain{
+    
+    kWeakSelf(weakSelf)
+    [LambNetManager GET:JoinParams(getHTTP_Get_for_producers_award_validatorAddr, lambAddress,self.nodeDetail.operator_address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            NSArray *objs = [NSArray yy_modelArrayWithClass:[ASProposalValueAmountModel class] json:responseObject];
+            weakSelf.nodeDetail.winLamb = [[objs firstObject] amount];
+            [weakSelf reloadData];
+        }
+        complain(YES);
+    } failure:^(NSError * _Nonnull error) {
+        complain(NO);
+    }];
 }
 
 @end

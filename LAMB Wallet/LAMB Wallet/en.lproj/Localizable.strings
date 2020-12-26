@@ -193,6 +193,7 @@
 "将二维码放入框内,即可自动扫描"="Place QR code in the box and it will scan automatically";
 "创建钱包"="Create wallet ";
 "被监禁"="imprisoned";
+"解绑中"="unbonding";
 "接收自"="Receive from";
 "保存二维码到相册"="please save QR code into the photo album";
 "节点链接错误"="Node link error";

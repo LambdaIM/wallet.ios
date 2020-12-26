@@ -15,6 +15,8 @@
 @interface MiningHeaderView()
 @property(nonatomic, weak) UIView *m_topV;
 @property(nonatomic, weak) UIView *m_bottomV;
+@property(nonatomic, strong) UILabel *winLambLab;// 可提取奖励
+@property(nonatomic, strong) UILabel *utbbLab;// 总的质押
 
 @end
 @implementation MiningHeaderView
@@ -37,9 +39,9 @@
             lab.left = 15;
             lab;
         });
-        UILabel *valuelab1 = ({
+        _winLambLab = ({
             UILabel *lab =
-            [UILabel text:ASLocalizedString(@"0") font:[UIFont pFBlodSize:30] textColor:[UIColor blackColor]];
+            [UILabel text:ASLocalizedString(@"0") font:[UIFont pFBlodSize:25] textColor:[UIColor blackColor]];
             [topV addSubview: lab];
             lab.top = tiplab1.bottom + 10;
             lab.left = 15;
@@ -50,14 +52,14 @@
             UILabel *lab =
             [UILabel text:ASLocalizedString(@"质押总量(TBB)") font:[UIFont pFSize:14] textColor:[UIColor blackColor]];
             [topV addSubview: lab];
-            lab.top = valuelab1.bottom + 10;
+            lab.top = self.winLambLab.bottom + 10;
             lab.left = 15;
             lab;
         });
         
-        UILabel *valuelab2 = ({
+        _utbbLab = ({
             UILabel *lab =
-            [UILabel text:ASLocalizedString(@"0") font:[UIFont pFBlodSize:30] textColor:[UIColor blackColor]];
+            [UILabel text:ASLocalizedString(@"0") font:[UIFont pFBlodSize:25] textColor:[UIColor blackColor]];
             [topV addSubview: lab];
             lab.top = tiplab2.bottom + 10;
             lab.left = 15;
@@ -119,6 +121,18 @@
         line.right = bottomV.width-leftM;
     }
     return self;
+}
+
+- (void)setUtbbString:(NSString *)utbbString {
+    self.utbbLab.text = [utbbString getShowNumber:@"6"];
+    _utbbString = self.utbbLab.text;
+    [self.utbbLab sizeToFit];
+}
+
+- (void)setWinLambString:(NSString *)winLambString {
+    self.winLambLab.text = [winLambString getShowNumber:@"6"];
+    _winLambString = self.winLambLab.text;
+    [self.winLambLab sizeToFit];
 }
 
 @end

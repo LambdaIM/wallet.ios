@@ -8,7 +8,7 @@
 
 #import "SwitchVerificationNodeVC.h"
 #import "ASCheckCell.h"
-#import "NodeManager.h"
+#import "LambNodeManager.h"
 #import "ASCustomNodeVC.h"
 #import "FCAlertView.h"
 #import <NSDictionary+YYAdd.h>
@@ -31,7 +31,7 @@
 }
 - (void)loadData {
     
-    NSArray *nodes = [NodeManager loadNodes];
+    NSArray *nodes = [LambNodeManager loadNodes];
     NSMutableArray *datas = [NSMutableArray array];
     for (ASNodeModel *model in nodes) {
         [datas addObject:@{@"title":model.nodeName, @"sel":@"selectAtindex", @"selected":@(model.select)}];
@@ -44,7 +44,7 @@
     vc.refreshNodeBlock = ^(NSString * _Nonnull nodeAddress) {
         if (nodeAddress) {
             ASNodeModel *nodeModel = [[ASNodeModel alloc]initWithBaseUrl:[[nodeAddress componentsSeparatedByString:@":"]firstObject] port:[[nodeAddress componentsSeparatedByString:@":"]lastObject] nodeName:nodeAddress select:YES];
-            [NodeManager addNode:nodeModel];
+            [LambNodeManager addNode:nodeModel];
             [weakSelf configModel:nodeModel];
         }
     };
@@ -59,13 +59,13 @@
 }
 
 - (void)customTableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray *nodes = [NodeManager loadNodes];
+    NSArray *nodes = [LambNodeManager loadNodes];
     ASNodeModel *selectModel = [nodes objectAtIndex:indexPath.row];
     [self configModel:selectModel];
 }
 
 - (void) configModel:(ASNodeModel *) model {
-    NSArray *nodes = [NodeManager loadNodes];
+    NSArray *nodes = [LambNodeManager loadNodes];
     for (int i = 0; i < nodes.count; i ++) {
         ASNodeModel *tempModel = [nodes objectAtIndex:i];
         if ([model.baseUrl isEqualToString:tempModel.baseUrl]) {
@@ -74,8 +74,8 @@
             tempModel.select = NO;
         }
     }
-    [[NodeManager manager] configNode:model];
-    [NodeManager addNodes:nodes];
+    [[LambNodeManager manager] configNode:model];
+    [LambNodeManager addNodes:nodes];
     [self loadData];
     [self.table reloadData];
     

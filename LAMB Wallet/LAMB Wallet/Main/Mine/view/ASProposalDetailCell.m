@@ -83,8 +83,8 @@
     self.titleLab.text = model.content.value.title;
     self.stateLab.text = model.proposal_status_string;
     self.numberLab.text = model.ids;
-    self.startLab.text = [NSString getLocalDateFormateUTCDate:[[[model.voting_start_time componentsSeparatedByString:@"."] firstObject] stringByReplacingOccurrencesOfString:@"T" withString:@" "]];
-    self.endLab.text = [NSString getLocalDateFormateUTCDate:[[[model.voting_end_time componentsSeparatedByString:@"."] firstObject] stringByReplacingOccurrencesOfString:@"T" withString:@" "]];
+    self.startLab.text = [NSString getLocalDateFormateUTCDate:model.voting_start_time];
+    self.endLab.text = [NSString getLocalDateFormateUTCDate:model.voting_end_time];
     if (model.min_deposit) {
         self.needLab.text = model.min_deposit.amount;
     }else{

@@ -102,11 +102,15 @@ static LambNetManager *instance = nil;
 }
 
 + (void)requestFinish:(id)responseObject error:(NSError *) error showHud:(BOOL)hud success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure{
-    if (success) {
-        success(responseObject);
+    if (responseObject) {
+        if (success) {
+            success(responseObject);
+        }
     }
-    if (failure) {
-        failure(error);
+    if (error) {
+        if (failure) {
+            failure(error);
+        }
     }
     if (hud) {
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 拒绝
 + (UIColor *) mNoPassColor;
+
++ (UIColor *) mPassColorAlpha:(CGFloat)alpha;
++ (UIColor *) mNoPassColorAlpha:(CGFloat)alpha;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -1,6 +1,6 @@
 
 #import "ASCustomNodeVC.h"
-#import "NodeManager.h"
+#import "LambNodeManager.h"
 #import "SXCodeTool.h"
 @interface ASCustomNodeVC ()
 @property (weak, nonatomic) IBOutlet UIView *m_contentView;
@@ -44,7 +44,7 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 - (IBAction)clickSureBtn {
-    [NodeManager manager].type = ASNodeTypeCustom;
+    [LambNodeManager manager].type = ASNodeTypeCustom;
     if (self.refreshNodeBlock) {
         self.refreshNodeBlock([NSString stringWithFormat:@"%@:%@",self.m_ipTF.text,self.m_portTF.text]);
     }

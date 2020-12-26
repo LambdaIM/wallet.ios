@@ -7,14 +7,17 @@
 //
 
 #import "ASTableViewCell.h"
+#import "ASNodeListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MiningCell : ASTableViewCell
+
 @property (weak, nonatomic) IBOutlet UIView *m_contentView;
 @property (weak, nonatomic) IBOutlet UILabel *m_titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *m_infoLab;
 @property (weak, nonatomic) IBOutlet UILabel *m_statusLab;
+@property (nonatomic, strong) ASNodeListModel *model;
 
 @end
 

@@ -59,7 +59,7 @@
 		985033E725470EF50067896B /* SwitchVerificationNodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 985033E625470EF50067896B /* SwitchVerificationNodeVC.m */; };
 		985033EE254717AB0067896B /* ASCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 985033EC254717AB0067896B /* ASCheckCell.m */; };
 		985033EF254717AB0067896B /* ASCheckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985033ED254717AB0067896B /* ASCheckCell.xib */; };
-		985033F3254718D40067896B /* NodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985033F2254718D40067896B /* NodeManager.m */; };
+		985033F3254718D40067896B /* LambNodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 985033F2254718D40067896B /* LambNodeManager.m */; };
 		985033FA25471B600067896B /* ASCustomNodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 985033F825471B600067896B /* ASCustomNodeVC.m */; };
 		985033FB25471B600067896B /* ASCustomNodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985033F925471B600067896B /* ASCustomNodeVC.xib */; };
 		98503401254720D20067896B /* ASTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98503400254720D20067896B /* ASTextField.m */; };
@@ -71,6 +71,7 @@
 		A34AD1222558EC900001979B /* ASFundCoinDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD1212558EC900001979B /* ASFundCoinDetailVC.m */; };
 		A34AD1262558EE410001979B /* ASFundCoinDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A34AD1252558EE410001979B /* ASFundCoinDetailView.m */; };
 		A35B80D1257917D5000BC8C7 /* ASUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A35B80D0257917D5000BC8C7 /* ASUserModel.m */; };
+		A35BC0C62596DE1500F6A5E9 /* ASNodeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A35BC0C52596DE1500F6A5E9 /* ASNodeListModel.m */; };
 		A3629ADC2553ABD4002155E3 /* ASFundVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629ADB2553ABD4002155E3 /* ASFundVC.m */; };
 		A3629AE42553D4CD002155E3 /* ASScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629ADF2553D4CC002155E3 /* ASScanViewController.m */; };
 		A3629AE52553D4CD002155E3 /* ASScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AE02553D4CC002155E3 /* ASScanView.m */; };
@@ -231,8 +232,8 @@
 		985033EB254717AB0067896B /* ASCheckCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASCheckCell.h; sourceTree = "<group>"; };
 		985033EC254717AB0067896B /* ASCheckCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASCheckCell.m; sourceTree = "<group>"; };
 		985033ED254717AB0067896B /* ASCheckCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASCheckCell.xib; sourceTree = "<group>"; };
-		985033F1254718D40067896B /* NodeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodeManager.h; sourceTree = "<group>"; };
-		985033F2254718D40067896B /* NodeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NodeManager.m; sourceTree = "<group>"; };
+		985033F1254718D40067896B /* LambNodeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LambNodeManager.h; sourceTree = "<group>"; };
+		985033F2254718D40067896B /* LambNodeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LambNodeManager.m; sourceTree = "<group>"; };
 		985033F725471B600067896B /* ASCustomNodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASCustomNodeVC.h; sourceTree = "<group>"; };
 		985033F825471B600067896B /* ASCustomNodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASCustomNodeVC.m; sourceTree = "<group>"; };
 		985033F925471B600067896B /* ASCustomNodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCustomNodeVC.xib; sourceTree = "<group>"; };
@@ -254,6 +255,8 @@
 		A34DAFE525529E8900352586 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A35B80CF257917D5000BC8C7 /* ASUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASUserModel.h; sourceTree = "<group>"; };
 		A35B80D0257917D5000BC8C7 /* ASUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASUserModel.m; sourceTree = "<group>"; };
+		A35BC0C42596DE1500F6A5E9 /* ASNodeListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASNodeListModel.h; sourceTree = "<group>"; };
+		A35BC0C52596DE1500F6A5E9 /* ASNodeListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASNodeListModel.m; sourceTree = "<group>"; };
 		A3629ADA2553ABD4002155E3 /* ASFundVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundVC.h; sourceTree = "<group>"; };
 		A3629ADB2553ABD4002155E3 /* ASFundVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundVC.m; sourceTree = "<group>"; };
 		A3629ADF2553D4CC002155E3 /* ASScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASScanViewController.m; sourceTree = "<group>"; };
@@ -474,6 +477,7 @@
 		980A39212548299200C62DE0 /* Mining */ = {
 			isa = PBXGroup;
 			children = (
+				A35BC0C32596DDEF00F6A5E9 /* model */,
 				980A3923254829A100C62DE0 /* view */,
 				980A39222548299A00C62DE0 /* vc */,
 			);
@@ -576,6 +580,15 @@
 				A35B80D0257917D5000BC8C7 /* ASUserModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A35BC0C32596DDEF00F6A5E9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A35BC0C42596DE1500F6A5E9 /* ASNodeListModel.h */,
+				A35BC0C52596DE1500F6A5E9 /* ASNodeListModel.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		A3629AD72553AB76002155E3 /* mode */ = {
@@ -852,8 +865,8 @@
 				A394C8EA2585B538005FCAD2 /* model */,
 				985033F52547196D0067896B /* view */,
 				985033DA2546FB300067896B /* vc */,
-				985033F1254718D40067896B /* NodeManager.h */,
-				985033F2254718D40067896B /* NodeManager.m */,
+				985033F1254718D40067896B /* LambNodeManager.h */,
+				985033F2254718D40067896B /* LambNodeManager.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1121,6 +1134,7 @@
 				A5B9BC62253EBF5800A80AE3 /* AppDelegate.m in Sources */,
 				980A384C2547AFD200C62DE0 /* UIView+ZJFrame.m in Sources */,
 				980A38382547AFBB00C62DE0 /* ASWebVC.m in Sources */,
+				A35BC0C62596DE1500F6A5E9 /* ASNodeListModel.m in Sources */,
 				A5D77684254AB2FF00783C67 /* fe.c in Sources */,
 				A511B989255A459B00327525 /* KBBipManager.m in Sources */,
 				A394C8ED2585B55F005FCAD2 /* ASNodeModel.m in Sources */,
@@ -1128,7 +1142,7 @@
 				980A38522547AFD200C62DE0 /* ZJScrollSegmentView.m in Sources */,
 				980A3976254921E800C62DE0 /* KBStoragePledgeVC.m in Sources */,
 				980A38AE2548036200C62DE0 /* ASManageWalletVC.m in Sources */,
-				985033F3254718D40067896B /* NodeManager.m in Sources */,
+				985033F3254718D40067896B /* LambNodeManager.m in Sources */,
 				A5D9C52D2546C7080031192C /* MineVC.m in Sources */,
 				A3D4635A2552B07900EED6CD /* keypair.c in Sources */,
 				A3DCD584255547B500E1652E /* ASFundCollectioinVC.m in Sources */,

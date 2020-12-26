@@ -7,10 +7,14 @@
 //
 
 #import "BaseVC.h"
+#import "ASNodeListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 /// 转质押
 @interface KBTransferPledgeVC : BaseVC
+
+@property (nonatomic, strong) ASNodeListModel *nodeDetailModel;    //
+
 @end
 
 NS_ASSUME_NONNULL_END

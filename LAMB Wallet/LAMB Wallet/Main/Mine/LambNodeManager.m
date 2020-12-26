@@ -1,15 +1,15 @@
 //
-//  NodeManager.m
+//  LambNodeManager.m
 //  LAMB Wallet
 //
 //  Created by dfpo on 2020/10/26.
 //  Copyright © 2020 fei. All rights reserved.
 //
 
-#import "NodeManager.h"
+#import "LambNodeManager.h"
 
 
-@implementation NodeManager
+@implementation LambNodeManager
 + (instancetype)manager
 {
     static id sharedInstance = nil;
@@ -44,10 +44,10 @@
     if (!dataArray) {
         ASNodeModel *mainNode =
         [[ASNodeModel alloc]initWithBaseUrl:[[RELEASEBASEURL componentsSeparatedByString:@":"] firstObject] port:[[RELEASEBASEURL componentsSeparatedByString:@":"] lastObject] nodeName:ASLocalizedString(@"主网默认节点") select:YES];
-        [NodeManager addNode:mainNode];
+        [LambNodeManager addNode:mainNode];
         ASNodeModel *testNode = [[ASNodeModel alloc]initWithBaseUrl:[[DEBUGBASEURL componentsSeparatedByString:@":"] firstObject] port:[[DEBUGBASEURL componentsSeparatedByString:@":"] lastObject]  nodeName:ASLocalizedString(@"测试网默认节点") select:NO];
         [mutableArray addObjectsFromArray:@[mainNode,testNode]];
-        [NodeManager addNodes:mutableArray];
+        [LambNodeManager addNodes:mutableArray];
     }else{
         for (NSData *goodsData in dataArray)
         {
@@ -76,7 +76,7 @@
     NSUserDefaults *defalult = [NSUserDefaults standardUserDefaults];
     [defalult removeObjectForKey:kLOCALNODES];
     if (nodes) {
-        [NodeManager saveSortArrayData:nodes];
+        [LambNodeManager saveSortArrayData:nodes];
     }
 }
 

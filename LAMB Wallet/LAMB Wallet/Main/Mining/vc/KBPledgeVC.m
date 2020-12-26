@@ -48,10 +48,12 @@
     });
     UILabel *valuelab1 = ({
         ASLabel *lab =
-        [ASLabel text:ASLocalizedString(@"发送方发送方发送方发送方发送方发送方发送方发送方发送方") font:[UIFont pFSize:15] textColor:[UIColor blackColor]];
+        [ASLabel text:lambAddress font:[UIFont pFSize:15] textColor:[UIColor blackColor]];
         lab.m_edgeInsets = UIEdgeInsetsMake(8, 16, 8, 16);
         lab.backgroundColor = @"#F1F2F7".hexColor;
         lab.numberOfLines = 0;
+        lab.layer.cornerRadius = 8;
+        lab.clipsToBounds = YES;
         [ms addSubview: lab];
         lab.top = tipLab1.bottom + 10;
         lab.left = 15;
@@ -71,11 +73,13 @@
     });
     UILabel *valuelab2 = ({
         ASLabel *lab =
-        [ASLabel text:ASLocalizedString(@"发送方发送方发送方发送方发送方发送方发送方发送方发送方") font:[UIFont pFSize:15] textColor:[UIColor blackColor]];
+        [ASLabel text:self.nodeDetailModel.operator_address font:[UIFont pFSize:15] textColor:[UIColor blackColor]];
         lab.m_edgeInsets = UIEdgeInsetsMake(8, 16, 8, 16);
         lab.backgroundColor = @"#F1F2F7".hexColor;
         lab.numberOfLines = 0;
         [ms addSubview: lab];
+        lab.layer.cornerRadius = 8;
+        lab.clipsToBounds = YES;
         lab.top = tipLab2.bottom + 10;
         lab.left = 15;
         lab.width = kScreenW-2*15;
@@ -95,7 +99,7 @@
     // 可用余额
     UILabel *valueLabCan = ({
         UILabel *lab =
-        [UILabel text:@"0TBB" font:[UIFont pFSize:15] textColor:[UIColor orangeColor]];
+        [UILabel text:self.m_cancel ? [NSString stringWithFormat:@"%@ TBB",self.nodeDetailModel.utbb.length > 0 ? [self.nodeDetailModel.utbb getShowNumber:@"6"]:@"0"] :@"0TBB" font:[UIFont pFSize:15] textColor:[UIColor orangeColor]];
         [ms addSubview: lab];
         [lab sizeToFit];
         lab.centerY = tipLab3.centerY;
@@ -116,6 +120,11 @@
     ASTextField *tf = [[ASTextField alloc] initWithFrame:CGRectMake(15, tipLab3.bottom + 10, kScreenW-2*15, 50)];
     [ms addSubview:tf];
     tf.m_leftMargin = 15;
+    if (self.m_cancel) {
+        tf.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    }else{
+        tf.keyboardType = UIKeyboardTypeNumberPad;
+    }
     tf.layer.cornerRadius = 8;
     tf.placeholder = ASLocalizedString(@"填写数额");
     tf.backgroundColor = @"#F1F2F7".hexColor;
@@ -125,6 +134,10 @@
     btn.frame = CGRectMake(30, tf.bottom + 50, kScreenW-2*30, 50);
     btn.normalBackgroundImage = [UIImage gradientImgWithView:btn];
     [btn addCorners:UIRectCornerAllCorners radius:btn.height*0.5];
+    @weakify(self);
+    [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(UIButton *btn) {
+        @strongify(self);
+    }];
     [ms addSubview:btn];
     if (self.m_cancel) {
         // 在确定按钮上追加提示文本

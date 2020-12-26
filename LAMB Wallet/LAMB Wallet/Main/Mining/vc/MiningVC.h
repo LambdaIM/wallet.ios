@@ -5,12 +5,13 @@
 //  Created by dfpo on 2020/10/27.
 //  Copyright © 2020 fei. All rights reserved.
 //
-
-#import "ASSimpleTableVC.h"
+//  挖矿
+//#import "ASSimpleTableVC.h"
+#import "ASRefreshVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
-/// 挖矿
-@interface MiningVC : ASSimpleTableVC
+
+@interface MiningVC : ASRefreshVC
 
 @end
 

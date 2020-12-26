@@ -14,6 +14,7 @@
     #import "UIDeviceEx.h"
     #import "GlobalDefineHeader.h"
     #import "LambNetManager.h"
+    #import "LambNodeManager.h"
 #endif
 
 #define DeviceModelName [UIDevice deviceModelName]
@@ -183,7 +184,8 @@ static inline BOOL isIPhoneXSeries() {
 }
 
 
-#import "NSString+HexColor.h" 
+#import "NSString+HexColor.h"
+#import "NSString+KBChange.h"
 #import "SXCodeTool.h"
 #import <YYCategories/UIView+YYAdd.h>
 #import <ReactiveObjC/RACEXTScope.h>
@@ -197,9 +199,9 @@ static inline BOOL isIPhoneXSeries() {
 // 读取余额和用户信息
 #define USER_JACKPOT_CHECK         @"/member/userjackpotcheck"
 // 获取节点列表
-#define HTTP_Get_producers         @"/staking/validators?status="
+#define HTTP_Get_producers         @"/staking/validators?status=%@"
 // 获取节点详情
-#define HTTP_Get_producers_details         @"/staking/validators/"
+#define HTTP_Get_producers_details         @"/staking/validators/%@"
 // +获取区块信息
 #define HTTP_Get_chain_details         @"/node_info"
 // 获取全网质押token总量
@@ -244,7 +246,7 @@ static inline BOOL isIPhoneXSeries() {
 //获取节点奖励
 #define getHTTP_get_producer_award         @"/distribution/validators/"
 //获取质押的节点列表
-#define getHTTP_get_zhiya_producer         @"/staking/delegators/"
+#define getHTTP_get_zhiya_producer         @"/staking/delegators/%@/delegations"
 //获取交易记录
 #define getHTTP_get_history         @"/txs"
 
@@ -252,8 +254,10 @@ static inline BOOL isIPhoneXSeries() {
 #define getHTTP_get_market_sell         @"/market/sellorders/LambdaMarket/premium/1/100"
 //获取节点详情
 #define getHTTP_Get_producers_details         @"/staking/validators/"
-//获取用户在一个节点下质押的奖励
-#define getHTTP_Get_for_producers_award         @"/distribution/delegators/"
+//获取用户在节点下质押的奖励
+#define getHTTP_Get_for_producers_award         @"/distribution/delegators/%@/rewards"
+//获取用户在单个节点下质押的奖励
+#define getHTTP_Get_for_producers_award_validatorAddr         @"/distribution/delegators/%@/rewards/%@"
 //获取用户取消质押的列表
 #define getHTTP_Get_cancel_zhiya         @"/staking/delegators/"
 //获取用户空间买卖的订单列表接口
