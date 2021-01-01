@@ -27,12 +27,12 @@
 
 - (void) setupUI {
     self.view.backgroundColor = [UIColor whiteColor];
-    UILabel *leftTipLab = [UILabel m9514Text:[NSString stringWithFormat:@"%@ (LAMB)",ASLocalizedString(@"金额")]];
+    UILabel *leftTipLab = [UILabel m9514Text:ASLocalizedString(@"金额（LAMB）")];
     leftTipLab.font = [UIFont pFSize:14];
-    leftTipLab.frame = CGRectMake(30, 30, 100, 20);
+    leftTipLab.frame = CGRectMake(30, 30, 120, 20);
     [self.view addSubview:leftTipLab];
     
-    UILabel *rightTipLab = [UILabel m9514Text:[NSString stringWithFormat:@"%@ (TBB)",ASLocalizedString(@"金额")]];
+    UILabel *rightTipLab = [UILabel m9514Text:ASLocalizedString(@"金额（TBB）")];
     rightTipLab.font = [UIFont pFSize:14];
     rightTipLab.frame = CGRectMake(leftTipLab.right, leftTipLab.top, kScreenW - leftTipLab.right - 30, 20);
     rightTipLab.textAlignment = NSTextAlignmentRight;
@@ -62,11 +62,12 @@
     lineView.backgroundColor = @"#3b3b3b".hexColor;
     [self.view addSubview:lineView];
     
-    UILabel *tipLab = [UILabel m9514Text:ASLocalizedString(@"特别注意:\n1.LAMB:TBB=3000:1且TBB必须为整数\n2.只有使用LAMB兑换的TBB才可以兑换回LAMB\n3.LAMB兑换生成的TBB是根据您的Lambda钱包私钥确认\n4.TBB转账无法转移兑回LAMB的权益。")];
+    UILabel *tipLab = [UILabel m9514Text:ASLocalizedString(@"特别注意: \n1:LAMB:TBB=3000:1且TBB必须为整数 \n2:只有使用LAMB兑换的TBB才可以兑换回LAMB \n3:LAMB兑换生成的TBB是根据您的Lambda钱包私钥确认 \n4:TBB转账无法转移TBB兑回LAMB的权益。")];
     tipLab.numberOfLines = 0;
     tipLab.font = [UIFont pFSize:14];
     tipLab.textColor = [UIColor redColor];
-    tipLab.frame = CGRectMake(kLeftRightM, lineView.bottom + kLeftRightM, kScreenW - 2 * kLeftRightM, 120);
+    tipLab.frame = CGRectMake(kLeftRightM, lineView.bottom + kLeftRightM, kScreenW - 2 * kLeftRightM, 150);
+    [tipLab sizeToFit];
     [self.view addSubview:tipLab];
     
     UIButton *confirmBtn = [UIButton btn];

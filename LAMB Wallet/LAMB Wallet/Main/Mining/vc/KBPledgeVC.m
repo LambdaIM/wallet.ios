@@ -89,7 +89,7 @@
     
     UILabel *tipLab3 = ({
         UILabel *lab =
-        [UILabel text:ASLocalizedString(@"金额(TBB)") font:[UIFont pFBlodSize:20] textColor:[UIColor blackColor]];
+        [UILabel text:ASLocalizedString(@"金额（TBB）") font:[UIFont pFBlodSize:20] textColor:[UIColor blackColor]];
         [ms addSubview: lab];
         [lab sizeToFit];
         lab.top = valuelab2.bottom +  10;
@@ -107,7 +107,7 @@
         lab;
     });
     UILabel *tipLabCan = ({
-        NSString *str = self.m_cancel ? @"质押金额:" : @"可用余额：";
+        NSString *str = self.m_cancel ? ASLocalizedString(@"质押金额：") : ASLocalizedString(@"可用余额：");
         UILabel *lab =
         [UILabel text:ASLocalizedString(str) font:[UIFont pFSize:15] textColor:[UIColor blackColor]];
         [ms addSubview: lab];

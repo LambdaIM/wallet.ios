@@ -14,7 +14,6 @@
 "押金阶段"="Deposit";
 "预挖矿数量"="Amount of Pre-mining";
 "金额："="：amount";
-"金额(LAMB)"="the amount (LAMB)";
 "挖矿增发"="Mining Additional Issuance";
 "通过"="Pass";
 "该单已卖完啦~"="the order sold out~";
@@ -195,7 +194,7 @@
 "被监禁"="imprisoned";
 "解绑中"="unbonding";
 "接收自"="Receive from";
-"保存二维码到相册"="please save QR code into the photo album";
+"保存二维码到相册"="Save to album";
 "节点链接错误"="Node link error";
 "6-20个字符、字母、数字或符号密码"="6-20 characters, letters, numbers or symbols as password";
 "月"="month";
@@ -226,6 +225,7 @@
 "买"="buy";
 "该钱包已存在"="the wallet exists";
 "保存成功"="Save successfully";
+"保存失败"="Save fail";
 "买单"="buying order";
 "识别中..."="recognizing...";
 "类型："="type：";
@@ -273,7 +273,6 @@
 "质押总量(TBB)"="the pledge amount(TBB)";
 "我的质押"="My pledge";
 "备份钱包"="backup wallet";
-"金额(TBB)"="the amount(TBB)";
 "请输入助记词"="Please enter mnemonic wording";
 "值"="value";
 "切换钱包"="Swap to Wallet";

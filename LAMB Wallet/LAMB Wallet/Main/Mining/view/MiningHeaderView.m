@@ -112,6 +112,7 @@
         [bottomV addSubview: lab];
         [lab centerYEqualSuper];
         lab.left = 15;
+        lab.width = bottomV.width - 2 * 15;
         
         UIView *line = [UIView new];
         line.backgroundColor = [UIColor lightGrayColor];

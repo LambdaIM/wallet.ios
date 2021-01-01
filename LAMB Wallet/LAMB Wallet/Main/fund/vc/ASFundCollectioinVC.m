@@ -16,6 +16,7 @@
 @interface ASFundCollectioinVC ()
 
 @property (nonatomic, strong) UILabel *coinLab;
+@property (nonatomic, strong) UIImageView *qrImageView;    //
 
 @end
 
@@ -56,7 +57,8 @@
     [self.view addSubview:midView];
     
     UIImageView *qrImageView = [[UIImageView alloc]initWithFrame:CGRectMake((midView.width - 140 ) / 2, 32, 140, 140)];
-    qrImageView.image = [UIImage createImgQRCodeWithString:@"lambda98471239749127341" centerImage:[UIImage imageNamed:@"appIcon"]];
+    qrImageView.image = [UIImage createImgQRCodeWithString:lambAddress centerImage:[UIImage imageNamed:@"appIcon"]];
+    self.qrImageView = qrImageView;
     [midView addSubview:qrImageView];
     
     UIButton *saveBtn = [UIButton btn];
@@ -66,6 +68,7 @@
     saveBtn.frame = CGRectMake((midView.width - 180 ) / 2, qrImageView.bottom + 18, 180, 25);
     [saveBtn addCorner:25/2.0];
     [saveBtn addBorderWithWidth:1 borderColor:@"#3b3b3b".hexColor];
+    [saveBtn addTarget:self action:@selector(saveToAlbum) forControlEvents:UIControlEventTouchUpInside];
     [midView addSubview:saveBtn];
     
     UILabel *addressTipLab = [UILabel m9514Text:ASLocalizedString(@"账户地址")];
@@ -85,16 +88,16 @@
     copyBtn.frame = CGRectMake((midView.width - 180 ) / 2, addressLab.bottom + 18, 180, 25);
     [copyBtn addCorner:25/2.0];
     [copyBtn addBorderWithWidth:1 borderColor:@"#3b3b3b".hexColor];
+    [copyBtn addTarget:self action:@selector(copyAction) forControlEvents:UIControlEventTouchUpInside];
     [midView addSubview:copyBtn];
     
     
-    UILabel *tipLab = [UILabel m3b14Text:ASLocalizedString(@"特别注意:\n1.请使用LAMB Wallet 扫码进行转账\n2.该二维码暂不支持非LAMB Wallet 扫描")];
+    UILabel *tipLab = [UILabel m3b14Text:ASLocalizedString(@"特别注意:\n1:请使用LAMB Wallet 扫码进行转账\n2:该二维码暂不支持非LAMB Wallet 扫描")];
     tipLab.font = [UIFont pFSize:14];
     tipLab.numberOfLines = 0;
-    tipLab.frame = CGRectMake(kLeftRightM, midView.bottom + 2* kLeftRightM, topView.width, 70);
+    tipLab.frame = CGRectMake(kLeftRightM, midView.bottom + 2* kLeftRightM, topView.width, 100);
+    [tipLab sizeToFit];
     [self.view addSubview:tipLab];
-    
-    
 }
 
 - (void) selectCoinType:(UIButton *) btn {
@@ -106,10 +109,32 @@
         selectIndex = 1;
     }
     [ActionSheetStringPicker showPickerWithTitle:@"" rows:coinArray initialSelection:selectIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        
         weakSelf.coinLab.text = selectedValue;
+        
     } cancelBlock:^(ActionSheetStringPicker *picker) {
         
     } origin:btn];
+}
+
+- (void) saveToAlbum{
+   
+    if (self.qrImageView.image) {
+        [self.qrImageView.image savedPhotosAlbumWithCompleteBlock:^{
+            [ASHUD showHudTipStr:@"保存成功"];
+        } failBlock:^(NSError * error) {
+            [ASHUD showHudTipStr:@"保存失败"];
+        }];
+    }
+}
+
+- (void) copyAction{
+    
+    // 复制地址
+    NSString *str = lambAddress;
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string =str;
+    [ASHUD showHudTipStr:@"复制成功"];
 }
 
 /*

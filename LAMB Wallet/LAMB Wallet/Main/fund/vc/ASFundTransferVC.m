@@ -65,7 +65,7 @@
     [btn addTarget:self action:@selector(changeCoinTypeClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
-    UILabel *balanceLab = [UILabel text:[NSString stringWithFormat:@"%@%@",ASLocalizedString(@"可用余额:"),@"99,999.3242"] font:[UIFont pFSize:14] textColor:[UIColor blackColor]];
+    UILabel *balanceLab = [UILabel text:[NSString stringWithFormat:@"%@%@",ASLocalizedString(@"可用余额："),@"99,999.3242"] font:[UIFont pFSize:14] textColor:[UIColor blackColor]];
     balanceLab.frame = CGRectMake(kScreenW - 180 - kLeftRightM, btn.top, 180, 20);
     balanceLab.textAlignment = NSTextAlignmentRight;
     [self.view addSubview:balanceLab];
@@ -78,7 +78,7 @@
     _amountField.backgroundColor = @"#F1F2F7".hexColor;
     [self.view addSubview:_amountField];
     
-    UILabel *noteTipLab = [UILabel text:ASLocalizedString(@"填写备注（可选）") font:[UIFont pFMediumSize:15] textColor:[UIColor blackColor]];
+    UILabel *noteTipLab = [UILabel text:ASLocalizedString(@"填写备注(可选)") font:[UIFont pFMediumSize:15] textColor:[UIColor blackColor]];
     noteTipLab.frame = CGRectMake(kLeftRightM, _amountField.bottom + 10, kScreenW - 2 * kLeftRightM, 20);
     [self.view addSubview:noteTipLab];
     

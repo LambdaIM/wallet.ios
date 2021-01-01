@@ -138,7 +138,7 @@
     
     UILabel *tipLab4 = ({
         UILabel *lab =
-        [UILabel text:ASLocalizedString(@"金额(TBB)") font:[UIFont pFBlodSize:20] textColor:[UIColor blackColor]];
+        [UILabel text:ASLocalizedString(@"金额（TBB）") font:[UIFont pFBlodSize:20] textColor:[UIColor blackColor]];
         [ms addSubview: lab];
         [lab sizeToFit];
         lab.top = self.nodeActionLab.bottom +  10;

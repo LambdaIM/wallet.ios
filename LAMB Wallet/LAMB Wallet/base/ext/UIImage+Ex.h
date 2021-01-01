@@ -23,6 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 
 + (UIImage *)createImgQRCodeWithString:(NSString *)QRString centerImage:(UIImage *)centerImage;
+
+/**
+ *  @brief 保存相册
+ *
+ *  @param completeBlock 成功回调
+ *  @param failBlock 出错回调
+ */
+- (void)savedPhotosAlbumWithCompleteBlock:(void (^)(void))completeBlock failBlock:(void (^)(NSError *))failBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,8 +7,38 @@
 //
 
 #import "UIImage+Ex.h"
+#import <objc/runtime.h>
+
+static const void *CompleteBlockKey = &CompleteBlockKey;
+static const void *FailBlockKey     = &FailBlockKey;
+
+@interface UIImage ()
+
+@property (nonatomic, copy)  void (^CompleteBlock)(void);
+@property (nonatomic, copy)  void (^FailBlock)(NSError *);
+
+@end
+
 
 @implementation UIImage (Ex)
+
+
+- (void (^)(void))FailBlock {
+    return objc_getAssociatedObject(self, FailBlockKey);
+}
+
+- (void)setFailBlock:(void (^)(void))FailBlock {
+    objc_setAssociatedObject(self, FailBlockKey, FailBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void (^)(void))CompleteBlock {
+    return objc_getAssociatedObject(self, CompleteBlockKey);
+}
+
+- (void)setCompleteBlock:(void (^)(void))CompleteBlock {
+    objc_setAssociatedObject(self, CompleteBlockKey, CompleteBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 
 /// 根据view尺寸生成渐变的通用蓝色图片
 + (UIImage *)gradientImgWithView:(UIView *)view {
@@ -140,6 +170,25 @@
     CGImageRelease(bitmapImage);
 
     return [UIImage imageWithCGImage:scaledImage];
+
+}
+
+/// 保存相册
+- (void)savedPhotosAlbumWithCompleteBlock:(void (^)(void))completeBlock failBlock:(void (^)(NSError *))failBlock {
+
+    UIImageWriteToSavedPhotosAlbum(self, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+
+    self.CompleteBlock = completeBlock;
+    self.FailBlock     = failBlock;
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+
+    if (error == nil) {
+        if (self.CompleteBlock != nil) self.CompleteBlock();
+    } else {
+        if (self.FailBlock != nil) self.FailBlock(error);
+    }
 
 }
 
