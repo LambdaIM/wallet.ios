@@ -70,12 +70,13 @@
             UIButton *btn = [UIButton btn];
             btn.normalTitle = ASLocalizedString(@"提取奖励");
             btn.normalTitleColor = @"#3256E1".hexColor;
+            btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
             [btn sizeToFit];
             btn;
         });
         btn1.height = topV.height * 0.5;
         btn1.width = btn1.width + 2*30;
-        btn1.right = topV.width;
+        btn1.right = topV.width - 15;
         [topV addSubview: btn1];
         
         
@@ -83,6 +84,7 @@
             UIButton *btn = [UIButton btn];
             btn.normalTitle = ASLocalizedString(@"质押详情");
             btn.normalTitleColor = @"#3256E1".hexColor;
+            btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
             [btn sizeToFit];
             btn;
         });

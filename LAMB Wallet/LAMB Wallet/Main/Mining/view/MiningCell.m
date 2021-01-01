@@ -26,7 +26,7 @@
     self.m_titleLab.text = model.descriptions.moniker;
     NSString *per = [NSString stringWithFormat:@"%.2f%%",[model.tokens doubleValue] / [[LambNodeManager manager].bonded_tokens doubleValue] * 100];
     model.persent = per;
-    self.m_infoLab.text = [NSString stringWithFormat:@"%@:%@",ASLocalizedString(@"投票权重"),per];
+    self.m_infoLab.text = [NSString stringWithFormat:@"%@%@",ASLocalizedString(@"投票权重："),per];
     switch (model.status) {
         case 0:
             self.m_statusLab.text = ASLocalizedString(@"被监禁");

@@ -20,24 +20,29 @@
 #import "ASFundExchangeVC.h"
 #import "ASFundCoinDetailVC.h"
 
+#import "ASAssertModel.h"
+#import <MJRefresh/MJRefresh.h>
+
 @interface ASFundVC ()<UITableViewDelegate,UITableViewDataSource,ASFundHeadViewDelegate>
 
-@property (nonatomic,copy) NSString *lambdaAddress;
-@property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic, copy) NSString *lambdaAddress;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) ASFundHeadView *headView;    //
+@property (nonatomic, strong) ASAssertModel *assertModel; // 张虎模型
+@property (nonatomic, strong) UIButton *leftNavBtn;    //
 
 @end
 
 @implementation ASFundVC
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self loadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.lambdaAddress = @"lambdaasjd...lkadlf";
-    
+    self.lambdaAddress = lambAddress;
     [self setupUI];
     // Do any additional setup after loading the view.
 }
@@ -46,13 +51,14 @@
 //    self.title = @"资产";
     self.navigationItem.title = @"";
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.leftNavBtn = leftBtn;
     leftBtn.titleLabel.font = [UIFont pFBlodSize:16];
-    [leftBtn setTitle:@"lambdaasjd...lkadlf" forState:UIControlStateNormal];
+    [leftBtn setTitle:[NSString stringWithFormat:@"%@...%@",[self.lambdaAddress substringToIndex:10],[self.lambdaAddress substringFromIndex:self.lambdaAddress.length - 6]] forState:UIControlStateNormal];
     [leftBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [leftBtn setImage:[UIImage imageNamed: @"home_copy"] forState:UIControlStateNormal];
     leftBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [leftBtn layoutButtonWithEdgeInsetsStyle:ButtonEdgeInsetsStyleRight imageTitleSpace:16];
-    leftBtn.frame = CGRectMake(0, 0, 150, 30);
+    leftBtn.frame = CGRectMake(0, 0, 200, 30);
     [leftBtn addTarget:self action:@selector(copyAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftMenuItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItems = @[leftMenuItem];
@@ -69,11 +75,17 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
+    
+    [self setupRefreshHeader];
 }
 
 #pragma mark -  UITableViewDelegate
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    if (self.assertModel) {
+        return self.assertModel.value.coins.count;
+    }else{
+        return 0;
+    }
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
@@ -82,9 +94,15 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    ASFundHeadView *headView = [[ASFundHeadView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 350)];
-    headView.delegate = self;
-    return headView;
+    if (self.assertModel) {
+        for (ASProposalValueAmountModel *model in self.assertModel.value.coins) {
+            if ([model.denom isEqualToString:@"ulamb"]) {
+                [self.headView setLambBalance:[model.amount getShowNumber:@"6"]];
+                break;
+            }
+        }
+    }
+    return self.headView;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -110,15 +128,46 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ASFundCell *cell = [ASFundCell cellFromTable:tableView];
-    [cell configCellWithCoinName:[self.dataArray[indexPath.row] firstObject] balance:[self.dataArray[indexPath.row] lastObject]];
+    if (self.assertModel) {
+        ASProposalValueAmountModel *model = [self.assertModel.value.coins objectAtIndex:indexPath.row];
+        NSString *coinName = [[[model.denom componentsSeparatedByString:@"u"] lastObject] uppercaseString];
+        
+        [cell configCellWithCoinName:coinName balance:[NSString stringWithFormat:@"%@ %@",[model.amount getShowNumber:@"6"],coinName]];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
 
-    if ([[self.dataArray[indexPath.row] firstObject] isEqualToString:@"XXB"]) {
-        ASFundCoinDetailVC *detailVC = [ASFundCoinDetailVC new];
-        [self.navigationController push:detailVC];
+    
+//    if ([[self.dataArray[indexPath.row] firstObject] isEqualToString:@"XXB"]) {
+//        ASFundCoinDetailVC *detailVC = [ASFundCoinDetailVC new];
+//        [self.navigationController push:detailVC];
+//    }
+}
+
+- (ASFundHeadView *)headView {
+    if (!_headView) {
+        _headView = [[ASFundHeadView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 350)];
+        _headView.delegate = self;
+    }
+    return _headView;
+}
+
+- (void)setupRefreshHeader
+{
+    @weakify(self)
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self)
+        [self loadData];
+    }];
+}
+
+
+- (void)endRefresh
+{
+    if (self.tableView.mj_header.isRefreshing) {
+        [self.tableView.mj_header endRefreshing];
     }
 }
 
@@ -158,11 +207,38 @@
     pushToDestinationController(self, ASFundExchangeVC)
 }
 
-- (NSMutableArray *)dataArray {
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray arrayWithObjects:@[@"LAMB",@"99,999.1234"],@[@"TBB",@"2"],@[@"XXB",@"0"], nil];
-    }
-    return _dataArray;
+- (void) loadData {
+    
+    kWeakSelf(weakSelf)
+    [self getaAssertComplain:^(ASAssertModel *assertModel) {
+        weakSelf.assertModel = assertModel;
+        [weakSelf reloadUI];
+    }];
+}
+
+// 获取资产详情
+- (void) getaAssertComplain:(void(^)(ASAssertModel *assertModel)) complain{
+    
+    kWeakSelf(weakSelf)
+    [LambNetManager GET:JoinParam(USER_Get_Auth, lambAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            ASAssertModel *nodeDetail = [ASAssertModel yy_modelWithDictionary:responseObject];
+            complain(nodeDetail);
+            [weakSelf endRefresh];
+        }else{
+            complain(nil);
+            [weakSelf endRefresh];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        complain(nil);
+        [weakSelf endRefresh];
+    }];
+}
+
+- (void) reloadUI {
+    
+    [self.leftNavBtn setTitle:[NSString stringWithFormat:@"%@...%@",[self.lambdaAddress substringToIndex:10],[self.lambdaAddress substringFromIndex:self.lambdaAddress.length - 6]] forState:UIControlStateNormal];
+    [self.tableView reloadData];
 }
 
 /*

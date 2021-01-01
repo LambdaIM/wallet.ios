@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,weak) id <ASFundHeadViewDelegate> delegate;
 
+- (void) setLambBalance:(NSString *) balance;
+
 @end
 
 NS_ASSUME_NONNULL_END

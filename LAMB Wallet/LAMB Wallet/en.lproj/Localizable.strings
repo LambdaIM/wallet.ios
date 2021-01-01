@@ -230,7 +230,7 @@
 "识别中..."="recognizing...";
 "类型："="type：";
 "照相机"="Camera";
-"收款"="Receive payment";
+"收款"="Collection";
 "已存押金："="Already the amount of deposit：";
 "本地暂无钱包"="there is no local wallet";
 "质押数量"="Pledge Amount";
@@ -259,7 +259,7 @@
 "市场地址："="market address：";
 "请选择钱包"="Please select wallet";
 "支付金额："="the purchase amount：";
-"暂无数据"="no data";
+"暂无数据"="No data";
 "状态："="status：";
 "网络异常，请检查后重试~"="Network abnormal, please check and try again~";
 "请输入钱包名"="please enter wallet name";
@@ -329,3 +329,4 @@ If you have the requirement, please click again. ";
 "将取景框对准二维码,即可自动扫描"="Align QR Code within frame to scan";
 "二维码"="QR code image";
 "复制成功"="Copy success";
+"划转"="Transfer";

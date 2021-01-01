@@ -42,7 +42,7 @@
     
     _coinNameLab = [UILabel m3b14Text:@"LAMB"];
     _coinNameLab.frame = CGRectMake(kLeftRightM, kLeftRightM, 100, 20);
-    _balanceLab = [UILabel m9514Text:@"99,999.2343 LAMB"];
+    _balanceLab = [UILabel m9514Text:@"0 LAMB"];
     _balanceLab.frame = CGRectMake(kLeftRightM, _coinNameLab.bottom + 10, 150, 20);
     [bgView addSubview:_coinNameLab];
     [bgView addSubview:_balanceLab];

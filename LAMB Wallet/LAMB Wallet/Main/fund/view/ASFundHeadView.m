@@ -38,11 +38,11 @@
     bgImageView.frame = CGRectMake(10, 10, kScreenW - 2 * 10,( kScreenW - 2 * 10) / bgImageView.image.size.width * bgImageView.image.size.height);
     [self addSubview:bgImageView];
     
-    _tipLab = [UILabel text:@"余额(LAMB)" font:[UIFont pFSize:16] textColor:[UIColor whiteColor]];
+    _tipLab = [UILabel text:ASLocalizedString(@"余额(LAMB)") font:[UIFont pFSize:16] textColor:[UIColor whiteColor]];
     _tipLab.frame = CGRectMake(40+bgImageView.left, 40+bgImageView.top, kScreenW - 100, 20);
     [self addSubview:_tipLab];
     
-    _lambdaFoundLab = [UILabel text:@"99,999.3249" font:[UIFont pFMediumSize:24] textColor:[UIColor whiteColor]];
+    _lambdaFoundLab = [UILabel text:@"0.00" font:[UIFont pFMediumSize:24] textColor:[UIColor whiteColor]];
     _lambdaFoundLab.frame = CGRectMake(_tipLab.left, _tipLab.bottom + 16, kScreenW - 100, 30);
     [self addSubview:_lambdaFoundLab];
     
@@ -106,7 +106,11 @@
         }
             break;
     }
+}
+
+- (void)setLambBalance:(NSString *)balance {
     
+    self.lambdaFoundLab.text = balance;
 }
 
 /*

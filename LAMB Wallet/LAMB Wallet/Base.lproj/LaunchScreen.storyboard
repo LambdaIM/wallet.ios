@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,26 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlu-99-3Yl">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="164" id="Gsv-AL-B1A"/>
-                                </constraints>
-                            </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome" translatesAutoresizingMaskIntoConstraints="NO" id="YSU-Tv-Egd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaY-Dt-l2E">
-                                <rect key="frame" x="0.0" y="796" width="414" height="100"/>
-                                <color key="backgroundColor" red="0.14509803921568626" green="0.28235294117647058" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="lvS-uR-8lp"/>
-                                </constraints>
-                            </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome" translatesAutoresizingMaskIntoConstraints="NO" id="iRh-lk-6VA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="YSU-Tv-Egd">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,19 +25,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.14117647058823529" green="0.27450980392156865" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="iRh-lk-6VA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8KD-vi-BOn"/>
-                            <constraint firstItem="jlu-99-3Yl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BI7-Kk-siF"/>
-                            <constraint firstItem="jlu-99-3Yl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="C0O-Nd-Gju"/>
-                            <constraint firstItem="iRh-lk-6VA" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Ecm-Um-iZp"/>
-                            <constraint firstAttribute="bottom" secondItem="qaY-Dt-l2E" secondAttribute="bottom" id="PfV-ms-2Lu"/>
-                            <constraint firstItem="jlu-99-3Yl" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Q6b-kP-NyM"/>
-                            <constraint firstItem="qaY-Dt-l2E" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Rgh-CW-7JT"/>
                             <constraint firstItem="YSU-Tv-Egd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d7p-y1-y2n"/>
                             <constraint firstAttribute="bottom" secondItem="YSU-Tv-Egd" secondAttribute="bottom" id="k5L-oR-MEa"/>
-                            <constraint firstItem="iRh-lk-6VA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="p4h-Ac-Cwe"/>
-                            <constraint firstItem="qaY-Dt-l2E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sJu-nE-tjq"/>
                             <constraint firstItem="YSU-Tv-Egd" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="vyC-z4-mfu"/>
-                            <constraint firstAttribute="bottom" secondItem="iRh-lk-6VA" secondAttribute="bottom" id="wQw-QZ-4J2"/>
                             <constraint firstItem="YSU-Tv-Egd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yEC-Gh-EdX"/>
                         </constraints>
                     </view>
@@ -68,9 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="welcome" width="540" height="960"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="home" width="621" height="1104"/>
     </resources>
 </document>

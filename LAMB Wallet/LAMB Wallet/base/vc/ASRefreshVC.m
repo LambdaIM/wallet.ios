@@ -97,7 +97,7 @@
 }
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = @"暂无数据";
+    NSString *text = ASLocalizedString(@"暂无数据");
     UIFont *font = [UIFont systemFontOfSize:16 weight: UIFontWeightMedium];
     NSDictionary *attributes = @{NSFontAttributeName: font,
                                  NSForegroundColorAttributeName: [UIColor lightGrayColor]};
