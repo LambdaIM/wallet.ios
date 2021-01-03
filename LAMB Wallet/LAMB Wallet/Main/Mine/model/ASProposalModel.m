@@ -65,7 +65,9 @@
     return @{@"content" : [ASProposalTallyResultModel class],
              @"final_tally_result" : [ASProposalTallyResultModel class],
              @"total_deposit" : [ASProposalValueAmountModel class] ,
-             @"min_deposit":[ASProposalValueAmountModel class]
+             @"min_deposit":[ASProposalValueAmountModel class],
+             @"val_commission":[ASProposalValueAmountModel class],
+             @"self_bond_rewards":[ASProposalValueAmountModel class]
     };
 }
 

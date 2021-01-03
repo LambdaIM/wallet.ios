@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString*)deleteFloatAllZero:(NSString*)string;
 // 格式化"1,000"
 + (NSString *)hanleNums:(NSString *)numbers;
+- (NSString *)getNumber:(NSString *) point;
 // "100%"
 - (NSString *) persentString;
 

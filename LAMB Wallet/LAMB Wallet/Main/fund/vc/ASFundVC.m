@@ -21,6 +21,7 @@
 #import "ASFundCoinDetailVC.h"
 
 #import "ASAssertModel.h"
+#import "ASQRModel.h"
 #import <MJRefresh/MJRefresh.h>
 
 @interface ASFundVC ()<UITableViewDelegate,UITableViewDataSource,ASFundHeadViewDelegate>
@@ -184,10 +185,23 @@
 
 /// 扫描二维码
 - (void)scanActioin {
-    
+    kWeakSelf(weakSelf)
     ASScanViewController *scanVc = [[ASScanViewController alloc] initWithQrType:ASScanTypeAll onFinish:^(NSString *result, NSError *error) {
-        if (error) {
+        if (!error) {
+            NSData *turnData = [result dataUsingEncoding:NSUTF8StringEncoding];
+            id resultDic = [NSJSONSerialization JSONObjectWithData:turnData options:NSJSONReadingMutableContainers error:NULL];
+            if ([resultDic isKindOfClass:[NSDictionary class]]) {
+                ASQRModel *scmodel = [ASQRModel yy_modelWithDictionary:resultDic];
+                if ([scmodel.address hasPrefix:@"lamb"]) {
+                    [weakSelf transfer];
+                }else{
+                    [ASHUD showHudTipStr:@"无法进行扫码转账"];;
+                }
+            }else{
+                [ASHUD showHudTipStr:@"无法进行扫码转账"];
+            }
         }else{
+            [ASHUD showHudTipStr:@"无法进行扫码转账"];
         }
     }];
     [self.navigationController pushViewController:scanVc animated:YES];

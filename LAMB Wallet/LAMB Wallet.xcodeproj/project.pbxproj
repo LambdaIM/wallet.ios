@@ -83,6 +83,9 @@
 		A380FFF5257927E8001C21C1 /* english.txt in Resources */ = {isa = PBXBuildFile; fileRef = A380FFF4257927E8001C21C1 /* english.txt */; };
 		A394C8E725859472005FCAD2 /* CoreBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A394C8E625859472005FCAD2 /* CoreBitcoin.framework */; };
 		A394C8ED2585B55F005FCAD2 /* ASNodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A394C8EC2585B55F005FCAD2 /* ASNodeModel.m */; };
+		A3B961DA25A16E5E006CB9C8 /* ASStorageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B961D825A16E5E006CB9C8 /* ASStorageCell.m */; };
+		A3B961DB25A16E5E006CB9C8 /* ASStorageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B961D925A16E5E006CB9C8 /* ASStorageCell.xib */; };
+		A3B961DE25A1AFFD006CB9C8 /* ASQRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B961DD25A1AFFD006CB9C8 /* ASQRModel.m */; };
 		A3D463572552AF5E00EED6CD /* seed.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463562552AF5E00EED6CD /* seed.c */; };
 		A3D4635A2552B07900EED6CD /* keypair.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463592552B07900EED6CD /* keypair.c */; };
 		A3D4635D2552B0E500EED6CD /* sign.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D4635C2552B0E500EED6CD /* sign.c */; };
@@ -277,6 +280,11 @@
 		A394C8E625859472005FCAD2 /* CoreBitcoin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreBitcoin.framework; sourceTree = "<group>"; };
 		A394C8EB2585B55F005FCAD2 /* ASNodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASNodeModel.h; sourceTree = "<group>"; };
 		A394C8EC2585B55F005FCAD2 /* ASNodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASNodeModel.m; sourceTree = "<group>"; };
+		A3B961D725A16E5E006CB9C8 /* ASStorageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASStorageCell.h; sourceTree = "<group>"; };
+		A3B961D825A16E5E006CB9C8 /* ASStorageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASStorageCell.m; sourceTree = "<group>"; };
+		A3B961D925A16E5E006CB9C8 /* ASStorageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASStorageCell.xib; sourceTree = "<group>"; };
+		A3B961DC25A1AFFD006CB9C8 /* ASQRModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASQRModel.h; sourceTree = "<group>"; };
+		A3B961DD25A1AFFD006CB9C8 /* ASQRModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASQRModel.m; sourceTree = "<group>"; };
 		A3D463552552AF5E00EED6CD /* seed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = seed.h; sourceTree = "<group>"; };
 		A3D463562552AF5E00EED6CD /* seed.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = seed.c; sourceTree = "<group>"; };
 		A3D463582552B07900EED6CD /* keypair.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypair.h; sourceTree = "<group>"; };
@@ -518,6 +526,9 @@
 				980A392B25482A7400C62DE0 /* MiningCell.xib */,
 				980A393525485C2F00C62DE0 /* MiningHeaderView.h */,
 				980A393625485C2F00C62DE0 /* MiningHeaderView.m */,
+				A3B961D725A16E5E006CB9C8 /* ASStorageCell.h */,
+				A3B961D825A16E5E006CB9C8 /* ASStorageCell.m */,
+				A3B961D925A16E5E006CB9C8 /* ASStorageCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -599,6 +610,8 @@
 			children = (
 				A3317AA0259DAC72007EE086 /* ASAssertModel.h */,
 				A3317AA1259DAC72007EE086 /* ASAssertModel.m */,
+				A3B961DC25A1AFFD006CB9C8 /* ASQRModel.h */,
+				A3B961DD25A1AFFD006CB9C8 /* ASQRModel.m */,
 			);
 			path = mode;
 			sourceTree = "<group>";
@@ -1033,6 +1046,7 @@
 				A56C91A425480C8A00154D50 /* LoginVCViewController.xib in Resources */,
 				A3629AE62553D4CD002155E3 /* resource.bundle in Resources */,
 				A33C720C258F40C20079FF4C /* ASProposalDetailCell.xib in Resources */,
+				A3B961DB25A16E5E006CB9C8 /* ASStorageCell.xib in Resources */,
 				985033EF254717AB0067896B /* ASCheckCell.xib in Resources */,
 				A5B9BC6D253EBF5A00A80AE3 /* Assets.xcassets in Resources */,
 			);
@@ -1121,6 +1135,7 @@
 				980A393725485C2F00C62DE0 /* MiningHeaderView.m in Sources */,
 				980A385E2547BCDA00C62DE0 /* UIDeviceEx.m in Sources */,
 				A5D77689254AB2FF00783C67 /* key_exchange.c in Sources */,
+				A3B961DA25A16E5E006CB9C8 /* ASStorageCell.m in Sources */,
 				980A38E32548145B00C62DE0 /* ASBackupWalletVC.m in Sources */,
 				A34AD1262558EE410001979B /* ASFundCoinDetailView.m in Sources */,
 				980A384E2547AFD200C62DE0 /* UIViewController+ZJScrollPageController.m in Sources */,
@@ -1186,6 +1201,7 @@
 				980A39572548E7A700C62DE0 /* YNTextField.m in Sources */,
 				980A38182547293000C62DE0 /* MineHeaderView.m in Sources */,
 				A3629AED2553ECE5002155E3 /* ASFundHeadView.m in Sources */,
+				A3B961DE25A1AFFD006CB9C8 /* ASQRModel.m in Sources */,
 				A5ECE7C125412791000ADC7C /* BaseVC.m in Sources */,
 				980A38592547B29C00C62DE0 /* UITextView+SXPodCategory_Limited.m in Sources */,
 				A3629AE52553D4CD002155E3 /* ASScanView.m in Sources */,

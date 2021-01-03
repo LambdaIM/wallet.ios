@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     self.title = ASLocalizedString(@"验证节点详情");
-    
+    [self configData];
     UIScrollView *ms = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:ms];
     self.m_scroll = ms;
@@ -50,7 +50,7 @@
       @{@"title": @"节点收益", @"value": [self.nodeDetail.commission.rate persentString]},
       @{@"title": @"最大收益", @"value": [self.nodeDetail.commission.max_rate persentString]},
       @{@"title": @"最大收益变化", @"value": [self.nodeDetail.commission.max_change_rate persentString]},
-      @{@"title": @"投票权重", @"value": self.nodeDetail.persent},
+      @{@"title": @"投票权重", @"value": self.nodeDetail.persent == nil ? @"0%" : self.nodeDetail.persent},
     ];
     CGFloat leftM = 15;
     UIView *topV = [[UIView alloc] initWithFrame:CGRectMake(leftM, leftM, kScreenW-2*leftM, 220)];
@@ -250,6 +250,18 @@
     } failure:^(NSError * _Nonnull error) {
         complain(NO);
     }];
+}
+
+- (void) configData {
+    
+    if (!self.nodeDetail.persent) {
+        for (ASNodeListModel *model in [LambNodeManager manager].nodelArray) {
+            if ([model.operator_address isEqualToString:self.nodeDetail.operator_address]) {
+                self.nodeDetail.persent = model.persent;
+                break;
+            }
+        }
+    }
 }
 
 @end

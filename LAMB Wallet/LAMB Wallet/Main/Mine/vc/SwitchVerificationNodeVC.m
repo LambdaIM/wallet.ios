@@ -78,7 +78,6 @@
     [LambNodeManager addNodes:nodes];
     [self loadData];
     [self.table reloadData];
-    
     [self requstNodeDetail];
 }
 

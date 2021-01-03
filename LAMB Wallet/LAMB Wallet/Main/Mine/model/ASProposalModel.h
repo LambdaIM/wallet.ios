@@ -61,6 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *max_deposit_period;
 @property (nonatomic, copy) NSString *myToupiao;
 @property (nonatomic, copy) NSString *myYajin;
+@property (nonatomic, strong) NSArray <ASProposalValueAmountModel *> *val_commission; //
+@property (nonatomic, strong) NSArray <ASProposalValueAmountModel *> *self_bond_rewards; //
+
 
 @end
 

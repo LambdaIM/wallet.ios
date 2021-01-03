@@ -235,7 +235,7 @@
 "本地暂无钱包"="there is no local wallet";
 "质押数量"="Pledge Amount";
 "销毁金额："="destroyed amount：";
-",无法进行扫码转账"=",can not perform scan to transfer";
+"无法进行扫码转账"="can not perform scan to transfer";
 "我已抄写完成，开始验证"="I copied completely and started to verify";
 "暂未选择钱包"="no wallet selected";
 "填写备注(可选)"="Fill the note(optional)";

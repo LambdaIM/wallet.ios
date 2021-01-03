@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 提取奖励
 @interface KBWithdrawRewardVC : BaseVC
 
+
 @end
 
 NS_ASSUME_NONNULL_END

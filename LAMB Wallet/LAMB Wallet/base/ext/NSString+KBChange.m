@@ -63,6 +63,12 @@
     return [NSString hanleNums:[NSString deleteFloatAllZero:[NSString stringWithFormat:formatString,[self doubleValue] / 1000000]]];
 }
 
+
+- (NSString *)getNumber:(NSString *) point {
+    
+    NSString *formatString = [NSString stringWithFormat:@"%%.%@f",point];
+    return [NSString deleteFloatAllZero:[NSString stringWithFormat:formatString,[self doubleValue] / 1000000]];
+}
 + (NSString *)hanleNums:(NSString *)numbers{
     
     NSString *firstString = numbers;

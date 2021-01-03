@@ -91,7 +91,7 @@ static const void *FailBlockKey     = &FailBlockKey;
 
     // 图片小于(27,27),我们需要放大
 
-    outImage = [outImage imageByApplyingTransform:CGAffineTransformMakeScale(20, 20)];
+    outImage = [outImage imageByApplyingTransform:CGAffineTransformMakeScale(25, 25)];
 
     // 将CIImage类型转成UIImage类型
 
@@ -109,7 +109,7 @@ static const void *FailBlockKey     = &FailBlockKey;
 
     // 再把小图片画上去
 
-    CGFloat icon_imageW = 50;
+    CGFloat icon_imageW = 100;
 
     CGFloat icon_imageH = icon_imageW;
 
@@ -120,15 +120,12 @@ static const void *FailBlockKey     = &FailBlockKey;
     [centerImage drawInRect:CGRectMake(icon_imageX, icon_imageY, icon_imageW, icon_imageH)];
 
     // 获取当前画得的这张图片
-
     UIImage *qrImage = UIGraphicsGetImageFromCurrentImageContext();
 
     // 关闭图形上下文
-
     UIGraphicsEndImageContext();
 
     //返回二维码图像
-
     return qrImage;
 
 }

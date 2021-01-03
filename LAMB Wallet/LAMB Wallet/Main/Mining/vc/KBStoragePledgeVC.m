@@ -50,9 +50,10 @@
     KBStoragePledgeSubVC<ZJScrollPageViewChildVcDelegate> *vc = reuseViewController;
     
     if (!vc) {
-        
         vc = [KBStoragePledgeSubVC new];
-        
+        if (index == 0) {
+            vc.bund = YES;
+        }
     }
     return vc;
 }

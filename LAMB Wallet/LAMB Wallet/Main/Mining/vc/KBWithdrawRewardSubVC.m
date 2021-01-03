@@ -10,15 +10,28 @@
 #import "SXCodeTool.h"
 #import "UIImage+Ex.h"
 #import "UIView+Ex.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 @interface KBWithdrawRewardSubVC ()
 
 @end
 
 @implementation KBWithdrawRewardSubVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [IQKeyboardManager sharedManager].enable = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self refreshUIRealTime];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UILabel *tipLab1 = ({
         UILabel *lab =
@@ -30,21 +43,22 @@
         lab;
     });
     
-    UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(kLeftRightM, tipLab1.bottom+8, kScreenW-2*kLeftRightM, 80)];
+    UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(kLeftRightM, tipLab1.bottom+8, kScreenW-2*kLeftRightM - 60, 80)];
     [self.view addSubview: tf];
-    tf.text = @"0";
-    tf.font = [UIFont pFBlodSize:40];
-    if (tf.text.length <= 0 || [tf.text isEqualToString:@"0"]) {
-        tf.userInteractionEnabled = NO;
-    }
+    tf.text = self.m_nodeRevenue ? @"0" : [LambNodeManager manager].canWinCoinArray.count > 0 ? [[[LambNodeManager manager].canWinCoinArray firstObject].amount getNumber:@"6"] : @"0";
+    tf.font = [UIFont pFBlodSize:30];
+//    if (tf.text.length <= 0 || [tf.text isEqualToString:@"0"]) {
+//        tf.userInteractionEnabled = NO;
+//    }
+    tf.userInteractionEnabled = NO;
     
     UILabel *tipLab2 = ({
         UILabel *lab =
         [UILabel text:@"LAMB" font:[UIFont pFSize:18] textColor:[UIColor blackColor]];
         [self.view addSubview: lab];
         [lab sizeToFit];
-        lab.centerY = tf.centerY;
-        lab.right = tf.right;
+        lab.centerY = tf.centerY + 5;
+        lab.right = kScreenW - kLeftRightM;
         lab;
     });
     
@@ -53,7 +67,7 @@
     [self.view addSubview: line];
     line.left = tf.left;
     line.top = tf.bottom;
-    line.width = tf.width;
+    line.width = kScreenW - 2 * kLeftRightM;
     line.height = .5;
     
     UIView *tempV = nil;

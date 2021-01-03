@@ -42,7 +42,17 @@ static LambNetManager *instance = nil;
 }
 
 - (void) initDate {
-    _baseUrl = DEBUGBASEURL;
+    
+    NSArray *nodes = [LambNodeManager loadNodes];
+    for (ASNodeModel *model in nodes) {
+        if (model.select) {
+            if ([_baseUrl hasPrefix:@"http"]) {
+                _baseUrl = [NSString stringWithFormat:@"%@:%@",model.baseUrl,model.port];
+            }else{
+                _baseUrl = [NSString stringWithFormat:@"http://%@:%@",model.baseUrl,model.port];
+            }
+        }
+    }
 }
 
 + (void)GET:(NSString *)urlString parameters:(id)parameters showHud:(BOOL) hud success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure

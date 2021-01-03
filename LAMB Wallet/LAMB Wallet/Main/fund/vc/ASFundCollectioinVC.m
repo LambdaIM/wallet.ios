@@ -10,6 +10,7 @@
 #import "UIButton+ImageTitleStyle.h"
 #import "UIImage+Ex.h"
 #import "UIView+Ex.h"
+#import <YYCategories/NSDictionary+YYAdd.h>
 #import "ActionSheetPicker.h"
 
 
@@ -17,6 +18,7 @@
 
 @property (nonatomic, strong) UILabel *coinLab;
 @property (nonatomic, strong) UIImageView *qrImageView;    //
+@property (nonatomic, assign) NSInteger selectIndex;
 
 @end
 
@@ -57,7 +59,7 @@
     [self.view addSubview:midView];
     
     UIImageView *qrImageView = [[UIImageView alloc]initWithFrame:CGRectMake((midView.width - 140 ) / 2, 32, 140, 140)];
-    qrImageView.image = [UIImage createImgQRCodeWithString:lambAddress centerImage:[UIImage imageNamed:@"appIcon"]];
+    qrImageView.image = [UIImage createImgQRCodeWithString:[self getQRSttring] centerImage:[UIImage imageNamed:@"appIcon"]];
     self.qrImageView = qrImageView;
     [midView addSubview:qrImageView];
     
@@ -76,7 +78,7 @@
     addressTipLab.textAlignment = NSTextAlignmentCenter;
     [midView addSubview:addressTipLab];
 
-    UILabel *addressLab = [UILabel m3b14Text:ASLocalizedString(@"lambda98471239749127341")];
+    UILabel *addressLab = [UILabel m3b14Text:lambAddress];
     addressLab.frame = CGRectMake(kLeftRightM, addressTipLab.bottom + 18, midView.width - 2 * kLeftRightM, 20);
     addressLab.textAlignment = NSTextAlignmentCenter;
     [midView addSubview:addressLab];
@@ -103,15 +105,11 @@
 - (void) selectCoinType:(UIButton *) btn {
     
     NSArray *coinArray = @[@"LAMB",@"TBB"];
-    NSInteger selectIndex = 0;
     kWeakSelf(weakSelf)
-    if (![weakSelf.coinLab.text isEqualToString:[coinArray firstObject]]) {
-        selectIndex = 1;
-    }
-    [ActionSheetStringPicker showPickerWithTitle:@"" rows:coinArray initialSelection:selectIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-        
+    [ActionSheetStringPicker showPickerWithTitle:@"" rows:coinArray initialSelection:self.selectIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        weakSelf.selectIndex = selectedIndex;
         weakSelf.coinLab.text = selectedValue;
-        
+        weakSelf.qrImageView.image = [UIImage createImgQRCodeWithString:[self getQRSttring] centerImage:[UIImage imageNamed:@"appIcon"]];
     } cancelBlock:^(ActionSheetStringPicker *picker) {
         
     } origin:btn];
@@ -135,6 +133,17 @@
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string =str;
     [ASHUD showHudTipStr:@"复制成功"];
+}
+
+//{"address":"lambda1ymms062l3v55tyfkeqp605psvdh4za78k6ufcw","chainUrl":"http://47.94.197.75:13659","token":"utbb","type":"make_collections_QRCode";}
+
+- (NSString *) getQRSttring {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:lambAddress forKey:@"address"];
+    [dic setObject:[LambNetManager shareInstance].baseUrl forKey:@"chainUrl"];
+    [dic setObject:self.selectIndex == 0 ? @"ulamb":@"utbb" forKey:@"token"];
+    [dic setObject:@"make_collections_QRCode" forKey:@"type"];
+    return [dic jsonStringEncoded];
 }
 
 /*

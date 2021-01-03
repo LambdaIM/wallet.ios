@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ASNodeModel.h"
 #import "ASProposalModel.h"
+#import "ASNodeListModel.h"
 
 typedef NS_ENUM(NSInteger, ASNodeType)
 {
@@ -22,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,copy) NSString *bonded_tokens;// 全网质押toeken数量
 @property(nonatomic,copy) NSString *not_bonded_tokens;// 全网未质押token数量
-@property(nonatomic,strong) NSArray <ASProposalValueAmountModel *>*canWinCoinArray;
+@property(nonatomic,strong) NSArray <ASProposalValueAmountModel *>*canWinCoinArray;// lamb收益
+@property(nonatomic,strong) NSArray <ASNodeListModel *>*nodelArray;// 所有的节点
 @property(nonatomic,strong) NSString *uttb;// 总的质押tbb数量  shares*(tokens/delegator_shares)
 
 @property(nonatomic) ASNodeType type;

@@ -47,9 +47,11 @@
     [[MiningHeaderView alloc] initWithFrame:CGRectMake(15, 0, kScreenW-2*15, 260)];
     self.table.tableHeaderView = self.header;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.datas.count;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MiningCell *cell = [MiningCell cellFromTable:tableView];
     if (self.datas.count) {
@@ -91,18 +93,21 @@
             [LambNetManager GET:JoinParam(HTTP_Get_producers, @"bonded") parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
                 if ([responseObject isKindOfClass:[NSArray class]]) {
                     [weakSelf receivedDicts:responseObject atPage:1 resPageNum:@"1" resPageSize:@1000 objClass:[ASNodeListModel class]];
+                    [LambNodeManager manager].nodelArray = weakSelf.datas;
                 }
                 // 获取解绑中节点
                 [weakSelf endRefresh];
                 [LambNetManager GET:JoinParam(HTTP_Get_producers, @"unbonding") parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
                     if ([responseObject isKindOfClass:[NSArray class]]) {
                         [weakSelf receivedDicts:responseObject atPage:1 resPageNum:@"2" resPageSize:@1000 objClass:[ASNodeListModel class]];
+                        [LambNodeManager manager].nodelArray = weakSelf.datas;
                     }
                     [weakSelf endRefresh];
                     // 获取解绑节点
                     [LambNetManager GET:JoinParam(HTTP_Get_producers, @"unbonded") parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
                         if ([responseObject isKindOfClass:[NSArray class]]) {
                             [weakSelf receivedDicts:responseObject atPage:1 resPageNum:@"3" resPageSize:@1000 objClass:[ASNodeListModel class]];
+                            [LambNodeManager manager].nodelArray = weakSelf.datas;
                         }
                         [weakSelf endRefresh];
                     } failure:^(NSError * _Nonnull error) {
@@ -134,6 +139,10 @@
             weakSelf.table.tableHeaderView = weakSelf.header;
             [weakSelf.table reloadData];
         }
+        // 获取节点首页暂时先放着
+//        [weakSelf getNodeWinLambDataComplain:^(bool finish) {
+//
+//        }];
         // 获取质押tbb 数量
         [weakSelf getUtbbData:lambAddress Complain:^(bool finish) {
                 
@@ -149,12 +158,37 @@
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSArray *objs = [NSArray yy_modelArrayWithClass:[ASProposalValueAmountModel class] json:responseObject];
             [LambNodeManager manager].canWinCoinArray = objs;
+            complain(YES);
+        }else{
+            complain(NO);
+        }
+    } failure:^(NSError * _Nonnull error) {
+        complain(NO);
+    }];
+}
+
+// 节点获取lamb奖励 todo 节点地址需要计算
+- (void) getNodeWinLambDataComplain:(void(^)(bool finish)) complain{
+    
+    [LambNetManager GET:JoinParam(getHTTP_get_producer_award, lambAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            ASProposalModel *obj = [ASProposalModel yy_modelWithDictionary:responseObject];
+            if (obj) {
+                complain(YES);
+            }else{
+                complain(NO);
+            }
+        }else{
+            complain(NO);
         }
         complain(YES);
     } failure:^(NSError * _Nonnull error) {
         complain(NO);
     }];
 }
+
+
+
 
 // 获取质押Tbb节点
 - (void) getUtbbData:(NSString *) lambAddressString Complain:(void(^)(bool finish)) complain{
