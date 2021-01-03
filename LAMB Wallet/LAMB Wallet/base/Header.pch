@@ -188,6 +188,7 @@ static inline BOOL isIPhoneXSeries() {
 #import "NSString+KBChange.h"
 #import "SXCodeTool.h"
 #import <YYCategories/UIView+YYAdd.h>
+#import <YYCategories/NSString+YYAdd.h>
 #import <ReactiveObjC/RACEXTScope.h>
 #import "UIColor+ASThemeColor.h"
 
@@ -250,7 +251,7 @@ static inline BOOL isIPhoneXSeries() {
 //获取解绑中质押的节点列表
 #define getHTTP_get_zhiya_unbonding_producer         @"/staking/delegators/%@/unbonding_delegations"
 //获取交易记录
-#define getHTTP_get_history         @"/txs"
+#define getHTTP_get_history         @"/txs?page=10000&%@=%@"
 
 //获取市场优质的卖单
 #define getHTTP_get_market_sell         @"/market/sellorders/LambdaMarket/premium/1/100"
@@ -278,8 +279,6 @@ static inline BOOL isIPhoneXSeries() {
 #define getHTTP_Get_proposal_toupiao         @"/gov/proposals/%@/tally"
 //获取交易详情
 #define getHTTP_Get_transaction_detail         @"/txs/"
-
- 
 
 
 

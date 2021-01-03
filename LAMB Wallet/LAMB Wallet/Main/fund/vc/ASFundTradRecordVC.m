@@ -10,11 +10,17 @@
 @import MJRefresh;
 #import "ASFundTradRecordCell.h"
 
+#import "ASRecordListModel.h"
+
 @interface ASFundTradRecordVC ()
 
 @end
 
 @implementation ASFundTradRecordVC
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,18 +33,62 @@
     
     self.title = ASLocalizedString(@"交易记录");
     self.table.rowHeight = 80;
+    self.table.mj_footer.hidden = YES;
     [self.table registerClass:[ASFundTradRecordCell class] forCellReuseIdentifier:@"ASFundTradRecordCell"];
 }
 
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.datas.count;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ASFundTradRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ASFundTradRecordCell"];
+    if (self.datas.count) {
+        cell.model = [self.datas objectAtIndex:indexPath.row];
+    }
+    return cell;
+}
+
 -(void)loadDataAtPage:(NSInteger)page {
-    NSUInteger delaySecond = 2;
-    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delaySecond * NSEC_PER_SEC));
-    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+    
+    [self.datas removeAllObjects];
+    
+    [self getHistory:@"sender" Complain:^(ASAssertModel *assertModel) {
         
-        
-        self.table.mj_footer.hidden = self.datas.count < 20;
-        [self endRefresh];
-    });
+    }];
+    
+    [self getHistory:@"recipient" Complain:^(ASAssertModel *assertModel) {
+            
+    }];
+}
+
+
+- (void) getHistory:(NSString *)senderOrecipient Complain:(void(^)(ASAssertModel *assertModel)) complain{
+    
+    kWeakSelf(weakSelf)
+    [LambNetManager GET:JoinParams(getHTTP_get_history, senderOrecipient, lambAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            NSArray *array = [NSArray yy_modelArrayWithClass:[ASRecordListModel class] json:responseObject];
+            for (ASRecordListModel *model in array) {
+                if ([senderOrecipient isEqualToString:@"sender"]) {
+                    model.sender = YES;
+                }
+            }
+            if (array.count) {
+                [weakSelf.datas addObjectsFromArray:array];
+                [weakSelf.table reloadData];
+            }
+            complain(nil);
+            [weakSelf endRefresh];
+        }else{
+            complain(nil);
+            [weakSelf endRefresh];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        complain(nil);
+        [weakSelf endRefresh];
+    }];
 }
 
 /*

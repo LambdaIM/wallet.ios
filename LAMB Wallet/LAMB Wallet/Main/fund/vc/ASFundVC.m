@@ -186,6 +186,7 @@
 /// 扫描二维码
 - (void)scanActioin {
     kWeakSelf(weakSelf)
+    [LambNodeManager manager].qrModel = nil;
     ASScanViewController *scanVc = [[ASScanViewController alloc] initWithQrType:ASScanTypeAll onFinish:^(NSString *result, NSError *error) {
         if (!error) {
             NSData *turnData = [result dataUsingEncoding:NSUTF8StringEncoding];
@@ -193,6 +194,7 @@
             if ([resultDic isKindOfClass:[NSDictionary class]]) {
                 ASQRModel *scmodel = [ASQRModel yy_modelWithDictionary:resultDic];
                 if ([scmodel.address hasPrefix:@"lamb"]) {
+                    [LambNodeManager manager].qrModel = scmodel;
                     [weakSelf transfer];
                 }else{
                     [ASHUD showHudTipStr:@"无法进行扫码转账"];;
@@ -210,7 +212,11 @@
 #pragma mark -  ASFundHeadViewDelegate
 // 转账
 - (void)transfer {
-    pushToDestinationController(self, ASFundTransferVC);
+    if (self.assertModel) {
+        pushToDestinationController(self, ASFundTransferVC);
+    }else{
+        [ASHUD showHudTipStr:@"无法进行转账"];
+    }
 }
 // 收款
 - (void)collection {
@@ -237,6 +243,7 @@
     [LambNetManager GET:JoinParam(USER_Get_Auth, lambAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             ASAssertModel *nodeDetail = [ASAssertModel yy_modelWithDictionary:responseObject];
+            [LambNodeManager manager].assertModel = nodeDetail;
             complain(nodeDetail);
             [weakSelf endRefresh];
         }else{

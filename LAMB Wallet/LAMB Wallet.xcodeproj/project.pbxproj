@@ -86,6 +86,7 @@
 		A3B961DA25A16E5E006CB9C8 /* ASStorageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B961D825A16E5E006CB9C8 /* ASStorageCell.m */; };
 		A3B961DB25A16E5E006CB9C8 /* ASStorageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B961D925A16E5E006CB9C8 /* ASStorageCell.xib */; };
 		A3B961DE25A1AFFD006CB9C8 /* ASQRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B961DD25A1AFFD006CB9C8 /* ASQRModel.m */; };
+		A3B961E125A1C43D006CB9C8 /* ASRecordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B961E025A1C43D006CB9C8 /* ASRecordListModel.m */; };
 		A3D463572552AF5E00EED6CD /* seed.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463562552AF5E00EED6CD /* seed.c */; };
 		A3D4635A2552B07900EED6CD /* keypair.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D463592552B07900EED6CD /* keypair.c */; };
 		A3D4635D2552B0E500EED6CD /* sign.c in Sources */ = {isa = PBXBuildFile; fileRef = A3D4635C2552B0E500EED6CD /* sign.c */; };
@@ -285,6 +286,8 @@
 		A3B961D925A16E5E006CB9C8 /* ASStorageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASStorageCell.xib; sourceTree = "<group>"; };
 		A3B961DC25A1AFFD006CB9C8 /* ASQRModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASQRModel.h; sourceTree = "<group>"; };
 		A3B961DD25A1AFFD006CB9C8 /* ASQRModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASQRModel.m; sourceTree = "<group>"; };
+		A3B961DF25A1C43D006CB9C8 /* ASRecordListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASRecordListModel.h; sourceTree = "<group>"; };
+		A3B961E025A1C43D006CB9C8 /* ASRecordListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASRecordListModel.m; sourceTree = "<group>"; };
 		A3D463552552AF5E00EED6CD /* seed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = seed.h; sourceTree = "<group>"; };
 		A3D463562552AF5E00EED6CD /* seed.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = seed.c; sourceTree = "<group>"; };
 		A3D463582552B07900EED6CD /* keypair.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypair.h; sourceTree = "<group>"; };
@@ -612,6 +615,8 @@
 				A3317AA1259DAC72007EE086 /* ASAssertModel.m */,
 				A3B961DC25A1AFFD006CB9C8 /* ASQRModel.h */,
 				A3B961DD25A1AFFD006CB9C8 /* ASQRModel.m */,
+				A3B961DF25A1C43D006CB9C8 /* ASRecordListModel.h */,
+				A3B961E025A1C43D006CB9C8 /* ASRecordListModel.m */,
 			);
 			path = mode;
 			sourceTree = "<group>";
@@ -1156,6 +1161,7 @@
 				980A384C2547AFD200C62DE0 /* UIView+ZJFrame.m in Sources */,
 				980A38382547AFBB00C62DE0 /* ASWebVC.m in Sources */,
 				A35BC0C62596DE1500F6A5E9 /* ASNodeListModel.m in Sources */,
+				A3B961E125A1C43D006CB9C8 /* ASRecordListModel.m in Sources */,
 				A5D77684254AB2FF00783C67 /* fe.c in Sources */,
 				A511B989255A459B00327525 /* KBBipManager.m in Sources */,
 				A394C8ED2585B55F005FCAD2 /* ASNodeModel.m in Sources */,

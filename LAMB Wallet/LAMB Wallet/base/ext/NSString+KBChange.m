@@ -63,6 +63,9 @@
     return [NSString hanleNums:[NSString deleteFloatAllZero:[NSString stringWithFormat:formatString,[self doubleValue] / 1000000]]];
 }
 
+- (NSString *)showLambAddress {
+    return [NSString stringWithFormat:@"%@...%@",[self substringToIndex:10],[self substringFromIndex:self.length - 6]];
+}
 
 - (NSString *)getNumber:(NSString *) point {
     

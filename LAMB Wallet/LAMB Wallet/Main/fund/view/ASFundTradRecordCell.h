@@ -7,10 +7,13 @@
 //
 
 #import "ASTableViewCell.h"
+#import "ASRecordListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ASFundTradRecordCell : ASTableViewCell
+
+@property (nonatomic, strong) ASRecordListModel *model;    // listModel
 
 @end
 

@@ -19,6 +19,8 @@
 @property (nonatomic, strong) ASTextField *addressField;// 地址
 @property (nonatomic, strong) ASTextField *amountField;// 数量
 @property (nonatomic, strong) ASTextField *noteField;// 备注
+@property (nonatomic, strong) UILabel *balanceLab;// 余额
+@property (nonatomic, assign) NSInteger selelctIndex; //
 
 @end
 
@@ -54,8 +56,19 @@
     _addressField.backgroundColor = @"#F1F2F7".hexColor;
     [self.view addSubview:_addressField];
     
+    NSString *btnString = @"LAMB";
+    if ([LambNodeManager manager].qrModel) {
+        _addressField.text = [LambNodeManager manager].qrModel.address;
+        if ([[LambNodeManager manager].qrModel.token isEqualToString:@"utbb"]) {
+            self.selelctIndex = 1;
+            btnString = @"TBB";
+        }
+    }
+    
+    NSString *balance = [self getbalanceString];
+    
     UIButton *btn = [UIButton btn];
-    [btn setTitle:@"LAMB" forState:UIControlStateNormal];
+    [btn setTitle:btnString forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont pFMediumSize:15];
     [btn setImage:[UIImage imageNamed:@"drop_down"] forState:UIControlStateNormal];
@@ -65,9 +78,10 @@
     [btn addTarget:self action:@selector(changeCoinTypeClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
-    UILabel *balanceLab = [UILabel text:[NSString stringWithFormat:@"%@%@",ASLocalizedString(@"可用余额："),@"99,999.3242"] font:[UIFont pFSize:14] textColor:[UIColor blackColor]];
-    balanceLab.frame = CGRectMake(kScreenW - 180 - kLeftRightM, btn.top, 180, 20);
+    UILabel *balanceLab = [UILabel text:[NSString stringWithFormat:@"%@%@",ASLocalizedString(@"可用余额："),balance] font:[UIFont pFSize:14] textColor:[UIColor blackColor]];
+    balanceLab.frame = CGRectMake(btn.right + kLeftRightM , btn.top, kScreenW - 2 * kLeftRightM - btn.right, 20);
     balanceLab.textAlignment = NSTextAlignmentRight;
+    self.balanceLab = balanceLab;
     [self.view addSubview:balanceLab];
     
     _amountField = [[ASTextField alloc] initWithFrame:CGRectMake(kLeftRightM, btn.bottom + 10, kScreenW-2*kLeftRightM, 50)];
@@ -95,6 +109,7 @@
     confirmBtn.frame = CGRectMake(30, _noteField.bottom + 50, kScreenW-2*30, 50);
     confirmBtn.normalBackgroundImage = [UIImage gradientImgWithView:btn];
     [confirmBtn addCorners:UIRectCornerAllCorners radius:confirmBtn.height*0.5];
+    [confirmBtn addTarget:self action:@selector(confirmTransfer) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:confirmBtn];
     
 }
@@ -104,11 +119,10 @@
     
     NSArray *coinArray = @[@"LAMB",@"TBB"];
     __block UIButton *tempBtn = btn;
-    NSInteger selectIndex = 0;
-    if (![[btn currentTitle] isEqualToString:[coinArray firstObject]]) {
-        selectIndex = 1;
-    }
-    [ActionSheetStringPicker showPickerWithTitle:@"" rows:coinArray initialSelection:selectIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+    kWeakSelf(weakSelf)
+    [ActionSheetStringPicker showPickerWithTitle:@"" rows:coinArray initialSelection:self.selelctIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        weakSelf.selelctIndex = selectedIndex;
+        weakSelf.balanceLab.text = [NSString stringWithFormat:@"%@%@",ASLocalizedString(@"可用余额："),[self getbalanceString]];
         [tempBtn setTitle:selectedValue forState:UIControlStateNormal];
     } cancelBlock:^(ActionSheetStringPicker *picker) {
         
@@ -117,6 +131,43 @@
 /// 右上角划转记录
 - (void) transferRecords {
     pushToDestinationController(self, ASFundTradRecordVC);
+}
+
+- (void) confirmTransfer{
+    if (![self.addressField.text isNotBlank]) {
+        [ASHUD showHudTipStr:ASLocalizedString(@"请输入接收方的地址")];
+        return;
+    }
+    if ([self.amountField.text isNotBlank] && [self.amountField.text doubleValue] > 0) {
+    }else{
+        [ASHUD showHudTipStr:ASLocalizedString(@"请输入金额")];
+        return;
+    }
+    if ([self.addressField.text isEqualToString:lambAddress]) {
+        [ASHUD showHudTipStr:ASLocalizedString(@"不支持转账给本人")];
+        return;
+    }
+//
+}
+
+- (NSString *) getbalanceString {
+    NSString *balanceString = @"0";
+    if (self.selelctIndex == 0) {
+        for (ASProposalValueAmountModel *model in [LambNodeManager manager].assertModel.value.coins) {
+            if ([model.denom isEqualToString:@"ulamb"]) {
+                balanceString = [model.amount getShowNumber:@"6"];
+                break;
+            }
+        }
+    }else{
+        for (ASProposalValueAmountModel *model in [LambNodeManager manager].assertModel.value.coins) {
+            if ([model.denom isEqualToString:@"utbb"]) {
+                balanceString = [model.amount getShowNumber:@"6"];
+                break;
+            }
+        }
+    }
+    return balanceString;
 }
 
 /*
