@@ -144,11 +144,13 @@
 "总参与额度"="Total Participation Amount";
 "时长(月)"="the length(month)";
 "助记词校验错误"="Mnemonic wording check error";
+"助记词校验"="Mnemonic check";
 "版本："="version：";
 "质押量为投票的权重.如果没有质押，投票权重为0"="The pledge amount is voting weight. If there is no pledge, the voting weight is 0";
 "存储质押"="storage pledge";
 "钱包名"="Wallet name";
 "请再次确认密码"="please confirm the password again";
+"两次密码不一致"="passwords are different when you enter two times inconsistency";
 "赔 率："="payout rate：";
 "空间："="space：";
 "当前版本"="Current version";

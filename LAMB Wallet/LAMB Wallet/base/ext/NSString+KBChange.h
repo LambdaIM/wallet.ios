@@ -35,6 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)formatDecimalWithStr:(NSString *)str andLenth:(int )lenth;
 + (NSString *)formatWithMultyStrings:(NSString *)firstStr andSecondStr:(NSString *)secondString;
 + (NSString *)formatWithDivStrings:(NSString *)firstStr andSecondStr:(NSString *)secondString;
+
+// 手机号码校验
+- (BOOL)isPhoneNumber;
+// 密码校验
+- (BOOL)isPSW;
 @end
 
 NS_ASSUME_NONNULL_END

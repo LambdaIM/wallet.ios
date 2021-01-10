@@ -25,4 +25,7 @@
 + (UIColor *)mNoPassColorAlpha:(CGFloat)alpha{
     return [UIColor colorWithRed:220.0/255 green:62.0/255 blue:68.0/255 alpha:alpha];
 }
++ (UIColor *)mMnemonicColor {
+    return [UIColor colorWithHexString:@"000080"];
+}
 @end

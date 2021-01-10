@@ -4,7 +4,7 @@
 //
 //  Created by fei on 2020/11/10.
 //  Copyright © 2020 fei. All rights reserved.
-//
+//  助剂词生成工具
 
 #import <Foundation/Foundation.h>
 
@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
                                              passphrase:(NSString *)passphrase
                                                language:(NSString *)language;
  
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,14 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ASUserModel : ASModel
+@interface ASUserModel : ASModel<NSCoding, NSCopying>
 
+@property (nonatomic ,assign) NSInteger index;
 @property (nonatomic ,copy) NSString *uid;
 @property (nonatomic ,copy) NSString *name;
 @property (nonatomic ,copy) NSString *address;
 @property (nonatomic ,copy) NSString *salt;
 @property (nonatomic ,copy) NSString *privateKey;
 @property (nonatomic ,copy) NSString *publicKey;
+
+@property (nonatomic ,strong) NSArray *mnemon;// 助剂词
 
 @end
 

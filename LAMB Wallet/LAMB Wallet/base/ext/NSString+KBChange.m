@@ -38,7 +38,7 @@
 }
 
 /*将UTC日期字符串转为本地时间字符串
- eg: 2017-10-25 02:07:39  -> 2017-10-25 10:07:39
+ eg: 2019-10-23T03:23:40.716713579Z  -> 2017-10-25 10:07:39
  */
 + (NSString *)getLocalDateFormateUTCDate:(NSString *)utcStr {
     if (utcStr) {
@@ -172,6 +172,32 @@
     NSDecimalNumber *roundedOunces = [div decimalNumberByRoundingAccordingToBehavior:roundingBehavior];
     NSString *formatStr = [NSString stringWithFormat:@"%@",roundedOunces];
     return formatStr;
+}
+
+
+- (BOOL)match:(NSString *)pattern {
+    // 1.创建正则表达式
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern options:0 error:nil];
+    // 2.测试字符串
+    NSArray *results = [regex matchesInString:self options:0 range:NSMakeRange(0, self.length)];
+    
+    return results.count > 0;
+}
+
+- (BOOL)isPhoneNumber {
+    // 1.全部是数字
+    // 2.11位
+    // 3.以13\15\18\17开头 后台已检测
+    return [self match:@"^1\\d{10}$"];
+//    return [self match:@"^(13\\d|14[57]|15[^4,\\D]|17[678]|18\\d)\\d{8}$|^170[059]\\d{7}$"];
+}
+
+- (BOOL)isPSW {
+    
+    // 以字母开头，长度在6~18之间，只能包含字符、数字和下划线
+//    return [self match:@"^[a-zA-Z]\\w{5,17}$"];
+    // 长度在6~16之间，只能包含字符、数字和下划线
+    return [self match:@"^(?![\\d]+$)(?![a-zA-Z]+$)(?![^\\da-zA-Z]+$).{6,20}$"];
 }
 
 @end

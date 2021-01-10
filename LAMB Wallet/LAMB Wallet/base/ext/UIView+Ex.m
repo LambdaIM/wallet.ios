@@ -80,4 +80,15 @@
     self.layer.borderColor = borderColor.CGColor;
 }
 
+
+-(void)maddSublayer{
+    CAGradientLayer *gradientLayer =  [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, self.frame.size.width - 24 , self.frame.size.height);
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1, 0);
+    gradientLayer.locations = @[@(0.1),@(1.0)];
+    [gradientLayer setColors:@[(id)[ @"5A95FC".hexColor CGColor],(id)[@"3757E2".hexColor CGColor]]];
+    [self.layer addSublayer:gradientLayer];
+}
+
 @end

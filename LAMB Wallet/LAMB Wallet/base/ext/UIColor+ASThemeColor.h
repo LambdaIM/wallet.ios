@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YYCategories/UIColor+YYAdd.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *) mPassColorAlpha:(CGFloat)alpha;
 + (UIColor *) mNoPassColorAlpha:(CGFloat)alpha;
+
+/// 助剂词
++ (UIColor *) mMnemonicColor;
 
 @end
 

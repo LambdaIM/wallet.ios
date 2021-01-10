@@ -64,10 +64,10 @@
     if (model.sender) {
         self.addressNameLab.text = [NSString stringWithFormat:@"%@ %@",ASLocalizedString(@"发送到"),[model.tx.value.msg firstObject].value.to_address];
         addMoney = @"-";
-        self.amountLab.textColor = [UIColor mNoPassColorAlpha:0.7];
+        self.amountLab.textColor = [UIColor mNoPassColorAlpha:0.85];
     }else{
         self.addressNameLab.text = [NSString stringWithFormat:@"%@ %@",ASLocalizedString(@"接收自"),[model.tx.value.msg firstObject].value.from_address];
-        self.amountLab.textColor = [UIColor mPassColorAlpha:0.7];
+        self.amountLab.textColor = [UIColor mPassColorAlpha:0.85];
     }
     BOOL state = YES;
     for (ASRecordListLogModel *logModel in model.logs) {
@@ -81,7 +81,7 @@
     }else{
         self.stateLab.text = ASLocalizedString(@"失败");
     }
-//    self.timeLab.text = [NSString getLocalDateFormateUTCDate:model.timestamp];
+    self.timeLab.text = [NSString getLocalDateFormateUTCDate:model.timestamp];
     
     self.timeLab.text = model.timestamp;
 

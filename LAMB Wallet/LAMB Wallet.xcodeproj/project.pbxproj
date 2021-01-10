@@ -79,6 +79,12 @@
 		A3629AE62553D4CD002155E3 /* resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3629AE32553D4CC002155E3 /* resource.bundle */; };
 		A3629AED2553ECE5002155E3 /* ASFundHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AEC2553ECE5002155E3 /* ASFundHeadView.m */; };
 		A3629AF2255406E6002155E3 /* ASFundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3629AF1255406E6002155E3 /* ASFundCell.m */; };
+		A368C1A225A94DEF00C5ABFD /* LambUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A368C1A125A94DEF00C5ABFD /* LambUtils.m */; };
+		A368C1A525A95B6900C5ABFD /* KBMnemonicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A368C1A425A95B6900C5ABFD /* KBMnemonicVC.m */; };
+		A368C1B325A974AE00C5ABFD /* XLChannelControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A368C1AB25A974AE00C5ABFD /* XLChannelControl.m */; };
+		A368C1B425A974AE00C5ABFD /* XLChannelHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A368C1AF25A974AE00C5ABFD /* XLChannelHeader.m */; };
+		A368C1B525A974AE00C5ABFD /* XLChannelView.m in Sources */ = {isa = PBXBuildFile; fileRef = A368C1B025A974AE00C5ABFD /* XLChannelView.m */; };
+		A368C1B625A974AE00C5ABFD /* XLChannelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A368C1B225A974AE00C5ABFD /* XLChannelItem.m */; };
 		A374ACD3255945AA0056A0BE /* UIColor+ASThemeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */; };
 		A380FFF5257927E8001C21C1 /* english.txt in Resources */ = {isa = PBXBuildFile; fileRef = A380FFF4257927E8001C21C1 /* english.txt */; };
 		A394C8E725859472005FCAD2 /* CoreBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A394C8E625859472005FCAD2 /* CoreBitcoin.framework */; };
@@ -275,6 +281,18 @@
 		A3629AEC2553ECE5002155E3 /* ASFundHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundHeadView.m; sourceTree = "<group>"; };
 		A3629AF0255406E6002155E3 /* ASFundCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASFundCell.h; sourceTree = "<group>"; };
 		A3629AF1255406E6002155E3 /* ASFundCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASFundCell.m; sourceTree = "<group>"; };
+		A368C1A025A94DEF00C5ABFD /* LambUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LambUtils.h; sourceTree = "<group>"; };
+		A368C1A125A94DEF00C5ABFD /* LambUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LambUtils.m; sourceTree = "<group>"; };
+		A368C1A325A95B6900C5ABFD /* KBMnemonicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBMnemonicVC.h; sourceTree = "<group>"; };
+		A368C1A425A95B6900C5ABFD /* KBMnemonicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBMnemonicVC.m; sourceTree = "<group>"; };
+		A368C1AB25A974AE00C5ABFD /* XLChannelControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLChannelControl.m; sourceTree = "<group>"; };
+		A368C1AC25A974AE00C5ABFD /* XLChannelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLChannelView.h; sourceTree = "<group>"; };
+		A368C1AD25A974AE00C5ABFD /* XLChannelHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLChannelHeader.h; sourceTree = "<group>"; };
+		A368C1AE25A974AE00C5ABFD /* XLChannelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLChannelItem.h; sourceTree = "<group>"; };
+		A368C1AF25A974AE00C5ABFD /* XLChannelHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLChannelHeader.m; sourceTree = "<group>"; };
+		A368C1B025A974AE00C5ABFD /* XLChannelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLChannelView.m; sourceTree = "<group>"; };
+		A368C1B125A974AE00C5ABFD /* XLChannelControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLChannelControl.h; sourceTree = "<group>"; };
+		A368C1B225A974AE00C5ABFD /* XLChannelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLChannelItem.m; sourceTree = "<group>"; };
 		A374ACD1255945AA0056A0BE /* UIColor+ASThemeColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ASThemeColor.h"; sourceTree = "<group>"; };
 		A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ASThemeColor.m"; sourceTree = "<group>"; };
 		A380FFF4257927E8001C21C1 /* english.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = english.txt; sourceTree = "<group>"; };
@@ -669,6 +687,21 @@
 			path = ASScanner;
 			sourceTree = "<group>";
 		};
+		A368C1AA25A974AE00C5ABFD /* XLChannelControl */ = {
+			isa = PBXGroup;
+			children = (
+				A368C1AC25A974AE00C5ABFD /* XLChannelView.h */,
+				A368C1B025A974AE00C5ABFD /* XLChannelView.m */,
+				A368C1B125A974AE00C5ABFD /* XLChannelControl.h */,
+				A368C1AB25A974AE00C5ABFD /* XLChannelControl.m */,
+				A368C1AE25A974AE00C5ABFD /* XLChannelItem.h */,
+				A368C1B225A974AE00C5ABFD /* XLChannelItem.m */,
+				A368C1AD25A974AE00C5ABFD /* XLChannelHeader.h */,
+				A368C1AF25A974AE00C5ABFD /* XLChannelHeader.m */,
+			);
+			path = XLChannelControl;
+			sourceTree = "<group>";
+		};
 		A380FFF3257927E8001C21C1 /* languages */ = {
 			isa = PBXGroup;
 			children = (
@@ -714,6 +747,8 @@
 				A380FFF3257927E8001C21C1 /* languages */,
 				A511B987255A459B00327525 /* KBBipManager.h */,
 				A511B988255A459B00327525 /* KBBipManager.m */,
+				A368C1A025A94DEF00C5ABFD /* LambUtils.h */,
+				A368C1A125A94DEF00C5ABFD /* LambUtils.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -797,6 +832,8 @@
 				A5D7765F254A782600783C67 /* KBFileImportVC.m */,
 				A5D77664254A785A00783C67 /* KBMnemonicImportVC.h */,
 				A5D77665254A785A00783C67 /* KBMnemonicImportVC.m */,
+				A368C1A325A95B6900C5ABFD /* KBMnemonicVC.h */,
+				A368C1A425A95B6900C5ABFD /* KBMnemonicVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -950,6 +987,7 @@
 		A5ECE7C225412813000ADC7C /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				A368C1AA25A974AE00C5ABFD /* XLChannelControl */,
 				A394C84325850EAC005FCAD2 /* thirdFramework */,
 				980A383A2547AFD200C62DE0 /* ZJScrollPageView */,
 				A5ECE7C325412813000ADC7C /* FDFullscreenPopGesture */,
@@ -1137,11 +1175,13 @@
 				980A392C25482A7400C62DE0 /* MiningCell.m in Sources */,
 				980A381C2547AE4D00C62DE0 /* ASModel.m in Sources */,
 				980A39A125496EF900C62DE0 /* ASRefreshVC.m in Sources */,
+				A368C1A525A95B6900C5ABFD /* KBMnemonicVC.m in Sources */,
 				980A393725485C2F00C62DE0 /* MiningHeaderView.m in Sources */,
 				980A385E2547BCDA00C62DE0 /* UIDeviceEx.m in Sources */,
 				A5D77689254AB2FF00783C67 /* key_exchange.c in Sources */,
 				A3B961DA25A16E5E006CB9C8 /* ASStorageCell.m in Sources */,
 				980A38E32548145B00C62DE0 /* ASBackupWalletVC.m in Sources */,
+				A368C1B625A974AE00C5ABFD /* XLChannelItem.m in Sources */,
 				A34AD1262558EE410001979B /* ASFundCoinDetailView.m in Sources */,
 				980A384E2547AFD200C62DE0 /* UIViewController+ZJScrollPageController.m in Sources */,
 				A547C46B2548235900591068 /* KBImportPocketVC.m in Sources */,
@@ -1172,6 +1212,7 @@
 				985033F3254718D40067896B /* LambNodeManager.m in Sources */,
 				A5D9C52D2546C7080031192C /* MineVC.m in Sources */,
 				A3D4635A2552B07900EED6CD /* keypair.c in Sources */,
+				A368C1B525A974AE00C5ABFD /* XLChannelView.m in Sources */,
 				A3DCD584255547B500E1652E /* ASFundCollectioinVC.m in Sources */,
 				980A39532548E79D00C62DE0 /* NoPasteTextField.m in Sources */,
 				985033CE2546E2480067896B /* ASLocalizedManager.m in Sources */,
@@ -1184,16 +1225,19 @@
 				A3D463602552B14C00EED6CD /* verify.c in Sources */,
 				980A382A2547AF6300C62DE0 /* ASLabel.m in Sources */,
 				A510515925660975006D1398 /* LambNetManager.m in Sources */,
+				A368C1B425A974AE00C5ABFD /* XLChannelHeader.m in Sources */,
 				A3D463572552AF5E00EED6CD /* seed.c in Sources */,
 				980A38502547AFD200C62DE0 /* ZJCollectionView.m in Sources */,
 				980A39A225496EF900C62DE0 /* ASTableVC.m in Sources */,
 				985033E725470EF50067896B /* SwitchVerificationNodeVC.m in Sources */,
+				A368C1B325A974AE00C5ABFD /* XLChannelControl.m in Sources */,
 				A5D77686254AB2FF00783C67 /* ge.c in Sources */,
 				A3ED2C4F258EF19D0016D173 /* ASProposalsCell.m in Sources */,
 				980A38342547AFB300C62DE0 /* SXCodeTool.m in Sources */,
 				98503401254720D20067896B /* ASTextField.m in Sources */,
 				980A385A2547B29C00C62DE0 /* UITextField+SXPodCategory_Limited.m in Sources */,
 				A5D7768A254AB2FF00783C67 /* add_scalar.c in Sources */,
+				A368C1A225A94DEF00C5ABFD /* LambUtils.m in Sources */,
 				985033DD2546FB4F0067896B /* ASSetVC.m in Sources */,
 				A5D77661254A782600783C67 /* KBFileImportVC.m in Sources */,
 				985033FA25471B600067896B /* ASCustomNodeVC.m in Sources */,

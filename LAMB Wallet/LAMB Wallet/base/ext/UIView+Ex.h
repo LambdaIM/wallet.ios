@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addBorderWithWidth:(CGFloat)width borderColor:(UIColor *)borderColor ;
 
+-(void)maddSublayer;
 @end
 
 NS_ASSUME_NONNULL_END

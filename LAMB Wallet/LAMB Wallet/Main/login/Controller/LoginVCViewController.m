@@ -8,8 +8,8 @@
 
 #import "LoginVCViewController.h"
 #import "KBCreatePocketVC.h"
-#import "KBBipManager.h"
 #import "KBImportPocketVC.h"
+#import "UIView+Ex.h"
 
 @interface LoginVCViewController ()
 // 选择钱包
@@ -43,7 +43,7 @@
     self.m_passView.layer.cornerRadius = 45/2.0;
     self.m_passView.backgroundColor =@"F0F2F8".hexColor;
     self.m_passTextFild.backgroundColor = @"F0F2F8".hexColor;
-    [self.m_loginBtn.layer addSublayer:[self addSublayer]];
+    [self.m_loginBtn maddSublayer];
     self.m_loginBtn.layer.cornerRadius = 24;
     self.m_loginBtn.layer.masksToBounds = YES;
     [self.m_loginBtn.titleLabel sizeToFit];
@@ -52,16 +52,6 @@
     self.paswordField.placeholder = ASLocalizedString(@"请输入密码");
  }
  
-
--(CAGradientLayer *)addSublayer{
-    CAGradientLayer *gradientLayer =  [CAGradientLayer layer];
-        gradientLayer.frame = CGRectMake(0, 0, self.m_loginBtn.frame.size.width - 24 , self.m_loginBtn.frame.size.height);
-        gradientLayer.startPoint = CGPointMake(0, 0);
-        gradientLayer.endPoint = CGPointMake(1, 0);
-        gradientLayer.locations = @[@(0.1),@(1.0)];
-        [gradientLayer setColors:@[(id)[ @"5A95FC".hexColor CGColor],(id)[@"3757E2".hexColor CGColor]]];
-    return gradientLayer;
-}
 #pragma mark 点击创建钱包
 - (IBAction)OnCreateAction:(UIButton *)sender {
     KBCreatePocketVC *create = [[KBCreatePocketVC alloc] init];
@@ -71,10 +61,8 @@
 #pragma mark 导入钱包
 - (IBAction)OnImportWallet:(UIButton *)sender { 
      
-    NSString *mnemonicString =   [KBBipManager generateMnemonicString:@256 language:@"english" ];
-    NSLog(@"====%@",mnemonicString);
-//    KBImportPocketVC *create = [[KBImportPocketVC alloc] init];
-//    [self.navigationController push:create];
+    KBImportPocketVC *create = [[KBImportPocketVC alloc] init];
+    [self.navigationController push:create];
 }
 #pragma mark 选择账户
 - (IBAction)selectAccountBtn:(id)sender {

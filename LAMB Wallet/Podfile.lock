@@ -37,7 +37,15 @@ PODS:
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.5.0)
   - ReactiveObjC (3.1.1)
+  - SwiftProtobuf (1.14.0)
   - TPKeyboardAvoiding (1.3.5)
+  - TrezorCrypto (0.0.9)
+  - TrustWalletCore (2.5.3):
+    - TrustWalletCore/Core (= 2.5.3)
+  - TrustWalletCore/Core (2.5.3):
+    - TrustWalletCore/Types
+  - TrustWalletCore/Types (2.5.3):
+    - SwiftProtobuf
   - UITableViewDynamicLayoutCacheHeight (5.1.8):
     - UITableViewDynamicLayoutCacheHeight/Category (= 5.1.8)
   - UITableViewDynamicLayoutCacheHeight/Category (5.1.8)
@@ -59,6 +67,8 @@ DEPENDENCIES:
   - MJRefresh (~> 3.5.0)
   - ReactiveObjC (~> 3.1.1)
   - TPKeyboardAvoiding (~> 1.3.5)
+  - TrezorCrypto
+  - TrustWalletCore
   - UITableViewDynamicLayoutCacheHeight
   - YYCache (~> 1.0.4)
   - YYCategories (~> 1.0.4)
@@ -78,7 +88,10 @@ SPEC REPOS:
     - MBProgressHUD
     - MJRefresh
     - ReactiveObjC
+    - SwiftProtobuf
     - TPKeyboardAvoiding
+    - TrezorCrypto
+    - TrustWalletCore
     - UITableViewDynamicLayoutCacheHeight
     - YYCache
     - YYCategories
@@ -97,12 +110,15 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  SwiftProtobuf: ed465ed18402f998fd117f631da27e0168e6b59c
   TPKeyboardAvoiding: d55b3ea7b362540af8fcf36aa3ed2e87bf210cc6
+  TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
+  TrustWalletCore: fbe68202e6e2bbac217a35f1af170bf3cc8a37cd
   UITableViewDynamicLayoutCacheHeight: 4fabd95e944317cc7cd7ead3c56915d9527432dd
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: f6fe3ac4d0b33770079635604a2148a0d2477821
+PODFILE CHECKSUM: 265c3736fa910755f6fbbf9ce16d73579d44e0dc
 
 COCOAPODS: 1.10.0

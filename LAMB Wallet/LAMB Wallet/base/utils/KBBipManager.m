@@ -8,7 +8,6 @@
 
 #import "KBBipManager.h"
  
- 
 #import "NSData+KBChange.h"
 #import "NSString+KBChange.h"
 
@@ -124,7 +123,5 @@
 
     return [[NSData dataWithData:hashKeyData] my_hexString];
 }
-
-
 
 @end
