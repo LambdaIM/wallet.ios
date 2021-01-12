@@ -7,6 +7,8 @@
 //
 
 #import "NSString+KBChange.h"
+#import <YYCategories/NSDate+YYAdd.h>
+
 #define kDEFAULTSTR [NSString stringWithFormat:@"0"]
 
 @implementation NSString (KBChange)
@@ -55,6 +57,16 @@
         return dateString;
     }
     return @"";
+}
+
++ (NSString *)getLocalDateFormateDate:(NSString *)utcStr {
+    
+    if ([utcStr isNotBlank]) {
+        return [[NSDate dateWithISOFormatString:utcStr] stringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
+        
+    }else{
+        return nil;
+    }
 }
 
 - (NSString *)getShowNumber:(NSString *) point {

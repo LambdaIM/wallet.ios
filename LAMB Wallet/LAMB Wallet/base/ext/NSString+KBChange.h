@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *) persentString;
 
 + (NSString *)getLocalDateFormateUTCDate:(NSString *)utcStr ;
++ (NSString *)getLocalDateFormateDate:(NSString *)utcStr ;
 
 - (NSString *)getShowNumber:(NSString *) point ;
 

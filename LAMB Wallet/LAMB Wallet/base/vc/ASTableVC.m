@@ -18,7 +18,7 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    self.table.frame = self.view.bounds;
+    self.table.frame = CGRectMake(0, 0, kScreenW, kScreenH - kll_Status_NavBarHeight - kll_SafeBottomMargin);
 }
 #pragma mark - UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

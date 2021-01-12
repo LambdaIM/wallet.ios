@@ -81,9 +81,9 @@
     }else{
         self.stateLab.text = ASLocalizedString(@"失败");
     }
-    self.timeLab.text = [NSString getLocalDateFormateUTCDate:model.timestamp];
+    self.timeLab.text = [NSString getLocalDateFormateDate:model.timestamp];
     
-    self.timeLab.text = model.timestamp;
+//    self.timeLab.text = model.timestamp;
 
     NSString *moreString = @"";
     ASRecordTxValueMsgAmountModel *firstAmount = [[[model.tx.value.msg firstObject] value].amount firstObject];
