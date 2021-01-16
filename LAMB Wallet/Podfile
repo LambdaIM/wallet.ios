@@ -7,6 +7,7 @@ source 'https://cdn.cocoapods.org/'
 
 #plugin 'cocoapods-binary'
 use_frameworks!
+#use_modular_headers!
 
 target 'LAMB Wallet' do 
   
@@ -26,10 +27,12 @@ target 'LAMB Wallet' do
   pod 'TrustWalletCore'
   pod 'TrezorCrypto'
 #  pod 'TrustCore', :git=>'https://github.com/TrustWallet/trust-core', :branch=>'master'
-#  pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
   pod 'ActionSheetPicker-3.0'
   pod 'DoraemonKit/Core', '~> 3.0.4', :configurations => ['Debug']
 #  pod 'CoreBitcoin',:podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
+#pod 'CoreBitcoin', :git => 'https://gitee.com/mirrors/corebitcoin'
+pod 'CoreBitcoin', :git => 'https://github.com/Ssunnys/CoreBitcoin.git'
+
 end
 
 post_install do |installer|

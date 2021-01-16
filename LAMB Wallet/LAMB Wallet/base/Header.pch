@@ -15,6 +15,7 @@
     #import "GlobalDefineHeader.h"
     #import "LambNetManager.h"
     #import "LambNodeManager.h"
+    #import <CoreBitcoin/CoreBitcoin.h>
 #endif
 
 #define DeviceModelName [UIDevice deviceModelName]

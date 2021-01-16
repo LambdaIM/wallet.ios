@@ -243,7 +243,8 @@
     [LambNetManager GET:JoinParams(getHTTP_Get_for_producers_award_validatorAddr, lambAddress,self.nodeDetail.operator_address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSArray *objs = [NSArray yy_modelArrayWithClass:[ASProposalValueAmountModel class] json:responseObject];
-            weakSelf.nodeDetail.winLamb = [[objs firstObject] amount];
+            ASProposalValueAmountModel *model = [objs firstObject];
+            weakSelf.nodeDetail.winLamb = model.amount;
             [weakSelf reloadData];
         }
         complain(YES);
