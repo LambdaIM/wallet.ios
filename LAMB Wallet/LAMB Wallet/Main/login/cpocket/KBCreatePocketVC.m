@@ -84,6 +84,8 @@
         [ASHUD showHudTipStr:ASLocalizedString(@"该钱包已存在")];
         return;
     }else{
+        [LambUtils shareInstance].currentUser.name = [self.m_pname.text stringByTrim];
+        [LambUtils shareInstance].currentUser.password = [self.m_conpass.text stringByTrim];
         pushToDestinationController(self, KBMnemonicVC);
     }
     

@@ -12,6 +12,8 @@
 #import "UIView+Ex.h"
 #import "UIImage+Ex.h"
 #import <YYCategories/NSArray+YYAdd.h>
+#import "NSData+KBChange.h"
+#import <TrezorCrypto/segwit_addr.h>
 
 @interface KBMnemonicVC ()
 
@@ -89,23 +91,54 @@
             for (int i = 0; i < self.channelView.enabledTitles.count; i++) {
               
                 NSString *c1 = [self.channelView.enabledTitles objectAtIndex:i];
-                NSString *c2 = [[LambUtils shareInstance].mnemonic objectAtIndex:i];
+                NSString *c2 = [[LambUtils shareInstance].currentUser.mnemonic objectAtIndex:i];
                 if (![c1 isEqualToString:c2]) {
                     state = NO;
                     [ASHUD showHudTipStr:ASLocalizedString(@"助记词校验错误")];
                     break;
                 }
             }
+            
             // 校验成功
             if (state) {
+                                
+                BTCMnemonic *mnemonic = [[BTCMnemonic alloc] initWithWords:[LambUtils shareInstance].currentUser.mnemonic password:@"" wordListType:BTCMnemonicWordListTypeEnglish];
+                [LambUtils shareInstance].currentUser.lambMnemonic = mnemonic;
                 
+                
+                NSLog(@"钱包生成成功 \n 助记词 %@ \n publicKey %@ \n privateKey %@ \n address %@ \n btcpublick %@ \n btcPrivate %@\n btc_address %@",[[LambUtils shareInstance].currentUser.mnemonic componentsJoinedByString:@" "],[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPublicKey,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPrivateKey ,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.key.address.publicAddress.string,[LambUtils shareInstance].currentUser.publicKey,[LambUtils shareInstance].currentUser.privateKey,[[LambUtils shareInstance].currentUser.lambKeyChain.identifier hexString]);
+                
+                
+                const char *cString = [@"lambda" cStringUsingEncoding:NSUTF8StringEncoding];
+
+//                char *resultChar = NULL;
+                
+                
+                const uint8_t* data = (const uint8_t*)[[LambUtils shareInstance].currentUser.lambKeyChain.identifier bytes];
+                
+                size_t data_len = [LambUtils shareInstance].currentUser.lambKeyChain.identifier.length;
+                
+                char resultChar[@"lambda".length + data_len + 8];
+                
+                uint8_t* dataBuf [data_len]; //本地堆栈数组
+                [[LambUtils shareInstance].currentUser.lambKeyChain.identifier getBytes:dataBuf length:data_len];
+
+                
+                int result = bech32_encode(resultChar, cString, data,data_len);
+                
+                if (result) {
+                    NSString *string = [[NSString alloc] initWithCString:resultChar encoding:NSUTF8StringEncoding];
+                    NSLog(@"lambadAddress %@",string);
+                }else{
+                    
+                }
             }
         }else{
             [ASHUD showHudTipStr:ASLocalizedString(@"请选择助记词")];
         }
     }else{
         if (self.mnemonic) {
-            [LambUtils shareInstance].mnemonic = self.mnemonic;
+            [LambUtils shareInstance].currentUser.mnemonic = self.mnemonic;
         }
         KBMnemonicVC *volatileVc = [[KBMnemonicVC alloc]init];
         volatileVc.confirmMnemonic = YES;
@@ -117,6 +150,8 @@
 - (void) getMnemonic {
     
     NSString *mnemonicString = [KBBipManager generateMnemonicString:@256 language:@"english" ];
+    mnemonicString = @"tide loyal leave bunker kid mutual cage more keen can whisper label simple exchange analyst raise small pink model cloth all quantum catch worry";
+    
     if ([mnemonicString isNotBlank]) {
         self.mnemonic = [mnemonicString componentsSeparatedByString:@" "];
         self.channelView.enabledTitles = [NSMutableArray arrayWithArray:self.mnemonic];
@@ -128,12 +163,16 @@
 
 /// 验证助剂词
 - (void) verticalMnemoinc {
-    if ([LambUtils shareInstance].mnemonic) {
-        self.mnemonic = [NSArray arrayWithArray:[LambUtils shareInstance].mnemonic];
+    if ([LambUtils shareInstance].currentUser.mnemonic) {
+        self.mnemonic = [NSArray arrayWithArray:[LambUtils shareInstance].currentUser.mnemonic];
         NSMutableArray *disAbleArray = [NSMutableArray arrayWithArray:self.mnemonic];
         [disAbleArray shuffle];
-        self.channelView.enabledTitles = [NSMutableArray array];
-        self.channelView.disabledTitles = disAbleArray;
+//        self.channelView.enabledTitles = [NSMutableArray array];
+//        self.channelView.disabledTitles = disAbleArray;
+        
+        self.channelView.enabledTitles = [NSMutableArray arrayWithArray:self.mnemonic];
+        self.channelView.disabledTitles = [NSMutableArray array];
+
         [self.channelView reloadData];
     }
 }
@@ -147,5 +186,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

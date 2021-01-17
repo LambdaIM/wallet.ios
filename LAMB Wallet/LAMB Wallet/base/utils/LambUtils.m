@@ -69,4 +69,11 @@
     [yyCache removeAllObjects];
 }
 
+
+- (ASUserModel *)currentUser {
+    if (!_currentUser) {
+        _currentUser = [[ASUserModel alloc]init];
+    }
+    return _currentUser;
+}
 @end

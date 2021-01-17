@@ -15,8 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) ASUserModel *currentUser;
 
-@property (nonatomic,strong) NSArray *mnemonic;// 助记词
-
 + (instancetype) shareInstance;
 
 /// 本地缓存用户

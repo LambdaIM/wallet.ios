@@ -19,8 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,copy) NSString *salt;
 @property (nonatomic ,copy) NSString *privateKey;
 @property (nonatomic ,copy) NSString *publicKey;
+@property (nonatomic ,copy) NSString *password;
 
-@property (nonatomic ,strong) NSArray *mnemon;// 助剂词
+@property (nonatomic, copy) NSString *path; // 
+
+@property (nonatomic ,strong) NSArray *mnemonic;// 助剂词
+
+@property (nonatomic,strong) BTCMnemonic *lambMnemonic;// 助记词
+
+@property (nonatomic,strong) BTCKeychain *lambKeyChain;
 
 @end
 
