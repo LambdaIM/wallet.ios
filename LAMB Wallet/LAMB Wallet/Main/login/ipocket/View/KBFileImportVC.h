@@ -4,7 +4,7 @@
 //
 //  Created by fei on 2020/10/29.
 //  Copyright © 2020 fei. All rights reserved.
-//
+//  配置文件导入数据
 
 #import "BaseVC.h"
 #import "ZJScrollPageViewDelegate.h"

@@ -26,6 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 移除所有用户
 + (void) removeAllUser;
 
+/// 生成bech32 地址
+/// @param data 地址nsdata
+/// @param prefix 前缀
++ (NSString *) getLambdaAddress:(NSData *) data prefix:(NSString *) prefix;
+
 @end
 
 NS_ASSUME_NONNULL_END

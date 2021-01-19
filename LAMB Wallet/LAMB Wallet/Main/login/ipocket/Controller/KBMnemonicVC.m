@@ -13,7 +13,9 @@
 #import "UIImage+Ex.h"
 #import <YYCategories/NSArray+YYAdd.h>
 #import "NSData+KBChange.h"
-#import <TrezorCrypto/segwit_addr.h>
+//#import <TrezorCrypto/segwit_addr.h>
+#import "LAMB_Wallet-Swift.h"
+
 
 @interface KBMnemonicVC ()
 
@@ -105,33 +107,18 @@
                 BTCMnemonic *mnemonic = [[BTCMnemonic alloc] initWithWords:[LambUtils shareInstance].currentUser.mnemonic password:@"" wordListType:BTCMnemonicWordListTypeEnglish];
                 [LambUtils shareInstance].currentUser.lambMnemonic = mnemonic;
                 
-                
                 NSLog(@"钱包生成成功 \n 助记词 %@ \n publicKey %@ \n privateKey %@ \n address %@ \n btcpublick %@ \n btcPrivate %@\n btc_address %@",[[LambUtils shareInstance].currentUser.mnemonic componentsJoinedByString:@" "],[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPublicKey,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPrivateKey ,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.key.address.publicAddress.string,[LambUtils shareInstance].currentUser.publicKey,[LambUtils shareInstance].currentUser.privateKey,[[LambUtils shareInstance].currentUser.lambKeyChain.identifier hexString]);
-                
-                
-                const char *cString = [@"lambda" cStringUsingEncoding:NSUTF8StringEncoding];
 
-//                char *resultChar = NULL;
-                
-                
-                const uint8_t* data = (const uint8_t*)[[LambUtils shareInstance].currentUser.lambKeyChain.identifier bytes];
-                
-                size_t data_len = [LambUtils shareInstance].currentUser.lambKeyChain.identifier.length;
-                
-                char resultChar[@"lambda".length + data_len + 8];
-                
-                uint8_t* dataBuf [data_len]; //本地堆栈数组
-                [[LambUtils shareInstance].currentUser.lambKeyChain.identifier getBytes:dataBuf length:data_len];
-
-                
-                int result = bech32_encode(resultChar, cString, data,data_len);
-                
-                if (result) {
-                    NSString *string = [[NSString alloc] initWithCString:resultChar encoding:NSUTF8StringEncoding];
-                    NSLog(@"lambadAddress %@",string);
+                NSString *addressString = [LambUtils getLambdaAddress:[LambUtils shareInstance].currentUser.lambKeyChain.identifier prefix:@"lambda"];
+                [LambUtils shareInstance].currentUser.address = addressString;
+                if (addressString.length) {
+                    [self.navigationController popToRootViewControllerAnimated:NO];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"WCS_USER_CHANGE_LANGUAGE" object:nil];
                 }else{
-                    
+                    [ASHUD showHudTipStr:ASLocalizedString(@"地址错误")];
                 }
+            }else{
+                [ASHUD showHudTipStr:ASLocalizedString(@"助记词校验错误")];
             }
         }else{
             [ASHUD showHudTipStr:ASLocalizedString(@"请选择助记词")];

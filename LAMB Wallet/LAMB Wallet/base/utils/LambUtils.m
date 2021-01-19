@@ -7,8 +7,7 @@
 //
 
 #import "LambUtils.h"
-
-
+#import "segwit_addr.h"
 
 @implementation LambUtils
 
@@ -75,5 +74,23 @@
         _currentUser = [[ASUserModel alloc]init];
     }
     return _currentUser;
+}
+
++ (NSString *) getLambdaAddress:(NSData *) addressData prefix:(NSString *) prefix{
+    
+    const char* hrp = (char*) [prefix cStringUsingEncoding:NSUTF8StringEncoding];
+
+    const uint8_t* data = (const uint8_t*)[addressData bytes];
+    
+    size_t data_len = addressData.length;
+                    
+    char *final = bech32_encodeData(data, data_len, hrp);
+
+    if (final) {
+        NSString *lambAdressString = [[NSString alloc] initWithCString:final encoding:NSUTF8StringEncoding];
+        return lambAdressString;
+    }else{
+        return @"";
+    }
 }
 @end
