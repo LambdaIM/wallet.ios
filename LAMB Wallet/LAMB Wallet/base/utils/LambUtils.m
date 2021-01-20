@@ -8,6 +8,7 @@
 
 #import "LambUtils.h"
 #import "segwit_addr.h"
+#import "BTCMnemonic+KBMnemonic.h"
 
 @implementation LambUtils
 
@@ -27,12 +28,23 @@
 
 + (void)saveUserInfo:(ASUserModel *)user {
     
-    YYCache *yyCache=[YYCache cacheWithName:kYYCacheUserIdentifer];
     if (user) {
-        NSInteger count = [yyCache.diskCache totalCount];
-        user.index = count;
-        //根据key写入缓存value
-        [yyCache setObject:user forKey:user.name];
+        
+        YYCache *yyCache=[YYCache cacheWithName:kYYCacheUserIdentifer];
+        
+        ASUserModel *userModel = [LambUtils getUserInfoWithUserName:user.name];
+        if (!userModel) {
+            NSInteger count = [yyCache.diskCache totalCount];
+            user.index = count;
+            //根据key写入缓存value
+            [yyCache setObject:user forKey:user.name];
+            
+            [[LambUtils shareInstance].localUserNames addObject:user.name];
+            NSArray *array = [NSArray arrayWithArray:[LambUtils shareInstance].localUserNames];
+            NSUserDefaults *defalut = [NSUserDefaults standardUserDefaults];
+            [defalut setObject:array forKey:kCacheUserNameIdentifer];
+            [defalut synchronize];
+        }
     }
 }
 
@@ -92,5 +104,52 @@
     }else{
         return @"";
     }
+}
+
++ (NSString *)checkMnemonicWords:(NSArray *)words {
+    
+    NSArray *totalWordsArray = [BTCMnemonic wordListForType:BTCMnemonicWordListTypeEnglish];
+    NSString *errorString = nil;
+    for (NSString *wordString in words) {
+        BOOL volatileValue = NO;
+        for (NSString *totalWordString in totalWordsArray) {
+            if ([wordString isEqualToString:totalWordString]) {
+                volatileValue = YES;
+                break;
+            }
+        }
+        if (!volatileValue) {
+            errorString = wordString;
+        }
+    }
+    return errorString;
+}
+
++ (void)logOut {
+    
+    [LambUtils shareInstance].currentUser = nil;
+}
+
++ (void)creatMnemonicWithWords:(NSArray *)words {
+    
+    BTCMnemonic *mnemonic = [[BTCMnemonic alloc] initWithWords:words password:@"" wordListType:BTCMnemonicWordListTypeEnglish];
+    [LambUtils shareInstance].currentUser.lambMnemonic = mnemonic;
+    
+    NSLog(@"钱包生成成功 \n 助记词 %@ \n publicKey %@ \n privateKey %@ \n address %@ \n btcpublick %@ \n btcPrivate %@\n btc_address %@ \n lamb_address %@",[[LambUtils shareInstance].currentUser.mnemonic componentsJoinedByString:@" "],[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPublicKey,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPrivateKey ,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.key.address.publicAddress.string,[LambUtils shareInstance].currentUser.publicKey,[LambUtils shareInstance].currentUser.privateKey,[[LambUtils shareInstance].currentUser.lambKeyChain.identifier hexString],[LambUtils shareInstance].currentUser.address);
+
+}
+
+- (NSMutableArray *)localUserNames {
+    if (!_localUserNames) {
+        
+        NSUserDefaults *defalut = [NSUserDefaults standardUserDefaults];
+        NSArray *tempArray = [defalut objectForKey:kCacheUserNameIdentifer];
+        if (tempArray) {
+            _localUserNames = [NSMutableArray arrayWithArray:tempArray];
+        }else{
+            _localUserNames = [NSMutableArray array];
+        }
+    }
+    return _localUserNames;
 }
 @end

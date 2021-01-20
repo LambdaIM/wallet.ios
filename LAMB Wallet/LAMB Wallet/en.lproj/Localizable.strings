@@ -215,6 +215,7 @@
 "发送到"="Send to";
 "请输入备份文件内容"="please enter content of backup file";
 "助记词错误，请核对后再次输入"="Mnemonic wording error， please double check and enter again";
+"助记词错误"="Mnemonic wording error";
 "接收方"="Receiver";
 "自动"="Auto";
 "授权增发"="Authorized Additional Issuance";

@@ -34,15 +34,22 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    self.table.frame = CGRectMake(0, 0, kScreenW, kScreenH - kll_Status_NavBarHeight - kll_Tabbar_SafeBottomHeight);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self refreshUIRealTime];
     
+    self.table.frame = CGRectMake(0, 0, kScreenW, kScreenH - kll_Status_NavBarHeight - kll_Tabbar_SafeBottomHeight);
     self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.table.rowHeight = 70;
     self.table.mj_footer.hidden = YES;
     [self.table registerXibCell:[MiningCell class]];
-    
+    self.table.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
     _header =
     [[MiningHeaderView alloc] initWithFrame:CGRectMake(15, 0, kScreenW-2*15, 260)];
     self.table.tableHeaderView = self.header;
@@ -148,7 +155,6 @@
                 
         }];
     }];
-    
 }
 
 // 获取lamb奖励

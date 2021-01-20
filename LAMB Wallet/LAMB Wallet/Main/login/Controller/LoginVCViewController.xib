@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginVCViewController">
             <connections>
+                <outlet property="accountBtn" destination="LII-cc-pmi" id="i9o-Xc-Xtw"/>
                 <outlet property="accountNameField" destination="1cy-cq-ope" id="Ygn-hG-YC2"/>
                 <outlet property="creatBtn" destination="2jD-sK-gvI" id="MNc-Pg-zYA"/>
                 <outlet property="loadingBtn" destination="Es3-Zh-P4g" id="W4w-mh-z12"/>
@@ -40,7 +41,7 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_zhanghu" translatesAutoresizingMaskIntoConstraints="NO" id="zbC-yM-fcC">
                             <rect key="frame" x="16" y="14" width="16.5" height="17"/>
                         </imageView>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1cy-cq-ope">
+                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1cy-cq-ope">
                             <rect key="frame" x="42.5" y="0.0" width="293.5" height="45"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -51,8 +52,11 @@
                             <state key="normal" image="drop_down">
                                 <color key="titleColor" red="0.1960784314" green="0.33725490200000002" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LII-cc-pmi">
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="45"/>
                             <connections>
-                                <action selector="selectAccountBtn:" destination="-1" eventType="touchUpInside" id="Ui9-xo-XXe"/>
+                                <action selector="selectAccountBtn:" destination="-1" eventType="touchUpInside" id="KwP-xK-Dd5"/>
                             </connections>
                         </button>
                     </subviews>
@@ -66,10 +70,14 @@
                         <constraint firstAttribute="bottom" secondItem="EZB-YT-VTO" secondAttribute="bottom" id="cGQ-8Z-12n"/>
                         <constraint firstAttribute="trailing" secondItem="1cy-cq-ope" secondAttribute="trailing" constant="30" id="cJb-Fb-hrU"/>
                         <constraint firstAttribute="trailing" secondItem="EZB-YT-VTO" secondAttribute="trailing" id="fPh-g0-Ckf"/>
+                        <constraint firstAttribute="trailing" secondItem="LII-cc-pmi" secondAttribute="trailing" id="fQv-Gr-EFR"/>
+                        <constraint firstItem="LII-cc-pmi" firstAttribute="top" secondItem="sep-f3-5zj" secondAttribute="top" id="jP4-1k-FAh"/>
                         <constraint firstAttribute="bottom" secondItem="1cy-cq-ope" secondAttribute="bottom" id="lXX-od-0II"/>
+                        <constraint firstItem="LII-cc-pmi" firstAttribute="leading" secondItem="sep-f3-5zj" secondAttribute="leading" id="oEY-bb-7yF"/>
                         <constraint firstItem="1cy-cq-ope" firstAttribute="top" secondItem="sep-f3-5zj" secondAttribute="top" id="ooK-CH-uWh"/>
                         <constraint firstItem="zbC-yM-fcC" firstAttribute="centerY" secondItem="sep-f3-5zj" secondAttribute="centerY" id="p8U-kk-xZ9"/>
                         <constraint firstAttribute="height" constant="45" id="xDh-5T-ItL"/>
+                        <constraint firstAttribute="bottom" secondItem="LII-cc-pmi" secondAttribute="bottom" id="xVg-jq-Fcg"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJJ-uV-NqF">
@@ -102,6 +110,9 @@
                         <constraint firstAttribute="height" constant="48" id="Mhl-qL-rPM"/>
                     </constraints>
                     <state key="normal" title="登录"/>
+                    <connections>
+                        <action selector="loginBtnClice:" destination="-1" eventType="touchUpInside" id="SYu-5y-eW9"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jD-sK-gvI">
                     <rect key="frame" x="24" y="436" width="54" height="28"/>

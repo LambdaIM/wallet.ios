@@ -19,7 +19,7 @@
     if (self.lambMnemonic) {
         return [self.lambKeyChain.key.publicKey hexString];
     }else{
-        return nil;
+        return _publicKey;
     }
 }
 
@@ -27,7 +27,7 @@
     if (self.lambMnemonic) {
         return [self.lambKeyChain.key.privateKey hexString];
     }else{
-        return nil;
+        return _privateKey;
     }
 }
 
@@ -35,7 +35,7 @@
     if (self.lambMnemonic) {
         return self.lambKeyChain.key.address.publicAddress.string;
     }else{
-        return nil;
+        return _address;
     }
 }
 
@@ -43,6 +43,11 @@
     
     _lambMnemonic = lambMnemonic;
     self.lambKeyChain = [lambMnemonic.keychain derivedKeychainWithPath:[LambUtils shareInstance].currentUser.path];
+    self.privateKey = [self.lambKeyChain.key.privateKey hexString];
+    self.publicKey = [self.lambKeyChain.key.publicKey hexString];
+    
+    NSString *addressString = [LambUtils getLambdaAddress:[LambUtils shareInstance].currentUser.lambKeyChain.identifier prefix:@"lambda"];
+    self.address = addressString;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder { [self yy_modelEncodeWithCoder:aCoder]; }

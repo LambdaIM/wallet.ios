@@ -1,10 +1,10 @@
 //
-//  KBMnemonicImportVC.h
+//  KBMnemonicVC.h
 //  LAMB Wallet
 //
-//  Created by fei on 2020/10/29.
+//  Created by fei on 2020/10/27.
 //  Copyright © 2020 fei. All rights reserved.
-//  助记词导入
+//  助剂词导入钱包
 
 #import "BaseVC.h"
 #import "ZJScrollPageViewDelegate.h"

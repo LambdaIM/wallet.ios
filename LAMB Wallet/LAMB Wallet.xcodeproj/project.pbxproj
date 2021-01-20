@@ -66,6 +66,8 @@
 		A3305C7725B59B8700577FCC /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3305C7625B59B8700577FCC /* Encoding.swift */; };
 		A3305C7925B5B04D00577FCC /* Bech32.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3305C7825B5B04D00577FCC /* Bech32.swift */; };
 		A3305C7C25B5B5F800577FCC /* segwit_addr.c in Sources */ = {isa = PBXBuildFile; fileRef = A3305C7A25B5B5F700577FCC /* segwit_addr.c */; };
+		A3305CA125B6E28D00577FCC /* KBMnemonicImportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3305CA025B6E28D00577FCC /* KBMnemonicImportVC.xib */; };
+		A3305CA425B7C58500577FCC /* BTCMnemonic+KBMnemonic.m in Sources */ = {isa = PBXBuildFile; fileRef = A3305CA325B7C58500577FCC /* BTCMnemonic+KBMnemonic.m */; };
 		A3317AA2259DAC72007EE086 /* ASAssertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3317AA1259DAC72007EE086 /* ASAssertModel.m */; };
 		A33C7204258F36470079FF4C /* ASProposalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A33C7203258F36470079FF4C /* ASProposalDetailVC.m */; };
 		A33C720B258F40C20079FF4C /* ASProposalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A33C7209258F40C20079FF4C /* ASProposalDetailCell.m */; };
@@ -257,6 +259,9 @@
 		A3305C7825B5B04D00577FCC /* Bech32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bech32.swift; sourceTree = "<group>"; };
 		A3305C7A25B5B5F700577FCC /* segwit_addr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = segwit_addr.c; sourceTree = "<group>"; };
 		A3305C7B25B5B5F800577FCC /* segwit_addr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = segwit_addr.h; sourceTree = "<group>"; };
+		A3305CA025B6E28D00577FCC /* KBMnemonicImportVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KBMnemonicImportVC.xib; sourceTree = "<group>"; };
+		A3305CA225B7C58500577FCC /* BTCMnemonic+KBMnemonic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BTCMnemonic+KBMnemonic.h"; sourceTree = "<group>"; };
+		A3305CA325B7C58500577FCC /* BTCMnemonic+KBMnemonic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BTCMnemonic+KBMnemonic.m"; sourceTree = "<group>"; };
 		A3317AA0259DAC72007EE086 /* ASAssertModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASAssertModel.h; sourceTree = "<group>"; };
 		A3317AA1259DAC72007EE086 /* ASAssertModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASAssertModel.m; sourceTree = "<group>"; };
 		A33C7202258F36470079FF4C /* ASProposalDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASProposalDetailVC.h; path = "LAMB Wallet/Main/fund/vc/ASProposalDetailVC.h"; sourceTree = SOURCE_ROOT; };
@@ -848,6 +853,7 @@
 				A5D7765F254A782600783C67 /* KBFileImportVC.m */,
 				A5D77664254A785A00783C67 /* KBMnemonicImportVC.h */,
 				A5D77665254A785A00783C67 /* KBMnemonicImportVC.m */,
+				A3305CA025B6E28D00577FCC /* KBMnemonicImportVC.xib */,
 				A368C1A325A95B6900C5ABFD /* KBMnemonicVC.h */,
 				A368C1A425A95B6900C5ABFD /* KBMnemonicVC.m */,
 			);
@@ -971,6 +977,8 @@
 				A511B98C255A45D900327525 /* NSData+KBChange.m */,
 				A511B98F255A46A400327525 /* NSString+KBChange.h */,
 				A511B990255A46A400327525 /* NSString+KBChange.m */,
+				A3305CA225B7C58500577FCC /* BTCMnemonic+KBMnemonic.h */,
+				A3305CA325B7C58500577FCC /* BTCMnemonic+KBMnemonic.m */,
 			);
 			path = ext;
 			sourceTree = "<group>";
@@ -1101,6 +1109,7 @@
 				980A38E42548145B00C62DE0 /* ASBackupWalletVC.xib in Resources */,
 				A380FFF5257927E8001C21C1 /* english.txt in Resources */,
 				A5D77648254A75D300783C67 /* KBImportPocketVC.xib in Resources */,
+				A3305CA125B6E28D00577FCC /* KBMnemonicImportVC.xib in Resources */,
 				980A392D25482A7400C62DE0 /* MiningCell.xib in Resources */,
 				985033D42546E2A30067896B /* Localizable.strings in Resources */,
 				A5D77662254A782600783C67 /* KBFileImportVC.xib in Resources */,
@@ -1237,6 +1246,7 @@
 				980A39532548E79D00C62DE0 /* NoPasteTextField.m in Sources */,
 				985033CE2546E2480067896B /* ASLocalizedManager.m in Sources */,
 				A547C4662548233100591068 /* KBCreatePocketVC.m in Sources */,
+				A3305CA425B7C58500577FCC /* BTCMnemonic+KBMnemonic.m in Sources */,
 				980A396D254911A600C62DE0 /* UIImage+Ex.m in Sources */,
 				980A384F2547AFD200C62DE0 /* ZJContentView.m in Sources */,
 				A5D77687254AB2FF00783C67 /* sc.c in Sources */,

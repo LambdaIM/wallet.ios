@@ -15,14 +15,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) ASUserModel *currentUser;
 
+@property (nonatomic,strong) NSMutableArray *localUserNames;
+
+
 + (instancetype) shareInstance;
 
 /// 本地缓存用户
 /// @param user userModel
 + (void) saveUserInfo:(ASUserModel *) user;
+
 /// 根据用户名获取用户信息
 /// @param name 用户名
 + (ASUserModel *) getUserInfoWithUserName:(NSString *) name;
+
 /// 移除所有用户
 + (void) removeAllUser;
 
@@ -31,6 +36,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param prefix 前缀
 + (NSString *) getLambdaAddress:(NSData *) data prefix:(NSString *) prefix;
 
+/// 检测助记词是否正确
+/// @param words 助记词数组
++ (NSString *) checkMnemonicWords:(NSArray *) words;
+
+/// 退出登录
++ (void) logOut ;
+
+/// 创建助记词类
+/// @param words 助记词数组
++ (void) creatMnemonicWithWords:(NSArray *) words;
 @end
 
 NS_ASSUME_NONNULL_END

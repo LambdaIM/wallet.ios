@@ -103,15 +103,11 @@
             
             // 校验成功
             if (state) {
-                                
-                BTCMnemonic *mnemonic = [[BTCMnemonic alloc] initWithWords:[LambUtils shareInstance].currentUser.mnemonic password:@"" wordListType:BTCMnemonicWordListTypeEnglish];
-                [LambUtils shareInstance].currentUser.lambMnemonic = mnemonic;
                 
-                NSLog(@"钱包生成成功 \n 助记词 %@ \n publicKey %@ \n privateKey %@ \n address %@ \n btcpublick %@ \n btcPrivate %@\n btc_address %@",[[LambUtils shareInstance].currentUser.mnemonic componentsJoinedByString:@" "],[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPublicKey,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPrivateKey ,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.key.address.publicAddress.string,[LambUtils shareInstance].currentUser.publicKey,[LambUtils shareInstance].currentUser.privateKey,[[LambUtils shareInstance].currentUser.lambKeyChain.identifier hexString]);
-
-                NSString *addressString = [LambUtils getLambdaAddress:[LambUtils shareInstance].currentUser.lambKeyChain.identifier prefix:@"lambda"];
-                [LambUtils shareInstance].currentUser.address = addressString;
-                if (addressString.length) {
+                [LambUtils creatMnemonicWithWords:[LambUtils shareInstance].currentUser.mnemonic];
+                
+                if ([LambUtils shareInstance].currentUser.address.length) {
+                    [LambUtils saveUserInfo:[LambUtils shareInstance].currentUser];
                     [self.navigationController popToRootViewControllerAnimated:NO];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"WCS_USER_CHANGE_LANGUAGE" object:nil];
                 }else{

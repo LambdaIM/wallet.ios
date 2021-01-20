@@ -35,8 +35,10 @@
 
 
 - (void)setupUI {
-    
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor clearColor];
     UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftRightM, 0, kScreenW - 2 * kLeftRightM, 80)];
+    bgView.clipsToBounds = YES;
     bgView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:bgView];
     

@@ -39,7 +39,6 @@
     UIButton *btn = [self switchWalletBtn];
     [btn addTarget:self action:@selector(clickSwitchWalletBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: btn];
-    [btn addTarget:self action:@selector(clickSwitchWalletBtn) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)clickSwitchWalletBtn {
@@ -47,7 +46,9 @@
     AppDelegate *appdele =  (AppDelegate*)app.delegate;
     LoginVCViewController *loginVC = [[LoginVCViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
-    appdele.window.rootViewController = nav; 
+    appdele.window.rootViewController = nav;
+    // 用户信息置空
+    [LambUtils logOut];
 }
 
 - (void)pushToSwitchVerificationNode {
