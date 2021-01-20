@@ -48,7 +48,7 @@
     });
     UILabel *valuelab1 = ({
         ASLabel *lab =
-        [ASLabel text:lambAddress font:[UIFont pFSize:15] textColor:[UIColor blackColor]];
+        [ASLabel text:[LambUtils shareInstance].currentUser.address font:[UIFont pFSize:15] textColor:[UIColor blackColor]];
         lab.m_edgeInsets = UIEdgeInsetsMake(8, 16, 8, 16);
         lab.backgroundColor = @"#F1F2F7".hexColor;
         lab.numberOfLines = 0;

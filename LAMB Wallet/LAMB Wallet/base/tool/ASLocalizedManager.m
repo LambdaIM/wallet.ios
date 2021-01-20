@@ -79,7 +79,7 @@ static NSString *const kUserLanguage = @"kUserLanguage";
     [defaults setValue:language forKey:kUserLanguage];
     [defaults synchronize];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"WCS_USER_CHANGE_LANGUAGE" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUSER_CHANGE_LANGUAGE object:nil];
 }
 
 - (NSString *)stringWithKey:(NSString *)key {

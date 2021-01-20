@@ -26,7 +26,7 @@
         = ({
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
             label.textColor = [UIColor whiteColor];
-            label.text =  @"钱包名";
+            label.text =  [LambUtils shareInstance].currentUser.name;
             label.font = [UIFont boldSystemFontOfSize:20];
             [label sizeToFit];
             label;

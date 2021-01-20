@@ -43,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.lambdaAddress = lambAddress;
+    self.lambdaAddress = [LambUtils shareInstance].currentUser.address;
     [self setupUI];
     // Do any additional setup after loading the view.
 }
@@ -241,7 +241,7 @@
 - (void) getaAssertComplain:(void(^)(ASAssertModel *assertModel)) complain{
     
     kWeakSelf(weakSelf)
-    [LambNetManager GET:JoinParam(USER_Get_Auth, lambAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+    [LambNetManager GET:JoinParam(USER_Get_Auth, [LambUtils shareInstance].currentUser.address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             ASAssertModel *nodeDetail = [ASAssertModel yy_modelWithDictionary:responseObject];
             [LambNodeManager manager].assertModel = nodeDetail;

@@ -78,7 +78,7 @@
     addressTipLab.textAlignment = NSTextAlignmentCenter;
     [midView addSubview:addressTipLab];
 
-    UILabel *addressLab = [UILabel m3b14Text:lambAddress];
+    UILabel *addressLab = [UILabel m3b14Text:[LambUtils shareInstance].currentUser.address];
     addressLab.frame = CGRectMake(kLeftRightM, addressTipLab.bottom + 18, midView.width - 2 * kLeftRightM, 20);
     addressLab.textAlignment = NSTextAlignmentCenter;
     [midView addSubview:addressLab];
@@ -129,7 +129,7 @@
 - (void) copyAction{
     
     // 复制地址
-    NSString *str = lambAddress;
+    NSString *str = [LambUtils shareInstance].currentUser.address;
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string =str;
     [ASHUD showHudTipStr:@"复制成功"];
@@ -139,7 +139,7 @@
 
 - (NSString *) getQRSttring {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:lambAddress forKey:@"address"];
+    [dic setObject:[LambUtils shareInstance].currentUser.address forKey:@"address"];
     [dic setObject:[LambNetManager shareInstance].baseUrl forKey:@"chainUrl"];
     [dic setObject:self.selectIndex == 0 ? @"ulamb":@"utbb" forKey:@"token"];
     [dic setObject:@"make_collections_QRCode" forKey:@"type"];

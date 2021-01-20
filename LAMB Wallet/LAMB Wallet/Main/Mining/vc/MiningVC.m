@@ -151,16 +151,17 @@
 //
 //        }];
         // 获取质押tbb 数量
-        [weakSelf getUtbbData:lambAddress Complain:^(bool finish) {
+        [weakSelf getUtbbData:[LambUtils shareInstance].currentUser.address Complain:^(bool finish) {
                 
         }];
+        
     }];
 }
 
 // 获取lamb奖励
 - (void) getWinLambDataComplain:(void(^)(bool finish)) complain{
     
-    [LambNetManager GET:JoinParam(getHTTP_Get_for_producers_award, lambAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+    [LambNetManager GET:JoinParam(getHTTP_Get_for_producers_award, [LambUtils shareInstance].currentUser.address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSArray *objs = [NSArray yy_modelArrayWithClass:[ASProposalValueAmountModel class] json:responseObject];
             [LambNodeManager manager].canWinCoinArray = objs;
@@ -176,7 +177,7 @@
 // 节点获取lamb奖励 todo 节点地址需要计算
 - (void) getNodeWinLambDataComplain:(void(^)(bool finish)) complain{
     
-    [LambNetManager GET:JoinParam(getHTTP_get_producer_award, lambAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+    [LambNetManager GET:JoinParam(getHTTP_get_producer_award, [LambUtils shareInstance].currentUser.address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             ASProposalModel *obj = [ASProposalModel yy_modelWithDictionary:responseObject];
             if (obj) {

@@ -28,7 +28,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -147,7 +146,7 @@
             // 保存用户信息
             [LambUtils saveUserInfo:[LambUtils shareInstance].currentUser];
             [self.navigationController popToRootViewControllerAnimated:NO];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"WCS_USER_CHANGE_LANGUAGE" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUSER_LOGIN object:nil];
         }else{
             [ASHUD showHudTipStr:ASLocalizedString(@"地址错误")];
         }

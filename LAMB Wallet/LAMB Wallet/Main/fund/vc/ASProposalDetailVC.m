@@ -75,13 +75,13 @@
 
         }];
 
-        [LambNetManager GET:JoinParams(getHTTP_Get_proposal_my_yajin, self.model.ids, lambAddress) parameters:@{} showHud:YES success:^(id  _Nonnull responseObject) {
+        [LambNetManager GET:JoinParams(getHTTP_Get_proposal_my_yajin, self.model.ids, [LambUtils shareInstance].currentUser.address) parameters:@{} showHud:YES success:^(id  _Nonnull responseObject) {
             [weakSelf.table reloadData];
         } failure:^(NSError * _Nonnull error) {
             
         }];
 
-        [LambNetManager GET:JoinParams(getHTTP_Get_proposal_my_toupiao, self.model.ids,lambAddress) parameters:@{} showHud:YES success:^(id  _Nonnull responseObject) {
+        [LambNetManager GET:JoinParams(getHTTP_Get_proposal_my_toupiao, self.model.ids,[LambUtils shareInstance].currentUser.address) parameters:@{} showHud:YES success:^(id  _Nonnull responseObject) {
             [weakSelf.table reloadData];
         } failure:^(NSError * _Nonnull error) {
 

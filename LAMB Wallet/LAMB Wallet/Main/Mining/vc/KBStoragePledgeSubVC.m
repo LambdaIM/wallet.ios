@@ -53,7 +53,7 @@
 -(void)loadDataAtPage:(NSInteger)page {
     [self.datas removeAllObjects];
     NSString *requestString = self.bund ? getHTTP_get_zhiya_producer : getHTTP_get_zhiya_unbonding_producer;
-    [self getUtbbData:lambAddress state:requestString Complain:^(bool finish) {
+    [self getUtbbData:[LambUtils shareInstance].currentUser.address state:requestString Complain:^(bool finish) {
         
     }];
 }
@@ -123,7 +123,7 @@
 // 获取lamb奖励
 - (void) getNode:(NSString *) nodeAddress winLambDataComplain:(void(^)(ASProposalValueAmountModel *amountModel)) complain{
     
-    [LambNetManager GET:JoinParams(getHTTP_Get_for_producers_award_validatorAddr, lambAddress,nodeAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+    [LambNetManager GET:JoinParams(getHTTP_Get_for_producers_award_validatorAddr, [LambUtils shareInstance].currentUser.address,nodeAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSArray *objs = [NSArray yy_modelArrayWithClass:[ASProposalValueAmountModel class] json:responseObject];
             

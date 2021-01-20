@@ -42,7 +42,7 @@ static inline NSString *ASLocalizedString(NSString *key) {
  
  AppDelegate监听切换语种通知，刷新rootVC
  
- [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpTabBar) name:@"WCS_USER_CHANGE_LANGUAGE" object:nil];
+ [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpTabBar) name:kUSER_CHANGE_LANGUAGE object:nil];
 - (void)setUpTabBar {
  // 新xCode创建的项目得这样设置
  [UIApplication sharedApplication].windows.firstObject.rootViewController =  [UIStoryboard storyboardWithName:@"Main" bundle:nil].instantiateInitialViewController;;

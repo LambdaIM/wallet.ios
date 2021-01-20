@@ -19,6 +19,4 @@
 #define RELEASEBASEURL @"39.107.247.86:13659"
 #endif
 
-#define lambAddress @"lambda1ymms062l3v55tyfkeqp605psvdh4za78k6ufcw"
-
 #endif /* GlobalDefineHeader_h */

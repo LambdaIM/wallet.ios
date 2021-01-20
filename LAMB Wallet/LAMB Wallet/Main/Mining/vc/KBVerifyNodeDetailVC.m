@@ -24,7 +24,7 @@
 @implementation KBVerifyNodeDetailVC
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self getUtbbData:lambAddress Complain:^(bool finish) {
+    [self getUtbbData:[LambUtils shareInstance].currentUser.address Complain:^(bool finish) {
         
     }];
     [super viewWillAppear:animated];
@@ -240,7 +240,7 @@
 - (void) getWinLambDataComplain:(void(^)(bool finish)) complain{
     
     kWeakSelf(weakSelf)
-    [LambNetManager GET:JoinParams(getHTTP_Get_for_producers_award_validatorAddr, lambAddress,self.nodeDetail.operator_address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+    [LambNetManager GET:JoinParams(getHTTP_Get_for_producers_award_validatorAddr, [LambUtils shareInstance].currentUser.address,self.nodeDetail.operator_address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSArray *objs = [NSArray yy_modelArrayWithClass:[ASProposalValueAmountModel class] json:responseObject];
             ASProposalValueAmountModel *model = [objs firstObject];

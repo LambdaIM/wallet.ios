@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 //#import <CoreBitcoin/CoreBitcoin.h>
 #import "TabBarController.h"
+#import "LoginVCViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,22 +21,26 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self iOS14CellBgColorFix];
-    
-    [self addDebugRefresh];
+        
     [self addNotification];
 
     [self setUpTabBar];
+    
+    if (![LambUtils userLogin]) {
+        [self logOut];
+    }
+    
     [self setAppearance];
+    
     return YES;
 }
-- (void)addDebugRefresh {
-#ifdef DEBUG
-    [[NSBundle bundleWithPath: @"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
-#endif
-}
+
 - (void)addNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpTabBar) name:@"WCS_USER_CHANGE_LANGUAGE" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpTabBar) name:kUSER_CHANGE_LANGUAGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpTabBar) name:kUSER_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logOut) name:kUSER_LOGOUT object:nil];
 }
+
 - (void)setUpTabBar {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
      
@@ -43,6 +48,17 @@
     self.window.rootViewController = vc;
     [_window makeKeyAndVisible];
 }
+
+- (void)logOut {
+    
+    LoginVCViewController *loginVC = [[LoginVCViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+    self.window.rootViewController = nav;
+    [_window makeKeyAndVisible];
+    // 用户信息置空
+    [LambUtils logOut];
+}
+
 - (void)setAppearance {
     if (@available(iOS 11.0, *)) {
         [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -50,10 +66,11 @@
         // Fallback on earlier versions
     }
 }
+
 -(void)initKeyboardManager
 {
+    
 }
-
 
 /// ios
 - (void)iOS14CellBgColorFix {

@@ -109,7 +109,7 @@
                 if ([LambUtils shareInstance].currentUser.address.length) {
                     [LambUtils saveUserInfo:[LambUtils shareInstance].currentUser];
                     [self.navigationController popToRootViewControllerAnimated:NO];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"WCS_USER_CHANGE_LANGUAGE" object:nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kUSER_LOGIN object:nil];
                 }else{
                     [ASHUD showHudTipStr:ASLocalizedString(@"地址错误")];
                 }

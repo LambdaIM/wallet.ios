@@ -128,15 +128,50 @@
 + (void)logOut {
     
     [LambUtils shareInstance].currentUser = nil;
+    // 移除当前用户信息
+    YYCache *yyCache=[YYCache cacheWithName:kYYCacheCurrentUserIdentifer];
+    [yyCache removeAllObjects];
 }
 
 + (void)creatMnemonicWithWords:(NSArray *)words {
     
     BTCMnemonic *mnemonic = [[BTCMnemonic alloc] initWithWords:words password:@"" wordListType:BTCMnemonicWordListTypeEnglish];
-    [LambUtils shareInstance].currentUser.lambMnemonic = mnemonic;
-    
-    NSLog(@"钱包生成成功 \n 助记词 %@ \n publicKey %@ \n privateKey %@ \n address %@ \n btcpublick %@ \n btcPrivate %@\n btc_address %@ \n lamb_address %@",[[LambUtils shareInstance].currentUser.mnemonic componentsJoinedByString:@" "],[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPublicKey,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPrivateKey ,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.key.address.publicAddress.string,[LambUtils shareInstance].currentUser.publicKey,[LambUtils shareInstance].currentUser.privateKey,[[LambUtils shareInstance].currentUser.lambKeyChain.identifier hexString],[LambUtils shareInstance].currentUser.address);
+    if (mnemonic) {
+        [LambUtils shareInstance].currentUser.lambMnemonic = mnemonic;
+        
+        // 保存当前用户信息
+        [LambUtils cofigLocalUserInfo];
+        
+        NSLog(@"钱包生成成功 \n 助记词 %@ \n publicKey %@ \n privateKey %@ \n address %@ \n btcpublick %@ \n btcPrivate %@\n btc_address %@ \n lamb_address %@",[[LambUtils shareInstance].currentUser.mnemonic componentsJoinedByString:@" "],[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPublicKey,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPrivateKey ,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.key.address.publicAddress.string,[LambUtils shareInstance].currentUser.publicKey,[LambUtils shareInstance].currentUser.privateKey,[[LambUtils shareInstance].currentUser.lambKeyChain.identifier hexString],[LambUtils shareInstance].currentUser.address);
+    }
+}
 
++ (void) cofigLocalUserInfo{
+    
+    YYCache *yyCache=[YYCache cacheWithName:kYYCacheCurrentUserIdentifer];
+    [yyCache removeAllObjects];
+    [yyCache setObject:[LambUtils shareInstance].currentUser forKey:kYYCacheCurrentUserIdentifer];
+}
+
++ (BOOL) userLogin{
+    
+    YYCache *yyCache=[YYCache cacheWithName:kYYCacheCurrentUserIdentifer];
+    if ([yyCache containsObjectForKey:kYYCacheCurrentUserIdentifer]) {
+        ASUserModel *user = (ASUserModel *)[yyCache objectForKey:kYYCacheCurrentUserIdentifer];
+        if (user) {
+            [LambUtils shareInstance].currentUser = user;
+            if (user.mnemonic) {
+                [LambUtils creatMnemonicWithWords:user.mnemonic];
+                return YES;
+            }else{
+                return NO;
+            }
+        }else{
+            return NO;
+        }
+    }else{
+        return NO;
+    }
 }
 
 - (NSMutableArray *)localUserNames {

@@ -43,9 +43,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// 退出登录
 + (void) logOut ;
 
+/// 判断用户是否登录
++ (BOOL) userLogin;
+
 /// 创建助记词类
 /// @param words 助记词数组
 + (void) creatMnemonicWithWords:(NSArray *) words;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

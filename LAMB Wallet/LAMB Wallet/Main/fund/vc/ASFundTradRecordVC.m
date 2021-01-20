@@ -67,7 +67,7 @@
 - (void) getHistory:(NSString *)senderOrecipient Complain:(void(^)(ASAssertModel *assertModel)) complain{
     
     kWeakSelf(weakSelf)
-    [LambNetManager GET:JoinParams(getHTTP_get_history, senderOrecipient, lambAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+    [LambNetManager GET:JoinParams(getHTTP_get_history, senderOrecipient, [LambUtils shareInstance].currentUser.address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             NSArray *array = [NSArray yy_modelArrayWithClass:[ASRecordListModel class] json:responseObject];
             for (ASRecordListModel *model in array) {

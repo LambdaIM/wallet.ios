@@ -143,7 +143,7 @@
         [ASHUD showHudTipStr:ASLocalizedString(@"请输入金额")];
         return;
     }
-    if ([self.addressField.text isEqualToString:lambAddress]) {
+    if ([self.addressField.text isEqualToString:[LambUtils shareInstance].currentUser.address]) {
         [ASHUD showHudTipStr:ASLocalizedString(@"不支持转账给本人")];
         return;
     }
