@@ -50,7 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param words 助记词数组
 + (void) creatMnemonicWithWords:(NSArray *) words;
 
+/// 给json 签名
+/// @param jsonString json数据
++ (NSString *) signatureForHash:(NSString *)jsonString;
 
+
+/// 按照字典的key排序，返回json的数据格式
++ (NSString *) dictionaryToJson:(NSDictionary *)dic;
 @end
 
 NS_ASSUME_NONNULL_END

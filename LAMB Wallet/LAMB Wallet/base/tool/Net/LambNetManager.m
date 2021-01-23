@@ -83,7 +83,7 @@ static LambNetManager *instance = nil;
     switch (requestType) {
         case kGetType:
         {
-            [[[LambNetManager shareInstance]sessionManager] GET:urlString parameters:parameters headers:parameters  progress: nil
+            [[[LambNetManager shareInstance]sessionManager] GET:urlString parameters:parameters headers:nil  progress: nil
                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
                 id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:NULL];
@@ -92,18 +92,20 @@ static LambNetManager *instance = nil;
                 
                 [LambNetManager requestFinish:result error:nil showHud:hud success:success failure:failure];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"=====> %@\n =====> %@",task,error);
                 [LambNetManager requestFinish:nil error:error showHud:hud success:success failure:failure];
             }];
         }
             break;
         case kPostType:
         {
-            [[[LambNetManager shareInstance]sessionManager] POST:urlString parameters:parameters headers:parameters  progress: nil
+            [[[LambNetManager shareInstance]sessionManager] POST:urlString parameters:parameters headers:nil  progress: nil
                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 id result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:NULL];
                 NSLog(@"=====> %@\n =====> %@",requestUrl,result);
                 [LambNetManager requestFinish:result error:nil showHud:hud success:success failure:failure];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"=====> %@\n =====> %@",task,error);
                 [LambNetManager requestFinish:nil error:error showHud:hud success:success failure:failure];
             }];
         }
@@ -145,7 +147,7 @@ static LambNetManager *instance = nil;
     
     urlString = [requestUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "].invertedSet];
 
-    [[[LambNetManager shareInstance]sessionManager] POST:urlString parameters:parameters headers:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [[[LambNetManager shareInstance]sessionManager] POST:urlString parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (int i = 0; i < imageArray.count; i++) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
         formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";

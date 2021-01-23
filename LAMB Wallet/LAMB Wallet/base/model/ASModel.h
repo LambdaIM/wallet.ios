@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *)modelsWithJSON:(id)json;
 /// 转换为字典或者数组
 - (id)modelToJSONObject;
+//模型转字典
+- (NSDictionary *)modelToDictionary;
 @end
 NS_ASSUME_NONNULL_END
 

@@ -90,6 +90,8 @@
 		A368C1B425A974AE00C5ABFD /* XLChannelHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A368C1AF25A974AE00C5ABFD /* XLChannelHeader.m */; };
 		A368C1B525A974AE00C5ABFD /* XLChannelView.m in Sources */ = {isa = PBXBuildFile; fileRef = A368C1B025A974AE00C5ABFD /* XLChannelView.m */; };
 		A368C1B625A974AE00C5ABFD /* XLChannelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A368C1B225A974AE00C5ABFD /* XLChannelItem.m */; };
+		A37373B725B981A00010B90D /* ASSendTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A37373B625B9819F0010B90D /* ASSendTextModel.m */; };
+		A37373BB25BC30620010B90D /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = A37373BA25BC30610010B90D /* OrderedDictionary.m */; };
 		A374ACD3255945AA0056A0BE /* UIColor+ASThemeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */; };
 		A380FFF5257927E8001C21C1 /* english.txt in Resources */ = {isa = PBXBuildFile; fileRef = A380FFF4257927E8001C21C1 /* english.txt */; };
 		A394C8ED2585B55F005FCAD2 /* ASNodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A394C8EC2585B55F005FCAD2 /* ASNodeModel.m */; };
@@ -305,6 +307,10 @@
 		A368C1B025A974AE00C5ABFD /* XLChannelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLChannelView.m; sourceTree = "<group>"; };
 		A368C1B125A974AE00C5ABFD /* XLChannelControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLChannelControl.h; sourceTree = "<group>"; };
 		A368C1B225A974AE00C5ABFD /* XLChannelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLChannelItem.m; sourceTree = "<group>"; };
+		A37373B525B9819F0010B90D /* ASSendTextModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASSendTextModel.h; sourceTree = "<group>"; };
+		A37373B625B9819F0010B90D /* ASSendTextModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASSendTextModel.m; sourceTree = "<group>"; };
+		A37373B925BC30610010B90D /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
+		A37373BA25BC30610010B90D /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		A374ACD1255945AA0056A0BE /* UIColor+ASThemeColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ASThemeColor.h"; sourceTree = "<group>"; };
 		A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ASThemeColor.m"; sourceTree = "<group>"; };
 		A380FFF4257927E8001C21C1 /* english.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = english.txt; sourceTree = "<group>"; };
@@ -482,6 +488,8 @@
 				A5D7766B254AB0AD00783C67 /* BlinkEd25519 */,
 				980A38EA254819FF00C62DE0 /* ASHUD.h */,
 				980A38E9254819FF00C62DE0 /* ASHUD.m */,
+				A37373B925BC30610010B90D /* OrderedDictionary.h */,
+				A37373BA25BC30610010B90D /* OrderedDictionary.m */,
 				980A38322547AFB300C62DE0 /* SXCodeTool.h */,
 				980A38332547AFB300C62DE0 /* SXCodeTool.m */,
 				985033CD2546E2480067896B /* ASLocalizedManager.h */,
@@ -657,6 +665,8 @@
 				A3B961DD25A1AFFD006CB9C8 /* ASQRModel.m */,
 				A3B961DF25A1C43D006CB9C8 /* ASRecordListModel.h */,
 				A3B961E025A1C43D006CB9C8 /* ASRecordListModel.m */,
+				A37373B525B9819F0010B90D /* ASSendTextModel.h */,
+				A37373B625B9819F0010B90D /* ASSendTextModel.m */,
 			);
 			path = mode;
 			sourceTree = "<group>";
@@ -1210,6 +1220,7 @@
 				A5D77689254AB2FF00783C67 /* key_exchange.c in Sources */,
 				A3B961DA25A16E5E006CB9C8 /* ASStorageCell.m in Sources */,
 				980A38E32548145B00C62DE0 /* ASBackupWalletVC.m in Sources */,
+				A37373B725B981A00010B90D /* ASSendTextModel.m in Sources */,
 				A368C1B625A974AE00C5ABFD /* XLChannelItem.m in Sources */,
 				A34AD1262558EE410001979B /* ASFundCoinDetailView.m in Sources */,
 				980A384E2547AFD200C62DE0 /* UIViewController+ZJScrollPageController.m in Sources */,
@@ -1254,6 +1265,7 @@
 				A35B80D1257917D5000BC8C7 /* ASUserModel.m in Sources */,
 				A3305C7925B5B04D00577FCC /* Bech32.swift in Sources */,
 				A3D463602552B14C00EED6CD /* verify.c in Sources */,
+				A37373BB25BC30620010B90D /* OrderedDictionary.m in Sources */,
 				980A382A2547AF6300C62DE0 /* ASLabel.m in Sources */,
 				A510515925660975006D1398 /* LambNetManager.m in Sources */,
 				A368C1B425A974AE00C5ABFD /* XLChannelHeader.m in Sources */,

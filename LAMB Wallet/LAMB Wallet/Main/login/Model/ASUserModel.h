@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,copy) NSString *salt;
 @property (nonatomic ,copy) NSString *privateKey;
 @property (nonatomic ,copy) NSString *publicKey;
+@property (nonatomic ,copy) NSString *publicKeyBase64;
+@property (nonatomic ,copy) NSString *privateKeyBase64;
 @property (nonatomic ,copy) NSString *password;
 
 @property (nonatomic, copy) NSString *path; // 

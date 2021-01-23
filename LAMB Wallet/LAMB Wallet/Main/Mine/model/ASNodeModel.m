@@ -8,6 +8,26 @@
 
 #import "ASNodeModel.h"
 
+@implementation ASNodeProtocolInfoModel
+@end
+
+@implementation ASNodeOtherInfoModel
+@end
+
+@implementation ASNodeInfoModel
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"protocol_version" : [ASNodeProtocolInfoModel class],
+             @"other" : [ASNodeOtherInfoModel class]
+    };
+}
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"nodeId" : @"id"};
+}
+
+@end
+
 @implementation ASNodeModel
 
 - (instancetype)initWithBaseUrl:(NSString *)baseUrl port:(NSString *)port nodeName:(NSString *)nodeName select:(BOOL)select{

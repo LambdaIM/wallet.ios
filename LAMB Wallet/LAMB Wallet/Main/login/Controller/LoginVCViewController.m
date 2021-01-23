@@ -109,6 +109,8 @@ static CGFloat accountTableViewCellHeight = 50;
                     [ASHUD showHudTipStr:ASLocalizedString(@"地址错误")];
                 }
             }
+        }else{
+            [ASHUD showHudTipStr:ASLocalizedString(@"密码错误")];
         }
     }
 }

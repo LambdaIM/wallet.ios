@@ -16,6 +16,7 @@
     #import "LambNetManager.h"
     #import "LambNodeManager.h"
     #import <CoreBitcoin/CoreBitcoin.h>
+    #import "ASSendTextModel.h"
 #endif
 
 #define DeviceModelName [UIDevice deviceModelName]
@@ -281,8 +282,10 @@ static inline BOOL isIPhoneXSeries() {
 #define getHTTP_Get_proposal_my_toupiao         @"/gov/proposals/%@/votes/%@"
 //获取提案投票结果5
 #define getHTTP_Get_proposal_toupiao         @"/gov/proposals/%@/tally"
-//获取交易详情
-#define getHTTP_Get_transaction_detail         @"/txs/"
+//获取交易详情// 发送交易
+#define getHTTP_Get_transaction_detail         @"/txs"
+//获取交易手续费
+#define getHTTP_Get_transaction_Gas         @"/bank/accounts/%@/transfers"
 
 
 

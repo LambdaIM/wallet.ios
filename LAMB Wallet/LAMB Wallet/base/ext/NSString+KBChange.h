@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)getShowNumber:(NSString *) point ;
 
+- (NSString *)requestShowNumber:(NSString *) point ;
+
 + (NSString *)formatStrWithOldStr:(NSString *)str isPlus:(BOOL)isPlus;
 
 + (NSString *)formatDecimalWithStr:(NSString *)str;

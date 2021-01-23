@@ -7,6 +7,7 @@
 //
 
 #import "ASUserModel.h"
+#import <YYCategories/NSData+YYAdd.h>
 
 @implementation ASUserModel
 
@@ -31,6 +32,22 @@
     }
 }
 
+- (NSString *)publicKeyBase64 {
+    if (self.lambMnemonic) {
+        return [self.lambKeyChain.key.publicKey base64EncodedString];
+    }else{
+        return _publicKeyBase64;
+    }
+}
+
+- (NSString *)privateKeyBase64 {
+    if (self.lambMnemonic) {
+        return [self.lambKeyChain.key.privateKey base64EncodedString];
+    }else{
+        return _privateKeyBase64;
+    }
+}
+
 - (NSString *)address {
     
     return _address;
@@ -43,7 +60,8 @@
         self.lambKeyChain = [lambMnemonic.keychain derivedKeychainWithPath:[LambUtils shareInstance].currentUser.path];
         self.privateKey = [self.lambKeyChain.key.privateKey hexString];
         self.publicKey = [self.lambKeyChain.key.publicKey hexString];
-        
+//        self.privateKey = [_lambMnemonic.keychain.key.privateKey base64EncodedString];
+//        self.publicKey = [_lambMnemonic.keychain.key.publicKey base64EncodedString];
         NSString *addressString = [LambUtils getLambdaAddress:self.lambKeyChain.identifier prefix:@"lambda"];
         self.address = addressString;
     }

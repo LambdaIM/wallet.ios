@@ -69,11 +69,18 @@
     }
 }
 
+- (NSString *)requestShowNumber:(NSString *) point {
+    
+    return [NSString stringWithFormat:@"%.0f",[self doubleValue] * 1000000];
+}
+
+
 - (NSString *)getShowNumber:(NSString *) point {
     
     NSString *formatString = [NSString stringWithFormat:@"%%.%@f",point];
     return [NSString hanleNums:[NSString deleteFloatAllZero:[NSString stringWithFormat:formatString,[self doubleValue] / 1000000]]];
 }
+
 
 - (NSString *)showLambAddress {
     return [NSString stringWithFormat:@"%@...%@",[self substringToIndex:10],[self substringFromIndex:self.length - 6]];

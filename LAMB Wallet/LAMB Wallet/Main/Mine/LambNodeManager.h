@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) ASQRModel *qrModel;// 扫描二维码模型
 @property(nonatomic,assign) ASNodeType type;
 @property(nonatomic,strong) ASAssertModel *assertModel;// 资产模型
+@property(nonatomic,strong) ASNodeInfoModel *currentNodeInfo;
+
 + (instancetype)manager;
 /// 切换验证节点
 /// @param type 节点类型
