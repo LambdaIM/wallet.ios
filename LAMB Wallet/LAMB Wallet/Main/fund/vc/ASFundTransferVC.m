@@ -253,12 +253,19 @@
                     
                     NSString *signString = [LambUtils dictionaryToJson:signDic];
                     
-                    NSString *signModelString = [LambUtils signatureForHash:signString];
+                    NSMutableString * str3 = [[NSMutableString alloc]initWithString:signString];
+                    
+                    [str3 replaceOccurrencesOfString:@"\\" withString:@"" options:1 range:NSMakeRange(0, str3.length)];
+
+                    NSString *signModelString = [LambUtils signatureForHash:str3];
                     
 //                    NSString *signString = [LambUtils signatureForHash:[weakSelf.signModel yy_modelToJSONString]];
                     signAtures.signature = signModelString;
-                    NSLog(@"签名后的数据 %@ \n 签名字符串 %@",signModelString,signString);
-                    id requestObj = [weakSelf.sendModel modelToJSONObject];
+                    
+                    id requestObj = [weakSelf.sendModel modelToDictionary];
+                    
+                    NSLog(@"签名后的数据 %@ \n 签名字符串 %@ \n 发送请求%@",signModelString,str3,responseObject);
+
                     // 发送交易请求
                     [weakSelf extracted:requestObj];
                 }
