@@ -10,6 +10,7 @@
 #import "segwit_addr.h"
 #import "BTCMnemonic+KBMnemonic.h"
 #import <YYCategories/NSData+YYAdd.h>
+#import "CBSecp256k1.h"
 
 @implementation LambUtils
 
@@ -192,7 +193,14 @@
 
 + (NSString *)signatureForHash:(NSString *)jsonString {
     
-    return [[[LambUtils shareInstance].currentUser.lambKeyChain.key signatureForHash:[jsonString dataUsingEncoding:NSUTF8StringEncoding]] base64EncodedString];
+    return [[CBSecp256k1 compactSignData:BTCSHA256([jsonString dataUsingEncoding:NSUTF8StringEncoding]) withPrivateKey:[LambUtils shareInstance].currentUser.lambKeyChain.key.privateKey] base64EncodedString];
+
+    
+//    return [[CBSecp256k1 compactSignData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] withPrivateKey:[LambUtils shareInstance].currentUser.lambKeyChain.key.privateKey] base64EncodedString];
+    
+//    return [[[LambUtils shareInstance].currentUser.lambKeyChain.key signatureForMessage:jsonString] base64EncodedString];
+    
+//    return [[[LambUtils shareInstance].currentUser.lambKeyChain.key signatureForHash:[jsonString dataUsingEncoding:NSUTF8StringEncoding]] base64EncodedString];
 }
 
 /// 按照字典的key排序，返回json的数据格式

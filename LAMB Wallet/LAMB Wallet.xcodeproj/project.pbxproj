@@ -93,6 +93,9 @@
 		A37373B725B981A00010B90D /* ASSendTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A37373B625B9819F0010B90D /* ASSendTextModel.m */; };
 		A37373BB25BC30620010B90D /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = A37373BA25BC30610010B90D /* OrderedDictionary.m */; };
 		A374ACD3255945AA0056A0BE /* UIColor+ASThemeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */; };
+		A380D9AB25BD41A2005EFFCF /* CBSecp256k1.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D9A625BD41A1005EFFCF /* CBSecp256k1.m */; };
+		A380D9AC25BD41A2005EFFCF /* NSData+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D9A725BD41A1005EFFCF /* NSData+HexString.m */; };
+		A380D9AD25BD41A2005EFFCF /* secp256k1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A380D9A825BD41A1005EFFCF /* secp256k1.framework */; };
 		A380FFF5257927E8001C21C1 /* english.txt in Resources */ = {isa = PBXBuildFile; fileRef = A380FFF4257927E8001C21C1 /* english.txt */; };
 		A394C8ED2585B55F005FCAD2 /* ASNodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A394C8EC2585B55F005FCAD2 /* ASNodeModel.m */; };
 		A3B961DA25A16E5E006CB9C8 /* ASStorageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B961D825A16E5E006CB9C8 /* ASStorageCell.m */; };
@@ -313,6 +316,11 @@
 		A37373BA25BC30610010B90D /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		A374ACD1255945AA0056A0BE /* UIColor+ASThemeColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ASThemeColor.h"; sourceTree = "<group>"; };
 		A374ACD2255945AA0056A0BE /* UIColor+ASThemeColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ASThemeColor.m"; sourceTree = "<group>"; };
+		A380D9A625BD41A1005EFFCF /* CBSecp256k1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSecp256k1.m; sourceTree = "<group>"; };
+		A380D9A725BD41A1005EFFCF /* NSData+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HexString.m"; sourceTree = "<group>"; };
+		A380D9A825BD41A1005EFFCF /* secp256k1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = secp256k1.framework; sourceTree = "<group>"; };
+		A380D9A925BD41A1005EFFCF /* NSData+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+HexString.h"; sourceTree = "<group>"; };
+		A380D9AA25BD41A1005EFFCF /* CBSecp256k1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSecp256k1.h; sourceTree = "<group>"; };
 		A380FFF4257927E8001C21C1 /* english.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = english.txt; sourceTree = "<group>"; };
 		A394C8EB2585B55F005FCAD2 /* ASNodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASNodeModel.h; sourceTree = "<group>"; };
 		A394C8EC2585B55F005FCAD2 /* ASNodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASNodeModel.m; sourceTree = "<group>"; };
@@ -420,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				481899F15A19A4A613CAA5A5 /* Pods_LAMB_Wallet.framework in Frameworks */,
+				A380D9AD25BD41A2005EFFCF /* secp256k1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +495,7 @@
 				A510515625660953006D1398 /* Net */,
 				A3629ADE2553D4CC002155E3 /* ASScanner */,
 				A5D7766B254AB0AD00783C67 /* BlinkEd25519 */,
+				A380D9A525BD41A1005EFFCF /* secp256k1 */,
 				980A38EA254819FF00C62DE0 /* ASHUD.h */,
 				980A38E9254819FF00C62DE0 /* ASHUD.m */,
 				A37373B925BC30610010B90D /* OrderedDictionary.h */,
@@ -732,6 +742,18 @@
 				A368C1AF25A974AE00C5ABFD /* XLChannelHeader.m */,
 			);
 			path = XLChannelControl;
+			sourceTree = "<group>";
+		};
+		A380D9A525BD41A1005EFFCF /* secp256k1 */ = {
+			isa = PBXGroup;
+			children = (
+				A380D9A825BD41A1005EFFCF /* secp256k1.framework */,
+				A380D9A725BD41A1005EFFCF /* NSData+HexString.m */,
+				A380D9A925BD41A1005EFFCF /* NSData+HexString.h */,
+				A380D9AA25BD41A1005EFFCF /* CBSecp256k1.h */,
+				A380D9A625BD41A1005EFFCF /* CBSecp256k1.m */,
+			);
+			path = secp256k1;
 			sourceTree = "<group>";
 		};
 		A380FFF3257927E8001C21C1 /* languages */ = {
@@ -1188,6 +1210,7 @@
 				980A39692549112000C62DE0 /* KBPledgeVC.m in Sources */,
 				A33C720B258F40C20079FF4C /* ASProposalDetailCell.m in Sources */,
 				980A39A62549739900C62DE0 /* KBWithdrawRewardVC.m in Sources */,
+				A380D9AB25BD41A2005EFFCF /* CBSecp256k1.m in Sources */,
 				980A382B2547AF6300C62DE0 /* ASTableViewCell.m in Sources */,
 				A5D77667254A785A00783C67 /* KBMnemonicImportVC.m in Sources */,
 				985033E225470BBF0067896B /* ASLanguageVC.m in Sources */,
@@ -1282,6 +1305,7 @@
 				A5D7768A254AB2FF00783C67 /* add_scalar.c in Sources */,
 				A368C1A225A94DEF00C5ABFD /* LambUtils.m in Sources */,
 				985033DD2546FB4F0067896B /* ASSetVC.m in Sources */,
+				A380D9AC25BD41A2005EFFCF /* NSData+HexString.m in Sources */,
 				A5D77661254A782600783C67 /* KBFileImportVC.m in Sources */,
 				985033FA25471B600067896B /* ASCustomNodeVC.m in Sources */,
 				A374ACD3255945AA0056A0BE /* UIColor+ASThemeColor.m in Sources */,
@@ -1466,6 +1490,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCategories\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel\"",
 					"$(PROJECT_DIR)/LAMB\\ Wallet/thirdFramework/**",
+					"$(PROJECT_DIR)/LAMB\\ Wallet/base/tool/secp256k1/**",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "LAMB Wallet/base/Header.pch";
@@ -1521,6 +1546,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYCategories\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel\"",
 					"$(PROJECT_DIR)/LAMB\\ Wallet/thirdFramework/**",
+					"$(PROJECT_DIR)/LAMB\\ Wallet/base/tool/secp256k1/**",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = "LAMB Wallet/base/Header.pch";

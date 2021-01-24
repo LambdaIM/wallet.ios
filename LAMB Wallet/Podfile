@@ -32,6 +32,8 @@ target 'LAMB Wallet' do
 #  pod 'CoreBitcoin',:podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
 #pod 'CoreBitcoin', :git => 'https://gitee.com/mirrors/corebitcoin'
 pod 'CoreBitcoin', :git => 'https://github.com/Ssunnys/CoreBitcoin.git'
+pod 'CBSecp256k1'
+
 
 end
 

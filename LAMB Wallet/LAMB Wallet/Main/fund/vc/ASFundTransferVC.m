@@ -246,7 +246,7 @@
             
             [LambNetManager POST:JoinParam(getHTTP_Get_transaction_Gas, [LambUtils shareInstance].currentUser.address) parameters:[gasModel modelToJSONObject] showHud:NO success:^(id  _Nonnull responseObject) {
                 if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                    weakSelf.signModel.fee.gas = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"gas_estimate"]];
+                    weakSelf.signModel.fee.gas = [NSString stringWithFormat:@"%.0f",[[responseObject objectForKey:@"gas_estimate"] doubleValue] * 1.2];
                     weakSelf.sendModel.tx.fee = weakSelf.signModel.fee;
                     
                     NSDictionary *signDic = [weakSelf.signModel modelToJSONObject];
@@ -264,7 +264,7 @@
                     
                     id requestObj = [weakSelf.sendModel modelToDictionary];
                     
-                    NSLog(@"签名后的数据 %@ \n 签名字符串 %@ \n 发送请求%@",signModelString,str3,responseObject);
+                    NSLog(@"签名后的数据 %@ \n 签名字符串 %@ \n 发送请求%@",signModelString,str3,[requestObj yy_modelToJSONString]);
 
                     // 发送交易请求
                     [weakSelf extracted:requestObj];
