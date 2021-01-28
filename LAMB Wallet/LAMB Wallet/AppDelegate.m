@@ -46,6 +46,7 @@
      
     TabBarController *vc = [TabBarController new];
     self.window.rootViewController = vc;
+    
     [_window makeKeyAndVisible];
 }
 
