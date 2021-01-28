@@ -15,6 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
      * mode : async
      */
 
+
+@interface ASSendLogModel : ASModel
+
+@property (nonatomic, copy) NSString *log;
+@property (nonatomic, copy) NSString *msg_index;
+@property (nonatomic, assign) BOOL success;
+
+@end
+
 @interface ASSendPubKeyModel : ASModel
 
 @property (nonatomic, copy) NSString *type;

@@ -51,8 +51,10 @@ static LambNetManager *instance = nil;
             }else{
                 _baseUrl = [NSString stringWithFormat:@"http://%@:%@",model.baseUrl,model.port];
             }
+            break;
         }
     }
+    NSLog(@"%@",_baseUrl);
 }
 
 + (void)GET:(NSString *)urlString parameters:(id)parameters showHud:(BOOL) hud success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure
@@ -70,7 +72,9 @@ static LambNetManager *instance = nil;
 + (void)request:(kLambRequestType) requestType url:(NSString *)urlString parameters:(id)parameters showHud:(BOOL)hud success:(void (^) (id responseObject))success failure:(void (^) (NSError *error))failure{
     
     if (hud) {
-        [MBProgressHUD showMessage:@"拼命加载中..."];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD showMessage:@"拼命加载中..."];
+        });
     }
     
     NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[LambNetManager shareInstance].baseUrl,urlString];

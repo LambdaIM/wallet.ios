@@ -8,10 +8,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 @interface UIView(XS)
++ (instancetype)creatLineView;
 - (void)centerXEqualSuper;
 - (void)centerYEqualSuper;
 @end
 @interface UILabel(XS)
++ (instancetype)ms3b14Text:(NSString *)text;
++ (instancetype)ms9514Text:(NSString *)text;
 /// PingFang-SC-Medium  3b3b3b 14
 + (instancetype)m3b14Text:(NSString *)text;
 + (instancetype)m9514Text:(NSString *)text;
@@ -20,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)texColor:(NSString *)colorStr pfm:(CGFloat)size text:(NSString *)text;
 + (instancetype)text:(NSString *)text font:(UIFont *)font textColor:(UIColor *)textColor;
 + (instancetype)text:(NSString *)text font:(UIFont *)font textColorStr:(NSString *)textColorStr;
++ (instancetype)creatNewLabel:(CGRect)frame text:(NSString *)text font:(UIFont *)font textColorStr:(NSString *)textColorStr;
 @end
 @interface UIFont(XS)
 +(instancetype)pFSize:(CGFloat)size;
@@ -28,6 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 @interface UIButton(XS)
 + (instancetype)btn;
+
+
++ (instancetype)creatButton:(CGRect)frame title:(NSString *)tilte titleColor:(UIColor *) titleColor titleFont:(CGFloat) titleFont target:(id)target action:(SEL)action tag:(NSInteger)tag;
+
 /// 获取或设置 UIControlStateNormal 状态下的标题
 @property (nullable, nonatomic) NSString *normalTitle;
 /// 获取或设置 UIControlStateSelected 状态下的标题

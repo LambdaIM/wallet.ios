@@ -1,6 +1,7 @@
 
 
 #import "SXCodeTool.h"
+
 @implementation  UITableView(XS)
 - (void)registerXibCell:(Class)xibCellClass {
     NSString *cellClassStr = NSStringFromClass([xibCellClass class]);
@@ -21,6 +22,11 @@
 - (void)centerYEqualSuper {
     self.top = (self.superview.height - self.height)*0.5;
 }
++ (instancetype)creatLineView{
+    UIView *lineView = [[UIView alloc]init];
+    lineView.backgroundColor = [UIColor baseLineColor];;
+    return lineView;
+}
 @end
 @implementation UILabel(XS)
 + (instancetype)texColor:(NSString *)colorStr pfm:(CGFloat)size text:(NSString *)text {
@@ -35,6 +41,12 @@
 + (instancetype)m9514Text:(NSString *)text {
     return [self texColor:@"959595" pfm:14 text:text];
 }
++ (instancetype)ms3b14Text:(NSString *)text {
+    return [self text:text font:[UIFont pFSize:14] textColor:@"3b3b3b".hexColor];
+}
++ (instancetype)ms9514Text:(NSString *)text {
+    return [self text:text font:[UIFont pFSize:14] textColor:@"959595".hexColor];
+}
 + (instancetype)text:(NSString *)text font:(UIFont *)font textColor:(UIColor *)textColor {
 
     UILabel *lab = [self new];
@@ -42,6 +54,11 @@
     lab.font = font;
     lab.textColor = textColor;
     [lab sizeToFit];
+    return lab;
+}
++ (instancetype)creatNewLabel:(CGRect)frame text:(NSString *)text font:(UIFont *)font textColorStr:(NSString *)textColorStr{
+    UILabel *lab = [self text:text font:font textColor:textColorStr.hexColor];
+    lab.frame = frame;
     return lab;
 }
 @end
@@ -59,9 +76,26 @@
 @end
 
 @implementation UIButton(XS)
-/// [UIButton buttonWithType:UIButtonTypeCustom];
 +(instancetype)btn {
     return [self buttonWithType:UIButtonTypeCustom];
+}
++ (instancetype)creatButton:(CGRect)frame title:(NSString *)tilte titleColor:(UIColor *) titleColor titleFont:(CGFloat) titleFont target:(id)target action:(SEL)action tag:(NSInteger)tag{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = frame;
+    if (tilte) {
+        [btn setTitle:tilte forState:UIControlStateNormal];
+    }
+    if (titleColor) {
+        [btn setTitleColor:titleColor forState:UIControlStateNormal];
+    }
+    if (titleFont) {
+        btn.titleLabel.font = [UIFont systemFontOfSize:titleFont];
+    }
+    if (tag) {
+        btn.tag = tag;
+    }
+    [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    return btn;
 }
 - (void)setNormalTitle:(NSString *)normalTitle {
     [self setTitle:normalTitle forState:UIControlStateNormal];

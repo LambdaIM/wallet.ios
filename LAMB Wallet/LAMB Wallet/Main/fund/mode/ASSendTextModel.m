@@ -8,6 +8,10 @@
 
 #import "ASSendTextModel.h"
 
+@implementation ASSendLogModel
+
+@end
+
 @implementation ASSendPubKeyModel
 
 - (instancetype)init

@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIColor (ASThemeColor)
 
+/// 主视图颜色
++ (UIColor *) mBaseViewColor;
+
 /// 下划线
 + (UIColor *) baseLineColor;
 
@@ -27,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 助剂词
 + (UIColor *) mMnemonicColor;
+
+/// 橘色
++ (UIColor *) mGasColor;
 
 @end
 

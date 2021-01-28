@@ -28,4 +28,13 @@
 + (UIColor *)mMnemonicColor {
     return [UIColor colorWithHexString:@"000080"];
 }
+
++ (UIColor *)mBaseViewColor {
+    return  @"#F7F7F7".hexColor;
+}
+
++ (UIColor *)mGasColor {
+    return [UIColor colorWithRed:202.0/255 green:120.0/255 blue:60.0/255 alpha:1];
+}
+
 @end

@@ -69,6 +69,7 @@
 		A3305CA125B6E28D00577FCC /* KBMnemonicImportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3305CA025B6E28D00577FCC /* KBMnemonicImportVC.xib */; };
 		A3305CA425B7C58500577FCC /* BTCMnemonic+KBMnemonic.m in Sources */ = {isa = PBXBuildFile; fileRef = A3305CA325B7C58500577FCC /* BTCMnemonic+KBMnemonic.m */; };
 		A3317AA2259DAC72007EE086 /* ASAssertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3317AA1259DAC72007EE086 /* ASAssertModel.m */; };
+		A3344E0625C261FF00B30401 /* ASVerifyPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3344E0425C261FF00B30401 /* ASVerifyPasswordView.m */; };
 		A33C7204258F36470079FF4C /* ASProposalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A33C7203258F36470079FF4C /* ASProposalDetailVC.m */; };
 		A33C720B258F40C20079FF4C /* ASProposalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A33C7209258F40C20079FF4C /* ASProposalDetailCell.m */; };
 		A33C720C258F40C20079FF4C /* ASProposalDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33C720A258F40C20079FF4C /* ASProposalDetailCell.xib */; };
@@ -269,6 +270,8 @@
 		A3305CA325B7C58500577FCC /* BTCMnemonic+KBMnemonic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BTCMnemonic+KBMnemonic.m"; sourceTree = "<group>"; };
 		A3317AA0259DAC72007EE086 /* ASAssertModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASAssertModel.h; sourceTree = "<group>"; };
 		A3317AA1259DAC72007EE086 /* ASAssertModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASAssertModel.m; sourceTree = "<group>"; };
+		A3344E0425C261FF00B30401 /* ASVerifyPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVerifyPasswordView.m; sourceTree = "<group>"; };
+		A3344E0525C261FF00B30401 /* ASVerifyPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVerifyPasswordView.h; sourceTree = "<group>"; };
 		A33C7202258F36470079FF4C /* ASProposalDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASProposalDetailVC.h; path = "LAMB Wallet/Main/fund/vc/ASProposalDetailVC.h"; sourceTree = SOURCE_ROOT; };
 		A33C7203258F36470079FF4C /* ASProposalDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASProposalDetailVC.m; path = "LAMB Wallet/Main/fund/vc/ASProposalDetailVC.m"; sourceTree = SOURCE_ROOT; };
 		A33C7208258F40C20079FF4C /* ASProposalDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASProposalDetailCell.h; sourceTree = "<group>"; };
@@ -713,6 +716,8 @@
 				A3629AF1255406E6002155E3 /* ASFundCell.m */,
 				A34AD1242558EE410001979B /* ASFundCoinDetailView.h */,
 				A34AD1252558EE410001979B /* ASFundCoinDetailView.m */,
+				A3344E0525C261FF00B30401 /* ASVerifyPasswordView.h */,
+				A3344E0425C261FF00B30401 /* ASVerifyPasswordView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1229,6 +1234,7 @@
 				A5D9C5292546C2AC0031192C /* TabBarController.m in Sources */,
 				A511B98D255A45D900327525 /* NSData+KBChange.m in Sources */,
 				980A393D25486D5A00C62DE0 /* UIView+Ex.m in Sources */,
+				A3344E0625C261FF00B30401 /* ASVerifyPasswordView.m in Sources */,
 				980A38B22548063100C62DE0 /* ASSimpleTableVC.m in Sources */,
 				A5D7768C254AB2FF00783C67 /* sha512.c in Sources */,
 				980A395B2548E9A200C62DE0 /* KBVerifyNodeDetailVC.m in Sources */,

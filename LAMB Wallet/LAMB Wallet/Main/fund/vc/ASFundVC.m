@@ -103,6 +103,8 @@
                 break;
             }
         }
+    }else{
+        
     }
     return self.headView;
 }
@@ -196,7 +198,7 @@
                 ASQRModel *scmodel = [ASQRModel yy_modelWithDictionary:resultDic];
                 if ([scmodel.address hasPrefix:@"lamb"]) {
                     [LambNodeManager manager].qrModel = scmodel;
-                    [weakSelf transfer];
+                    pushToDestinationController(self, ASFundTransferVC);
                 }else{
                     [ASHUD showHudTipStr:@"无法进行扫码转账"];;
                 }
@@ -214,6 +216,7 @@
 // 转账
 - (void)transfer {
     if (self.assertModel) {
+        [LambNodeManager manager].qrModel = nil;
         pushToDestinationController(self, ASFundTransferVC);
     }else{
         [ASHUD showHudTipStr:@"无法进行转账"];

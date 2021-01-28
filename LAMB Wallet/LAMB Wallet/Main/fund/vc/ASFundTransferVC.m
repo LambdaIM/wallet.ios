@@ -14,6 +14,7 @@
 #import "ASFundTradRecordVC.h"
 #import "ActionSheetPicker.h"
 #import "OrderedDictionary.h"
+#import "ASVerifyPasswordView.h"
 
 @interface ASFundTransferVC ()
 
@@ -160,11 +161,42 @@
     [self requstNodeDetail:YES];
 }
 
+/// 发送交易
+/// @param requestObj 签名对象
 - (void)extracted:(id)requestObj {
+    
+    kWeakSelf(weakSelf)
+    
     [LambNetManager POST:getHTTP_Get_transaction_detail parameters:requestObj showHud:YES success:^(id  _Nonnull responseObject) {
-        
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            if ([responseObject containsObjectForKey:@"logs"]) {
+                
+                NSArray *logArray = [ASSendLogModel modelsWithJSON:[responseObject objectForKey:@"logs"]];
+                BOOL state = YES;
+                for (ASSendLogModel *tempModel in logArray) {
+                    if (!tempModel.success) {
+                        state = NO;
+                        break;
+                    }
+                }
+                if (!state) {
+                    [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
+                }else{
+                    // 刷新余额
+                    [ASHUD showHudTipStr:ASLocalizedString(@"操作成功,正在刷新账户信息,请稍候")];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [weakSelf requstNodeDetail:NO];
+                    });
+
+                }
+            }else{
+                [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
+            }
+        }else{
+            [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
+        }
     } failure:^(NSError * _Nonnull error) {
-        
+        [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
     }];
 }
 
@@ -174,105 +206,125 @@
     kWeakSelf(weakSelf)
     dispatch_queue_t queue = dispatch_queue_create("lambSerialQueue", DISPATCH_QUEUE_SERIAL);
     dispatch_sync(queue, ^{
-        if (![LambNodeManager manager].currentNodeInfo) {
+//        if (![LambNodeManager manager].currentNodeInfo) {
             [LambNetManager GET:HTTP_Get_chain_details parameters:@{} showHud:YES success:^(id  _Nonnull responseObject) {
                 if ([responseObject isKindOfClass:[NSDictionary class]]) {
                     
                     ASNodeInfoModel *infoModel = [ASNodeInfoModel yy_modelWithDictionary:responseObject];
                     [LambNodeManager manager].currentNodeInfo = infoModel;
                 }
+                NSLog(@"111111111");
             } failure:^(NSError * _Nonnull error) {
                 
             }];
-            
-            [LambNetManager GET:JoinParam(USER_Get_Auth, [LambUtils shareInstance].currentUser.address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
-                if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                    ASAssertModel *nodeDetail = [ASAssertModel yy_modelWithDictionary:responseObject];
-                    [LambNodeManager manager].assertModel = nodeDetail;
-                }else{
+//        }
 
+        [LambNetManager GET:JoinParam(USER_Get_Auth, [LambUtils shareInstance].currentUser.address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                ASAssertModel *nodeDetail = [ASAssertModel yy_modelWithDictionary:responseObject];
+                [LambNodeManager manager].assertModel = nodeDetail;
+                
+                weakSelf.balanceLab.text = [NSString stringWithFormat:@"%@%@",ASLocalizedString(@"可用余额："),[self getbalanceString]];
+
+                NSLog(@"2222222222");
+                
+                if (transfer) {
+                    // 获取 Gas
+                    ASSendTextGasModel *gasModel = [[ASSendTextGasModel alloc]init];
+                    gasModel.to_address = [self.addressField.text stringByTrim];
+                    gasModel.base_req.sequence = [LambNodeManager manager].assertModel.value.sequence;
+                    gasModel.base_req.account_number = [LambNodeManager manager].assertModel.value.account_number;
+                    if ([self.noteField.text isNotBlank]) {
+                        gasModel.base_req.memo = self.noteField.text;
+                    }else{
+                        self.noteField.text = @"";
+                    }
+                    gasModel.base_req.chain_id = [LambNodeManager manager].currentNodeInfo.network;
+                    
+                    ASSendAmountModel *amountModel = [[ASSendAmountModel alloc]init];
+//                    amountModel.amount = [[self.amountField.text stringByTrim] requestShowNumber:@"0"];101745
+                    amountModel.amount = @"101745";
+                    if (self.selelctIndex == 0) {
+                        amountModel.denom = @"ulamb";
+                    }else{
+                        amountModel.denom = @"utbb";
+                    }
+                    
+                    NSArray *amountArray = [NSArray arrayWithObject:amountModel];
+                    gasModel.amount = amountArray;
+                    
+                    ASSendAmountModel *msgAmountModel = [[ASSendAmountModel alloc]init];
+                    msgAmountModel.denom = amountModel.denom;
+                    msgAmountModel.amount = [[self.amountField.text stringByTrim] requestShowNumber:@"0"];
+                    
+                    // 签名消息体
+                    self.signModel.chain_id = gasModel.base_req.chain_id;
+                    self.signModel.account_number = gasModel.base_req.account_number;
+                    self.signModel.sequence = gasModel.base_req.sequence;
+                    self.signModel.memo = gasModel.base_req.memo;
+                    self.signModel.fee.amount = amountArray;
+                    
+                    ASSendMsgModel *msgModel = [[ASSendMsgModel alloc] init];
+                    msgModel.value.to_address = gasModel.to_address;
+                    msgModel.value.amount = [NSArray arrayWithObject:msgAmountModel];
+                    NSArray *msgArray = [NSArray arrayWithObject:msgModel];
+                    self.signModel.msgs = msgArray;
+                    
+                    // 发送消息体
+                    self.sendModel.tx.memo = self.signModel.memo;
+                    self.sendModel.tx.msg = self.signModel.msgs;
+                    
+                    __block ASSendSignaturesModel *signAtures = [[ASSendSignaturesModel alloc]init];
+                    
+                    NSArray *signArray = [NSArray arrayWithObject:signAtures];
+                    self.sendModel.tx.signatures = signArray;
+                    
+                    [LambNetManager POST:JoinParam(getHTTP_Get_transaction_Gas, [LambUtils shareInstance].currentUser.address) parameters:[gasModel modelToJSONObject] showHud:YES success:^(id  _Nonnull responseObject) {
+                        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                            weakSelf.signModel.fee.gas = [NSString stringWithFormat:@"%.0f",[[responseObject objectForKey:@"gas_estimate"] doubleValue] * 1.1];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                weakSelf.sendModel.tx.fee = weakSelf.signModel.fee;
+                            });
+                            
+                            NSDictionary *signDic = [weakSelf.signModel modelToJSONObject];
+                            
+                            NSString *signString = [LambUtils dictionaryToJson:signDic];
+                            
+                            NSMutableString * str3 = [[NSMutableString alloc]initWithString:signString];
+                            
+                            [str3 replaceOccurrencesOfString:@"\\" withString:@"" options:1 range:NSMakeRange(0, str3.length)];
+
+                            NSString *signModelString = [LambUtils signatureForHash:str3];
+                            
+                            signAtures.signature = signModelString;
+                            
+                            __block id requestObj = [weakSelf.sendModel modelToDictionary];
+                            
+                            NSLog(@"签名后的数据 %@ \n 签名字符串 %@ \n 发送请求%@",signModelString,str3,[requestObj yy_modelToJSONString]);
+                            NSLog(@"33333333");
+
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                ASVerifyPasswordView *passwrodView = [ASVerifyPasswordView factoryWCSGoogleVerifyView];
+
+                                [passwrodView showWihtType:@"LAMB" gas:self.sendModel.tx.fee.gas];
+                                passwrodView.confirmPassword = ^(BOOL state) {
+                                    if (state) {
+                                        // 发送交易请求
+                                        [weakSelf extracted:requestObj];
+                                    }
+                                };
+                            });
+                        }
+                    } failure:^(NSError * _Nonnull error) {
+                        [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
+                    }];
                 }
-            } failure:^(NSError * _Nonnull error) {
-
-            }];
-        }
-        if (transfer) {
-            // 获取 Gas
-            ASSendTextGasModel *gasModel = [[ASSendTextGasModel alloc]init];
-            gasModel.to_address = [self.addressField.text stringByTrim];
-            gasModel.base_req.sequence = [LambNodeManager manager].assertModel.value.sequence;
-            gasModel.base_req.account_number = [LambNodeManager manager].assertModel.value.account_number;
-            if ([self.noteField.text isNotBlank]) {
-                gasModel.base_req.memo = self.noteField.text;
             }else{
-                self.noteField.text = @"";
+                [ASHUD showHudTipStr:ASLocalizedString(@"GAS Fail")];
             }
-            gasModel.base_req.chain_id = [LambNodeManager manager].currentNodeInfo.network;
-            
-            ASSendAmountModel *amountModel = [[ASSendAmountModel alloc]init];
-            amountModel.amount = [[self.amountField.text stringByTrim] requestShowNumber:@"0"];
-            if (self.selelctIndex == 0) {
-                amountModel.denom = @"ulamb";
-            }else{
-                amountModel.denom = @"utbb";
-            }
-            
-            NSArray *amountArray = [NSArray arrayWithObject:amountModel];
-            gasModel.amount = amountArray;
-            
-            // 签名消息体
-            self.signModel.chain_id = gasModel.base_req.chain_id;
-            self.signModel.account_number = gasModel.base_req.account_number;
-            self.signModel.sequence = gasModel.base_req.sequence;
-            self.signModel.memo = gasModel.base_req.memo;
-            self.signModel.fee.amount = amountArray;
-            
-            ASSendMsgModel *msgModel = [[ASSendMsgModel alloc] init];
-            msgModel.value.to_address = gasModel.to_address;
-            msgModel.value.amount = [NSArray arrayWithArray:amountArray];
-            NSArray *msgArray = [NSArray arrayWithObject:msgModel];
-            self.signModel.msgs = msgArray;
-            
-            // 发送消息体
-            self.sendModel.tx.memo = self.signModel.memo;
-            self.sendModel.tx.msg = self.signModel.msgs;
-            
-            
-            __block ASSendSignaturesModel *signAtures = [[ASSendSignaturesModel alloc]init];
-            
-            
-            NSArray *signArray = [NSArray arrayWithObject:signAtures];
-            self.sendModel.tx.signatures = signArray;
-            
-            [LambNetManager POST:JoinParam(getHTTP_Get_transaction_Gas, [LambUtils shareInstance].currentUser.address) parameters:[gasModel modelToJSONObject] showHud:NO success:^(id  _Nonnull responseObject) {
-                if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                    weakSelf.signModel.fee.gas = [NSString stringWithFormat:@"%.0f",[[responseObject objectForKey:@"gas_estimate"] doubleValue] * 1.2];
-                    weakSelf.sendModel.tx.fee = weakSelf.signModel.fee;
-                    
-                    NSDictionary *signDic = [weakSelf.signModel modelToJSONObject];
-                    
-                    NSString *signString = [LambUtils dictionaryToJson:signDic];
-                    
-                    NSMutableString * str3 = [[NSMutableString alloc]initWithString:signString];
-                    
-                    [str3 replaceOccurrencesOfString:@"\\" withString:@"" options:1 range:NSMakeRange(0, str3.length)];
-
-                    NSString *signModelString = [LambUtils signatureForHash:str3];
-                    
-//                    NSString *signString = [LambUtils signatureForHash:[weakSelf.signModel yy_modelToJSONString]];
-                    signAtures.signature = signModelString;
-                    
-                    id requestObj = [weakSelf.sendModel modelToDictionary];
-                    
-                    NSLog(@"签名后的数据 %@ \n 签名字符串 %@ \n 发送请求%@",signModelString,str3,[requestObj yy_modelToJSONString]);
-
-                    // 发送交易请求
-                    [weakSelf extracted:requestObj];
-                }
-            } failure:^(NSError * _Nonnull error) {
-                [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
-            }];
-        }
+        } failure:^(NSError * _Nonnull error) {
+            [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
+        }];
     });
 }
 
