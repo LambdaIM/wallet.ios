@@ -3,7 +3,6 @@
 #import "SXCodeTool.h"
 @interface ASBackupWalletInputPSdVC ()
 @property (weak, nonatomic) IBOutlet UIView *m_contentView;
-@property (weak, nonatomic) IBOutlet UITextField *m_tf;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *m_tipLab1;

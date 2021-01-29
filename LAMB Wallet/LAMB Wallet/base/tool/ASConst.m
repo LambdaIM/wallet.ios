@@ -33,3 +33,6 @@ NSString *const MSGDEPOSIT = @"cosmos-sdk/MsgDeposit";
 NSString *const MSGVOTE = @"cosmos-sdk/MsgVote";
 NSString *const PUB_TYPE = @"tendermint/PubKeySecp256k1";
 NSString *const TX_MODE = @"block";
+
+
+NSString *const TX_GAS_DEFINE = @"101745";

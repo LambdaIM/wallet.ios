@@ -107,12 +107,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *memo;
 
 @end
-// 请求gas 参数
+// 转账请求gas 参数
 @interface ASSendTextGasModel : ASModel
 
 @property (nonatomic, copy) NSString *from_address;
 @property (nonatomic, copy) NSString *to_address;
 @property (nonatomic, strong) NSArray <ASSendAmountModel *> *amount;
+@property (nonatomic, strong) ASSendTextGasBaseModel*base_req;
+
+@end
+
+// 提取质押TBB请求gas 参数
+@interface ASSendTBBTextGasModel : ASModel
+
+@property (nonatomic, copy) NSString *delegator_address;
 @property (nonatomic, strong) ASSendTextGasBaseModel*base_req;
 
 @end

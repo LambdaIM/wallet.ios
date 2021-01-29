@@ -174,3 +174,24 @@
 
 @end
 
+@implementation ASSendTBBTextGasModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _delegator_address = [LambUtils shareInstance].currentUser.address;
+        _base_req = [[ASSendTextGasBaseModel alloc] init];
+    }
+    return self;
+}
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{
+             @"base_req" : [ASSendTextGasBaseModel class]
+    };
+}
+
+
+@end

@@ -39,3 +39,6 @@ UIKIT_EXTERN NSString *const MSGDEPOSIT;
 UIKIT_EXTERN NSString *const MSGVOTE;
 UIKIT_EXTERN NSString *const PUB_TYPE;
 UIKIT_EXTERN NSString *const TX_MODE;
+
+//  gas 费用
+UIKIT_EXTERN NSString *const TX_GAS_DEFINE;

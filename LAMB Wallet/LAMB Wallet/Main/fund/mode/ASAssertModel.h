@@ -11,6 +11,18 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
+@interface LambWalltBackModel : ASModel
+
+@property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *privateKey;
+@property (nonatomic, copy) NSString *publicKey;
+@property (nonatomic, copy) NSString *salt;
+
+@end
+
+
 @interface ASAssertPubKeyModel : ASModel
 
 @property (nonatomic, copy) NSString *type;

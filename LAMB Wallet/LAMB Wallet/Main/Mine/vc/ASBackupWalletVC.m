@@ -38,8 +38,9 @@
     self.m_tipLab2.text = ASLocalizedString(@"提示：请点击复制，在PC端生成txt文件保存内容，然后修改后缀为keyinfo即可");
     self.m_cancelBtn.normalTitle = ASLocalizedString(@"取消");
     self.m_sureBtn.normalTitle = ASLocalizedString(@"复制");
-    
     self.m_contentView.layer.cornerRadius = 8;
+    
+    self.m_keyLab.text = [[LambUtils shareInstance].backModel yy_modelToJSONString];
 }
 - (IBAction)clickCloseBtn {
     [self dismissViewControllerAnimated:YES completion:NULL];

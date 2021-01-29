@@ -8,6 +8,10 @@
 
 #import "ASAssertModel.h"
 
+@implementation LambWalltBackModel
+
+@end
+
 @implementation ASAssertPubKeyModel
 
 @end

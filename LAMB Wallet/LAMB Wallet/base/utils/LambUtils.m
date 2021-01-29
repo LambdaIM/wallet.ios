@@ -333,4 +333,15 @@
     json = [json stringByAppendingString:@"]"];
     return json;
 }
+
+- (LambWalltBackModel *)backModel {
+    LambWalltBackModel *backModel = [LambWalltBackModel new];
+    if ([LambUtils shareInstance].currentUser) {
+        backModel.name = [LambUtils shareInstance].currentUser.name;
+        backModel.address = [LambUtils shareInstance].currentUser.address;
+        backModel.publicKey = [LambUtils shareInstance].currentUser.publicKey;
+        backModel.privateKey = [LambUtils shareInstance].currentUser.privateKey;
+    }
+    return backModel;
+}
 @end
