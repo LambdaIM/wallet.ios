@@ -344,4 +344,14 @@
     }
     return backModel;
 }
+
++ (NSString *) nodeAddress {
+    
+    if (![LambUtils shareInstance].currentUser.lambNodeAddress) {
+        [LambUtils shareInstance].currentUser.lambNodeAddress = [LambUtils getLambdaAddress:[LambUtils shareInstance].currentUser.lambKeyChain.identifier prefix:@"lambdavaloper"];
+    }
+    return [LambUtils shareInstance].currentUser.lambNodeAddress;
+}
+
+
 @end

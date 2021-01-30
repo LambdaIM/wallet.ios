@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) NSMutableArray *localUserNames;
 
+
+
 @property (nonatomic,strong) LambWalltBackModel *backModel;
 
 + (instancetype) shareInstance;
@@ -59,6 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 按照字典的key排序，返回json的数据格式
 + (NSString *) dictionaryToJson:(NSDictionary *)dic;
+
+/// 节点地址
++ (NSString *) nodeAddress;
 @end
 
 NS_ASSUME_NONNULL_END

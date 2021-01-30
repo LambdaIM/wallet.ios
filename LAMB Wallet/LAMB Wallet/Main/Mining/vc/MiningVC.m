@@ -148,9 +148,27 @@
             [weakSelf.table reloadData];
         }
         // 获取节点首页暂时先放着
-//        [weakSelf getNodeWinLambDataComplain:^(bool finish) {
-//
-//        }];
+        [weakSelf getNodeWinLambDataComplain:^(bool finish) {
+            if (finish) {
+                
+                NSString *winString = @"0";
+                
+                ASProposalValueAmountModel *utbbWinLamb = [[LambNodeManager manager].nodeWinInfo.self_bond_rewards firstObject];
+                ASProposalValueAmountModel *nodeWinLamb = [[LambNodeManager manager].nodeWinInfo.val_commission firstObject];
+                if (utbbWinLamb && !nodeWinLamb) {
+                    winString = utbbWinLamb.amount;
+                }
+                if (!utbbWinLamb && nodeWinLamb) {
+                    winString = nodeWinLamb.amount;
+                }
+                if (utbbWinLamb && nodeWinLamb) {
+                    winString = [NSString stringWithFormat:@"%.0ld",[utbbWinLamb.amount longValue] + [nodeWinLamb.amount longValue]];
+                }
+                weakSelf.header.winLambString = winString;
+                weakSelf.table.tableHeaderView = weakSelf.header;
+                [weakSelf.table reloadData];
+            }
+        }];
         // 获取质押tbb 数量
         [weakSelf getUtbbData:[LambUtils shareInstance].currentUser.address Complain:^(bool finish) {
                 
@@ -178,19 +196,22 @@
 // 节点获取lamb奖励 todo 节点地址需要计算
 - (void) getNodeWinLambDataComplain:(void(^)(bool finish)) complain{
     
-    [LambNetManager GET:JoinParam(getHTTP_get_producer_award, [LambUtils shareInstance].currentUser.address) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+    [LambNetManager GET:JoinParam(getHTTP_get_producer_award,[LambUtils nodeAddress]) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             ASProposalModel *obj = [ASProposalModel yy_modelWithDictionary:responseObject];
             if (obj) {
+                [LambNodeManager manager].nodeWinInfo = obj;
                 complain(YES);
             }else{
+                [LambNodeManager manager].nodeWinInfo = nil;
                 complain(NO);
             }
         }else{
+            [LambNodeManager manager].nodeWinInfo = nil;
             complain(NO);
         }
-        complain(YES);
     } failure:^(NSError * _Nonnull error) {
+        [LambNodeManager manager].nodeWinInfo = nil;
         complain(NO);
     }];
 }

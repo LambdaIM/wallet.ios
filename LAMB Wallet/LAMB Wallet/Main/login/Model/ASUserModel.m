@@ -48,10 +48,6 @@
     }
 }
 
-- (NSString *)address {
-    
-    return _address;
-}
 
 - (void)setLambMnemonic:(BTCMnemonic *)lambMnemonic {
     

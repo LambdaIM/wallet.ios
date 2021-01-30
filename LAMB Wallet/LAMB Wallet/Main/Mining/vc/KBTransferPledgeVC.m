@@ -174,7 +174,11 @@
                 if (![self.nodeActionLab.text isNotBlank] &&![self.nodeActionLab.text isEqualToString:ASLocalizedString(@"请选择转质押的节点")]) {
                     [ASHUD showHudTipStr:ASLocalizedString(@"请选择转质押的节点")];
                 }else{
-                    [self getLambGas];
+                    if ([self.nodeActionLab.text isEqualToString:self.nodeDetailModel.operator_address]) {
+                        [ASHUD showHudTipStr:ASLocalizedString(@"请选择以下节点质押TBB挖矿")];
+                    }else{
+                        [self getLambGas];
+                    }
                 }
             }else{
                 [ASHUD showHudTipStr:ASLocalizedString(@"余额不足")];

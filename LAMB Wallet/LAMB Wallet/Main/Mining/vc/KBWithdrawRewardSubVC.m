@@ -51,7 +51,16 @@
     
     UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(kLeftRightM, tipLab1.bottom+8, kScreenW-2*kLeftRightM - 60, 80)];
     [self.view addSubview: tf];
-    tf.text = self.m_nodeRevenue ? @"0" : [LambNodeManager manager].canWinCoinArray.count > 0 ? [[[LambNodeManager manager].canWinCoinArray firstObject].amount getNumber:@"6"] : @"0";
+    
+    NSString *nodeWinString = @"0";
+    if ([LambNodeManager manager].nodeWinInfo) {
+        ASProposalValueAmountModel *amount = [[LambNodeManager manager].nodeWinInfo.val_commission firstObject];
+        if (amount) {
+            nodeWinString = [amount.amount getShowNumber:@"6"];
+        }
+    }
+    
+    tf.text = self.m_nodeRevenue ? nodeWinString : [LambNodeManager manager].canWinCoinArray.count > 0 ? [[[LambNodeManager manager].canWinCoinArray firstObject].amount getNumber:@"6"] : @"0";
     tf.font = [UIFont pFBlodSize:30];
 
     tf.userInteractionEnabled = NO;
