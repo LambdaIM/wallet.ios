@@ -11,9 +11,13 @@
 #import "UIImage+Ex.h"
 #import "UIView+Ex.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#include "ASVerifyPasswordView.h"
+
 @interface KBWithdrawRewardSubVC ()
 
 @property (nonatomic, strong) NSMutableArray *nodeListArray;
+@property (nonatomic, strong) ASSendTextSignModel *signModel;
+@property (nonatomic, strong) ASSendTextModel *sendModel;
 
 @end
 
@@ -141,78 +145,86 @@
                         NSLog(@"gas:%@",gasString);
 
                         // 获取Gas 费用
-                        [LambNetManager POST:JoinParam(getHTTP_Get_transaction_Gas, [LambUtils shareInstance].currentUser.address) parameters:gasString showHud:YES success:^(id  _Nonnull responseObject) {
+                        [LambNetManager POST:JoinParam(getHTTP_Get_Win_Lamb_Gas, [LambUtils shareInstance].currentUser.address) parameters:gasString showHud:YES success:^(id  _Nonnull responseObject) {
                             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                                 
-                                NSString *gasString = [NSString stringWithFormat:@"%.0f",[[responseObject objectForKey:@"gas_estimate"] doubleValue] * 1.2];
+                                NSString *finalGasString = [NSString stringWithFormat:@"%.0f",[[NSString stringWithFormat:@"%@",[responseObject objectForKey:@"gas_estimate"]] doubleValue] * 1.2];
+                                NSLog(@"--------%@", finalGasString);
                                 // 获取节点收益
+                                self.signModel.fee.gas = finalGasString;
+                                
                                 [weakSelf getUtbbData:[LambUtils shareInstance].currentUser.address Complain:^(bool finish) {
                                     if (finish) {
-                                        NSLog(@"%@",self.nodeListArray);
+                                        NSLog(@"全部节点收益获取完成 \n%@",self.nodeListArray);
+                                        
+                                        // gas价格 写死
+                                        ASSendAmountModel *amountModel = [[ASSendAmountModel alloc]init];
+                                        amountModel.amount = TX_GAS_DEFINE;
+                                        amountModel.denom = @"ulamb";
+                                        NSArray *amountArray = [NSArray arrayWithObject:amountModel];
+                                        
+                                        // 签名消息体
+                                        weakSelf.signModel.chain_id = gasModel.base_req.chain_id;
+                                        weakSelf.signModel.account_number = gasModel.base_req.account_number;
+                                        weakSelf.signModel.sequence = gasModel.base_req.sequence;
+                                        weakSelf.signModel.memo = gasModel.base_req.memo;
+                                        weakSelf.signModel.fee.amount = amountArray;
+                                        
+                                        NSInteger count = weakSelf.nodeListArray.count > 5 ? 5: weakSelf.nodeListArray.count;
+                                        
+                                        NSMutableArray *nodeListMsg = [NSMutableArray array];
+                                        for (int i = 0 ; i < count - 1; i ++) {
+                                            ASNodeListModel *nodeModel = [weakSelf.nodeListArray objectAtIndex:i];
+                                            
+                                            ASSendWinMsgModel *sendWinMsgModel = [[ASSendWinMsgModel alloc] init];
+                                            sendWinMsgModel.value.validator_address = nodeModel.validator_address;
+                                            [nodeListMsg addObject:sendWinMsgModel];
+                                        }
+                                        weakSelf.signModel.msgs = nodeListMsg;
+        
+                                        weakSelf.sendModel.tx.fee = weakSelf.signModel.fee;
+        
+                                        // 发送消息体
+                                        weakSelf.sendModel.tx.memo = weakSelf.signModel.memo;
+                                        weakSelf.sendModel.tx.msg = weakSelf.signModel.msgs;
+        
+                                        __block ASSendSignaturesModel *signAtures = [[ASSendSignaturesModel alloc]init];
+        
+                                        NSArray *signArray = [NSArray arrayWithObject:signAtures];
+                                        weakSelf.sendModel.tx.signatures = signArray;
+        
+                                        // 签名的数据
+                                        NSDictionary *signDic = [weakSelf.signModel modelToJSONObject];
+        
+                                        NSString *signString = [LambUtils dictionaryToJson:signDic];
+        
+                                        NSMutableString * str3 = [[NSMutableString alloc]initWithString:signString];
+        
+                                        [str3 replaceOccurrencesOfString:@"\\" withString:@"" options:1 range:NSMakeRange(0, str3.length)];
+        
+                                        NSString *signModelString = [LambUtils signatureForHash:str3];
+        
+                                        signAtures.signature = signModelString;
+        
+                                        __block id requestObj = [weakSelf.sendModel modelToDictionary];
+        
+                                        NSLog(@"发送交易签名后的数据： %@ \n 签名字符串： %@ \n 发送请求：%@",signModelString,str3,[requestObj yy_modelToJSONString]);
+                                        NSLog(@"33333333");
+        
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            ASVerifyPasswordView *passwrodView = [ASVerifyPasswordView factoryWCSGoogleVerifyView];
+        
+                                            [passwrodView showWihtType:@"LAMB" gas:weakSelf.sendModel.tx.fee.gas];
+                                            passwrodView.confirmPassword = ^(BOOL state) {
+                                                if (state) {
+                                                    // 发送交易请求
+                                                    [weakSelf extracted:requestObj];
+                                                }
+                                            };
+                                        });
+                                        
                                     }
                                 }];
-                                
-//                                // 签名消息体
-//                                weakSelf.signModel.chain_id = gasModel.base_req.chain_id;
-//                                weakSelf.signModel.account_number = gasModel.base_req.account_number;
-//                                weakSelf.signModel.sequence = gasModel.base_req.sequence;
-//                                weakSelf.signModel.memo = gasModel.base_req.memo;
-//                                weakSelf.signModel.fee.amount = amountArray;
-//                                weakSelf.signModel.fee.gas = gasString;
-//                                // gas价格 写死
-//                                ASSendAmountModel *amountModel = [weakSelf.signModel.fee.amount firstObject];
-//                                amountModel.amount = @"101745";
-//
-//                                ASSendAmountModel *msgAmountModel = [[ASSendAmountModel alloc]init];
-//                                msgAmountModel.denom = amountModel.denom;
-//                                msgAmountModel.amount = [[self.amountField.text stringByTrim] requestShowNumber:@"0"];
-//
-//                                ASSendMsgModel *msgModel = [[ASSendMsgModel alloc] init];
-//                                msgModel.value.to_address = gasModel.to_address;
-//                                msgModel.value.amount = [NSArray arrayWithObject:msgAmountModel];
-//                                NSArray *msgArray = [NSArray arrayWithObject:msgModel];
-//                                weakSelf.signModel.msgs = msgArray;
-//
-//                                weakSelf.sendModel.tx.fee = weakSelf.signModel.fee;
-//
-//                                // 发送消息体
-//                                weakSelf.sendModel.tx.memo = weakSelf.signModel.memo;
-//                                weakSelf.sendModel.tx.msg = weakSelf.signModel.msgs;
-//
-//                                __block ASSendSignaturesModel *signAtures = [[ASSendSignaturesModel alloc]init];
-//
-//                                NSArray *signArray = [NSArray arrayWithObject:signAtures];
-//                                weakSelf.sendModel.tx.signatures = signArray;
-//
-//                                // 签名的数据
-//                                NSDictionary *signDic = [weakSelf.signModel modelToJSONObject];
-//
-//                                NSString *signString = [LambUtils dictionaryToJson:signDic];
-//
-//                                NSMutableString * str3 = [[NSMutableString alloc]initWithString:signString];
-//
-//                                [str3 replaceOccurrencesOfString:@"\\" withString:@"" options:1 range:NSMakeRange(0, str3.length)];
-//
-//                                NSString *signModelString = [LambUtils signatureForHash:str3];
-//
-//                                signAtures.signature = signModelString;
-//
-//                                __block id requestObj = [weakSelf.sendModel modelToDictionary];
-//
-//                                NSLog(@"发送交易签名后的数据： %@ \n 签名字符串： %@ \n 发送请求：%@",signModelString,str3,[requestObj yy_modelToJSONString]);
-//                                NSLog(@"33333333");
-//
-//                                dispatch_async(dispatch_get_main_queue(), ^{
-//                                    ASVerifyPasswordView *passwrodView = [ASVerifyPasswordView factoryWCSGoogleVerifyView];
-//
-//                                    [passwrodView showWihtType:@"LAMB" gas:weakSelf.sendModel.tx.fee.gas];
-//                                    passwrodView.confirmPassword = ^(BOOL state) {
-//                                        if (state) {
-//                                            // 发送交易请求
-//                                            [weakSelf extracted:requestObj];
-//                                        }
-//                                    };
-//                                });
                             }
                         } failure:^(NSError * _Nonnull error) {
                             [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
@@ -223,6 +235,42 @@
             } failure:^(NSError * _Nonnull error) {
                 [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
             }];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
+    }];
+}
+
+/// 发送交易
+/// @param requestObj 签名对象
+- (void)extracted:(id)requestObj {
+    
+    kWeakSelf(weakSelf)
+    
+    [LambNetManager POST:getHTTP_Get_transaction_detail parameters:requestObj showHud:YES success:^(id  _Nonnull responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            if ([responseObject containsObjectForKey:@"logs"]) {
+                
+                NSArray *logArray = [ASSendLogModel modelsWithJSON:[responseObject objectForKey:@"logs"]];
+                BOOL state = YES;
+                for (ASSendLogModel *tempModel in logArray) {
+                    if (!tempModel.success) {
+                        state = NO;
+                        break;
+                    }
+                }
+                if (!state) {
+                    [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
+                }else{
+                    // 刷新余额
+                    [ASHUD showHudTipStr:ASLocalizedString(@"操作成功,正在刷新账户信息,请稍候")];
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                }
+            }else{
+                [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
+            }
+        }else{
+            [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
         }
     } failure:^(NSError * _Nonnull error) {
         [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
@@ -244,14 +292,14 @@
                 [weakSelf.nodeListArray addObjectsFromArray:array];
             }
             __block NSInteger i = 0;
-            for (__block ASNodeListModel *node in weakSelf.nodeListArray) {
+            for (ASNodeListModel *node in weakSelf.nodeListArray) {
                 [weakSelf getNode:node.validator_address winLambDataComplain:^(ASProposalValueAmountModel *amountModel) {
                     node.winLamb = amountModel.amount;
                     i ++ ;
                     if (i == weakSelf.nodeListArray.count) {
                         
                         NSArray *tempArray = [weakSelf.nodeListArray sortedArrayUsingComparator:^NSComparisonResult(ASNodeListModel *obj1, ASNodeListModel *obj2) {
-                            return [obj1.winLamb longLongValue] > [obj2.winLamb longLongValue];
+                            return [obj1.winLamb longLongValue] < [obj2.winLamb longLongValue];
                         }];
                         
                         [weakSelf.nodeListArray removeAllObjects];
@@ -292,5 +340,20 @@
     }
     return _nodeListArray;
 }
+
+- (ASSendTextSignModel *)signModel {
+    if (!_signModel) {
+        _signModel = [[ASSendTextSignModel alloc] init];
+    }
+    return _signModel;
+}
+
+- (ASSendTextModel *)sendModel {
+    if (!_sendModel) {
+        _sendModel = [[ASSendTextModel alloc] init];
+    }
+    return _sendModel;
+}
+
 
 @end

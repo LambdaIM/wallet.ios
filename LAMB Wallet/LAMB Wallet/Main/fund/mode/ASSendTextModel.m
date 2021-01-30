@@ -98,7 +98,6 @@
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{@"fee" : [ASSendFeeModel class],
-             @"msg" : [ASSendMsgModel class],
              @"signatures" : [ASSendSignaturesModel class]
     };
 }
@@ -193,5 +192,138 @@
     };
 }
 
+@end
+
+
+@implementation ASSendWinMsgValueModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _delegator_address = [LambUtils shareInstance].currentUser.address;
+    }
+    return self;
+}
 
 @end
+
+@implementation ASSendWinMsgModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _type = MiningAward;
+        _value = [[ASSendWinMsgValueModel alloc] init];
+    }
+    return self;
+}
+
+@end
+
+@implementation ASSendLockTBBGasModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _validator_type = 1;
+        _delegator_address = [LambUtils shareInstance].currentUser.address;
+        _amount = [[ASSendAmountModel alloc] init];
+        _base_req = [[ASSendTextGasBaseModel alloc] init];
+    }
+    return self;
+}
+
+@end
+
+
+
+@implementation ASSendReLockTBBGasModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _validator_type = 1;
+        _delegator_address = [LambUtils shareInstance].currentUser.address;
+        _amount = [[ASSendAmountModel alloc] init];
+        _base_req = [[ASSendTextGasBaseModel alloc] init];
+    }
+    return self;
+}
+
+@end
+
+
+@implementation ASSendLockTBBMsgValueTxtModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _validator_type = 1;
+        _delegator_address = [LambUtils shareInstance].currentUser.address;
+        _amount = [[ASSendAmountModel alloc] init];
+        _amount.denom = @"utbb";
+    }
+    return self;
+}
+
+@end
+
+@implementation ASSendLockTBBMsgTxtModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _type = ZHIYA;
+        _value = [[ASSendLockTBBMsgValueTxtModel alloc] init];
+    }
+    return self;
+}
+
+@end
+
+
+
+@implementation ASSendReLockTBBMsgValueTxtModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _validator_type = 1;
+        _delegator_address = [LambUtils shareInstance].currentUser.address;
+        _amount = [[ASSendAmountModel alloc] init];
+        _amount.denom = @"utbb";
+    }
+    return self;
+}
+
+@end
+
+@implementation ASSendReLockTBBMsgTxtModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _type = ZHUANZHIYAZHIYA;
+        _value = [[ASSendReLockTBBMsgValueTxtModel alloc] init];
+    }
+    return self;
+}
+
+@end
+

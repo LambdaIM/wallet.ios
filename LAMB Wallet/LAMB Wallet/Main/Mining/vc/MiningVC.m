@@ -143,6 +143,7 @@
     [self getWinLambDataComplain:^(bool finish) {
         if (finish) {
             weakSelf.header.winLambString = [[[LambNodeManager manager].canWinCoinArray firstObject] amount];
+            self->requested = NO;
             weakSelf.table.tableHeaderView = weakSelf.header;
             [weakSelf.table reloadData];
         }

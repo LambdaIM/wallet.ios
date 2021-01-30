@@ -285,9 +285,18 @@ static inline BOOL isIPhoneXSeries() {
 #define getHTTP_Get_proposal_toupiao         @"/gov/proposals/%@/tally"
 //获取交易详情// 发送交易
 #define getHTTP_Get_transaction_detail         @"/txs"
-//获取交易手续费
+//获取转账交易手续费
 #define getHTTP_Get_transaction_Gas         @"/bank/accounts/%@/transfers"
+//获取提取奖励交易手续费
+#define getHTTP_Get_Win_Lamb_Gas         @"/distribution/delegators/%@/rewards"
 
+//质押TBB交易手续费
+#define getHTTP_Get_delegations_Lamb_Gas        @"/staking/delegators/%@/delegations"
+
+//取消质押TBB交易手续费
+#define getHTTP_Get_unbonding_delegations_Lamb_Gas  @"/staking/delegators/%@/unbonding_delegations"
+//转质押TBB交易手续费
+#define getHTTP_Get_redelegations_Lamb_Gas  @"/staking/delegators/%@/redelegations"
 
 
 
