@@ -194,6 +194,21 @@
 
 @end
 
+@implementation ASSendNodeTextGasModel
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _validator_address = [LambUtils nodeAddress];
+        _base_req = [[ASSendTextGasBaseModel alloc] init];
+    }
+    return self;
+}
+
+@end
+
 
 @implementation ASSendWinMsgValueModel
 
@@ -327,3 +342,29 @@
 
 @end
 
+@implementation ASSendNodeWinMsgValueModel
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _validator_address = [LambUtils nodeAddress];
+    }
+    return self;
+}
+@end
+
+
+@implementation ASSendNodeWinMsgModel
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _type = ProducerAward;
+        _value = [[ASSendNodeWinMsgValueModel alloc] init];
+    }
+    return self;
+}
+
+@end

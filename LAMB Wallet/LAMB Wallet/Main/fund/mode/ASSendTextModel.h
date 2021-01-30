@@ -79,6 +79,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+/// 提取自己节点收益
+@interface ASSendNodeWinMsgValueModel : ASModel
+
+@property (nonatomic, copy) NSString *validator_address;
+
+@end
+
+/// 提取自己节点收益
+@interface ASSendNodeWinMsgModel : ASModel
+
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, strong) ASSendNodeWinMsgValueModel *value;
+
+@end
+
 @interface ASSendFeeModel : ASModel
 
 @property (nonatomic, strong) NSArray <ASSendAmountModel *>*amount;
@@ -139,6 +154,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ASSendTBBTextGasModel : ASModel
 
 @property (nonatomic, copy) NSString *delegator_address;
+@property (nonatomic, strong) ASSendTextGasBaseModel*base_req;
+
+@end
+
+// 提取节点请求gas 参数
+@interface ASSendNodeTextGasModel : ASModel
+
+@property (nonatomic, copy) NSString *validator_address;
 @property (nonatomic, strong) ASSendTextGasBaseModel*base_req;
 
 @end

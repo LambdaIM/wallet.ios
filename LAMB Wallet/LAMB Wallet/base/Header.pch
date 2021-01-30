@@ -289,6 +289,8 @@ static inline BOOL isIPhoneXSeries() {
 #define getHTTP_Get_transaction_Gas         @"/bank/accounts/%@/transfers"
 //获取提取奖励交易手续费
 #define getHTTP_Get_Win_Lamb_Gas         @"/distribution/delegators/%@/rewards"
+//获取提取节点奖励交易手续费
+#define getHTTP_Get_node_Win_Lamb_Gas         @"/distribution/delegators/%@/rewards"
 
 //质押TBB交易手续费
 #define getHTTP_Get_delegations_Lamb_Gas        @"/staking/delegators/%@/delegations"
