@@ -150,11 +150,11 @@
         self.mnemonic = [NSArray arrayWithArray:[LambUtils shareInstance].currentUser.mnemonic];
         NSMutableArray *disAbleArray = [NSMutableArray arrayWithArray:self.mnemonic];
         [disAbleArray shuffle];
-//        self.channelView.enabledTitles = [NSMutableArray array];
-//        self.channelView.disabledTitles = disAbleArray;
+        self.channelView.enabledTitles = [NSMutableArray array];
+        self.channelView.disabledTitles = disAbleArray;
         
-        self.channelView.enabledTitles = [NSMutableArray arrayWithArray:self.mnemonic];
-        self.channelView.disabledTitles = [NSMutableArray array];
+//        self.channelView.enabledTitles = [NSMutableArray arrayWithArray:self.mnemonic];
+//        self.channelView.disabledTitles = [NSMutableArray array];
 
         [self.channelView reloadData];
     }
