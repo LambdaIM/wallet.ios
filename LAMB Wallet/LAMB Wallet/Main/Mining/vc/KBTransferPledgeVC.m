@@ -17,7 +17,7 @@
 #import "ActionSheetStringPicker.h"
 #import "ASVerifyPasswordView.h"
 
-@interface KBTransferPledgeVC ()
+@interface KBTransferPledgeVC ()<UITextFieldDelegate>
 @property(nonatomic, weak) TPKeyboardAvoidingScrollView *m_scroll;
 @property (nonatomic, strong) NSArray *nodeListArray;    // 验证节点
 @property (nonatomic, assign) NSInteger selectIndex; //
@@ -152,6 +152,7 @@
     });
     
     ASTextField *tf = [[ASTextField alloc] initWithFrame:CGRectMake(15, tipLab4.bottom + 10, kScreenW-2*15, 50)];
+    tf.delegate = self;
     [ms addSubview:tf];
     tf.m_leftMargin = 15;
     tf.layer.cornerRadius = 8;
@@ -424,5 +425,26 @@
     }
     return _sendModel;
 }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
+    return [self validateNumber:string];
+}
+ 
+- (BOOL)validateNumber:(NSString*)number {
+    BOOL res = YES;
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    int i = 0;
+    while (i < number.length) {
+         NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
+         NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+         if (range.length == 0) {
+            res = NO;
+            break;
+          }
+          i++;
+       }
+    return res;
+}
+
 
 @end

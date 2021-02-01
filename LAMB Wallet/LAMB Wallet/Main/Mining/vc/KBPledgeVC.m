@@ -16,7 +16,7 @@
 #import "ASVerifyPasswordView.h"
 #import "ASProposalModel.h"
 
-@interface KBPledgeVC ()
+@interface KBPledgeVC ()<UITextFieldDelegate>
 @property(nonatomic, weak) TPKeyboardAvoidingScrollView *m_scroll;
 @property (nonatomic, strong) UILabel *valueLabCan;
 @property (nonatomic, strong) UILabel *tipLabCan;
@@ -149,6 +149,7 @@
     self.tipLabCan = tipLabCan;
     
     ASTextField *tf = [[ASTextField alloc] initWithFrame:CGRectMake(15, tipLab3.bottom + 10, kScreenW-2*15, 50)];
+    tf.delegate = self;
     [ms addSubview:tf];
     tf.m_leftMargin = 15;
     if (self.m_cancel) {
@@ -400,6 +401,26 @@
     } failure:^(NSError * _Nonnull error) {
         complain(nil);
     }];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string  {
+    return [self validateNumber:string];
+}
+ 
+- (BOOL)validateNumber:(NSString*)number {
+    BOOL res = YES;
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    int i = 0;
+    while (i < number.length) {
+         NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
+         NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+         if (range.length == 0) {
+            res = NO;
+            break;
+          }
+          i++;
+       }
+    return res;
 }
 
 @end
