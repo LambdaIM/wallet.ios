@@ -248,10 +248,10 @@
                                             NSArray *amountArray = [NSArray arrayWithObject:amountModel];
                                             
                                             // 签名消息体
-                                            weakSelf.signModel.chain_id = gasModel.base_req.chain_id;
-                                            weakSelf.signModel.account_number = gasModel.base_req.account_number;
-                                            weakSelf.signModel.sequence = gasModel.base_req.sequence;
-                                            weakSelf.signModel.memo = gasModel.base_req.memo;
+                                            weakSelf.signModel.chain_id = tbbGasModel.base_req.chain_id;
+                                            weakSelf.signModel.account_number = tbbGasModel.base_req.account_number;
+                                            weakSelf.signModel.sequence = tbbGasModel.base_req.sequence;
+                                            weakSelf.signModel.memo = tbbGasModel.base_req.memo;
                                             weakSelf.signModel.fee.amount = amountArray;
                                             
                                             NSInteger count = weakSelf.nodeListArray.count > 5 ? 5: weakSelf.nodeListArray.count;
