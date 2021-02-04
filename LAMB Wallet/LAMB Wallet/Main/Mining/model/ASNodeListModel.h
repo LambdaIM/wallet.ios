@@ -10,6 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface ASNodeEntriesModel : ASModel
+
+@property (nonatomic, copy) NSString *creation_height; //
+@property (nonatomic, copy) NSString *completion_time; //
+@property (nonatomic, copy) NSString *initial_balance; //
+@property (nonatomic, copy) NSString *balance; //
+
+@end
+
 @interface ASNodeListCommissionModel : ASModel
 
 @property (nonatomic, copy) NSString *max_rate; //
@@ -42,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *persent; // 质押token 占比
 @property (nonatomic, strong) ASNodeListDescriptionModel *descriptions; //
 @property (nonatomic, strong) ASNodeListCommissionModel *commission; //
-
+@property (nonatomic, strong) NSArray <ASNodeEntriesModel *> *entries;
 @property (nonatomic, copy) NSString *delegator_address;// 质押账号地址
 @property (nonatomic, copy) NSString *validator_address;// 节点地址
 @property (nonatomic, copy) NSString *shares;// 质押量总量

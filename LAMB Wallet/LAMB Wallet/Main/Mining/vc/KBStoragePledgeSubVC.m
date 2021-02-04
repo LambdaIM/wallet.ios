@@ -22,8 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.table.rowHeight = 70;
+    if (self.bund) {
+        self.table.rowHeight = 70;
+    }else{
+        self.table.rowHeight = 45;
+    }
     self.table.mj_footer.hidden = YES;
     [self.table registerXibCell:[ASStorageCell class]];
 }
@@ -75,20 +78,29 @@
                     [weakSelf getNodeDetailData:node.validator_address Complain:^(ASNodeListModel *nodeDetail) {
                         if (nodeDetail) {
                             nodeDetail.utbb = node.shares;
-                            dispatch_sync(queue, ^{
-                                [weakSelf getNode:nodeDetail.operator_address winLambDataComplain:^(ASProposalValueAmountModel *amountModel) {
-                                    if (amountModel) {
-                                        nodeDetail.winLamb = amountModel.amount;
-                                        [weakSelf.datas addObject:nodeDetail];
-                                    }else{
-                                        [weakSelf.table.mj_header endRefreshing];
-                                    }
-                                    if (weakSelf.datas.count == objs.count) {
-                                        [weakSelf.table reloadData];
-                                        [weakSelf.table.mj_header endRefreshing];
-                                    }
-                                }];
-                            });
+                            nodeDetail.entries = node.entries;
+                            if (self.bund) {
+                                dispatch_sync(queue, ^{
+                                    [weakSelf getNode:nodeDetail.operator_address winLambDataComplain:^(ASProposalValueAmountModel *amountModel) {
+                                        if (amountModel) {
+                                            nodeDetail.winLamb = amountModel.amount;
+                                            [weakSelf.datas addObject:nodeDetail];
+                                        }else{
+                                            [weakSelf.table.mj_header endRefreshing];
+                                        }
+                                        if (weakSelf.datas.count == objs.count) {
+                                            [weakSelf.table reloadData];
+                                            [weakSelf.table.mj_header endRefreshing];
+                                        }
+                                    }];
+                                });
+                            }else{
+                                [weakSelf.datas addObject:nodeDetail];
+                                if (weakSelf.datas.count == objs.count) {
+                                    [weakSelf.table reloadData];
+                                    [weakSelf.table.mj_header endRefreshing];
+                                }
+                            }
                         }else{
                             [weakSelf.table.mj_header endRefreshing];
                         }

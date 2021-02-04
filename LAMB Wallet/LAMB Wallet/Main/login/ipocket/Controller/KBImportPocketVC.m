@@ -30,7 +30,9 @@
     ZJScrollPageView *scrollPageView =
     [[ZJScrollPageView alloc] initWithFrame:scrollPageViewF
                                segmentStyle:[self style]
-                                     titles:@[ASLocalizedString(@"配置文件导入"), ASLocalizedString(@"助记词导入")]
+                                     titles:@[
+                                         //ASLocalizedString(@"配置文件导入"),
+                                         ASLocalizedString(@"助记词导入")]
                        parentViewController:self
                                    delegate:self];
     
@@ -46,11 +48,11 @@
 
 - (UIViewController<ZJScrollPageViewChildVcDelegate> *)childViewController:(__kindof UIViewController<ZJScrollPageViewChildVcDelegate> *)reuseViewController forIndex:(NSInteger)index { 
     
-    if(index == 0){
-        return [[KBFileImportVC alloc] init];
-    }else {
+//    if(index == 0){
+//        return [[KBFileImportVC alloc] init];
+//    }else {
         return [[KBMnemonicImportVC alloc] init];
-    }
+//    }
 }
 
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods {

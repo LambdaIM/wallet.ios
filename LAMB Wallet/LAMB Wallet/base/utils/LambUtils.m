@@ -130,6 +130,7 @@
 + (void)logOut {
     
     [LambUtils shareInstance].currentUser = nil;
+    [LambNodeManager manager].nodeWinInfo = nil; // 节点收益
     // 移除当前用户信息
     YYCache *yyCache=[YYCache cacheWithName:kYYCacheCurrentUserIdentifer];
     [yyCache removeAllObjects];

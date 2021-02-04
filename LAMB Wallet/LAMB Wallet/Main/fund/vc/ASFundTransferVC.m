@@ -184,9 +184,10 @@
                 }else{
                     // 刷新余额
                     [ASHUD showHudTipStr:ASLocalizedString(@"操作成功,正在刷新账户信息,请稍候")];
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [weakSelf requstNodeDetail:NO];
-                    });
+                    [self.navigationController popViewControllerAnimated:YES];
+//                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                        [weakSelf requstNodeDetail:NO];
+//                    });
 
                 }
             }else{

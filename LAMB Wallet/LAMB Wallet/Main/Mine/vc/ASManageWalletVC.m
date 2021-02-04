@@ -25,8 +25,9 @@
     NSString *walletName = [LambUtils shareInstance].currentUser.name;
     NSString *accountAddress = [LambUtils shareInstance].currentUser.address;
     self.datas = @[@{@"UITableViewCellStyle":@1, @"UITableViewCellAccessoryType": @0, @"title":ASLocalizedString(@"钱包名"), @"detail": walletName},
-                   @{@"UITableViewCellStyle":@1, @"UITableViewCellAccessoryType": @0, @"title":ASLocalizedString(@"账户地址"), @"detail": accountAddress},
-                   @{@"UITableViewCellStyle":@0, @"UITableViewCellAccessoryType": @1, @"title":ASLocalizedString(@"备份钱包"), @"sel":@"clickBackupWalletCell"}];
+                   @{@"UITableViewCellStyle":@1, @"UITableViewCellAccessoryType": @0, @"title":ASLocalizedString(@"账户地址"), @"detail": accountAddress}
+//                   @{@"UITableViewCellStyle":@0, @"UITableViewCellAccessoryType": @1, @"title":ASLocalizedString(@"备份钱包"), @"sel":@"clickBackupWalletCell"}
+    ];
     [self.table reloadData];
 }
 - (void)clickBackupWalletCell {

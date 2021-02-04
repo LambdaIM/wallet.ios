@@ -83,6 +83,8 @@
 - (void)configNode:(ASNodeModel *)node {
     if (node) {
         [[LambNetManager shareInstance] setBaseUrl:[NSString stringWithFormat:@"%@:%@",node.baseUrl,node.port]];
+        [LambNodeManager manager].nodeWinInfo = nil; // 节点收益
+        [LambNodeManager manager].canWinCoinArray = nil;// 自己的收益
     }
 }
 

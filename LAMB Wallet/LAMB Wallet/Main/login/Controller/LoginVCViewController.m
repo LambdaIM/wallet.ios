@@ -11,7 +11,7 @@
 #import "KBImportPocketVC.h"
 #import "UIView+Ex.h"
 
-static CGFloat accountTableViewCellHeight = 50;
+static CGFloat accountTableViewCellHeight = 60;
 
 @interface LoginVCViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -121,6 +121,7 @@ static CGFloat accountTableViewCellHeight = 50;
         _accountTableView.delegate = self;
         _accountTableView.dataSource = self;
         _accountTableView.hidden = YES;
+        [_accountTableView addCorners:UIRectCornerAllCorners radius:5];
     }
     return _accountTableView;
 }
@@ -158,7 +159,8 @@ static CGFloat accountTableViewCellHeight = 50;
     }
     if (self.dataArray.count) {
         ASUserModel *userModel = [self.dataArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = [userModel.address showLambAddress];
+        cell.textLabel.numberOfLines = 2;
+        cell.textLabel.text = [NSString stringWithFormat:@"%@\n %@",userModel.name,[userModel.address showLambAddress]];
     }
     return cell;
 }
@@ -183,4 +185,12 @@ static CGFloat accountTableViewCellHeight = 50;
     }
     return _dataArray;
 }
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+
+    self.accountBtn.selected = NO;
+    self.accountTableView.hidden = YES;
+}
+
 @end

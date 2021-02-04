@@ -97,14 +97,19 @@
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     if (self.assertModel) {
+        BOOL haveLamb = NO;
         for (ASProposalValueAmountModel *model in self.assertModel.value.coins) {
             if ([model.denom isEqualToString:@"ulamb"]) {
                 [self.headView setLambBalance:[model.amount getShowNumber:@"6"]];
+                haveLamb = YES;
                 break;
             }
         }
+        if (!haveLamb) {
+            [self.headView setLambBalance:@"0"];
+        }
     }else{
-        
+        [self.headView setLambBalance:@"0"];
     }
     return self.headView;
 }
@@ -228,7 +233,8 @@
 }
 // 兑换
 - (void)exchange {
-    pushToDestinationController(self, ASFundExchangeVC)
+//    pushToDestinationController(self, ASFundExchangeVC)
+    [ASHUD showHudTipStr:@""];
 }
 
 - (void) loadData {

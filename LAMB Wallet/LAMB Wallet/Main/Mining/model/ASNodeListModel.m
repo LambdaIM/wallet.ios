@@ -7,6 +7,12 @@
 //
 
 #import "ASNodeListModel.h"
+
+
+
+@implementation ASNodeEntriesModel
+
+@end
 @implementation ASNodeListCommissionModel
 
 @end
@@ -20,7 +26,8 @@
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{
         @"descriptions" : [ASNodeListDescriptionModel class],
-        @"commission":[ASNodeListCommissionModel class]
+        @"commission":[ASNodeListCommissionModel class],
+        @"entries":[ASNodeEntriesModel class]
     };
 }
 

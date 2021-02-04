@@ -246,8 +246,10 @@
             ASProposalValueAmountModel *model = [objs firstObject];
             weakSelf.nodeDetail.winLamb = model.amount;
             [weakSelf reloadData];
+            complain(YES);
+        }else{
+            complain(NO);
         }
-        complain(YES);
     } failure:^(NSError * _Nonnull error) {
         complain(NO);
     }];

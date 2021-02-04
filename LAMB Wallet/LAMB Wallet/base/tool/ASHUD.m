@@ -20,7 +20,7 @@ static const NSInteger kHUDQueryViewTag = 90101;
     hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
     hud.bezelView.color = [UIColor blackColor];
     hud.detailsLabel.textColor = [UIColor whiteColor];
-    hud.detailsLabel.font= [UIFont systemFontOfSize: 16];
+    hud.detailsLabel.font= [UIFont systemFontOfSize: 18];
     hud.detailsLabel.text = ASLocalizedString(tipStr);
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
@@ -59,7 +59,7 @@ static const NSInteger kHUDQueryViewTag = 90101;
     hud.tag = kHUDQueryViewTag;
     if (queryStr.length > 0) {
         hud.label.text =  ASLocalizedString(queryStr);
-        hud.label.font = [UIFont systemFontOfSize: 16];
+        hud.label.font = [UIFont systemFontOfSize: 18];
         hud.margin = 10.f;
         hud.label.textColor = [UIColor whiteColor];
     }

@@ -141,9 +141,14 @@
     }];
     // 获取lamb 奖励
     [self getWinLambDataComplain:^(bool finish) {
+        self->requested = NO;
+
         if (finish) {
             weakSelf.header.winLambString = [[[LambNodeManager manager].canWinCoinArray firstObject] amount];
-            self->requested = NO;
+            weakSelf.table.tableHeaderView = weakSelf.header;
+            [weakSelf.table reloadData];
+        }else{
+            weakSelf.header.winLambString = @"0";
             weakSelf.table.tableHeaderView = weakSelf.header;
             [weakSelf.table reloadData];
         }
@@ -236,9 +241,18 @@
                     [weakSelf.table reloadData];
                 }];
             }
+            complain(YES);
+        }else{
+            weakSelf.header.utbbString = @"0";
+            weakSelf.table.tableHeaderView = weakSelf.header;
+            [weakSelf.table reloadData];
+
+            complain(NO);
         }
-        complain(YES);
     } failure:^(NSError * _Nonnull error) {
+        weakSelf.header.utbbString = @"0";
+        weakSelf.table.tableHeaderView = weakSelf.header;
+        [weakSelf.table reloadData];
         complain(NO);
     }];
 }

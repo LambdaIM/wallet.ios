@@ -122,6 +122,10 @@ static LambNetManager *instance = nil;
         if (success) {
             success(responseObject);
         }
+    }else{
+        if (failure) {
+            failure(error);
+        }
     }
     if (error) {
         if (failure) {

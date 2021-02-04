@@ -127,13 +127,21 @@
 }
 
 - (void)setUtbbString:(NSString *)utbbString {
-    self.utbbLab.text = [utbbString getShowNumber:@"6"];
+    if ([utbbString doubleValue] > 0) {
+        self.utbbLab.text = [utbbString getShowNumber:@"6"];
+    }else{
+        self.utbbLab.text = utbbString;
+    }
     _utbbString = self.utbbLab.text;
     [self.utbbLab sizeToFit];
 }
 
 - (void)setWinLambString:(NSString *)winLambString {
-    self.winLambLab.text = [winLambString getShowNumber:@"6"];
+    if ([winLambString doubleValue] > 0) {
+        self.winLambLab.text = [winLambString getShowNumber:@"6"];
+    }else{
+        self.winLambLab.text = winLambString;
+    }
     _winLambString = self.winLambLab.text;
     [self.winLambLab sizeToFit];
 }
