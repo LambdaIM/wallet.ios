@@ -201,24 +201,27 @@
 // 节点获取lamb奖励 todo 节点地址需要计算
 - (void) getNodeWinLambDataComplain:(void(^)(bool finish)) complain{
     
-    [LambNetManager GET:JoinParam(getHTTP_get_producer_award,[LambUtils nodeAddress]) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            ASProposalModel *obj = [ASProposalModel yy_modelWithDictionary:responseObject];
-            if (obj) {
-                [LambNodeManager manager].nodeWinInfo = obj;
-                complain(YES);
+    NSString *nodeAddress = [LambUtils nodeAddress];
+    if (nodeAddress) {
+        [LambNetManager GET:JoinParam(getHTTP_get_producer_award,nodeAddress) parameters:@{} showHud:NO success:^(id  _Nonnull responseObject) {
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                ASProposalModel *obj = [ASProposalModel yy_modelWithDictionary:responseObject];
+                if (obj) {
+                    [LambNodeManager manager].nodeWinInfo = obj;
+                    complain(YES);
+                }else{
+                    [LambNodeManager manager].nodeWinInfo = nil;
+                    complain(NO);
+                }
             }else{
                 [LambNodeManager manager].nodeWinInfo = nil;
                 complain(NO);
             }
-        }else{
+        } failure:^(NSError * _Nonnull error) {
             [LambNodeManager manager].nodeWinInfo = nil;
             complain(NO);
-        }
-    } failure:^(NSError * _Nonnull error) {
-        [LambNodeManager manager].nodeWinInfo = nil;
-        complain(NO);
-    }];
+        }];
+    }
 }
 
 
