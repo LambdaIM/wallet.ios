@@ -354,9 +354,15 @@
                 [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
             }
         }else{
+
             [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
         }
     } failure:^(NSError * _Nonnull error) {
+        if (error) {
+            
+//            id result = [NSJSONSerialization JSONObjectWithData:[error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:NULL];
+//            NSLog(@"%@",result);
+        }
         [ASHUD showHudTipStr:ASLocalizedString(@"交易失败")];
     }];
 }
