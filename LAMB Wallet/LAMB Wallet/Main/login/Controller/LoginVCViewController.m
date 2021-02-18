@@ -52,9 +52,9 @@ static CGFloat accountTableViewCellHeight = 60;
     self.m_passView.layer.cornerRadius = 45/2.0;
     self.m_passView.backgroundColor =@"F0F2F8".hexColor;
     self.m_passTextFild.backgroundColor = @"F0F2F8".hexColor;
-    [self.m_loginBtn maddSublayer];
     self.m_loginBtn.layer.cornerRadius = 24;
     self.m_loginBtn.layer.masksToBounds = YES;
+    [self.m_loginBtn maddSublayer];
     [self.m_loginBtn.titleLabel sizeToFit];
     
     self.accountNameField.placeholder = ASLocalizedString(@"请选择钱包");

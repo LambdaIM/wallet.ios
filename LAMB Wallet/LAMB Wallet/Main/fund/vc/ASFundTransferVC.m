@@ -58,6 +58,18 @@
     receveAddresLab.frame = CGRectMake(kLeftRightM, kLeftRightM, kScreenW - 2 * kLeftRightM, 20);
     [self.view addSubview:receveAddresLab];
     
+    
+    UIButton *clearBtn = [UIButton btn];
+    [clearBtn setTitle:@"清除" forState:UIControlStateNormal];
+    [clearBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    clearBtn.titleLabel.font = [UIFont pFMediumSize:15];
+    clearBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    clearBtn.frame = CGRectMake(kScreenW - 80 - kLeftRightM, receveAddresLab.top, 80, 20);
+    [clearBtn addTarget:self action:@selector(clearAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:clearBtn];
+
+    
+    
     _addressField = [[ASTextField alloc] initWithFrame:CGRectMake(kLeftRightM, receveAddresLab.bottom + 10, kScreenW-2*kLeftRightM, 50)];
     [self.view addSubview:_addressField];
     _addressField.m_leftMargin = 15;
@@ -386,6 +398,11 @@
         _sendModel = [[ASSendTextModel alloc] init];
     }
     return _sendModel;
+}
+
+- (void) clearAction:(UIButton *) btn {
+    
+    self.addressField.text = @"";
 }
 
 /*

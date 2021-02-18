@@ -180,7 +180,11 @@
                 }
             }else{
                 // 质押
-                [self getLambGas];
+                if ([self.tf.text doubleValue] > [self.valueLabCan.text doubleValue]) {
+                    [ASHUD showHudTipStr:ASLocalizedString(@"余额不足")];
+                }else{
+                    [self getLambGas];
+                }
             }
         }
     }];

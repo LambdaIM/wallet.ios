@@ -71,6 +71,7 @@
     kWeakSelf(weakSelf)
     [LambNetManager GET:getHTTP_Get_proposal_list parameters:@{} showHud:YES success:^(id  _Nonnull responseObject) {
         [self receivedDicts:responseObject atPage:page resPageNum:[NSString stringWithFormat:@"1"] resPageSize:@1000 objClass:[ASProposalModel class]];
+        [weakSelf endRefresh];
     } failure:^(NSError * _Nonnull error) {
         self.table.mj_footer.hidden = self.datas.count < 20;
         [weakSelf endRefresh];

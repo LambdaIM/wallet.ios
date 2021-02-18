@@ -115,7 +115,7 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 350;
+    return 370;
 }
 
 - (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -157,7 +157,7 @@
 
 - (ASFundHeadView *)headView {
     if (!_headView) {
-        _headView = [[ASFundHeadView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 350)];
+        _headView = [[ASFundHeadView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 370)];
         _headView.delegate = self;
     }
     return _headView;
@@ -234,7 +234,7 @@
 // 兑换
 - (void)exchange {
 //    pushToDestinationController(self, ASFundExchangeVC)
-    [ASHUD showHudTipStr:@""];
+    [ASHUD showHudTipStr:@"功能暂未开放"];
 }
 
 - (void) loadData {

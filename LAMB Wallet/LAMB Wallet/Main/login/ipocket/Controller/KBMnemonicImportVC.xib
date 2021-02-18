@@ -38,7 +38,7 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="s1f-04-Pmq"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9QS-9J-04E">
                     <rect key="frame" x="16" y="251" width="382" height="48"/>
@@ -46,7 +46,7 @@
                         <constraint firstAttribute="height" constant="48" id="Ebu-nx-JaX"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VX3-fz-7JD">
                     <rect key="frame" x="16" y="349" width="382" height="48"/>

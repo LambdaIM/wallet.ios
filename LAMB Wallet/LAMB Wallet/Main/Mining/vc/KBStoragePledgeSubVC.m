@@ -56,8 +56,9 @@
 -(void)loadDataAtPage:(NSInteger)page {
     [self.datas removeAllObjects];
     NSString *requestString = self.bund ? getHTTP_get_zhiya_producer : getHTTP_get_zhiya_unbonding_producer;
+    kWeakSelf(weakSelf)
     [self getUtbbData:[LambUtils shareInstance].currentUser.address state:requestString Complain:^(bool finish) {
-        
+        [weakSelf.table.mj_header endRefreshing];
     }];
 }
 

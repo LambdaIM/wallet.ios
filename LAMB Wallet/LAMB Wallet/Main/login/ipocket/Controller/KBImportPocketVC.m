@@ -43,7 +43,8 @@
 
 #pragma mark - ZJScrollPageViewDelegate
 - (NSInteger)numberOfChildViewControllers {
-    return 2;
+//    return 2;
+    return 1;
 }
 
 - (UIViewController<ZJScrollPageViewChildVcDelegate> *)childViewController:(__kindof UIViewController<ZJScrollPageViewChildVcDelegate> *)reuseViewController forIndex:(NSInteger)index { 

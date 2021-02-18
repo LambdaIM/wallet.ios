@@ -77,6 +77,9 @@
             }
             if (array.count) {
                 [weakSelf.datas addObjectsFromArray:array];
+                [weakSelf.datas sortUsingComparator:^NSComparisonResult(ASRecordListModel *obj1, ASRecordListModel *obj2) {
+                    return [obj2.timestamp.lowercaseString compare:obj1.timestamp.lowercaseString];
+                }];
                 [weakSelf.table reloadData];
             }
             complain(nil);

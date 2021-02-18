@@ -110,6 +110,12 @@
                         <constraint firstAttribute="height" constant="48" id="Mhl-qL-rPM"/>
                     </constraints>
                     <state key="normal" title="登录"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="loginBtnClice:" destination="-1" eventType="touchUpInside" id="SYu-5y-eW9"/>
                     </connections>

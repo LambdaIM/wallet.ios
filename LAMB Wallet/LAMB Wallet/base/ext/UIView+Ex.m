@@ -83,7 +83,7 @@
 
 -(void)maddSublayer{
     CAGradientLayer *gradientLayer =  [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(0, 0, self.frame.size.width - 24 , self.frame.size.height);
+    gradientLayer.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     gradientLayer.startPoint = CGPointMake(0, 0);
     gradientLayer.endPoint = CGPointMake(1, 0);
     gradientLayer.locations = @[@(0.1),@(1.0)];

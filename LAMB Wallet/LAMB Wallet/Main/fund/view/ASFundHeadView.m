@@ -67,7 +67,7 @@
         bottom = tempBtn.bottom;
     }
     
-    UIView *fundView = [[UIView alloc]initWithFrame:CGRectMake(0, bottom, kScreenW, 70)];
+    UIView *fundView = [[UIView alloc]initWithFrame:CGRectMake(0, bottom, kScreenW, 90)];
     fundView.backgroundColor = @"#F7F7F7".hexColor;
     [self addSubview:fundView];
     UIView *fundBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftRightM, kLeftRightM, kScreenW - 2 * kLeftRightM, fundView.height - kLeftRightM)];
@@ -79,7 +79,7 @@
     fundLab.font = [UIFont pFMediumSize:16];
     fundLab.frame = CGRectMake(kLeftRightM, kLeftRightM, 100, 20);
     [fundBgView addSubview:fundLab];
-    
+    self.clipsToBounds = YES;
 }
 - (void) tempBtnClick:(UIButton *) btn {
     
