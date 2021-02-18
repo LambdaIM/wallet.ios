@@ -10,7 +10,7 @@
 
 @implementation MineHeaderView
 +(instancetype)view {
-    return [[self alloc] initWithImage:[UIImage imageNamed: @"me_top"]];
+    return [[MineHeaderView alloc] initWithImage:[UIImage imageNamed: @"me_top"]];
 }
 -(instancetype)initWithImage:(UIImage *)image {
     self = [super initWithImage:image];

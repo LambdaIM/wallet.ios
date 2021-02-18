@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,copy) NSString *publicKeyBase64;
 @property (nonatomic ,copy) NSString *privateKeyBase64;
 @property (nonatomic ,copy) NSString *password;
-@property (nonatomic ,copy) NSString *lambNodeAddress;
+@property (nonatomic ,copy) NSString *lambNodeAddress;// 节点地址
 
 @property (nonatomic, copy) NSString *path; // 
 

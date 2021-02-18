@@ -145,7 +145,9 @@
         // 保存当前用户信息
         [LambUtils cofigLocalUserInfo];
         
-        
+        NSString *nodeAddressString =[LambUtils getLambdaAddress:[LambUtils shareInstance].currentUser.lambKeyChain.identifier prefix:@"lambdavaloper"];
+        [LambUtils shareInstance].currentUser.lambNodeAddress = nodeAddressString;
+
         NSLog(@"钱包生成成功 \n 助记词 %@ \n publicKey %@ \n privateKey %@ \n address %@ \n btcpublick %@ \n btcPrivate %@\n btcpublickBase64 %@ \n btcPrivateBase64 %@\n btc_address %@ \n lamb_address %@",[[LambUtils shareInstance].currentUser.mnemonic componentsJoinedByString:@" "],[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPublicKey,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.extendedPrivateKey ,[LambUtils shareInstance].currentUser.lambMnemonic.keychain.key.address.publicAddress.string,[LambUtils shareInstance].currentUser.publicKey,[LambUtils shareInstance].currentUser.privateKey,[LambUtils shareInstance].currentUser.publicKeyBase64,[LambUtils shareInstance].currentUser.privateKeyBase64,[[LambUtils shareInstance].currentUser.lambKeyChain.identifier hexString],[LambUtils shareInstance].currentUser.address);
     }
 }
